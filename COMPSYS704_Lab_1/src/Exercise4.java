@@ -1,4 +1,4 @@
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -13,7 +13,7 @@ public class Exercise4 {
 		System.out.println("call2");
 	}
 	// TODO: Replace the ellipsis
-	static void call(int[][] arrc) {
+	static void call(Vector x) {
 		System.out.println("call3");
 	}
 	
