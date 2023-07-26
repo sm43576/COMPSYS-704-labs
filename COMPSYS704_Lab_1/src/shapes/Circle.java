@@ -2,16 +2,18 @@ package shapes;
 
 public class Circle extends Shape {
 
+	public Circle(String string, int i) {
+		super(string, i);
+		// TODO Auto-generated constructor stub
+		this.i = i;
+	}
+
+
 	private String string;
 	private int i;
 	private double area;
 	
-	public Circle(String string, int i) {
-		// TODO Auto-generated constructor stub
-		
-		this.string= string;
-		this.i=i;
-	}
+	
 	// TODO: Implement as per the UML
 	
 	
@@ -22,8 +24,5 @@ public class Circle extends Shape {
 		return String.valueOf(this.area);
 	}	
 	
-	public String getName() {
-		// TODO Auto-generated method stub
-		return this.string;
-	}	
+
 }

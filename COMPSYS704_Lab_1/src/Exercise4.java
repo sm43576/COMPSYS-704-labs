@@ -1,10 +1,11 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+import org.eclipse.jdt.annotation.Nullable;
+
 public class Exercise4 {
-	public static void main(String[] args) {
-		call("s");
-	}
+
 	static void call(Object x) {
 		System.out.println("call1");
 	}
@@ -12,7 +13,11 @@ public class Exercise4 {
 		System.out.println("call2");
 	}
 	// TODO: Replace the ellipsis
-	static void call(String s) {
+	static void call(int[][] arrc) {
 		System.out.println("call3");
+	}
+	
+	public static void main(String[] args) {
+		call(null);
 	}
 }
