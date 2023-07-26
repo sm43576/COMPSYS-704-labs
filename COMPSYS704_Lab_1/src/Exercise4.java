@@ -3,7 +3,7 @@ import java.util.Vector;
 
 public class Exercise4 {
 	public static void main(String[] args) {
-		call(null);
+		call("s");
 	}
 	static void call(Object x) {
 		System.out.println("call1");
@@ -12,7 +12,7 @@ public class Exercise4 {
 		System.out.println("call2");
 	}
 	// TODO: Replace the ellipsis
-	static void call(...) {
+	static void call(String s) {
 		System.out.println("call3");
 	}
 }
