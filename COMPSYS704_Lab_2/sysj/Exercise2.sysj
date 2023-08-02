@@ -2,6 +2,11 @@ CD->{
 	signal A;
 	{ // First reaction
 		/* Replace await(A); to SystemJ kernel statements to achieve the same behaviour */
+		abort(A){
+			while(true){
+				pause;
+				}
+			}
 		System.out.println("Got a");
 	}
 	||

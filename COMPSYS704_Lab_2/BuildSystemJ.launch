@@ -12,6 +12,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.systemj.compiler.JavaPrettyPrinter"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="COMPSYS704_Lab_2"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-d src --nojavac sysj/HelloWorld.sysj"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-d src --nojavac sysj/Exercise2.sysj"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="COMPSYS704_Lab_2"/>
 </launchConfiguration>
