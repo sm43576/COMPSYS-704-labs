@@ -1,0 +1,5 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="Lab2" Local="true">
+		<ClockDomain Name="MyCD" Class="CD" />
+	</SubSystem>
+</System>
