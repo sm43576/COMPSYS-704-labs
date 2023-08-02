@@ -33,8 +33,8 @@ public class CD extends ClockDomain{
         break;
       
       case 1 : 
-        if(A_1.getprestatus()){//sysj/Exercise2.sysj line: 5, column: 9
-          System.out.println("Got a");//sysj/Exercise2.sysj line: 10, column: 3
+        if(A_1.getprestatus()){//sysj/Exercise1.sysj line: 4, column: 9
+          System.out.println("Got a");//sysj/Exercise1.sysj line: 5, column: 3
           S3=0;
           active[2]=0;
           ends[2]=0;
@@ -51,7 +51,7 @@ public class CD extends ClockDomain{
   }
 
   public void thread10(int [] tdone, int [] ends){
-        A_1.setPresent();//sysj/Exercise2.sysj line: 14, column: 3
+        A_1.setPresent();//sysj/Exercise1.sysj line: 9, column: 3
     currsigs.addElement(A_1);
     System.out.println("Emitted A_1");
     active[3]=0;
@@ -81,7 +81,7 @@ public class CD extends ClockDomain{
         case 1 : 
           S7=2;
           S7=2;
-          A_1.setClear();//sysj/Exercise2.sysj line: 2, column: 2
+          A_1.setClear();//sysj/Exercise1.sysj line: 2, column: 2
           thread9(tdone,ends);
           thread10(tdone,ends);
           int biggest11 = 0;
@@ -98,7 +98,7 @@ public class CD extends ClockDomain{
           }
         
         case 2 : 
-          A_1.setClear();//sysj/Exercise2.sysj line: 2, column: 2
+          A_1.setClear();//sysj/Exercise1.sysj line: 2, column: 2
           thread12(tdone,ends);
           thread13(tdone,ends);
           int biggest14 = 0;
