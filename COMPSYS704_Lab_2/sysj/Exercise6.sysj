@@ -84,8 +84,11 @@ reaction Buffer(: input int channel producerChannel, output int channel consumer
 			present(bufferNotFull){
 
 				/* Task 1: receive from producerChannel */
+				receive producerChannel;
 				/* Task 2: Retrieve data from producerChannel and assign it to 'data' */
+				data = (int) #producerChannel;
 				/* Task 3: emit signal 'toBuffer' with data 'data' */
+				emit toBuffer(data);
 
 				pause; // To ensure that the buffer reaction receives data before reiteration of the loop
 			}
@@ -101,12 +104,13 @@ reaction Buffer(: input int channel producerChannel, output int channel consumer
 			present(bufferNotEmpty){
 
 				/* Task 4: Request data by emitting the signal 'requestData' */
-
+				emit requestData
 				pause; // Need to delay one tick
 				pause; // another tick to get the feedback signal
 
 				/* Task 5:
 				*  1. Check the status of the signal 'fromBuffer'
+				*  
 				*  2. If the signal is present: a) Retrieve data from 'fromBuffer' and assign it to 'data'
 				*                               b) Send 'data' via channel 'consumerChannel'
 				*     Else do nothing
