@@ -56,10 +56,40 @@ Controller(
 			
 		} else if (#mode == 1) { //manual
 			System.out.println("Manual mode");
+			
+			present (!empty){
+				//Pusher extend
+				present(pusherExtendM){	
+					present(pusherRetracted) { // every push tick // NEED TO MANUALLY UNTICK THE PUSHER 
+						abort (immediate pusherExtended) { //plant emits when its at X
+							sustain pusherExtend; // otherwise sustain
+						}
+					}
+				}
+				pause;
+				
+//				//Move arm to object to pickup
+//				abort (armAtSource) {
+//					sustain armSource;
+//				}
+//				pause;
+//				
+//				//Pickup Object
+//				abort(WPgripped){
+//					sustain vacOn;
+//				}
+//				pause;
+//				
+//				//return object to destination
+//				abort (armAtDest) {
+//					{sustain armDest;} || {sustain vacOn;}
+//				}
+//				pause;
 
-		}	
+			}
+
+		}
 	}
-	
 	pause;
  }
 }
