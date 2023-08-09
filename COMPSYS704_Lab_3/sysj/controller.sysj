@@ -6,4 +6,30 @@ Controller(
 		)
 ->{
 /* TODO: Write control-logic */
+	while(true) {
+	
+	// mode == 0 auto
+	/*The arm swivels to the position “extended” if a new workpiece is requested (request).
+2. The pusher extends and pushes a workpiece out of the magazine.
+3. The pusher retracts back once it is fully extended.
+4. The arm swivels back to the position “retracted”
+5. The vacuum is switched on (wait until the workpiece is securely held, e.g. via WPgripped).7
+6. The arm swivels to the position “extended”, transferring a workpiece to a pick-up zone.
+7. The vacuum is switched off (wait until the workpiece is released, e.g. via !WPgripped).
+8. The arm swivels to the position “retracted” so that the cup can be picked up by other machine.
+
+	*/
+	
+	// mode == 1 manual
+	present(mode){
+		if (#mode == 0) { // Automatic
+			System.out.println("Automatic state");
+			pause;
+		} else {
+			pause;
+		}	
+	}
+	
+	pause;
+ }
 }
