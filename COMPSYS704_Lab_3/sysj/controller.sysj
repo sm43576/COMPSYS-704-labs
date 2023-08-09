@@ -24,43 +24,35 @@ Controller(
 	present(mode){
 		if (#mode == 0) { // Automatic
 			System.out.println("Automatic state");
-			
-			//Pusher extend
-			present(pusherRetracted) { // every push tick
-				abort(pusherExtended) { //plant emits when its at X
-					sustain pusherExtend; // otherwise sustain
+			present (!empty){
+				
+				//Pusher extend
+				present(pusherRetracted) { // every push tick
+					abort(pusherExtended) { //plant emits when its at X
+						sustain pusherExtend; // otherwise sustain
+					}
 				}
-			}
-			pause;
-			
-			//Move arm to object to pickup
-			abort (armAtSource) {
-				sustain armSource;
-			}
-			pause;
-			
-			//Pickup Object
-			abort(WPgripped){
-				sustain vacOn;
-			}
-			pause;
-			
-			//return object to destination
-			abort (armAtDest) {
-				{sustain armDest;} || {sustain vacOn;}
-			}
-			pause;
+				pause;
+				
+				//Move arm to object to pickup
+				abort (armAtSource) {
+					sustain armSource;
+				}
+				pause;
+				
+				//Pickup Object
+				abort(WPgripped){
+					sustain vacOn;
+				}
+				pause;
+				
+				//return object to destination
+				abort (armAtDest) {
+					{sustain armDest;} || {sustain vacOn;}
+				}
+				pause;
 
-//			abort (pusherRetracted) {
-//				sustain pusherRetract;
-//			}
-//			pause;
-			
-			//if not empty 
-				//push for certain time
-				// retract
-			
-			
+			}
 			
 		} else if (#mode == 1) { //manual
 			System.out.println("Manual mode");
