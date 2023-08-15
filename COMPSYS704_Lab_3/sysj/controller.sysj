@@ -55,54 +55,57 @@ Controller(
 			}
 			
 		} else if (#mode == 1) { //manual
-			//System.out.println("Manual mode");
+			System.out.println("Manual mode");
+	
+			//Pusher extend
+			{present(pusherExtendM){	
+				pause; //so that the selection isnt delayed by a tick, arm extends one tick later.
+				System.out.println("Pusher mode");
+					
+				// STops it from extending 
+				abort(immediate !pusherExtendM){
+					abort (immediate pusherExtended) { //reached X
+						sustain pusherExtend; // push
+					}
+				}
+				////////////////////////////////
+			}}	
 			
-			present (!empty){
-				//Pusher extend
-				{present(pusherExtendM){	
-					pause; //so that the selection isnt delayed by a tick, arm extends one tick later.
-					System.out.println("Pusher mode");
-					present(pusherRetracted) { // every push tick // NEED TO MANUALLY UNTICK THE PUSHER 
-						abort (immediate pusherExtended) { //plant emits when its at X
-							sustain pusherExtend; // otherwise sustain
-						}
-					}
-				}}	
-				
-				||
-				
-				{present(armSourceM){//  Only when ticked will the arm move.
-					abort (armAtSource) {
-						System.out.println("Arm mode");
-						sustain armSource;
-					}
-					pause;
-				}}
-				
-				||
-				
-				{present(vacOnM){
-	//				//Pickup Object
-					abort(WPgripped){
-						System.out.println("Vac on mode");
-						sustain vacOn;
-					}
-					pause;
-				}}
-				
-				||
+			||
+			
+			{present(armSourceM){//  Only when ticked will the arm move.
+				abort(!armSourceM) {
+					System.out.println("Arm mode");
+					sustain armSource;
+				}
+				pause;
+			}}
+			
+			||
+			
+			{present(vacOnM){
+//				//Pickup Object
+				abort(!vacOnM){	//WP gripped
+					System.out.println("Vac on mode");
+					sustain vacOn;
+				}
+				pause;
+			}}
+			
+			||
 //				
-				{present(armDestM){
+			{present(armDestM){
 //				//return object to destination
-					abort (armAtDest) {
+				abort(!armDestM){
+					abort(armAtDest) {  //armAtDest
 						System.out.println("Move mode");
-						{sustain armDest;} || {sustain vacOn;}
-					}
-					pause;
-				}}
-				
-				
-			} //empty statement close
+						sustain armDest;
+						}
+					
+				}
+				pause;
+			}}
+			
 
 		}
 	}
