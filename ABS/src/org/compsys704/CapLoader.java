@@ -23,7 +23,7 @@ public class CapLoader extends JFrame {
 	public CapLoader() {
 //		this.setPreferredSize(new Dimension(200, 300));
 		panel = new Canvas();
-		panel.setPreferredSize(new Dimension(360, 350));
+		panel.setPreferredSize(new Dimension(700, 400));
 		panel.setBackground(Color.WHITE);
 		JButton enable = new JButton("enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
