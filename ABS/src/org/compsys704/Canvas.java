@@ -41,29 +41,38 @@ public class Canvas extends JPanel {
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		g.drawImage(conveyer1, 0, 100, null);
+		//g.drawImage(conveyer1, 0, 100, null);
 		
-//		if(States.ARM_AT_DEST)
+		if(States.CONVEYOR_IDLE) {
+			g.drawImage(conveyer1, 0, 100, null);
+		}
 //			g.drawImage(conveyer1, 0, 0, null);
 //		else
 //			g.drawImage(arm2, 30, 0, null);
-//		
-//		if(States.GRIPPED){
+		
+		if(States.CONVEYOR_ACTIVE){
 //			if(States.ARM_AT_DEST){
 //				g.setColor(Color.black);
 //				g.fillOval(10, 11, 30, 30);
 //				g.setColor(Color.red);
 //				g.fillOval(10, 11, 15, 15);
-//
-//			}
-//			else{
+			g.drawImage(conveyer2, 0, 100, null);
+		}
+//			else{  // 
 //				g.setColor(Color.black);
 //				g.fillOval(40, 243, 30, 30);
 //				g.setColor(Color.red);
 //				g.fillOval(35, 232, 15, 15);
 //			}
-//			g.setColor(Color.black);
-//		}
+			//g.setColor(Color.black);
+		
+		if (States.CONVEYOR_DELIVERED) {
+			g.drawImage(conveyer3, 0, 100, null);
+		}
+	
+	
+	
+	
 ////		else{
 //			if(States.CAP_READY){ // A cap is pushed to the source pos
 //				g.setColor(Color.black);
