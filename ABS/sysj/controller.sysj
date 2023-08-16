@@ -1,0 +1,114 @@
+Controller(
+		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty,request;
+		output signal pusherExtend,vacOn,armSource,armDest;
+		input Integer signal mode;
+		input signal pusherExtendM,vacOnM,armSourceM,armDestM;
+		)
+->{
+/* TODO: Write control-logic */
+	while(true) {
+	
+	// mode == 0 auto
+	/*The arm swivels to the position �extended� if a new workpiece is requested (request).
+2. The pusher extends and pushes a workpiece out of the magazine.
+3. The pusher retracts back once it is fully extended.
+4. The arm swivels back to the position �retracted�
+5. The vacuum is switched on (wait until the workpiece is securely held, e.g. via WPgripped).7
+6. The arm swivels to the position �extended�, transferring a workpiece to a pick-up zone.
+7. The vacuum is switched off (wait until the workpiece is released, e.g. via !WPgripped).
+8. The arm swivels to the position �retracted� so that the cup can be picked up by other machine.
+
+	*/
+	
+	// mode == 1 manual
+	present(mode){
+		if (#mode == 0) { // Automatic
+			System.out.println("Automatic state");
+			present (!empty){
+				
+				//Pusher extend
+				present(pusherRetracted) { // every push tick
+					abort(pusherExtended) { //plant emits when its at X
+						sustain pusherExtend; // otherwise sustain
+					}
+				}
+				pause;
+				
+				//Move arm to object to pickup
+				abort(armAtSource) {
+					sustain armSource;
+				}
+				pause;
+				
+				//Pickup Object
+				abort(WPgripped){
+					sustain vacOn;
+				}
+				pause;
+				
+				//return object to destination
+				abort (armAtDest) {
+					{sustain armDest;} || {sustain vacOn;}
+				}
+				pause;
+
+			}
+			
+		} else if (#mode == 1) { //manual
+			System.out.println("Manual mode");
+	
+			//Pusher extend
+			{present(pusherExtendM){	
+				pause; //so that the selection isnt delayed by a tick, arm extends one tick later.
+				System.out.println("Pusher mode");
+					
+				// STops it from extending 
+				abort(immediate !pusherExtendM){
+					abort (immediate pusherExtended) { //reached X
+						sustain pusherExtend; // push
+					}
+				}
+				////////////////////////////////
+			}}	
+			
+			||
+			
+			{present(armSourceM){//  Only when ticked will the arm move.
+				abort(!armSourceM) {
+					System.out.println("Arm mode");
+					sustain armSource;
+				}
+				pause;
+			}}
+			
+			||
+			
+			{present(vacOnM){
+//				//Pickup Object
+				abort(!vacOnM){	//WP gripped
+					System.out.println("Vac on mode");
+					sustain vacOn;
+				}
+				pause;
+			}}
+			
+			||
+//				
+			{present(armDestM){
+//				//return object to destination
+				abort(!armDestM){
+					abort(armAtDest) {  //armAtDest
+						System.out.println("Move mode");
+						sustain armDest;
+						}
+					
+				}
+				pause;
+			}}
+			
+
+		}
+	}
+	pause;
+ }
+}
