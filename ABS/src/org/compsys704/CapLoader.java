@@ -21,7 +21,7 @@ public class CapLoader extends JFrame {
 	private JPanel panel;
 	
 	public CapLoader() {
-//		this.setPreferredSize(new Dimension(200, 300));
+
 		panel = new Canvas();
 		panel.setPreferredSize(new Dimension(700, 400));
 		panel.setBackground(Color.WHITE);

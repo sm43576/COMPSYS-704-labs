@@ -1,18 +1,18 @@
 Controller(
 		input signal bottleAtPos1;
-		output signal motConveyorOnOff ;
-		output signal ;
+		output signal motConveyorOnOff;
 		)
 ->{
 
 	while(true) {
 	
+		System.out.println("Hello World!");
 	//Await for request signal from orchestrator.
-		abort(bottleAtPos1) {
-			present(!bottleAtPos1){
-				sustain motConveryorOnOff;
-			}
-		}
+//		abort(bottleAtPos1) {
+//			present(!bottleAtPos1){
+//				sustain motConveryorOnOff;
+//			}
+//		}
 		pause;
 	}
 }
