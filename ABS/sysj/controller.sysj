@@ -11,6 +11,7 @@ Controller(
 //		abort(bottleAtPos1) {
 //			present(!bottleAtPos1){
 //				sustain motConveryorOnOff;
+				System.out.println("Mode on"
 //			}
 //		}
 		pause;

@@ -1,10 +1,16 @@
  import run.GUI;
 
 Plant(
+		input signal motConveyorOnOff;
+		input signal c1,c2,c3;
+		output signal bottleAtPos1;
 		input signal pusherExtend,vacOn,armSource,armDest;
 		input signal enable,refill;
 		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
 		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		
+		
+		
 		)
 ->
 {
@@ -79,18 +85,16 @@ Plant(
 	}
 	||
 	{
-		int capcount = 5;
+		
 		while(true){
-			present(capDec){
-				if(capcount > 0)
-					capcount--;
+			present(c1){
+				System.out.println("q");
 			}
-			present(refill){
-				capcount = 5;
+			present(c2){
+				System.out.println("1");
 			}
-//			present(pusherRetracted){
-				if(capcount == 0)
-					emit empty;
+//			present(c3){
+				System.out.println("2");
 //			}
 			pause;
 		}

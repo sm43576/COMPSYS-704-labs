@@ -1,7 +1,11 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS2" Local="true">
 		<ClockDomain Name="PlantCD" Class="Plant">
-			<iSignal Name="pusherExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			
+			
+			<iSignal Name="motConveyorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="bottleAtPos1" To="ControllerCD.bottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			
 			<iSignal Name="vacOn"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armSource"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armDest"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />

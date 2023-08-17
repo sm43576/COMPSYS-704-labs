@@ -44,5 +44,7 @@ public class Canvas extends JPanel {
 		if (States.CONVEYOR_DELIVERED) {
 			g.drawImage(conveyer3, 0, 100, null);
 		}
+
+
 	}
 }
