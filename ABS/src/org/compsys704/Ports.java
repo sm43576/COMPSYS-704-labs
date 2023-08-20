@@ -4,13 +4,17 @@ public class Ports {
 	public static final String REQUEST_SIGNAL = "ControllerCD.request";
 	public static final String REFILL_SIGNAL = "PlantCD.refill";
 	public static final String ENABLE_SIGNAL = "PlantCD.enable";
-	public static final String CONVEYOR_MOVE = "PlantCD.conveyorMovement";
+
 	public static final int PORT_LOADER_PLANT = 10001;
 	public static final int PORT_LOADER_CONTROLLER = 10000;
 	public static final int PORT_LOADER_VIZ = 20000;
 	
 	// Manual 
 	
+	// Conveyor
+	public static final String CONVEYOR_MOVE = "PlantCD.conveyorMovement";
+	public static final String CONVEYOR_DELIVERED_POS5 = "ControllerCD.bottleLeftPos5";
+	public static final String CONVEYOR_DELIVERED_POS1 = "ControllerCD.bottleAtPos1";
 	
 	public static final String SIGNAL_CONVEYOR_IDLE = "ControllerCD.conveyerIdleM";
 	public static final String CONVEYOR_ACTIVE = "ControllerCD.conveyerActiveM";

@@ -2,115 +2,128 @@
 
 Plant(
 		input signal motConveyorOnOff;
-		input signal c1,c2,c3;
-		output signal bottleAtPos1;
-		input signal pusherExtend,vacOn,armSource,armDest;
+//		input signal c1,c2,c3;
+		output signal bottleAtPos1, bottleLeftPos5;
+//		input signal pusherExtend,vacOn,armSource,armDest;
 		input signal enable,refill;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
-		
+		output signal bottleAtPos1E, bottleLeftPos5E;
+//		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
+//		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+//		
 		
 		
 		)
 ->
 {
 	new Thread(new GUI()).start();
-
-	signal capDec;
-	int signal capPos;
-	emit capPos(0);
-	{// Arm
+//	signal capDec;
+//	int signal capPos;
+//	emit capPos(0);
+	{// bottleAtPos 1 and bottleLeftPos 5 emision
 		while(true){
-			abort(armSource && enable){
-				sustain armAtDest;
-			}
-			await(!enable);
-			abort(armDest && enable){
-				sustain armAtSource;
-			}
-			await(!enable);
-		}
-	}
-	||
-	{// Pusher
-		while(true){
-			abort(pusherExtend && enable){
-				sustain pusherRetracted;
-			}
-			await(!enable);
-			abort(!pusherExtend && enable){
-				sustain pusherExtended;
+			System.out.println("ew");
+			abort(motConveyorOnOff && enable){
+				// TODO trigger turntable
+				System.out.println("sustaining bottle at pos 1");
+				sustain bottleAtPos1;
+				sustain bottleLeftPos5;
+				System.out.println("sustaining bottle left pos 5");
 			}
 			await(!enable);
 		}
 	}
-	||
-	{// Vacuum
-		while(true){
-			present(vacOn && armAtSource){
-				if((Integer)#capPos == 1){
-					emit capPos(0);
-					abort(!vacOn){
-						sustain WPgripped; 
-					}
-					present(armAtSource){
-						emit capPos(1);
-					}
-				}
-			}
-			pause;
-		}
-	}
-	||
-	{
-		/*
-		 * Cap positions
-		 * 0 = at Mag
-		 * 1 = at pick-up
-		 */
-		while(true){
-			// At mag
-			abort(empty){
-				while(true){
-						await(pusherRetracted);
-						await(pusherExtended);
-						// At pick-up
-						emit capPos(1);
-						await(pusherRetracted);
-						emit capDec;
-				}
-			}
-			await(refill);
-		}
-	}
-	||
-	{
-		
-		while(true){
-			present(c1){
-				System.out.println("q");
-			}
-			present(c2){
-				System.out.println("1");
-			}
-//			present(c3){
-				System.out.println("2");
+//	{// Arm
+//		while(true){
+//			abort(armSource && enable){
+//				sustain armAtDest;
 //			}
-			pause;
-		}
-	}
+//			await(!enable);
+//			abort(armDest && enable){
+//				sustain armAtSource;
+//			}
+//			await(!enable);
+//		}
+//	}
+//	||
+//	{// Pusher
+//		while(true){
+//			abort(pusherExtend && enable){
+//				sustain pusherRetracted;
+//			}
+//			await(!enable);
+//			abort(!pusherExtend && enable){
+//				sustain pusherExtended;
+//			}
+//			await(!enable);
+//		}
+//	}
+//	||
+//	{// Vacuum
+//		while(true){
+//			present(vacOn && armAtSource){
+//				if((Integer)#capPos == 1){
+//					emit capPos(0);
+//					abort(!vacOn){
+//						sustain WPgripped; 
+//					}
+//					present(armAtSource){
+//						emit capPos(1);
+//					}
+//				}
+//			}
+//			pause;
+//		}
+//	}
+//	||
+//	{
+//		/*
+//		 * Cap positions
+//		 * 0 = at Mag
+//		 * 1 = at pick-up
+//		 */
+//		while(true){
+//			// At mag
+//			abort(empty){
+//				while(true){
+//						await(pusherRetracted);
+//						await(pusherExtended);
+//						// At pick-up
+//						emit capPos(1);
+//						await(pusherRetracted);
+//						emit capDec;
+//				}
+//			}
+//			await(refill);
+//		}
+//	}
+//	||
+//	{
+//		
+//		while(true){
+//			present(c1){
+//				System.out.println("q");
+//			}
+//			present(c2){
+//				System.out.println("1");
+//			}
+////			present(c3){
+//				System.out.println("2");
+////			}
+//			pause;
+//		}
+//	}
 	||
 	{// To viz
-		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
-		||
-		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
-		||
-		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
-		||
-		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
-		||
-		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
-		||
-		{while(true){present(empty){emit emptyE;} pause;}}
+		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
+//		||
+//		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
+//		||
+//		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
+//		||
+//		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
+//		||
+//		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
+//		||
+//		{while(true){present(empty){emit emptyE;} pause;}}
 	}
 }
