@@ -1,19 +1,32 @@
  import run.GUI;
+ 
+ 
 
-Plant(
-		input signal motConveyorOnOff;
-		input signal c1,c2,c3;
-		output signal bottleAtPos1;
-		input signal pusherExtend,vacOn,armSource,armDest;
-		input signal enable,refill;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
-		
-		
-		
-		)
-->
-{
+reaction CapLoader(: input signal motConveyorOnOff,
+	input signal c1,
+	input signal c2,
+	input signal c3,
+	input signal pusherExtend,
+	input signal vacOn,
+	input signal armSource,
+	input signal armDest,
+	input signal enable,
+	input signal refill,
+	output signal bottleAtPos1,
+	output signal pusherRetracted,
+	output signal pusherExtended,
+	output signal WPgripped,
+	output signal armAtSource,
+	output signal armAtDest,
+	output signal empty,
+	output signal pusherRetractedE,
+	output signal pusherExtendedE,
+	output signal WPgrippedE,
+	output signal armAtSourceE,
+	output signal armAtDestE,
+	output signal emptyE
+	){
+	
 	new Thread(new GUI()).start();
 
 	signal capDec;
@@ -21,6 +34,7 @@ Plant(
 	emit capPos(0);
 	{// Arm
 		while(true){
+			System.out.println("CapLoaddaaa");
 			abort(armSource && enable){
 				sustain armAtDest;
 			}
@@ -113,4 +127,21 @@ Plant(
 		||
 		{while(true){present(empty){emit emptyE;} pause;}}
 	}
+	
+}
+
+reaction Conveyor(: input signal enable){
+	while(true) {
+		System.out.println("!CapLoaddaaa");
+		pause;
+	}
+}
+
+PlantCD(input signal pusherExtend,vacOn,armSource,armDest;
+	input signal enable,refill;
+	output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
+	output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+)->{ //CapLoader(:c1,c2,c3,pusherExtend,vacOn,armSource,armDest,enable,refill,bottleAtPos1,pusherRetracted,pusherExtended,
+		//	WPgripped,armAtSource,armAtDest,empty,pusherRetractedE,pushExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE)
+	Conveyor(:enable)
 }

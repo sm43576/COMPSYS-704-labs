@@ -34,12 +34,14 @@ public class Controller extends ClockDomain{
           S4=2;
           S4=2;
           System.out.println("Hello World!");//sysj\controller.sysj line: 9, column: 3
+          System.out.println("Mode on");//sysj\controller.sysj line: 14, column: 5
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
           System.out.println("Hello World!");//sysj\controller.sysj line: 9, column: 3
+          System.out.println("Mode on");//sysj\controller.sysj line: 14, column: 5
           active[1]=1;
           ends[1]=1;
           break RUN;
