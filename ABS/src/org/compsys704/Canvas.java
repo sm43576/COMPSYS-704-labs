@@ -37,7 +37,7 @@ public class Canvas extends JPanel {
 			g.drawImage(conveyer1, 0, 100, null);
 //			System.out.println("idle");
 		}
-		if (States.CONVEYOR_MOVE && States.BOTTLE_AT_POS1  ) { // conveyor delivered
+		if (!States.CONVEYOR_MOVE && States.BOTTLE_AT_POS1  ) { // conveyor delivered
 			g.drawImage(conveyer3, 0, 100, null);
 //			System.out.println("delivered");
 		}

@@ -12,10 +12,10 @@ Controller(
 	 */
 	
 	/*
-	 	1. Wait until there are no bottles on the RHS far end of conveyor via signal bottleLeftPos5
+	 	1. Wait until there are no bottles on the RHS far end of conveyor via bottleAtPos5
 		2. Enable the conveyor motor
 		3. Check whether the bottle is arrived at position 1 via signal bottleAtPos1
-		4. Wait until the bottle is successfully left position 5 via signal bottleLeftPos5
+		4. Wait until the bottle is successfully left position 5 via signal !bottleAtPos5
 		5. Stop the conveyor motor
 	*/
 	while(true) {

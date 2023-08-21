@@ -23,20 +23,21 @@ Plant(
 		// LOGIC HERE
 		while(true){
 			await(enable);
-			abort(!enable){
+			abort(!enable){// When enabled, the bottle leaves pos5.
+                //The bottle is at pos5.
 				System.out.println("sustaining bottle at pos 5");
 				sustain bottleAtPos5;
+				pause;
 			}// once it leaves the abort it changes to false 
 			System.out.println("ew");
 			pause;
 			await(enable);
 			System.out.println("ewewwhfsdhvfyujg");
-//			await(motConveyorOnOff); // like that?
-				// TODO trigger turntable 
-			System.out.println("copium");
-//			previously abort(!enable)
-			abort(!enable){ 
-				abort(motConveyorOnOff){ // IT ABORTSSSSSSSS 
+//			await(!enable);
+			
+			// Bottle has reached position 1 turn off motor
+			abort(enable){ 
+				abort(motConveyorOnOff){
 					System.out.println("sustaining bottle at pos 1");
 					sustain bottleAtPos1;
 				}
@@ -131,16 +132,12 @@ Plant(
 //	}
 	||
 	{// To UI viz THE FIRST TWO WORKS, NOT THE LAST ONEyea
+		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
+		||
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
 		||
 		{while(true) {present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
-		||
-		{while(true) { 
-			present(motConveyorOnOff){ // never present? should i try await?
-				System.out.println("emitting motor on E");
-				emit motConveyorOnOffE;
-				} 
-			pause;}}
+		
 //		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
 //		||
 //		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
