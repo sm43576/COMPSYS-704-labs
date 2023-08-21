@@ -12,7 +12,7 @@ public class Controller extends ClockDomain{
   private char [] paused;
   private char [] suspended;
   public Signal bottleAtPos1 = new Signal("bottleAtPos1", Signal.INPUT);
-  public Signal bottleLeftPos5 = new Signal("bottleLeftPos5", Signal.INPUT);
+  public Signal bottleAtPos5 = new Signal("bottleAtPos5", Signal.INPUT);
   public Signal motConveyorOnOff = new Signal("motConveyorOnOff", Signal.OUTPUT);
   private int S64 = 1;
   private int S2 = 1;
@@ -44,7 +44,7 @@ public class Controller extends ClockDomain{
         case 2 : 
           switch(S2){
             case 0 : 
-              if(!bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 25, column: 9
+              if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 25, column: 9
                 System.out.println("owo?");//sysj\controller.sysj line: 26, column: 3
                 S2=1;
                 if(!bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 29, column: 12
@@ -70,7 +70,7 @@ public class Controller extends ClockDomain{
               }
             
             case 1 : 
-              if(bottleAtPos1.getprestatus() && bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 28, column: 9
+              if(bottleAtPos1.getprestatus() && !bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 28, column: 9
                 System.out.println("Motor is off");//sysj\controller.sysj line: 35, column: 3
                 S2=2;
                 active[1]=1;
@@ -122,13 +122,13 @@ public class Controller extends ClockDomain{
       else{
         if(!df){
           bottleAtPos1.gethook();
-          bottleLeftPos5.gethook();
+          bottleAtPos5.gethook();
           df = true;
         }
         runClockDomain();
       }
       bottleAtPos1.setpreclear();
-      bottleLeftPos5.setpreclear();
+      bottleAtPos5.setpreclear();
       motConveyorOnOff.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
@@ -139,15 +139,15 @@ public class Controller extends ClockDomain{
       dummyint = bottleAtPos1.getStatus() ? bottleAtPos1.setprepresent() : bottleAtPos1.setpreclear();
       bottleAtPos1.setpreval(bottleAtPos1.getValue());
       bottleAtPos1.setClear();
-      dummyint = bottleLeftPos5.getStatus() ? bottleLeftPos5.setprepresent() : bottleLeftPos5.setpreclear();
-      bottleLeftPos5.setpreval(bottleLeftPos5.getValue());
-      bottleLeftPos5.setClear();
+      dummyint = bottleAtPos5.getStatus() ? bottleAtPos5.setprepresent() : bottleAtPos5.setpreclear();
+      bottleAtPos5.setpreval(bottleAtPos5.getValue());
+      bottleAtPos5.setClear();
       motConveyorOnOff.sethook();
       motConveyorOnOff.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         bottleAtPos1.gethook();
-        bottleLeftPos5.gethook();
+        bottleAtPos5.gethook();
       }
       runFinisher();
       if(active[1] == 0){

@@ -1,5 +1,5 @@
 Controller(
-		input signal bottleAtPos1, bottleLeftPos5;
+		input signal bottleAtPos1, bottleAtPos5;
 		output signal motConveyorOnOff;
 		)
 ->{
@@ -7,12 +7,12 @@ Controller(
 	/**
 	 bottleAtPos1: 0 -  bottle HASN'T arrived at position 1 of the index table.
 	 bottleAtPos1: 1 -  bottle HAS arrived at position 1 of the index table.
-	 bottleLeftPos5: 0 -  bottle is at position 5 and hasn't left (empty conveyor)
-	 bottleLeftPos5: 1 -  bottle has LEFT position 5
+	 bottleAtPos5: 1 -  bottle is at position 5 and hasn't left (empty conveyor)
+	 bottleAtPos5: 0 -  bottle has LEFT position 5
 	 */
 	
 	/*
-	 	1. Wait until there are no bottles on the far end of conveyor via signal bottleLeftPos5
+	 	1. Wait until there are no bottles on the RHS far end of conveyor via signal bottleLeftPos5
 		2. Enable the conveyor motor
 		3. Check whether the bottle is arrived at position 1 via signal bottleAtPos1
 		4. Wait until the bottle is successfully left position 5 via signal bottleLeftPos5
@@ -22,10 +22,10 @@ Controller(
 	
 		System.out.println("Hello World!");
 	//Wait until bottle at position 5 hasn't left yet
-		await(!bottleLeftPos5);
-		System.out.println("owo?");
+		await(bottleAtPos5);
+		System.out.println("bottle at pos 5 hasn't left yet");
 	// turn on motor until bottle has arrived at position 1 and left position 5
-		abort(bottleAtPos1 && bottleLeftPos5) {
+		abort(bottleAtPos1 && !bottleAtPos5) {
 			present(!bottleAtPos1){
 				System.out.println("Motor is on"); 
 				sustain motConveyorOnOff;

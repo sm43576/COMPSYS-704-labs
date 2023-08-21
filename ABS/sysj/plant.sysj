@@ -3,7 +3,7 @@
 Plant(
 		input signal motConveyorOnOff;
 //		input signal c1,c2,c3;
-		output signal bottleAtPos1, bottleLeftPos5;
+		output signal bottleAtPos1, bottleAtPos5;
 //		input signal pusherExtend,vacOn,armSource,armDest;
 		input signal enable,refill;
 		output signal bottleAtPos1E, bottleLeftPos5E;
@@ -21,17 +21,33 @@ Plant(
 //	emit capPos(0);
 	{// bottleAtPos 1 and bottleLeftPos 5 emision
 		while(true){
-			System.out.println("ew");
-			abort(motConveyorOnOff && enable){
-				// TODO trigger turntable
-				System.out.println("sustaining bottle at pos 1");
-				sustain bottleAtPos1;
-				sustain bottleLeftPos5;
-				System.out.println("sustaining bottle left pos 5");
+			await(enable);
+			abort(!enable){
+				System.out.println("sustaining bottle at pos 5");
+				sustain bottleAtPos5;
 			}
+			System.out.println("ew");
+			
+			await(enable);
+			System.out.println("ewewwhfsdhvfyujg");
+//			await(motConveyorOnOff); // like that?
+				// TODO trigger turntable 
+			System.out.println("copium");
+//			previously abort(!enable)
+			abort(!enable){
+				abort(motConveyorOnOff){ // IT ABORTSSSSSSSS
+					System.out.println("sustaining bottle at pos 1");
+					sustain bottleAtPos1;
+				}
+			}
+
+			
+			System.out.println("im outtt");
+			pause;
 			await(!enable);
 		}
 	}
+
 //	{// Arm
 //		while(true){
 //			abort(armSource && enable){
@@ -66,7 +82,7 @@ Plant(
 //					abort(!vacOn){
 //						sustain WPgripped; 
 //					}
-//					present(armAtSource){
+//					present(armAtSource){ 
 //						emit capPos(1);
 //					}
 //				}
