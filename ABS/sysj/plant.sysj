@@ -20,12 +20,13 @@ Plant(
 //	int signal capPos;
 //	emit capPos(0);
 	{// bottleAtPos 1 and bottleLeftPos 5 emision
+		// LOGIC HERE
 		while(true){
 			await(enable);
 			abort(!enable){
 				System.out.println("sustaining bottle at pos 5");
 				sustain bottleAtPos5;
-			}
+			}// once it leaves the abort it changes to false 
 			System.out.println("ew");
 			pause;
 			await(enable);
@@ -34,8 +35,8 @@ Plant(
 				// TODO trigger turntable 
 			System.out.println("copium");
 //			previously abort(!enable)
-			abort(!enable){
-				abort(motConveyorOnOff){ // IT ABORTSSSSSSSS
+			abort(!enable){ 
+				abort(motConveyorOnOff){ // IT ABORTSSSSSSSS 
 					System.out.println("sustaining bottle at pos 1");
 					sustain bottleAtPos1;
 				}
@@ -129,12 +130,17 @@ Plant(
 //		}
 //	}
 	||
-	{// To viz
+	{// To UI viz THE FIRST TWO WORKS, NOT THE LAST ONEyea
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
 		||
 		{while(true) {present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
 		||
-		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
+		{while(true) { 
+			present(motConveyorOnOff){ // never present? should i try await?
+				System.out.println("emitting motor on E");
+				emit motConveyorOnOffE;
+				} 
+			pause;}}
 //		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
 //		||
 //		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}

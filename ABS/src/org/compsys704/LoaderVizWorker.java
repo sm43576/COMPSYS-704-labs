@@ -11,14 +11,17 @@ public class LoaderVizWorker extends Worker{
 		switch(signame){
 		case "bottleAtPos1E":
 			States.BOTTLE_AT_POS1 = status;
+			System.out.println("bottle at pos 1: "+ States.BOTTLE_AT_POS1);
 			break;
 			
 		case "bottleAtPos5E":
 			States.BOTTLE_AT_POS5 = status;
+			System.out.println("bottle at pos 5: "+ States.BOTTLE_AT_POS5);
 			break;
 			
 		case "motConveyorOnOffE":
 			States.CONVEYOR_MOVE = status;
+			System.out.println("conveyor: "+ States.CONVEYOR_MOVE);
 			break;
 //		case "armAtSourceE":
 //			States.ARM_AT_SOURCE = status;
