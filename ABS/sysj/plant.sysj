@@ -6,7 +6,7 @@ Plant(
 		output signal bottleAtPos1, bottleAtPos5;
 //		input signal pusherExtend,vacOn,armSource,armDest;
 		input signal enable,refill;
-		output signal bottleAtPos1E, bottleLeftPos5E;
+		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
 //		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
 //		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
 //		
@@ -27,7 +27,7 @@ Plant(
 				sustain bottleAtPos5;
 			}
 			System.out.println("ew");
-			
+			pause;
 			await(enable);
 			System.out.println("ewewwhfsdhvfyujg");
 //			await(motConveyorOnOff); // like that?
@@ -131,7 +131,10 @@ Plant(
 	||
 	{// To viz
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
-//		||
+		||
+		{while(true) {present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
+		||
+		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
 //		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
 //		||
 //		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}

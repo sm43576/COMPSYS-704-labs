@@ -24,6 +24,7 @@ Controller(
 	//Wait until bottle at position 5 hasn't left yet
 		await(bottleAtPos5);
 		System.out.println("bottle at pos 5 hasn't left yet");
+		pause;
 	// turn on motor until bottle has arrived at position 1 and left position 5
 		abort(bottleAtPos1 && !bottleAtPos5) {
 			present(!bottleAtPos1){

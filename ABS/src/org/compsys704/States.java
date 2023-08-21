@@ -3,9 +3,10 @@ package org.compsys704;
 public class States {
 	
 	
-	public static volatile boolean CONVEYOR_IDLE = true;
-	public static volatile boolean CONVEYOR_ACTIVE = false;
-	public static volatile boolean CONVEYOR_DELIVERED = !CONVEYOR_ACTIVE;
+	public static volatile boolean BOTTLE_AT_POS1 = false;
+	public static volatile boolean BOTTLE_AT_POS5 = true;
+	public static volatile boolean CONVEYOR_MOVE = false;
+//	public static volatile boolean CONVEYOR_DELIVERED = !CONVEYOR_ACTIVE;
 	
 	
 	public static volatile boolean ARM_AT_DEST = true;

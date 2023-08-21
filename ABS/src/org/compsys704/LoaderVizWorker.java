@@ -9,17 +9,16 @@ public class LoaderVizWorker extends Worker{
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
-		case "conveyorIdleE":
-			States.CONVEYOR_IDLE = true;
+		case "bottleAtPos1E":
+			States.BOTTLE_AT_POS1 = status;
 			break;
 			
-		case "conveyorActiveE":
-			States.CONVEYOR_IDLE = false;
-			States.CONVEYOR_ACTIVE = status;
+		case "bottleAtPos5E":
+			States.BOTTLE_AT_POS5 = status;
 			break;
 			
-		case "conveyorDeliveredE":
-			States.CONVEYOR_DELIVERED = true;
+		case "motConveyorOnOffE":
+			States.CONVEYOR_MOVE = status;
 			break;
 //		case "armAtSourceE":
 //			States.ARM_AT_SOURCE = status;
@@ -37,7 +36,7 @@ public class LoaderVizWorker extends Worker{
 	}
 	
 	
-	static final List<String> signames = Arrays.asList("conveyorIdleE","conveyorActiveE","conveyorDeliveredE");
+	static final List<String> signames = Arrays.asList("bottleAtPos1E","bottleAtPos5E","motConveyorOnOffE");
 	
 	@Override
 	public boolean hasSignal(String sn) {

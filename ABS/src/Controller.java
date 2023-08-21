@@ -45,23 +45,11 @@ public class Controller extends ClockDomain{
           switch(S2){
             case 0 : 
               if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 25, column: 9
-                System.out.println("owo?");//sysj\controller.sysj line: 26, column: 3
+                System.out.println("bottle at pos 5 hasn't left yet");//sysj\controller.sysj line: 26, column: 3
                 S2=1;
-                if(!bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 29, column: 12
-                  System.out.println("Motor is on");//sysj\controller.sysj line: 30, column: 5
-                  motConveyorOnOff.setPresent();//sysj\controller.sysj line: 31, column: 5
-                  currsigs.addElement(motConveyorOnOff);
-                  active[1]=1;
-                  ends[1]=1;
-                  break RUN;
-                }
-                else {
-                  System.out.println("Motor is off");//sysj\controller.sysj line: 35, column: 3
-                  S2=2;
-                  active[1]=1;
-                  ends[1]=1;
-                  break RUN;
-                }
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
               }
               else {
                 active[1]=1;
@@ -70,23 +58,42 @@ public class Controller extends ClockDomain{
               }
             
             case 1 : 
-              if(bottleAtPos1.getprestatus() && !bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 28, column: 9
-                System.out.println("Motor is off");//sysj\controller.sysj line: 35, column: 3
-                S2=2;
+              S2=1;
+              S2=2;
+              if(!bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 30, column: 12
+                System.out.println("Motor is on");//sysj\controller.sysj line: 31, column: 5
+                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 32, column: 5
+                currsigs.addElement(motConveyorOnOff);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 31, column: 5
-                currsigs.addElement(motConveyorOnOff);
+                System.out.println("Motor is off");//sysj\controller.sysj line: 36, column: 3
+                S2=3;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 2 : 
-              S2=2;
+              if(bottleAtPos1.getprestatus() && !bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 29, column: 9
+                System.out.println("Motor is off");//sysj\controller.sysj line: 36, column: 3
+                S2=3;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 32, column: 5
+                currsigs.addElement(motConveyorOnOff);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 3 : 
+              S2=3;
               System.out.println("Hello World!");//sysj\controller.sysj line: 23, column: 3
               S2=0;
               active[1]=1;

@@ -13,7 +13,7 @@ public class Ports {
 	
 	// Conveyor
 	public static final String CONVEYOR_MOVE = "PlantCD.conveyorMovement";
-	public static final String CONVEYOR_DELIVERED_POS5 = "ControllerCD.bottleLeftPos5";
+	public static final String CONVEYOR_AT_POS5 = "ControllerCD.bottleAtPos5";
 	public static final String CONVEYOR_DELIVERED_POS1 = "ControllerCD.bottleAtPos1";
 	
 	public static final String SIGNAL_CONVEYOR_IDLE = "ControllerCD.conveyerIdleM";
