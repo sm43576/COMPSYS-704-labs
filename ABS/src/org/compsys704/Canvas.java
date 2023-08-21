@@ -32,19 +32,22 @@ public class Canvas extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
-		if(States.CONVEYOR_IDLE) {
+		// ADD YOUR IMAGES AND STATE HANDLING HERE
+		if(!States.BOTTLE_AT_POS1 && !States.CONVEYOR_MOVE) { // conveyor idling
 			g.drawImage(conveyer1, 0, 100, null);
+//			System.out.println("idle");
 		}
-		
-		if(States.CONVEYOR_ACTIVE){
-			g.drawImage(conveyer2, 0, 100, null);
-		}
-		
-		if (States.CONVEYOR_DELIVERED) {
+		if (!States.CONVEYOR_MOVE && States.BOTTLE_AT_POS1  ) { // conveyor delivered
 			g.drawImage(conveyer3, 0, 100, null);
+//			System.out.println("delivered");
 		}
 
+		
+		if(States.CONVEYOR_MOVE){ // conveyor moving
+			g.drawImage(conveyer2, 0, 100, null);
+//			System.out.println("moving");
+		}
+		
 
 	}
 }

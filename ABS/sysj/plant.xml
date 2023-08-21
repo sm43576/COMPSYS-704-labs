@@ -5,8 +5,17 @@
 			
 			<iSignal Name="motConveyorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="bottleAtPos1" To="ControllerCD.bottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="bottleAtPos5" To="ControllerCD.bottleAtPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			
-			<iSignal Name="vacOn"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="bottleAtPos1E" To="UI.bottleAtPos1E" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
+			<oSignal Name="bottleAtPos5E" To="UI.bottleAtPos5E" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
+			<oSignal Name="motConveyorOnOffE" To="UI.motConveyorOnOffE" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
+			
+			<iSignal Name="enable"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+
+			
+			<!--<iSignal Name="vacOn"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armSource"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armDest"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="enable"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
@@ -25,6 +34,7 @@
 			<oSignal Name="armAtSourceE"     To="UI.armAtSourceE"     Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="armAtDestE"       To="UI.armAtDestE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="emptyE"           To="UI.emptyE"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			-->
 		</ClockDomain>
 	</SubSystem>
 </System>

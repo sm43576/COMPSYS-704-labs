@@ -27,7 +27,7 @@ public class CapLoader extends JFrame {
 		panel.setBackground(Color.WHITE);
 		JButton enable = new JButton("enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
-
+	
 		JPanel ss = new JPanel();
 		ss.add(enable);
 

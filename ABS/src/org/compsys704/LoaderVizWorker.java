@@ -5,21 +5,24 @@ import java.util.List;
 
 public class LoaderVizWorker extends Worker{
 
+	// ADD YOUR STATES HANDLING HERE - STATUS = SIGNAL EMITTED FROM PLANT
 	@Override
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
-		case "conveyorIdleE":
-			States.CONVEYOR_IDLE = true;
+		case "bottleAtPos1E":
+			States.BOTTLE_AT_POS1 = status;
+			System.out.println("bottle at pos 1: "+ States.BOTTLE_AT_POS1);
 			break;
 			
-		case "conveyorActiveE":
-			States.CONVEYOR_IDLE = false;
-			States.CONVEYOR_ACTIVE = status;
+		case "bottleAtPos5E":
+			States.BOTTLE_AT_POS5 = status;
+			System.out.println("bottle at pos 5: "+ States.BOTTLE_AT_POS5);
 			break;
 			
-		case "conveyorDeliveredE":
-			States.CONVEYOR_DELIVERED = true;
+		case "motConveyorOnOffE":
+			States.CONVEYOR_MOVE = status;
+			System.out.println("conveyor: "+ States.CONVEYOR_MOVE);
 			break;
 //		case "armAtSourceE":
 //			States.ARM_AT_SOURCE = status;
@@ -37,7 +40,7 @@ public class LoaderVizWorker extends Worker{
 	}
 	
 	
-	static final List<String> signames = Arrays.asList("conveyorIdleE","conveyorActiveE","conveyorDeliveredE");
+	static final List<String> signames = Arrays.asList("bottleAtPos1E","bottleAtPos5E","motConveyorOnOffE");
 	
 	@Override
 	public boolean hasSignal(String sn) {
