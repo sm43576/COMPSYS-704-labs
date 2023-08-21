@@ -32,7 +32,7 @@ public class Canvas extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
+		// ADD YOUR IMAGES AND STATE HANDLING HERE
 		if(!States.BOTTLE_AT_POS1 && !States.CONVEYOR_MOVE) { // conveyor idling
 			g.drawImage(conveyer1, 0, 100, null);
 //			System.out.println("idle");

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class LoaderVizWorker extends Worker{
 
+	// ADD YOUR STATES HANDLING HERE - STATUS = SIGNAL EMITTED FROM PLANT
 	@Override
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);

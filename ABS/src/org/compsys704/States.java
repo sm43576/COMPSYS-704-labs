@@ -1,7 +1,7 @@
 package org.compsys704;
 
 public class States {
-	
+	// ADD INITIAL STATES HERE FOR ANY INTERACTION WITH UI
 	
 	public static volatile boolean BOTTLE_AT_POS1 = false;
 	public static volatile boolean BOTTLE_AT_POS5 = true;
