@@ -23,30 +23,37 @@ Plant(
 		// LOGIC HERE
 		while(true){
 			await(enable);
+			//idle 
 			abort(!enable){// When enabled, the bottle leaves pos5.
                 //The bottle is at pos5.
 				System.out.println("sustaining bottle at pos 5");
 				sustain bottleAtPos5;
 				pause;
-			}// once it leaves the abort it changes to false 
-			System.out.println("ew");
+			}// once it leaves the abort it changes to false 						
 			pause;
-			await(enable);
-			System.out.println("ewewwhfsdhvfyujg");
-//			await(!enable);
 			
+			//After bottle leaves pos5
+			// Arrow turns on
+			
+			await(enable);
+			pause;
 			// Bottle has reached position 1 turn off motor
-			abort(enable){ 
-				abort(motConveyorOnOff){
+				
+			abort(motConveyorOnOff){//
 					System.out.println("sustaining bottle at pos 1");
 					sustain bottleAtPos1;
-				}
 			}
+			//turns arrow off
+			await(!enable);
+			//its for the ui, usually it should immediately go low but we have the enable to frame it.
+			abort(enable){
+				sustain bottleAtPos1;
+			}
+			//
 
-			
+			await(enable);
 			System.out.println("im outtt");
 			pause;
-			await(!enable);
 		}
 	}
 
