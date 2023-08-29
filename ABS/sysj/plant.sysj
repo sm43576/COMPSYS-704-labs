@@ -1,15 +1,42 @@
  import run.GUI;
 
 Plant(
+		// Conveyor/////////////////////////////////////////////////////// 
 		input signal motConveyorOnOff;
-//		input signal c1,c2,c3;
 		output signal bottleAtPos1, bottleAtPos5;
-//		input signal pusherExtend,vacOn,armSource,armDest;
+
 		input signal enable,refill;
 		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
+		///////////////////////////////////////////////////////////////////
+		
+		// Filler
+		
+		//input
+		//output
+		
+		///////////////////////////////////////////////////////////////////
+		
+		// CapLoader
+		
+//		input signal pusherExtend,vacOn,armSource,armDest;
 //		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
 //		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
-//		
+		/////////////////////////////////////////////////////////////////////	
+		
+		
+		// Cap Screwer
+		
+		
+		
+		/////////////////////////////////////////////////////////////////////
+		
+		
+		//Rotatry Table
+		
+		
+		/////////////////////////////////////////////////////////////////////
+		
+		
 		
 		
 		)
@@ -19,7 +46,10 @@ Plant(
 //	signal capDec;
 //	int signal capPos;
 //	emit capPos(0);
-	{// bottleAtPos 1 and bottleLeftPos 5 emision
+	
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Conveyor
+	{
 		// LOGIC HERE
 		while(true){
 			await(enable);
@@ -55,8 +85,19 @@ Plant(
 			System.out.println("im outtt");
 			pause;
 		}
+	} 
+	
+	||
+	
+	//Filler /////////////////////////////////////////////////////////////////////
+	{
+		while(true) {pause;}
 	}
+	/////////////////////////////////////////////////////////////////
 
+//	||
+	
+//Cap Loader////////////////////////////////////////////	
 //	{// Arm
 //		while(true){
 //			abort(armSource && enable){
@@ -137,8 +178,29 @@ Plant(
 //			pause;
 //		}
 //	}
+	
 	||
-	{// To UI viz THE FIRST TWO WORKS, NOT THE LAST ONEyea
+	
+// Cap Screwer
+	{
+		while(true) {pause};
+	}
+	
+	||
+	
+//Rotatry Table
+	{
+		while(true) {pause};
+	}
+	
+	
+	
+/////////////////////////////////////////////////////////////////////
+	
+	
+	
+	||
+	{//Emit Signals - GOing to UI
 		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
 		||
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}

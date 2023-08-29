@@ -4,20 +4,6 @@ Controller(
 		)
 ->{
 
-	/**
-	 bottleAtPos1: 0 -  bottle HASN'T arrived at position 1 of the index table.
-	 bottleAtPos1: 1 -  bottle HAS arrived at position 1 of the index table.
-	 bottleAtPos5: 1 -  bottle is at position 5 and hasn't left (empty conveyor)
-	 bottleAtPos5: 0 -  bottle has LEFT position 5
-	 */
-	
-	/*
-	 	1. Wait until there are no bottles on the RHS far end of conveyor via bottleAtPos5
-		2. Enable the conveyor motor
-		3. Check whether the bottle is arrived at position 1 via signal bottleAtPos1
-		4. Wait until the bottle is successfully left position 5 via signal !bottleAtPos5
-		5. Stop the conveyor motor
-	*/
 	while(true) {
 	
 		System.out.println("Hello World!");
@@ -35,6 +21,41 @@ Controller(
 		}
 		System.out.println("Motor is off");
 		pause;
+	}
+}
+
+
+RotaryTable(
+		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1_RT, doneAtPos2, doneAtPos4, doneAtPos3, bottleAtPos2_RT, bottleAtPos3_RT, bottleAtPos4_RT;
+		output signal rotaryTableTrigger;
+		)
+->{
+/* TODO: Write control-logic */
+	//My change is logic good?
+	loop{
+		pause;
+		await(bottleAtPos1_RT);
+		await(!capOnBottleAtPos1);
+		abort(bottleAtPos2_RT){
+			sustain rotaryTableTrigger;
+		}
+		await(doneAtPos2);
+		abort(bottleAtPos3_RT){
+			sustain rotaryTableTrigger;
+		}
+		await(doneAtPos3);
+		abort(bottleAtPos4_RT){
+			sustain rotaryTableTrigger;
+		}
+		await(doneAtPos4);
+		abort(bottleAtPos5){
+			sustain rotaryTableTrigger;
+		}
+		
+		
+//				abort(tableAlignedWithSensor){
+//					sustain rotaryTableTrigger;
+//				}
 	}
 
 }
