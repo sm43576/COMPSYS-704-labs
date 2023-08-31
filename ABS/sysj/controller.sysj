@@ -6,57 +6,103 @@ Controller(
 
 	while(true) {
 	
-		System.out.println("Hello World!");
+	//	System.out.println("Hello World!");
 	//Wait until bottle at position 5 hasn't left yet
 		await(bottleAtPos5);
-		System.out.println("bottle at pos 5 hasn't left yet");
+	//	System.out.println("bottle at pos 5 hasn't left yet");
 		pause;
 
 		abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
 			present(!bottleAtPos1){ //when bottle is not at position 1
-				System.out.println("Motor is on"); 
+		//		System.out.println("Motor is on"); 
 				sustain motConveyorOnOff;  // keep motor on
 
 			}
 		}
-		System.out.println("Motor is off");
+	//	System.out.println("Motor is off");
 		pause;
 	}
 }
 
 
-RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1_RT, doneAtPos2, doneAtPos4, doneAtPos3, bottleAtPos2_RT, bottleAtPos3_RT, bottleAtPos4_RT;
-		output signal rotaryTableTrigger;
+//RotaryTable(
+//		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1_RT, doneAtPos2, doneAtPos4, doneAtPos3, bottleAtPos2_RT, bottleAtPos3_RT, bottleAtPos4_RT;
+//		output signal rotaryTableTrigger;
+//		)
+//->{
+///* TODO: Write control-logic */
+//	//My change is logic good?
+//	loop{
+//		pause;
+//		await(bottleAtPos1_RT);
+//		await(!capOnBottleAtPos1);
+//		abort(bottleAtPos2_RT){
+//			sustain rotaryTableTrigger;
+//		}
+//		await(doneAtPos2);
+//		abort(bottleAtPos3_RT){
+//			sustain rotaryTableTrigger;
+//		}
+//		await(doneAtPos3);
+//		abort(bottleAtPos4_RT){
+//			sustain rotaryTableTrigger;
+//		}
+//		await(doneAtPos4);
+//		abort(bottleAtPos5){
+//			sustain rotaryTableTrigger;
+//		}
+//		
+//		
+////				abort(tableAlignedWithSensor){
+////					sustain rotaryTableTrigger;
+////				}
+//	}
+//
+//}
+
+LiquidFiller(
+		input signal fillerReq; 
+		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled; 
+		input Integer signal selectCanister;
+		input Integer signal percentLiquid;
+		
+		input Integer signal currentlySelectedCanister; 
+		output signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
 		)
 ->{
-/* TODO: Write control-logic */
-	//My change is logic good?
-	loop{
+	while(true) {
+		//dc that input from controller is sent,stays high
+		present(bottleAtPos2){
+			present(fillerReq){
+				present(selectCanister){
+					present (percentLiquid){
+						
+		//Given the assumption that the selected canister is externally rotated
+		// wait till the selected canister matches the orchestra.
+		present(selectCanister){
+			if (#selectCanister == #currentlySelectedCanister){// wait till canister match
+				// emit(valveInjectorOnOff);
+				System.out.println("Canister match");
+				 abort(!dosUnitEvac){ // brings canister to the top
+						sustain dosUnitValveRetract;//
+				 }
+				 System.out.println("Canister above bottle");
+				 pause;
+				 
+				 abort(dosUnitFilled){ // close valve once filled
+					 sustain valveInletOnOff; 
+				 }
+				 System.out.println("Bottle controller filled");
+				 
+				 abort(dosUnitEvac){// bring cylinder to the bottom
+					 sustain dosUnitValveExtend;
+				 }
+				 System.out.println("Canister returned");
+				
+			}
+		}
+		}}}}
 		pause;
-		await(bottleAtPos1_RT);
-		await(!capOnBottleAtPos1);
-		abort(bottleAtPos2_RT){
-			sustain rotaryTableTrigger;
-		}
-		await(doneAtPos2);
-		abort(bottleAtPos3_RT){
-			sustain rotaryTableTrigger;
-		}
-		await(doneAtPos3);
-		abort(bottleAtPos4_RT){
-			sustain rotaryTableTrigger;
-		}
-		await(doneAtPos4);
-		abort(bottleAtPos5){
-			sustain rotaryTableTrigger;
-		}
-		
-		
-//				abort(tableAlignedWithSensor){
-//					sustain rotaryTableTrigger;
-//				}
 	}
-
-}
 	
+}

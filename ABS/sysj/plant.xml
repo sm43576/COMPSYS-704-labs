@@ -15,6 +15,21 @@
 			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
 			
+			
+			<iSignal Name="valveInjectorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="dosUnitValveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="dosUnitValveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+
+			<oSignal Name="fillerReq" To="LiquidFillerCD.fillerReq" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="selectCanister" To="LiquidFillerCD.selectCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
+			<oSignal Name="percentLiquid" To="LiquidFillerCD.percentLiquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="bottleAtPos2" To="LiquidFillerCD.bottleAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
+			<oSignal Name="dosUnitEvac" To="LiquidFillerCD.dosUnitEvac" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="dosUnitFilled" To="LiquidFillerCD.dosUnitFilled" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
+			<oSignal Name="currentlySelectedCanister" To="LiquidFillerCD.currentlySelectedCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+
+			
 			<!--<iSignal Name="vacOn"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armSource"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armDest"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
