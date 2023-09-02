@@ -1,11 +1,16 @@
  import run.GUI;
 
 Plant(
+		
+		
+		// Global ////////////////////////////////////////////////////////
+		input signal enable,refill, removeBottle; //TODO: need remove bottle in GUI
+		
 		// Conveyor/////////////////////////////////////////////////////// 
 		input signal motConveyorOnOff;
 		output signal bottleAtPos1, bottleAtPos5;
 
-		input signal enable,refill;
+		
 		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
 		///////////////////////////////////////////////////////////////////
 		
@@ -39,7 +44,7 @@ Plant(
 		//Rotatry Table
 		
 		input signal rotaryTableTrigger;
-		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos4, bottleAtPos3, bottleAtPos2; //bottleAtPos1; dupe
+		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos4, bottleAtPos3; //bottleAtPos1; dupe
 		output signal moveToPos5, moveToPos4, moveToPos3, moveToPos2;
 		
 		
@@ -240,72 +245,72 @@ Plant(
 	
 //	||
 //	
-	// Cap Screwer
-		{
-			while(true) {
-				await moveToPos4 && enable;//bottle is in position 4. Need to inform controller.
-				abort (moveToPos5) {
-					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-				}
-				pause;
-			}
-		}
-		||
-	//Cap Screwer - Move Gripper
-		{
-			while(true) {
-				abort(cylPos5ZaxisExtend && enable) {
-					sustain gripperZAxisLifted;
-				}
-				abort (!cylPos5ZaxisExtend) {
-					sustain gripperZAxisLowered; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-				}
-				pause;
-			}
-		}
-		||
-	//Cap Screwer - Gripper
-		{
-			while(true) {
-				await capGripperPos5Extend && enable;
-				abort (!capGripperPos5Extend) {
-					sustain gripperGrippedCap; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-				}
-				pause;
-			}
-		}
-		||
-	//Cap Screwer - Twister
-
-		{
-			while(true) {
-				present(gripperTurnExtend && !gripperTurnRetract && enable){
-				abort (gripperTurnRetract){
-					abort (!gripperTurnExtend) {
-						sustain gripperTurnHomePos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-					}
-				}
-				present(gripperTurnRetract && !gripperTurnExtend && enable) {
-					abort (gripperTurnExtend) {
-						abort (!gripperTurnRetracted) {
-							sustain gripperTurnFinalPos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-						}
-					}
-				}
-				pause;
-			}
-		}
-		|| 
-	//Cap Screwer - Clamps
-		{
-			while(true) {
-				await cylClampBottleExtend && enable;
-				abort (!cylClampBottleExtend) {
-					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-				}
-				pause;
-			}
-		}
+//	// Cap Screwer
+//		{
+//			while(true) {
+//				await moveToPos4 && enable;//bottle is in position 4. Need to inform controller.
+//				abort (moveToPos5) {
+//					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//				}
+//				pause;
+//			}
+//		}
+//		||
+//	//Cap Screwer - Move Gripper
+//		{
+//			while(true) {
+//				abort(cylPos5ZaxisExtend && enable) {
+//					sustain gripperZAxisLifted;
+//				}
+//				abort (!cylPos5ZaxisExtend) {
+//					sustain gripperZAxisLowered; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//				}
+//				pause;
+//			}
+//		}
+//		||
+//	//Cap Screwer - Gripper
+//		{
+//			while(true) {
+//				await capGripperPos5Extend && enable;
+//				abort (!capGripperPos5Extend) {
+//					sustain gripperGrippedCap; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//				}
+//				pause;
+//			}
+//		}
+//		||
+//	//Cap Screwer - Twister
+//
+//		{
+//			while(true) {
+//				present(gripperTurnExtend && !gripperTurnRetract && enable){
+//				abort (gripperTurnRetract){
+//					abort (!gripperTurnExtend) {
+//						sustain gripperTurnHomePos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//					}
+//				}
+//				present(gripperTurnRetract && !gripperTurnExtend && enable) {
+//					abort (gripperTurnExtend) {
+//						abort (!gripperTurnRetracted) {
+//							sustain gripperTurnFinalPos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//						}
+//					}
+//				}
+//				pause;
+//			}
+//		}
+//		|| 
+//	//Cap Screwer - Clamps
+//		{
+//			while(true) {
+//				await cylClampBottleExtend && enable;
+//				abort (!cylClampBottleExtend) {
+//					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//				}
+//				pause;
+//			}
+//		}
 	||
 //	
 	//Rotatry Table
