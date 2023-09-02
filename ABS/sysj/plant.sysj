@@ -1,15 +1,29 @@
  import run.GUI;
 
 Plant(
+
+		// Global ////////////////////////////////////////////////////////
+		input signal enable,refill, removeBottle; //TODO: need remove bottle in GUI
+		// Conveyor/////////////////////////////////////////////////////// 
 		input signal motConveyorOnOff;
-//		input signal c1,c2,c3;
-		output signal bottleAtPos1, bottleAtPos5;
-//		input signal pusherExtend,vacOn,armSource,armDest;
-		input signal enable,refill;
-		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
-//		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-//		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
-//		
+		output signal bottleAtPos1, bottleAtPos5, RTbottleAtPos1;	
+		/////////////////////////////////////////////////////////////////////	
+		
+		
+		// Cap Screwer
+		
+		
+		
+		/////////////////////////////////////////////////////////////////////
+		
+		
+		//Rotatry Table
+		input signal rotaryTableTrigger;
+		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos4, bottleAtPos3, bottleAtPos2; //bottleAtPos1; dupe
+		output signal moveToPos5, moveToPos4, moveToPos3, moveToPos2;
+		
+		/////////////////////////////////////////////////////////////////////
+		
 		
 		
 		)
@@ -24,12 +38,12 @@ Plant(
 		while(true){
 			await(enable);
 			//idle 
-			abort(!enable){// When enabled, the bottle leaves pos5.
-                //The bottle is at pos5.
-				System.out.println("sustaining bottle at pos 5");
-				sustain bottleAtPos5;
-				pause;
-			}// once it leaves the abort it changes to false 						
+//			abort(!enable){// When enabled, the bottle leaves pos5. //TODO: Temporary comment out to test out rotary tbh do we even need this
+//                //The bottle is at pos5.
+//				System.out.println("sustaining bottle at pos 5");
+//				sustain bottleAtPos5;
+//				pause;
+//			}// once it leaves the abort it changes to false 						
 			pause;
 			
 			//After bottle leaves pos5
@@ -45,13 +59,13 @@ Plant(
 			}
 			//turns arrow off
 			await(!enable);
-			//its for the ui, usually it should immediately go low but we have the enable to frame it.
-			abort(enable){
-				sustain bottleAtPos1;
-			}
+//			//its for the ui, usually it should immediately go low but we have the enable to frame it.
+//			abort(enable){
+//				sustain bottleAtPos1;
+//			}
 			//
 
-			await(enable);
+			await(!enable);
 			System.out.println("im outtt");
 			pause;
 		}
@@ -138,7 +152,97 @@ Plant(
 //		}
 //	}
 	||
-	{// To UI viz THE FIRST TWO WORKS, NOT THE LAST ONEyea
+	
+// Cap Screwer
+	{
+		while(true) {pause;}
+	}
+	
+	||
+	
+//Rotatry Table
+	{
+		while(true) {
+			present(rotaryTableTrigger && enable){
+				// Turn the table 60 degrees and move the bottles along by one somehow
+				//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
+				
+				await(!enable); 
+				// if there is a bottle at pos 4 move to pos 5
+				present(bottleAtPos4) {
+					System.out.println("moving bottle at pos 4 to pos 5");
+					emit moveToPos5;
+				}
+				await(enable);
+				// if there is a bottle at pos 3 move to pos 4
+				present(bottleAtPos3){
+					System.out.println("moving bottle at pos 3 to pos 4");
+					emit moveToPos4;
+				}
+				await(!enable); 
+				// if there is a obttle at pos 2 move to pos 3
+				
+				present(bottleAtPos2){
+					System.out.println("moving bottle at pos 2 to pos 3");
+					emit moveToPos3;
+				}
+				await(enable);
+				// if there is a bottle at pos 1 move to pos 2.
+				present(bottleAtPos1){
+					System.out.println("moving bottle at pos 1 to pos 2");
+					emit moveToPos2;
+				}
+				await(enable);
+				await(!enable);
+				// emit table aligned with sensor
+				System.out.println("Table has been aligned");
+				emit tableAlignedWithSensor;
+				pause;
+				
+			}
+			
+			pause;
+			
+		}
+	}
+	||
+	{
+		{
+			// Random chance for a bottle to have a cap
+			Integer numCutOff = 80;
+			while(true) {
+				present(bottleAtPos1 && enable){
+					Integer randNum = (int)(Math.random()*100);
+					System.out.println("Random Number is " + String.valueOf(randNum));
+					if(randNum > numCutOff ) {
+						abort(removeBottle){
+							System.out.println("remove the bottle plz");
+							sustain capOnBottleAtPos1;
+						}
+					}
+				}
+				pause;
+				await(enable);
+				await(!enable);
+			}
+		}
+		
+	}
+	||
+	{while(true) {present(moveToPos5 && enable){System.out.println("bottle is now at pos 5"); emit bottleAtPos5;} pause;}}
+	||
+	{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); emit bottleAtPos4;}}pause;}
+	||
+	{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); emit bottleAtPos3;}}pause;}
+	||
+	{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); emit bottleAtPos2;}}pause;}
+	
+/////////////////////////////////////////////////////////////////////
+	
+	
+	
+	||
+	{//Emit Signals - GOing to UI
 		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
 		||
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}

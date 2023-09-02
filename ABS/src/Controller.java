@@ -17,8 +17,8 @@ public class Controller extends ClockDomain{
   private int S64 = 1;
   private int S2 = 1;
   
-  private int[] ends = new int[2];
-  private int[] tdone = new int[2];
+  private int[] ends = new int[3];
+  private int[] tdone = new int[3];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -35,7 +35,7 @@ public class Controller extends ClockDomain{
         case 1 : 
           S64=2;
           S64=2;
-          System.out.println("Hello World!");//sysj\controller.sysj line: 23, column: 3
+          System.out.println("Hello World!");//sysj\controller.sysj line: 9, column: 3
           S2=0;
           active[1]=1;
           ends[1]=1;
@@ -44,8 +44,8 @@ public class Controller extends ClockDomain{
         case 2 : 
           switch(S2){
             case 0 : 
-              if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 25, column: 9
-                System.out.println("bottle at pos 5 hasn't left yet");//sysj\controller.sysj line: 26, column: 3
+              if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 11, column: 9
+                System.out.println("bottle at pos 5 hasn't left yet");//sysj\controller.sysj line: 12, column: 3
                 S2=1;
                 active[1]=1;
                 ends[1]=1;
@@ -60,16 +60,16 @@ public class Controller extends ClockDomain{
             case 1 : 
               S2=1;
               S2=2;
-              if(!bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 30, column: 12
-                System.out.println("Motor is on");//sysj\controller.sysj line: 31, column: 5
-                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 32, column: 5
+              if(!bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 15, column: 12
+                System.out.println("Motor is on");//sysj\controller.sysj line: 16, column: 5
+                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 17, column: 5
                 currsigs.addElement(motConveyorOnOff);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                System.out.println("Motor is off");//sysj\controller.sysj line: 36, column: 3
+                System.out.println("Motor is off");//sysj\controller.sysj line: 21, column: 3
                 S2=3;
                 active[1]=1;
                 ends[1]=1;
@@ -77,15 +77,15 @@ public class Controller extends ClockDomain{
               }
             
             case 2 : 
-              if(bottleAtPos1.getprestatus() && !bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 29, column: 9
-                System.out.println("Motor is off");//sysj\controller.sysj line: 36, column: 3
+              if(bottleAtPos1.getprestatus() && !bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 14, column: 9
+                System.out.println("Motor is off");//sysj\controller.sysj line: 21, column: 3
                 S2=3;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 32, column: 5
+                motConveyorOnOff.setPresent();//sysj\controller.sysj line: 17, column: 5
                 currsigs.addElement(motConveyorOnOff);
                 active[1]=1;
                 ends[1]=1;
@@ -94,7 +94,7 @@ public class Controller extends ClockDomain{
             
             case 3 : 
               S2=3;
-              System.out.println("Hello World!");//sysj\controller.sysj line: 23, column: 3
+              System.out.println("Hello World!");//sysj\controller.sysj line: 9, column: 3
               S2=0;
               active[1]=1;
               ends[1]=1;
@@ -107,9 +107,9 @@ public class Controller extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1};
-    char [] paused1 = {0, 0};
-    char [] suspended1 = {0, 0};
+    char [] active1 = {1, 1, 1};
+    char [] paused1 = {0, 0, 0};
+    char [] suspended1 = {0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
