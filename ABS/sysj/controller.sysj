@@ -25,40 +25,61 @@ Controller(
 }
 
 
-//RotaryTable(
-//		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1_RT, doneAtPos2, doneAtPos4, doneAtPos3, bottleAtPos2_RT, bottleAtPos3_RT, bottleAtPos4_RT;
-//		output signal rotaryTableTrigger;
-//		)
-//->{
-///* TODO: Write control-logic */
-//	//My change is logic good?
-//	loop{
-//		pause;
-//		await(bottleAtPos1_RT);
-//		await(!capOnBottleAtPos1);
-//		abort(bottleAtPos2_RT){
-//			sustain rotaryTableTrigger;
-//		}
-//		await(doneAtPos2);
-//		abort(bottleAtPos3_RT){
-//			sustain rotaryTableTrigger;
-//		}
-//		await(doneAtPos3);
-//		abort(bottleAtPos4_RT){
-//			sustain rotaryTableTrigger;
-//		}
-//		await(doneAtPos4);
-//		abort(bottleAtPos5){
-//			sustain rotaryTableTrigger;
-//		}
-//		
-//		
-////				abort(tableAlignedWithSensor){
-////					sustain rotaryTableTrigger;
-////				}
-//	}
-//
-//}
+RotaryTable(
+        input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1;
+        //input channel allOperationsFinished; // From Orchestrator
+        output signal rotaryTableTrigger; // To Plant
+        //output channel rotaryStatus; // To Orchestrator
+        )
+->{
+    signal allOperationsFinished;
+    while(true) {
+        System.out.println("HELLLLLLLLO");
+        await(RTbottleAtPos1);
+        System.out.println("A bottle is at position 1");
+        pause;
+        
+        // wait until there is no cap on the bottle at position 1 (i.e.) bottle is removed
+        await(!capOnBottleAtPos1);
+        System.out.println("A cap bottle is NOT on the bottle at pos 1");
+        pause;
+        
+//        // wait until it receives an OK from orchestrator
+//        await(allOperationsFinished);
+//        System.out.println("RECIEVED orchestrator task");
+//        pause;
+        
+        // when the rotoray table is aligned with sensor stop sustaining the trigger
+        abort(tableAlignedWithSensor){
+            System.out.println("emitting rotary trigger");
+            emit rotaryTableTrigger;
+            // emit rotaryStatus("busy");
+        }
+        pause;
+        System.out.println("out - next loop");
+        
+    }
+//    ||
+//    {
+//        // Send idling status to orchestrator.
+//        abort(!allOperationsFinished){
+//            System.out.println("idling...");
+//            pause;
+//    //        sustain rotaryStatus("idle");
+//        }
+//    }
+//    ||
+//    {
+//        // Temporary delete when merging & have orchestrator
+//        while(true) {
+//            abort(tableAlignedWithSensor && RTbottleAtPos1){
+////                System.out.println("ORCHESTRATOR says - rotate turntable plz");
+//                emit allOperationsFinished;
+//            }
+//            pause;
+//        }
+//    }
+}
 
 LiquidFiller(
 		input signal fillerReq; 

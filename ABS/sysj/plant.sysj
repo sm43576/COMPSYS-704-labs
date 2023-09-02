@@ -38,6 +38,10 @@ Plant(
 		
 		//Rotatry Table
 		
+		input signal rotaryTableTrigger;
+		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos4, bottleAtPos3, bottleAtPos2; //bottleAtPos1; dupe
+		output signal moveToPos5, moveToPos4, moveToPos3, moveToPos2;
+		
 		
 		/////////////////////////////////////////////////////////////////////
 		
@@ -236,19 +240,142 @@ Plant(
 	
 //	||
 //	
-//// Cap Screwer
-//	{
-//		while(true) {pause;}
-//	}
+	// Cap Screwer
+		{
+			while(true) {
+				await moveToPos4 && enable;//bottle is in position 4. Need to inform controller.
+				abort (moveToPos5) {
+					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Move Gripper
+		{
+			while(true) {
+				abort(cylPos5ZaxisExtend && enable) {
+					sustain gripperZAxisLifted;
+				}
+				abort (!cylPos5ZaxisExtend) {
+					sustain gripperZAxisLowered; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Gripper
+		{
+			while(true) {
+				await capGripperPos5Extend && enable;
+				abort (!capGripperPos5Extend) {
+					sustain gripperGrippedCap; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Twister
+
+		{
+			while(true) {
+				present(gripperTurnExtend && !gripperTurnRetract && enable){
+				abort (gripperTurnRetract){
+					abort (!gripperTurnExtend) {
+						sustain gripperTurnHomePos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+					}
+				}
+				present(gripperTurnRetract && !gripperTurnExtend && enable) {
+					abort (gripperTurnExtend) {
+						abort (!gripperTurnRetracted) {
+							sustain gripperTurnFinalPos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+						}
+					}
+				}
+				pause;
+			}
+		}
+		|| 
+	//Cap Screwer - Clamps
+		{
+			while(true) {
+				await cylClampBottleExtend && enable;
+				abort (!cylClampBottleExtend) {
+					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+	||
 //	
-//	||
-//	
-////Rotatry Table
-//	{
-//		while(true) {pause;}
-//	}
-//	
-//	
+	//Rotatry Table
+		{
+			while(true) {
+				present(rotaryTableTrigger && enable){
+					// Turn the table 60 degrees and move the bottles along by one somehow
+					//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
+					
+					await(!enable); 
+					// if there is a bottle at pos 4 move to pos 5
+					present(bottleAtPos4) {
+						System.out.println("moving bottle at pos 4 to pos 5");
+						emit moveToPos5;
+					}
+					await(enable);
+					// if there is a bottle at pos 3 move to pos 4
+					present(bottleAtPos3){
+						System.out.println("moving bottle at pos 3 to pos 4");
+						emit moveToPos4;
+					}
+					await(!enable); 
+					// if there is a obttle at pos 2 move to pos 3
+					
+					present(bottleAtPos2){
+						System.out.println("moving bottle at pos 2 to pos 3");
+						emit moveToPos3;
+					}
+					await(enable);
+					// if there is a bottle at pos 1 move to pos 2.
+					present(bottleAtPos1){
+						System.out.println("moving bottle at pos 1 to pos 2");
+						emit moveToPos2;
+					}
+					await(enable);
+					await(!enable);
+					// emit table aligned with sensor
+					System.out.println("Table has been aligned");
+					emit tableAlignedWithSensor;
+					pause;
+					
+				}
+				
+				pause;
+				
+			}
+		}
+		||
+		{
+			{
+				// Random chance for a bottle to have a cap
+				Integer numCutOff = 80;
+				while(true) {
+					present(bottleAtPos1 && enable){
+						Integer randNum = (int)(Math.random()*100);
+						System.out.println("Random Number is " + String.valueOf(randNum));
+						if(randNum > numCutOff ) {
+							abort(removeBottle){
+								System.out.println("remove the bottle plz");
+								sustain capOnBottleAtPos1;
+							}
+						}
+					}
+					pause;
+					await(enable);
+					await(!enable);
+				}
+			}
+			
+		}
 	
 /////////////////////////////////////////////////////////////////////
 	
