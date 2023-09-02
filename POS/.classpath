@@ -3,5 +3,19 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX17"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/sysjnetapi-SNAPSHOT-e1801c7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/asm-5.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/commons-cli-1.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/gson-2.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/hmpsoc-ac01f84-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/jdom2-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/kotlin-reflect-1.3.72.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/kotlin-stdlib-1.3.72.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/kotlin-stdlib-common-1.3.72.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/kotlin-stdlib-jdk7-1.3.72.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/kotlin-stdlib-jdk8-1.3.72.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/sjc-2.2-13-g8ab684c-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-base.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rnata/Documents/GitHub/COMPSYS-704-labs/COMPSYS704_Lab_2/lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-desktop.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
