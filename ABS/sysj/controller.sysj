@@ -127,3 +127,21 @@ LiquidFiller(
 	}
 	
 }
+
+Capper(
+		input signal bottleAtPos4;
+		input signal gripperZAxisLowered;
+		input signal gripperZAxisLifted;
+		input signal gripperTurnHomePos;
+		input signal gripperTurnFinalPos;
+		input signal gripperGrippedCap;
+		
+		output signal cylPos5ZAxisExtend;
+		output signal gripperTurnRetract;
+		output signal gripperTurnExtend;
+		output signal capGripperPos5Extend;
+		output signal cylClampBottleExtend;
+		)
+->{
+	
+}
