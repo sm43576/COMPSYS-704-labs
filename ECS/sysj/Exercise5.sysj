@@ -1,9 +1,0 @@
-CD1(output String channel CH;)->{
-	send CH("From CD1");
-	System.out.println("Sent a message");
-}
-
-CD2(input String channel CH;)->{
-	receive CH;
-	System.out.println("Got a message "+(String)#CH);
-}

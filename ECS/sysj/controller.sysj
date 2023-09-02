@@ -1,0 +1,28 @@
+Controller(
+		input signal bottleAtPos1, bottleAtPos5;
+		output signal motConveyorOnOff;
+		)
+->{
+
+	while(true) {
+
+		{
+			//Human presense / light intensity
+		}
+		
+		||
+		
+		{
+			// Temperature
+		}
+		
+		||
+		
+		{
+			//Humidity.
+		}
+	}
+}
+
+
+	

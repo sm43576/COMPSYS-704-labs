@@ -1,4 +1,5 @@
 package Main;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,7 @@ public class Main extends Application{
     	try {
         Parent root = FXMLLoader.load(getClass().getResource("./ECS.fxml"));
         primaryStage.setTitle("ECS Window");
-        primaryStage.setScene(new Scene(root,400,300));
+        primaryStage.setScene(new Scene(root,520,350));
         primaryStage.show();
         //scene.getStyleSheets().add(getClass().getResource("application.css"));
     	} catch (Exception e) {
