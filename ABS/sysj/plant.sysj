@@ -68,12 +68,12 @@ Plant(
 		while(true){
 			await(enable);
 			//idle 
-			abort(!enable){// When enabled, the bottle leaves pos5.
-                //The bottle is at pos2
-			//	System.out.println("sustaining bottle at pos 5");
-				sustain bottleAtPos5;
-				pause;
-			}// once it leaves the abort it changes to false 						
+//			abort(!enable){// When enabled, the bottle leaves pos5. // TODO: might not need
+//                //The bottle is at pos2
+//			//	System.out.println("sustaining bottle at pos 5");
+//				sustain bottleAtPos5;
+//				pause;
+//			}// once it leaves the abort it changes to false 						
 
 			//After bottle leaves pos5
 		
@@ -98,6 +98,19 @@ Plant(
 			pause;
 		}
 	} 
+	||
+	{
+		// To tell rotary table that bottle is at position 1 since you can't have a signal going into two clock domains
+		while(true) {
+			present(bottleAtPos1 && enable){
+				await(!enable);
+				await(enable);
+				emit RTbottleAtPos1; 
+			}
+//			System.out.println("no longer");
+			pause;
+		}
+	}
 	
 	||
 	
