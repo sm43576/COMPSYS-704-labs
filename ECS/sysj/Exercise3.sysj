@@ -1,0 +1,12 @@
+ABROCD(
+	input signal A,B,R;
+	output signal O;
+)->{
+	while(true){
+		abort(R){
+			{await(A);}||{await(B);}
+			emit O;
+			while(true){pause;} // infinite loop
+		}
+	}
+}

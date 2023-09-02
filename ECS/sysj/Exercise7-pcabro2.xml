@@ -1,0 +1,29 @@
+<System xmlns="http://systemjtechnology.com">
+	<Interconnection>
+		<Link Type="Destination">
+			<Interface SubSystem="SS1" Class="com.systemj.ipc.TCPIPInterface" Args="127.0.0.1:1112" />
+			<Interface SubSystem="SS2" Class="com.systemj.ipc.TCPIPInterface" Args="127.0.0.1:1113" />
+		</Link>
+	</Interconnection>
+	<SubSystem Name="SS1">
+		<ClockDomain Name="PabroCD" Class="PabroCD">
+			<iSignal Name="A" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4444" />
+			<iSignal Name="B" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4445" />
+			<iSignal Name="R" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4446" />
+			<oChannel Name="producerChannel" To="BufferCD.producerChannel" />
+		</ClockDomain>
+		<ClockDomain Name="CabroCD" Class="CabroCD">
+			<iSignal Name="A" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4454" />
+			<iSignal Name="B" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4455" />
+			<iSignal Name="R" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4456" />
+			<iChannel Name="consumerChannel" From="BufferCD.consumerChannel" />
+		</ClockDomain>
+	</SubSystem>
+	<SubSystem Name="SS2" Local="true">
+		<ClockDomain Name="BufferCD" Class="BufferCD">
+
+			<!-- TODO: Write Buffer clock-domain's channel connections here -->
+
+		</ClockDomain>
+	</SubSystem>
+</System>

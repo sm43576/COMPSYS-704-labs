@@ -1,0 +1,10 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="ABRO_SS" Local="true">
+		<ClockDomain Name="CD1" Class="ABROCD">
+
+		<iSignal Name="A" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4000" />
+		<iSignal Name="B" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4001" />
+		<iSignal Name="R" IP="127.0.0.1" Class="com.systemj.ipc.TCPReceiver" Port="4002" />
+		</ClockDomain>
+	</SubSystem>
+</System>

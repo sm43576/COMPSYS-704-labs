@@ -1,0 +1,10 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="Lab2" Local="true">
+		<ClockDomain Name="MyCD1" Class="CD1">
+			<oChannel Name="CH" To="MyCD2.CH" />
+		</ClockDomain>
+		<ClockDomain Name="MyCD2" Class="CD2">
+			<iChannel Name="CH" From="MyCD1.CH" />
+		</ClockDomain>
+	</SubSystem>
+</System>
