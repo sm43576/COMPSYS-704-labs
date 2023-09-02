@@ -8,7 +8,7 @@ Plant(
 		
 		// Conveyor/////////////////////////////////////////////////////// 
 		input signal motConveyorOnOff;
-		output signal bottleAtPos1, bottleAtPos5;
+		output signal bottleAtPos1, bottleAtPos5, RTbottleAtPos1;
 
 		
 		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
