@@ -18,6 +18,7 @@ Controller(
 		
 		if(req) {
 			send conveyorStatus("busy");
+		
 			System.out.println("conveyor busy");
 			await(bottleAtPos5);
 		//	System.out.println("bottle at pos 5 hasn't left yet");
@@ -25,15 +26,16 @@ Controller(
 	
 			abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
 				present(!bottleAtPos1){ //when bottle is not at position 1
-			//		System.out.println("Motor is on"); 
+					System.out.println("Motor is on"); 
 					sustain motConveyorOnOff;  // keep motor on
 	
 				}
 			}
-		//	System.out.println("Motor is off");
+		
+			System.out.println("Motor is off");
 			send conveyorStatus("done");
 			System.out.println("conveyor done");
-//			pause;
+			pause;
 		}else {
 			System.out.println("conveyor idling");
 			send conveyorStatus("idle");

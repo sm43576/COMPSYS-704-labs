@@ -1778,7 +1778,7 @@ public class Plant extends ClockDomain{
             break;
           
           case 3 : 
-            if(valveInjectorOnOff.getprestatus()){//sysj\plant.sysj line: 96, column: 10
+            if(motConveyorOnOff.getprestatus()){//sysj\plant.sysj line: 96, column: 10
               S2426=4;
               active[2]=1;
               ends[2]=1;

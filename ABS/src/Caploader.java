@@ -45,7 +45,7 @@ public class Caploader extends ClockDomain{
         break;
       
       case 1 : 
-        vacOn.setPresent();//sysj\controller.sysj line: 214, column: 30
+        vacOn.setPresent();//sysj\controller.sysj line: 216, column: 30
         currsigs.addElement(vacOn);
         active[7]=1;
         ends[7]=1;
@@ -64,7 +64,7 @@ public class Caploader extends ClockDomain{
         break;
       
       case 1 : 
-        armDest.setPresent();//sysj\controller.sysj line: 214, column: 8
+        armDest.setPresent();//sysj\controller.sysj line: 216, column: 8
         currsigs.addElement(armDest);
         active[6]=1;
         ends[6]=1;
@@ -76,7 +76,7 @@ public class Caploader extends ClockDomain{
 
   public void thread2265(int [] tdone, int [] ends){
         S2019=1;
-    vacOn.setPresent();//sysj\controller.sysj line: 214, column: 30
+    vacOn.setPresent();//sysj\controller.sysj line: 216, column: 30
     currsigs.addElement(vacOn);
     active[7]=1;
     ends[7]=1;
@@ -85,7 +85,7 @@ public class Caploader extends ClockDomain{
 
   public void thread2264(int [] tdone, int [] ends){
         S2014=1;
-    armDest.setPresent();//sysj\controller.sysj line: 214, column: 8
+    armDest.setPresent();//sysj\controller.sysj line: 216, column: 8
     currsigs.addElement(armDest);
     active[6]=1;
     ends[6]=1;
@@ -107,12 +107,12 @@ public class Caploader extends ClockDomain{
         case 1 : 
           S2262=2;
           S2262=2;
-          System.out.println("Automatic state");//sysj\controller.sysj line: 189, column: 5
+          System.out.println("Automatic state");//sysj\controller.sysj line: 191, column: 5
           S2078=0;
-          if(!empty.getprestatus()){//sysj\controller.sysj line: 190, column: 14
+          if(!empty.getprestatus()){//sysj\controller.sysj line: 192, column: 14
             S1993=0;
-            if(pusherRetracted.getprestatus()){//sysj\controller.sysj line: 193, column: 14
-              pusherExtend.setPresent();//sysj\controller.sysj line: 195, column: 8
+            if(pusherRetracted.getprestatus()){//sysj\controller.sysj line: 195, column: 14
+              pusherExtend.setPresent();//sysj\controller.sysj line: 197, column: 8
               currsigs.addElement(pusherExtend);
               active[5]=1;
               ends[5]=1;
@@ -137,14 +137,14 @@ public class Caploader extends ClockDomain{
             case 0 : 
               switch(S1993){
                 case 0 : 
-                  if(pusherExtended.getprestatus()){//sysj\controller.sysj line: 194, column: 13
+                  if(pusherExtended.getprestatus()){//sysj\controller.sysj line: 196, column: 13
                     S1993=1;
                     active[5]=1;
                     ends[5]=1;
                     break RUN;
                   }
                   else {
-                    pusherExtend.setPresent();//sysj\controller.sysj line: 195, column: 8
+                    pusherExtend.setPresent();//sysj\controller.sysj line: 197, column: 8
                     currsigs.addElement(pusherExtend);
                     active[5]=1;
                     ends[5]=1;
@@ -154,21 +154,21 @@ public class Caploader extends ClockDomain{
                 case 1 : 
                   S1993=1;
                   S1993=2;
-                  armSource.setPresent();//sysj\controller.sysj line: 202, column: 7
+                  armSource.setPresent();//sysj\controller.sysj line: 204, column: 7
                   currsigs.addElement(armSource);
                   active[5]=1;
                   ends[5]=1;
                   break RUN;
                 
                 case 2 : 
-                  if(armAtSource.getprestatus()){//sysj\controller.sysj line: 201, column: 12
+                  if(armAtSource.getprestatus()){//sysj\controller.sysj line: 203, column: 12
                     S1993=3;
                     active[5]=1;
                     ends[5]=1;
                     break RUN;
                   }
                   else {
-                    armSource.setPresent();//sysj\controller.sysj line: 202, column: 7
+                    armSource.setPresent();//sysj\controller.sysj line: 204, column: 7
                     currsigs.addElement(armSource);
                     active[5]=1;
                     ends[5]=1;
@@ -178,21 +178,21 @@ public class Caploader extends ClockDomain{
                 case 3 : 
                   S1993=3;
                   S1993=4;
-                  vacOn.setPresent();//sysj\controller.sysj line: 208, column: 7
+                  vacOn.setPresent();//sysj\controller.sysj line: 210, column: 7
                   currsigs.addElement(vacOn);
                   active[5]=1;
                   ends[5]=1;
                   break RUN;
                 
                 case 4 : 
-                  if(WPgripped.getprestatus()){//sysj\controller.sysj line: 207, column: 12
+                  if(WPgripped.getprestatus()){//sysj\controller.sysj line: 209, column: 12
                     S1993=5;
                     active[5]=1;
                     ends[5]=1;
                     break RUN;
                   }
                   else {
-                    vacOn.setPresent();//sysj\controller.sysj line: 208, column: 7
+                    vacOn.setPresent();//sysj\controller.sysj line: 210, column: 7
                     currsigs.addElement(vacOn);
                     active[5]=1;
                     ends[5]=1;
@@ -218,7 +218,7 @@ public class Caploader extends ClockDomain{
                   }
                 
                 case 6 : 
-                  if(armAtDest.getprestatus()){//sysj\controller.sysj line: 213, column: 13
+                  if(armAtDest.getprestatus()){//sysj\controller.sysj line: 215, column: 13
                     S1993=7;
                     active[5]=1;
                     ends[5]=1;
@@ -260,12 +260,12 @@ public class Caploader extends ClockDomain{
             
             case 1 : 
               S2078=1;
-              System.out.println("Automatic state");//sysj\controller.sysj line: 189, column: 5
+              System.out.println("Automatic state");//sysj\controller.sysj line: 191, column: 5
               S2078=0;
-              if(!empty.getprestatus()){//sysj\controller.sysj line: 190, column: 14
+              if(!empty.getprestatus()){//sysj\controller.sysj line: 192, column: 14
                 S1993=0;
-                if(pusherRetracted.getprestatus()){//sysj\controller.sysj line: 193, column: 14
-                  pusherExtend.setPresent();//sysj\controller.sysj line: 195, column: 8
+                if(pusherRetracted.getprestatus()){//sysj\controller.sysj line: 195, column: 14
+                  pusherExtend.setPresent();//sysj\controller.sysj line: 197, column: 8
                   currsigs.addElement(pusherExtend);
                   active[5]=1;
                   ends[5]=1;

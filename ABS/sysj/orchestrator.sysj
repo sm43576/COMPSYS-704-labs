@@ -4,20 +4,21 @@ Orchestrator(
 		output Boolean channel conveyorReq, allOperationsFinished;
 		)
 ->{
-	// Rotary controlling logic
+	// Conveyor controlling logic
 	{
 		// Receiving conveyor status
 		while(true) {
-			receive rotaryStatus;
+			receive conveyorStatus;
 			String status = (String) #conveyorStatus;
+			System.out.println(status);
 			switch(status) {
 				case "idle":
 					System.out.println("received Idle");
 				case "busy":
-					System.out.println("received Idle");
+					System.out.println("received Busy");
 					
 				case "done":
-					System.out.println("received Idle");
+					System.out.println("received Done");
 				default:
 					System.out.println("afk");
 			}

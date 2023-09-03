@@ -39,19 +39,19 @@ public class RotaryTable extends ClockDomain{
         case 1 : 
           S1888=2;
           S1888=2;
-          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 53, column: 5
-          System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 55, column: 9
+          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 55, column: 5
+          System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 57, column: 9
           S1862=0;
           active[2]=1;
           ends[2]=1;
           break RUN;
         
         case 2 : 
-          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 53, column: 5
+          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 55, column: 5
           switch(S1862){
             case 0 : 
-              if(allOperationsFinished_2.getprestatus()){//sysj\controller.sysj line: 58, column: 15
-                System.out.println("RECIEVED orchestrator task");//sysj\controller.sysj line: 59, column: 9
+              if(allOperationsFinished_2.getprestatus()){//sysj\controller.sysj line: 60, column: 15
+                System.out.println("RECIEVED orchestrator task");//sysj\controller.sysj line: 61, column: 9
                 S1862=1;
                 active[2]=1;
                 ends[2]=1;
@@ -71,8 +71,8 @@ public class RotaryTable extends ClockDomain{
               break RUN;
             
             case 2 : 
-              if(RTbottleAtPos1.getprestatus()){//sysj\controller.sysj line: 62, column: 15
-                System.out.println("A bottle is at position 1");//sysj\controller.sysj line: 63, column: 9
+              if(RTbottleAtPos1.getprestatus()){//sysj\controller.sysj line: 64, column: 15
+                System.out.println("A bottle is at position 1");//sysj\controller.sysj line: 65, column: 9
                 S1862=3;
                 active[2]=1;
                 ends[2]=1;
@@ -92,8 +92,8 @@ public class RotaryTable extends ClockDomain{
               break RUN;
             
             case 4 : 
-              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 67, column: 15
-                System.out.println("A cap bottle is NOT on the bottle at pos 1");//sysj\controller.sysj line: 68, column: 9
+              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 69, column: 15
+                System.out.println("A cap bottle is NOT on the bottle at pos 1");//sysj\controller.sysj line: 70, column: 9
                 S1862=5;
                 active[2]=1;
                 ends[2]=1;
@@ -107,7 +107,7 @@ public class RotaryTable extends ClockDomain{
             
             case 5 : 
               S1862=5;
-              System.out.println("emitting rotary trigger");//sysj\controller.sysj line: 74, column: 13
+              System.out.println("emitting rotary trigger");//sysj\controller.sysj line: 76, column: 13
               S1862=6;
               active[2]=1;
               ends[2]=1;
@@ -115,8 +115,8 @@ public class RotaryTable extends ClockDomain{
             
             case 6 : 
               S1862=6;
-              System.out.println("out - next loop");//sysj\controller.sysj line: 79, column: 9
-              System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 55, column: 9
+              System.out.println("out - next loop");//sysj\controller.sysj line: 81, column: 9
+              System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 57, column: 9
               S1862=0;
               active[2]=1;
               ends[2]=1;
