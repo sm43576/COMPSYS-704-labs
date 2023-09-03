@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Customer {
-	String id;
-	List<Order> orderList;
+	private String id;
+	private List<Order> orderList;
 	
 	public Customer() {
 		this.id = null;

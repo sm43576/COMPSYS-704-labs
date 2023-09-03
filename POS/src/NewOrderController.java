@@ -33,6 +33,7 @@ public class NewOrderController {
     private int total = 0;
     private int quantity = 0;
     private List<Integer> liquidPercent =  new ArrayList<>();
+    private HomeController homeController;
     
     @FXML
     public void initialize() {
@@ -74,7 +75,12 @@ public class NewOrderController {
     }
     
     public void updateSubmitButton() {
-    	submit_btn.setDisable(!this.boxHasBeenChecked || !this.totalIsCorrect);
+    	submit_btn.setDisable(!this.boxHasBeenChecked || !this.totalIsCorrect || this.quantity_input.getText().isEmpty());
+    }
+    
+    // to get instance of HomeController
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
     }
     
     // Numerical filter for text inputs and limiting them from 1 to 100
@@ -186,11 +192,17 @@ public class NewOrderController {
     void onSubmitBtnClicked(MouseEvent event) {
     	Order order = new Order(this.orderNumber,this.customer.getCustomerID(), this.liquidPercent, this.quantity, "Queued");
     	this.customer.addOrderToList(order);
+    	
+    	// update history table in Home page
+    	if (homeController != null) {
+            homeController.updateOrderHistoryTable();
+        }
     	// sendOrderToOrchestrator(order);
     	Stage stage = (Stage) submit_btn.getScene().getWindow();
    	 	stage.close();
     	
     }
+    
     
     public void sendOrderToOrchestrator(Order order) {
     	//TODO sockets here

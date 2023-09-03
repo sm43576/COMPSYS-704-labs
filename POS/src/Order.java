@@ -1,11 +1,14 @@
 import java.util.*;
 
 public class Order {
-	int orderNum;
-	String customerID;
-	int quantity;
-	HashMap<String,Integer> liquidSpecs;
-	String orderStatus;
+	private int orderNum;
+	private String customerID;
+	private int quantity;
+	private String liquidSpecDisplay;
+	private HashMap<String,Integer> liquidSpecs;
+	private String orderStatus;
+	
+	 StringBuilder liquidSpecBuilder = new StringBuilder();
 	
 	public Order(int orderNum, String customerID, List<Integer> liquidPercent, int quantity, String status) {
 		this.orderNum = orderNum;
@@ -19,7 +22,11 @@ public class Order {
         for(int i=0; i<liquidPercent.size(); i++){
             liquidType = String.format("Liquid %s", i+1);
 		    liquidSpecs.put(liquidType, liquidPercent.get(i));
+		    liquidSpecBuilder.append(liquidType).append(": ").append(liquidPercent.get(i)).append(", ");
+		    
         }
+        this.liquidSpecDisplay = liquidSpecBuilder.toString().replaceAll(", $", "");
+        System.out.println(this.liquidSpecDisplay);
 		
 	}
 	
@@ -29,6 +36,7 @@ public class Order {
 	public HashMap<String,Integer> getLiquidSpec() {return this.liquidSpecs;} // Only for UI use
 	public String getOrderStatus() {return this.orderStatus;}
 	public void setOrderStatus(String status) {this.orderStatus = status;}
+	public String getLiquidSpecDisplay() {return this.liquidSpecDisplay;}
 	
 	// To access the a particular liquid's percentage in SystemJ
 	public int getSpecificLiquidPercentage(String liquid) {

@@ -46,7 +46,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+<VBox prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -87,32 +87,32 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="705.0" VBox.vgrow="ALWAYS">
       <children>
         <Label id="order_hist_title" fx:id="order_hist_title" alignment="CENTER" layoutX="76.0" layoutY="129.0" style="&#10;" text="Order History for Customer ID: xxx" textAlignment="CENTER" wrapText="false">
           <font>
             <Font size="20.0" />
           </font>
         </Label>
-            <Label alignment="CENTER" layoutX="177.0" layoutY="21.0" style="&#10;" text="Product Order System" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="223.0" layoutY="30.0" style="&#10;" text="Product Order System" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <Button id="new_order_btn" fx:id="new_order_btn" layoutX="488.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#openNewOrderWindow" text="New Order">
+            <Button id="new_order_btn" fx:id="new_order_btn" layoutX="546.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#openNewOrderWindow" text="New Order">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TableView id="history_table" fx:id="history_table" layoutX="76.0" layoutY="160.0" prefHeight="200.0" prefWidth="514.0">
+            <TableView id="history_table" fx:id="history_table" layoutX="60.0" layoutY="159.0" prefHeight="280.0" prefWidth="580.0">
               <columns>
-                <TableColumn id="order_num_col" fx:id="order_num_col" prefWidth="96.0" text="Order No." />
-                <TableColumn id="quantity_col" fx:id="quantity_col" prefWidth="100.0" text="Quantity" />
-                  <TableColumn id="liq_spec_col" fx:id="liquid_spec_col" prefWidth="206.39996337890625" text="Liquid Spec" />
-                  <TableColumn id="status_col" fx:id="status_col" prefWidth="117.60003662109375" text="Status" />
+                <TableColumn id="order_num_col" fx:id="order_num_col" prefWidth="74.40003204345703" text="Order No." />
+                <TableColumn id="quantity_col" fx:id="quantity_col" prefWidth="64.79998779296875" text="Quantity" />
+                  <TableColumn id="liquid_spec_col" fx:id="liquid_spec_col" minWidth="200.0" prefWidth="333.6000061035156" text="Liquid Spec" />
+                  <TableColumn id="status_col" fx:id="status_col" prefWidth="107.199951171875" text="Status" />
               </columns>
             </TableView>
-            <HBox layoutX="76.0" layoutY="78.0" prefHeight="32.0" prefWidth="238.0" style="-fx-spacing: 20;">
+            <HBox layoutX="76.0" layoutY="87.0" prefHeight="32.0" prefWidth="238.0" style="-fx-spacing: 20;">
                <children>
                   <Label text="Customer ID">
                      <font>

@@ -13,7 +13,7 @@ public class Main extends Application {
     	
         Parent root = FXMLLoader.load(getClass().getResource("POS_home.fxml"));
         primaryStage.setTitle("POS");
-        primaryStage.setScene(new Scene(root, 640, 400));
+        primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
     }
 
