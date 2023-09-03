@@ -1,0 +1,7 @@
+Orchestrator(
+		input signal bottleAtPos1, bottleAtPos5;
+		output signal motConveyorOnOff;
+		)
+->{
+	
+}
