@@ -1,0 +1,40 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS1" Local="true">
+		<ClockDomain Name="Door1CD" Class="Door1">
+			<iChannel Name="door1Grant" From="ACSCD.door1Grant" />
+			<iChannel Name="door1Deny" From="ACSCD.door1Deny" />
+			<oChannel Name="door1CardReader" To="ACSCD.door1CardReader" />
+		</ClockDomain>
+		<ClockDomain Name="LocationSystemCD" Class="LocationSystem">
+			<iChannel Name="reqIDLoc" From="ACSCD.reqIDLoc" />
+			<oChannel Name="idLocation" To="ACSCD.idLocation" />
+			<iChannel Name="reqAuthCheck" From="ACSCD.reqAuthCheck" />
+			<oChannel Name="idAuthResponse" To="ACSCD.idAuthResponse" />
+		</ClockDomain>
+		<ClockDomain Name="InfraredSensorCD" Class="InfraredSensor">
+			<oChannel Name="humanPresence" To="ACSCD.humanPresence" />
+		</ClockDomain>
+		<ClockDomain Name="ACSCD" Class="ACS_J">
+			<oChannel Name="reqIDLoc" To="LocationSystemCD.reqIDLoc" />
+			<iChannel Name="idLocation" From="LocationSystemCD.idLocation" />
+			<oChannel Name="reqAuthCheck" To="LocationSystemCD.reqAuthCheck" />
+			<iChannel Name="idAuthResponse" From="LocationSystemCD.idAuthResponse" />
+			<iChannel Name="door1CardReader" From="Door1CD.door1CardReader" />
+			<oChannel Name="door1Grant" To="Door1CD.door1Grant" />
+			<oChannel Name="door1Deny" To="Door1CD.door1Deny" />
+			<iChannel Name="humanPresence" From="InfraredSensorCD.idAuthResponse" />
+			<oSignal Name="zone1Num" To="UI.zone1Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="zone2Num" To="UI.zone2Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="zone3Num" To="UI.zone3Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="zone7Num" To="UI.zone7Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="zone1Unauth" To="UI.zone1Unauth" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="zone2Unauth" To="UI.zone2Unauth" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="zone3Unauth" To="UI.zone3Unauth" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="zone7Unauth" To="UI.zone7Unauth" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="emergencyOffUI" To="UI.emergencyOffUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door1GrantUI" To="UI.door1GrantUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door1DenyUI" To="UI.door1DenyUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			
+		</ClockDomain>
+	</SubSystem>
+</System>

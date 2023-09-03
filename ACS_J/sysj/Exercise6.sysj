@@ -1,0 +1,242 @@
+Door1(
+	 input boolean channel door1Grant;
+	 input boolean channel door1Deny;
+	 output String channel door1CardReader;
+)
+->{
+	{
+		String goodCardID = "11111"; 
+		String badCardID = "12110";
+		while(true){
+			send door1CardReader(goodCardID);
+			pause;
+			waitl(10 s);
+			send door1CardReader(badCardID); 
+			pause;
+			waitl(10 s);
+			
+		}
+		
+	}
+	||
+	{
+		while (true) {
+			receive door1Grant;
+			boolean result = #door1Grant;
+			if (result == true) {
+				System.out.println("Door1: Opening Door");
+			}
+			pause;
+		}
+	}
+	||{
+		while (true) {
+			receive door1Deny;
+			boolean result = #door1Deny;
+			if (result == true) {
+				System.out.println("Door1: Access Denied");
+			}
+			pause;
+		}
+	}
+}
+
+LocationSystem(
+		input String channel reqIDLoc;
+		output String channel idLocation;
+		input String channel reqAuthCheck;
+		output boolean channel idAuthResponse;
+	)
+	->{
+			{
+				while(true) {
+					receive reqIDLoc;
+					String idQuery = #reqIDLoc;
+					//Look up ID
+					String result = LocationMap.getLocationFromID(idQuery);
+					send idLocation(result); 
+					pause;
+				}
+			}
+			||
+			{
+				while(true) {
+					receive reqAuthCheck;
+					String idQuery = (String) #reqAuthCheck;
+					boolean result = LocationMap.authIDCheck(idQuery);
+					send idAuthResponse(result);
+					pause;
+				}
+			}
+			||
+			{
+				//Employee "11111" travel to a new zone every 15 s (approx).
+				while(true) {
+					waitl(15 s);
+					LocationMap.setLocationForID("11111", "2");
+					pause;
+					waitl(15 s);
+					LocationMap.setLocationForID("11111", "3");
+					pause;
+					waitl(15 s);
+					LocationMap.setLocationForID("11111", "7");
+					pause;
+					waitl(15 s);
+					LocationMap.setLocationForID("11111", "1");
+					pause;
+				}
+			}
+			
+}
+	
+InfraredSensor(
+		 output boolean channel humanPresence; 
+		 
+	)
+	->{
+		{
+			while(true) {
+				waitl(120 s);
+				send humanPresence(true);
+				pause;
+			}
+		}
+}
+	
+ACS_J(
+		 input boolean channel humanPresence; //Infrared Sensor
+		 input String channel idLocation; //Location System
+		 output String channel reqIDLoc;
+		 input String channel door1CardReader; //Door 1
+		 output boolean channel door1Grant;
+		 output boolean channel door1Deny;
+		 output boolean channel emergencyOff; //Emergency off signal
+		 output String channel reqAuthCheck;
+		 input boolean channel idAuthResponse;
+		 output signal zone1Num;
+		 output signal zone2Num;
+		 output signal zone3Num;
+		 output signal zone7Num;
+		 output signal zone1Unauth;
+		 output signal zone2Unauth;
+		 output signal zone3Unauth;
+		 output signal zone7Unauth;
+		 output signal emergencyOffUI;
+		 output signal door1GrantUI;
+		 output signal door1DenyUI;
+	)
+	->{
+		{
+			while(true) { // Door 1
+				
+				receive door1CardReader;
+				String id = (String) #door1CardReader;
+				boolean result = DoorIDDB.authDoorAccess(id, "1"); //Check if id has access to door 1.
+				if (result == true) {
+					send door1Grant(true);
+					emit door1GrantUI;
+				} else {
+					//Could have an additional signal here for 
+					send door1Deny(true);
+					emit door1DenyUI;
+				}
+				pause;
+			}
+		}
+		||
+		{
+			while(true) {
+				
+				receive humanPresence; //Await fromInfrared Sensor
+				boolean result = (boolean) #humanPresence;
+				
+				System.out.println("Infrared sensor trip - emergency off enacted.");
+				//send emergencyOff(true);
+				emit emergencyOffUI;
+				
+				pause;
+			}
+		}
+		||
+		{
+			int zone1NumEmployee = 0;
+			int zone2NumEmployee = 0;
+			int zone3NumEmployee = 0;
+			int zone7NumEmployee = 0;
+			
+			while(true) {
+				//Ping Location System every 5 seconds for badge ID 11111.
+				waitl(5 s);
+				
+				//Reset employee count;
+				zone1NumEmployee = 0;
+				zone2NumEmployee = 0;
+				zone3NumEmployee = 0;
+				zone7NumEmployee = 0;
+				
+				send reqIDLoc("11111");
+				receive idLocation;
+				String zoneLocation = (String) #idLocation;
+				
+				pause;
+				//Find a way to iterate over all employees and loop through this switch statement.
+				//Hardcoding this is fine for now...
+				switch (zoneLocation) {
+				case "1":
+					zone1NumEmployee++;
+					break;
+				case "2":
+					zone2NumEmployee++;
+					break;
+				case "3":
+					zone3NumEmployee++;
+					break;
+				case "7":
+					zone7NumEmployee++;
+					break;
+				}
+				pause;
+				
+				send reqAuthCheck("11111");
+				receive idAuthResponse;
+				
+				boolean response = #idAuthResponse;
+				
+				//If ID not allowed in current location, emit corresponding unauth signal. 
+				if (response == false) {
+					
+					switch(zoneLocation) {
+						case "1":
+							System.out.println("Unauthorized employee found in Zone 1.");
+							emit zone1Unauth;
+							break;
+						case "2":
+							System.out.println("Unauthorized employee found in Zone 2.");
+							emit zone2Unauth;
+							break;
+						case "3":
+							System.out.println("Unauthorized employee found in Zone 3.");
+							emit zone3Unauth;
+							break;
+						case "7":
+							System.out.println("Unauthorized employee found in Zone 7.");
+							emit zone7Unauth;
+							break;
+					}
+				}
+				
+				System.out.println("Detected employees: " + zone1NumEmployee
+						+ " " + zone2NumEmployee + " " + zone3NumEmployee + " " + zone7NumEmployee);
+				
+				//Update UI to reflect value;
+				emit zone1Num(zone1NumEmployee);
+				emit zone2Num(zone2NumEmployee);
+				emit zone3Num(zone3NumEmployee);
+				emit zone7Num(zone7NumEmployee);
+				
+				pause;
+				
+			}
+		}
+}
+	
