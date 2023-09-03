@@ -147,8 +147,8 @@ LiquidFiller(
 Capper(
 		
 		//To and from Orchestrator
-		input signal capperReq;
-		output signal capperStatus;
+		input boolean channel capperReq;
+		output boolean channel capperStatus;
 		
 		//From Capper Plant
 		input signal bottleAtPos4;
@@ -156,24 +156,56 @@ Capper(
 		input signal gripperZAxisLifted;
 		input signal gripperTurnHomePos;
 		input signal gripperTurnFinalPos;
+		input signal cylClampedBottle;
 		input signal gripperGrippedCap;
 		
 		//To Capper Plant
-		output signal cylPos5ZAxisExtend;
-		output signal gripperTurnRetract;
-		output signal gripperTurnExtend;
-		output signal capGripperPos5Extend;
-		output signal cylClampBottleExtend;
+		output signal cylPos5ZAxisExtend; //Brings the gripper down (absence of this signal will bring the gripper up)
+		output signal gripperTurnRetract; //Untwists the gripper
+		output signal gripperTurnExtend; //Twists the gripper
+		output signal capGripperPos5Extend; //Grips the cap (absence of this signal will release the cap)
+		output signal cylClampBottleExtend; //Clamps the bottle (absence of this signal will unclamp the bottle)
 		)
 
-
-//		while(true) {
-//			
-//			
-//			
-//		}
+		signal releaseCap, untwistGripper, raiseGripper, unclampBottle;
 
 ->{
+	
+	while(true) {
+		
+		receive capperReq; //Receive capper request.
+		
+		await bottleAtPos4;//Check if a bottle is at position 4, if not, wait until it arrives.
+		
+		{ 
+			abort () {
+				sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
+			}
+		}
+		||
+		{
+			abort(raiseGripper) {
+				sustain cylPos5AxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
+			}
+		}
+		||
+		{
+			await gripperZAxisLowered && gripperClampedBottle;//Wait until gripper is lowered and bottle is clamped.
+			abort(releaseCap) {
+				sustain capGripperPos5Extend; //Grip the cap
+			}
+		}
+		||
+		{
+			await gripperGrippedCap; //Wait until cap is gripped
+			emit gripperTurnExtend; // Twist the gripper
+			emit releaseCap; //Release the cap
+			emit untwistGripper; //Untwist gripper
+			emit raiseGripper; //Raise gripper
+			emit unclampBottle; //Unclamp bottle
+		}
+		pause;
+	}
 	
 }
 
