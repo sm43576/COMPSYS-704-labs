@@ -1,12 +1,37 @@
 Orchestrator(
-		input String channel conveyorStatus, rotaryStatus;
+		input String channel conveyorStatus;
+		input Boolean channel rotaryStatus;
 		output Boolean channel conveyorReq, allOperationsFinished;
 		)
 ->{
-
-	while(true) {
-		System.out.println("orchestator is here");
-		pause;
+	// Rotary controlling logic
+	{
+		// Receiving conveyor status
+		while(true) {
+			receive rotaryStatus;
+			String status = (String) #conveyorStatus;
+			switch(status) {
+				case "idle":
+					System.out.println("received Idle");
+				case "busy":
+					System.out.println("received Idle");
+					
+				case "done":
+					System.out.println("received Idle");
+				default:
+					System.out.println("afk");
+			}
+			System.out.println("orchestator is here");
+			pause;
+		}	
+	}
+	||
+	{
+		while(true) {
+			send conveyorReq(true);
+			System.out.println("sending?");
+			pause;
+		}
 	}
 
 }

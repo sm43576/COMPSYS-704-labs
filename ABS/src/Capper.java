@@ -24,7 +24,7 @@ public class Capper extends ClockDomain{
   public Signal gripperTurnExtend = new Signal("gripperTurnExtend", Signal.OUTPUT);
   public Signal capGripperPos5Extend = new Signal("capGripperPos5Extend", Signal.OUTPUT);
   public Signal cylClampBottleExtend = new Signal("cylClampBottleExtend", Signal.OUTPUT);
-  private int S166 = 1;
+  private int S1987 = 1;
   
   private int[] ends = new int[8];
   private int[] tdone = new int[8];
@@ -36,17 +36,17 @@ public class Capper extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S166){
+      switch(S1987){
         case 0 : 
-          S166=0;
+          S1987=0;
           break RUN;
         
         case 1 : 
-          S166=2;
-          S166=2;
+          S1987=2;
+          S1987=2;
           active[4]=0;
           ends[4]=0;
-          S166=0;
+          S1987=0;
           break RUN;
         
       }

@@ -1,6 +1,8 @@
 Controller(
 		input signal bottleAtPos1, bottleAtPos5;
+		input Boolean channel conveyorReq;
 		output signal motConveyorOnOff;
+		output String channel conveyorStatus;
 		)
 ->{
 
@@ -8,18 +10,34 @@ Controller(
 	
 	//	System.out.println("Hello World!");
 	//Wait until bottle at position 5 hasn't left yet
-		await(bottleAtPos5);
-	//	System.out.println("bottle at pos 5 hasn't left yet");
-		pause;
-
-		abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
-			present(!bottleAtPos1){ //when bottle is not at position 1
-		//		System.out.println("Motor is on"); 
-				sustain motConveyorOnOff;  // keep motor on
-
+		receive conveyorReq;
+		
+		Boolean req = (Boolean) #conveyorReq;
+		System.out.println("received?");
+		System.out.println(req);
+		
+		if(req) {
+			send conveyorStatus("busy");
+			System.out.println("conveyor busy");
+			await(bottleAtPos5);
+		//	System.out.println("bottle at pos 5 hasn't left yet");
+			pause;
+	
+			abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
+				present(!bottleAtPos1){ //when bottle is not at position 1
+			//		System.out.println("Motor is on"); 
+					sustain motConveyorOnOff;  // keep motor on
+	
+				}
 			}
+		//	System.out.println("Motor is off");
+			send conveyorStatus("done");
+			System.out.println("conveyor done");
+//			pause;
+		}else {
+			System.out.println("conveyor idling");
+			send conveyorStatus("idle");
 		}
-	//	System.out.println("Motor is off");
 		pause;
 	}
 }
@@ -29,12 +47,18 @@ RotaryTable(
         input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1;
         input Boolean channel allOperationsFinished; // From Orchestrator
         output signal rotaryTableTrigger; // To Plant
-        output String channel rotaryStatus; // To Orchestrator
+        output Boolean channel rotaryStatus; // To Orchestrator
         )
 ->{
     signal allOperationsFinished;
     while(true) {
         System.out.println("HELLLLLLLLO");
+        
+        // wait until it receives an OK from orchestrator
+        await(allOperationsFinished);
+        System.out.println("RECIEVED orchestrator task");
+        pause;
+        
         await(RTbottleAtPos1);
         System.out.println("A bottle is at position 1");
         pause;
@@ -44,41 +68,31 @@ RotaryTable(
         System.out.println("A cap bottle is NOT on the bottle at pos 1");
         pause;
         
-//        // wait until it receives an OK from orchestrator
-//        await(allOperationsFinished);
-//        System.out.println("RECIEVED orchestrator task");
-//        pause;
         
         // when the rotoray table is aligned with sensor stop sustaining the trigger
         abort(tableAlignedWithSensor){
             System.out.println("emitting rotary trigger");
-            emit rotaryTableTrigger;
-            // emit rotaryStatus("busy");
+//            emit rotaryTableTrigger;
         }
+//        emit rotaryStatus("done");
         pause;
         System.out.println("out - next loop");
         
     }
 //    ||
 //    {
-//        // Send idling status to orchestrator.
-//        abort(!allOperationsFinished){
-//            System.out.println("idling...");
-//            pause;
-//    //        sustain rotaryStatus("idle");
-//        }
+//       while(true) {
+//    	   // Send idling status to orchestrator.
+//	        abort(!allOperationsFinished){
+//	            loop{
+//	            	System.out.println("idling...");
+//	            	send rotaryStatus("idle");
+//	            	pause;
+//	            }
+//	        }
+//       }
 //    }
-//    ||
-//    {
-//        // Temporary delete when merging & have orchestrator
-//        while(true) {
-//            abort(tableAlignedWithSensor && RTbottleAtPos1){
-////                System.out.println("ORCHESTRATOR says - rotate turntable plz");
-//                emit allOperationsFinished;
-//            }
-//            pause;
-//        }
-//    }
+ 
 }
 
 LiquidFiller(

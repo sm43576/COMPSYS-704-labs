@@ -18,8 +18,8 @@ public class RotaryTable extends ClockDomain{
   public input_Channel allOperationsFinished_in = new input_Channel();
   public output_Channel rotaryStatus_o = new output_Channel();
   private Signal allOperationsFinished_2;
-  private int S67 = 1;
-  private int S41 = 1;
+  private int S1888 = 1;
+  private int S1862 = 1;
   
   private int[] ends = new int[8];
   private int[] tdone = new int[8];
@@ -31,28 +31,28 @@ public class RotaryTable extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S67){
+      switch(S1888){
         case 0 : 
-          S67=0;
+          S1888=0;
           break RUN;
         
         case 1 : 
-          S67=2;
-          S67=2;
-          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 35, column: 5
-          System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 37, column: 9
-          S41=0;
+          S1888=2;
+          S1888=2;
+          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 53, column: 5
+          System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 55, column: 9
+          S1862=0;
           active[2]=1;
           ends[2]=1;
           break RUN;
         
         case 2 : 
-          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 35, column: 5
-          switch(S41){
+          allOperationsFinished_2.setClear();//sysj\controller.sysj line: 53, column: 5
+          switch(S1862){
             case 0 : 
-              if(RTbottleAtPos1.getprestatus()){//sysj\controller.sysj line: 38, column: 15
-                System.out.println("A bottle is at position 1");//sysj\controller.sysj line: 39, column: 9
-                S41=1;
+              if(allOperationsFinished_2.getprestatus()){//sysj\controller.sysj line: 58, column: 15
+                System.out.println("RECIEVED orchestrator task");//sysj\controller.sysj line: 59, column: 9
+                S1862=1;
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -64,16 +64,16 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 1 : 
-              S41=1;
-              S41=2;
+              S1862=1;
+              S1862=2;
               active[2]=1;
               ends[2]=1;
               break RUN;
             
             case 2 : 
-              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 43, column: 15
-                System.out.println("A cap bottle is NOT on the bottle at pos 1");//sysj\controller.sysj line: 44, column: 9
-                S41=3;
+              if(RTbottleAtPos1.getprestatus()){//sysj\controller.sysj line: 62, column: 15
+                System.out.println("A bottle is at position 1");//sysj\controller.sysj line: 63, column: 9
+                S1862=3;
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -85,20 +85,39 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 3 : 
-              S41=3;
-              System.out.println("emitting rotary trigger");//sysj\controller.sysj line: 54, column: 13
-              rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 55, column: 13
-              currsigs.addElement(rotaryTableTrigger);
-              S41=4;
+              S1862=3;
+              S1862=4;
               active[2]=1;
               ends[2]=1;
               break RUN;
             
             case 4 : 
-              S41=4;
-              System.out.println("out - next loop");//sysj\controller.sysj line: 59, column: 9
-              System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 37, column: 9
-              S41=0;
+              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 67, column: 15
+                System.out.println("A cap bottle is NOT on the bottle at pos 1");//sysj\controller.sysj line: 68, column: 9
+                S1862=5;
+                active[2]=1;
+                ends[2]=1;
+                break RUN;
+              }
+              else {
+                active[2]=1;
+                ends[2]=1;
+                break RUN;
+              }
+            
+            case 5 : 
+              S1862=5;
+              System.out.println("emitting rotary trigger");//sysj\controller.sysj line: 74, column: 13
+              S1862=6;
+              active[2]=1;
+              ends[2]=1;
+              break RUN;
+            
+            case 6 : 
+              S1862=6;
+              System.out.println("out - next loop");//sysj\controller.sysj line: 79, column: 9
+              System.out.println("HELLLLLLLLO");//sysj\controller.sysj line: 55, column: 9
+              S1862=0;
               active[2]=1;
               ends[2]=1;
               break RUN;
