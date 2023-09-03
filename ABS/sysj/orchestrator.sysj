@@ -4,7 +4,7 @@ Orchestrator(
 		output Boolean channel conveyorReq, allOperationsFinished;
 		)
 ->{
-	// Rotary controlling logic
+	// Conveyor controlling logic
 	{
 		// Receiving conveyor status
 		while(true) {
