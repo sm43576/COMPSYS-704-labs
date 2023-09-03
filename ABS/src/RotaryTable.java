@@ -15,12 +15,14 @@ public class RotaryTable extends ClockDomain{
   public Signal capOnBottleAtPos1 = new Signal("capOnBottleAtPos1", Signal.INPUT);
   public Signal RTbottleAtPos1 = new Signal("RTbottleAtPos1", Signal.INPUT);
   public Signal rotaryTableTrigger = new Signal("rotaryTableTrigger", Signal.OUTPUT);
+  public input_Channel allOperationsFinished_in = new input_Channel();
+  public output_Channel rotaryStatus_o = new output_Channel();
   private Signal allOperationsFinished_2;
   private int S67 = 1;
   private int S41 = 1;
   
-  private int[] ends = new int[4];
-  private int[] tdone = new int[4];
+  private int[] ends = new int[8];
+  private int[] tdone = new int[8];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -108,9 +110,9 @@ public class RotaryTable extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
@@ -130,6 +132,8 @@ public class RotaryTable extends ClockDomain{
       if(paused[2]!=0 || suspended[2]!=0 || active[2]!=1);
       else{
         if(!df){
+          allOperationsFinished_in.gethook();
+          rotaryStatus_o.gethook();
           tableAlignedWithSensor.gethook();
           capOnBottleAtPos1.gethook();
           RTbottleAtPos1.gethook();
@@ -160,8 +164,12 @@ public class RotaryTable extends ClockDomain{
       rotaryTableTrigger.sethook();
       rotaryTableTrigger.setClear();
       allOperationsFinished_2.setClear();
+      allOperationsFinished_in.sethook();
+      rotaryStatus_o.sethook();
       if(paused[2]!=0 || suspended[2]!=0 || active[2]!=1);
       else{
+        allOperationsFinished_in.gethook();
+        rotaryStatus_o.gethook();
         tableAlignedWithSensor.gethook();
         capOnBottleAtPos1.gethook();
         RTbottleAtPos1.gethook();

@@ -1,22 +1,12 @@
 Orchestrator(
-		input signal bottleAtPos1, bottleAtPos5;
-		output signal motConveyorOnOff;
+		input String channel conveyorStatus, rotaryStatus;
+		output Boolean channel conveyorReq, allOperationsFinished;
 		)
 ->{
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	while(true) {
+		System.out.println("orchestator is here");
+		pause;
+	}
+
 }

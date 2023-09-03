@@ -27,9 +27,9 @@ Controller(
 
 RotaryTable(
         input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1;
-        //input channel allOperationsFinished; // From Orchestrator
+        input Boolean channel allOperationsFinished; // From Orchestrator
         output signal rotaryTableTrigger; // To Plant
-        //output channel rotaryStatus; // To Orchestrator
+        output String channel rotaryStatus; // To Orchestrator
         )
 ->{
     signal allOperationsFinished;
@@ -150,12 +150,13 @@ Capper(
 		output signal cylClampBottleExtend;
 		)
 
-		while(true) {
-			
-			
-			
-			
-		}
+
+//		while(true) {
+//			
+//			
+//			
+//		}
+
 ->{
 	
 }
@@ -201,6 +202,7 @@ Caploader(
 					pause;
 		
 					}
+				pause;
 			
 	}
 }

@@ -55,7 +55,7 @@ Plant(
 		//Rotatry Table
 		
 		input signal rotaryTableTrigger;
-		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos4, bottleAtPos3; //bottleAtPos1; dupe
+		output signal tableAlignedWithSensor, capOnBottleAtPos1, bottleAtPos3; //bottleAtPos1; dupe
 		output signal moveToPos5, moveToPos4, moveToPos3, moveToPos2;
 		
 		
@@ -68,9 +68,10 @@ Plant(
 ->
 {
 	new Thread(new GUI()).start();
-//	signal capDec;
-//	int signal capPos;
-//	emit capPos(0);
+	// Caploader internal signals
+	signal capDec;
+	int signal capPos;
+	emit capPos(0);
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Conveyor
