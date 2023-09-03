@@ -154,7 +154,7 @@ Capper(
 		input signal gripperZAxisLifted;
 		input signal gripperTurnHomePos;
 		input signal gripperTurnFinalPos;
-		input signal gripperClampedBottle;
+		input signal cylClampedBottle;
 		input signal gripperGrippedCap;
 		
 		//To Capper Plant

@@ -48,6 +48,7 @@ Plant(
 		output signal gripperZAxisLifted;
 		output signal gripperTurnHomePos;
 		output signal gripperTurnFinalPos;
+		output signal gripperGrippedCap;
 		output signal cylClampedBottle;
 		/////////////////////////////////////////////////////////////////////
 		
