@@ -128,30 +128,37 @@ LiquidFiller(
 	
 }
 
-//Capper(
-//		input signal bottleAtPos4;
-//		input signal gripperZAxisLowered;
-//		input signal gripperZAxisLifted;
-//		input signal gripperTurnHomePos;
-//		input signal gripperTurnFinalPos;
-//		input signal gripperGrippedCap;
-//		
-//		output signal cylPos5ZAxisExtend;
-//		output signal gripperTurnRetract;
-//		output signal gripperTurnExtend;
-//		output signal capGripperPos5Extend;
-//		output signal cylClampBottleExtend;
-//		)
-//
-//		while(true) {
-//			
-//			
-//			
-//		}
-//->{
-//	
-//}
+Capper(
+		
+		//To and from Orchestrator
+		input signal capperReq;
+		output signal capperStatus;
+		
+		//From Capper Plant
+		input signal bottleAtPos4;
+		input signal gripperZAxisLowered;
+		input signal gripperZAxisLifted;
+		input signal gripperTurnHomePos;
+		input signal gripperTurnFinalPos;
+		input signal gripperGrippedCap;
+		
+		//To Capper Plant
+		output signal cylPos5ZAxisExtend;
+		output signal gripperTurnRetract;
+		output signal gripperTurnExtend;
+		output signal capGripperPos5Extend;
+		output signal cylClampBottleExtend;
+		)
 
+		while(true) {
+			
+			
+			
+			
+		}
+->{
+	
+}
 
 
 Caploader(

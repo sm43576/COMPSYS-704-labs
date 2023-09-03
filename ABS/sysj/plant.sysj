@@ -288,7 +288,7 @@ Plant(
 //					sustain gripperZAxisLifted;
 //				}
 //				abort (!cylPos5ZaxisExtend) {
-//					sustain gripperZAxisLowered; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//					sustain gripperZAxisLowered; 
 //				}
 //				pause;
 //			}
@@ -299,7 +299,7 @@ Plant(
 //			while(true) {
 //				await capGripperPos5Extend && enable;
 //				abort (!capGripperPos5Extend) {
-//					sustain gripperGrippedCap; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//					sustain gripperGrippedCap; 
 //				}
 //				pause;
 //			}
@@ -312,13 +312,13 @@ Plant(
 //				present(gripperTurnExtend && !gripperTurnRetract && enable){
 //				abort (gripperTurnRetract){
 //					abort (!gripperTurnExtend) {
-//						sustain gripperTurnHomePos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//						sustain gripperTurnHomePos; 
 //					}
 //				}
 //				present(gripperTurnRetract && !gripperTurnExtend && enable) {
 //					abort (gripperTurnExtend) {
 //						abort (!gripperTurnRetracted) {
-//							sustain gripperTurnFinalPos; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+//							sustain gripperTurnFinalPos; 
 //						}
 //					}
 //				}
