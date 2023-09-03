@@ -40,11 +40,13 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -87,12 +89,12 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="76.0" layoutY="119.0" style="&#10;" text="Order History" textAlignment="CENTER" wrapText="false">
+        <Label id="order_hist_title" alignment="CENTER" layoutX="76.0" layoutY="129.0" style="&#10;" text="Order History for Customer ID: xxx" textAlignment="CENTER" wrapText="false">
           <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
           </font>
         </Label>
-            <Label alignment="CENTER" layoutX="177.0" layoutY="31.0" style="&#10;" text="Product Order System" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="177.0" layoutY="21.0" style="&#10;" text="Product Order System" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="32.0" />
                </font>
@@ -110,6 +112,16 @@
                   <TableColumn id="status_col" prefWidth="117.60003662109375" text="Status" />
               </columns>
             </TableView>
+            <HBox layoutX="76.0" layoutY="78.0" prefHeight="32.0" prefWidth="238.0" style="-fx-spacing: 20;">
+               <children>
+                  <Label text="Customer ID">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField id="customer_ID_input" onKeyPressed="#printOutput" prefHeight="31.0" prefWidth="97.0" />
+               </children>
+            </HBox>
       </children>
     </AnchorPane>
   </children>
