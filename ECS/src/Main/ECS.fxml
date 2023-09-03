@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.ecsUI">
    <children>
       <ImageView fitHeight="300.0" fitWidth="495.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
          <image>
@@ -28,13 +28,13 @@
       <ProgressIndicator id="zone5humid" layoutX="283.0" layoutY="255.0" prefHeight="48.0" prefWidth="26.0" progress="0.0" style="-fx-border-color: black;" />
       <Label id="zone6temp" layoutX="383.0" layoutY="267.0" style="-fx-border-color: black;" text="27C" />
       <ProgressIndicator id="zone6humid" layoutX="449.0" layoutY="255.0" prefHeight="48.0" prefWidth="26.0" progress="0.0" style="-fx-border-color: black;" />
-      <Circle id="zone1circle" fill="DODGERBLUE" layoutX="90.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone1circle" fx:id="zone1circle" fill="DODGERBLUE" layoutX="90.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
       <ProgressIndicator id="zone5humid" layoutX="117.0" layoutY="254.0" prefHeight="48.0" prefWidth="26.0" progress="0.0" style="-fx-border-color: black;" />
-      <Circle id="zone2circle" fill="DODGERBLUE" layoutX="212.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
-      <Circle id="zone3circle" fill="DODGERBLUE" layoutX="330.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
-      <Circle id="zone7circle" fill="DODGERBLUE" layoutX="449.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
-      <Circle id="zone4circle" fill="DODGERBLUE" layoutX="102.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
-      <Circle id="zone5circle" fill="DODGERBLUE" layoutX="273.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
-      <Circle id="zone6circle" fill="DODGERBLUE" layoutX="439.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone2circle" fx:id="zone2circle" fill="DODGERBLUE" layoutX="212.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone3circle" fx:id="zone3circle" fill="DODGERBLUE" layoutX="330.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone7circle" fx:id="zone7circle" fill="DODGERBLUE" layoutX="449.0" layoutY="33.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone4circle" fx:id="zone4circle" fill="DODGERBLUE" layoutX="102.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone5circle" fx:id="zone5circle" fill="DODGERBLUE" layoutX="273.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone6circle" fx:id="zone6circle" fill="DODGERBLUE" layoutX="439.0" layoutY="204.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
    </children>
 </AnchorPane>

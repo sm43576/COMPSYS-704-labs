@@ -16,10 +16,16 @@ public class Main extends Application{
     
     public void start(Stage primaryStage){
     	try {
-        Parent root = FXMLLoader.load(getClass().getResource("./ECS.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("./ECS.fxml"));
+        Parent root = loader.load();
+        ecsUI controller = loader.getController();
+        
         primaryStage.setTitle("ECS Window");
         primaryStage.setScene(new Scene(root,520,350));
         primaryStage.show();
+        
+        controller.setZoneCircle("zone1circle",0);
+       
         //scene.getStyleSheets().add(getClass().getResource("application.css"));
     	} catch (Exception e) {
     		e.printStackTrace();
