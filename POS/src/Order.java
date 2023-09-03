@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Order {
 	int orderNum;
-	int customerID;
+	String customerID;
 	int quantity;
 	HashMap<String,Integer> liquidSpecs;
 	String orderStatus;
 	
-	public Order(int orderNum, int customerID, ArrayList<Integer> liquidPercent, int quantity, String status) {
+	public Order(int orderNum, String customerID, List<Integer> liquidPercent, int quantity, String status) {
 		this.orderNum = orderNum;
 		this.customerID = customerID;
 		this.quantity = quantity;
@@ -18,14 +18,13 @@ public class Order {
 		String liquidType;
         for(int i=0; i<liquidPercent.size(); i++){
             liquidType = String.format("Liquid %s", i+1);
-            System.out.println(liquidType); //TODO: REMOVE
 		    liquidSpecs.put(liquidType, liquidPercent.get(i));
         }
 		
 	}
 	
 	public int getOrderNum() {return this.orderNum;}
-	public int getCustomerID() {return this.customerID;}
+	public String getCustomerID() {return this.customerID;}
 	public int getQuantity() {return this.quantity;}
 	public HashMap<String,Integer> getLiquidSpec() {return this.liquidSpecs;} // Only for UI use
 	public String getOrderStatus() {return this.orderStatus;}

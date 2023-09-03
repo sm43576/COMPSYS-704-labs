@@ -89,7 +89,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label id="order_hist_title" alignment="CENTER" layoutX="76.0" layoutY="129.0" style="&#10;" text="Order History for Customer ID: xxx" textAlignment="CENTER" wrapText="false">
+        <Label id="order_hist_title" fx:id="order_hist_title" alignment="CENTER" layoutX="76.0" layoutY="129.0" style="&#10;" text="Order History for Customer ID: xxx" textAlignment="CENTER" wrapText="false">
           <font>
             <Font size="20.0" />
           </font>
@@ -99,17 +99,17 @@
                   <Font size="32.0" />
                </font>
             </Label>
-            <Button id="new_order_btn" layoutX="488.0" layoutY="121.0" mnemonicParsing="false" text="New Order">
+            <Button id="new_order_btn" fx:id="new_order_btn" layoutX="488.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#openNewOrderWindow" text="New Order">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TableView id="history_table" layoutX="76.0" layoutY="160.0" prefHeight="200.0" prefWidth="514.0">
+            <TableView id="history_table" fx:id="history_table" layoutX="76.0" layoutY="160.0" prefHeight="200.0" prefWidth="514.0">
               <columns>
-                <TableColumn id="order_num_col" prefWidth="96.0" text="Order No." />
-                <TableColumn id="quantity_col" prefWidth="100.0" text="Quantity" />
-                  <TableColumn id="liq_spec_col" prefWidth="206.39996337890625" text="Liquid Spec" />
-                  <TableColumn id="status_col" prefWidth="117.60003662109375" text="Status" />
+                <TableColumn id="order_num_col" fx:id="order_num_col" prefWidth="96.0" text="Order No." />
+                <TableColumn id="quantity_col" fx:id="quantity_col" prefWidth="100.0" text="Quantity" />
+                  <TableColumn id="liq_spec_col" fx:id="liquid_spec_col" prefWidth="206.39996337890625" text="Liquid Spec" />
+                  <TableColumn id="status_col" fx:id="status_col" prefWidth="117.60003662109375" text="Status" />
               </columns>
             </TableView>
             <HBox layoutX="76.0" layoutY="78.0" prefHeight="32.0" prefWidth="238.0" style="-fx-spacing: 20;">
@@ -119,7 +119,7 @@
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <TextField id="customer_ID_input" onKeyPressed="#printOutput" prefHeight="31.0" prefWidth="97.0" />
+                  <TextField id="customer_ID_input" fx:id="customer_ID_input" onKeyPressed="#showOrderHistoryForCustomerTitle" prefHeight="31.0" prefWidth="97.0" />
                </children>
             </HBox>
       </children>
