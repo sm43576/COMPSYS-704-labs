@@ -45,15 +45,15 @@ public class LiquidFiller extends ClockDomain{
           S1986=2;
           S1986=2;
           S1920=0;
-          if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 11
-            if(fillerReq.getprestatus()){//sysj\controller.sysj line: 111, column: 12
-              if(selectCanister.getprestatus()){//sysj\controller.sysj line: 112, column: 13
-                if(percentLiquid.getprestatus()){//sysj\controller.sysj line: 113, column: 15
-                  if(selectCanister.getprestatus()){//sysj\controller.sysj line: 117, column: 11
-                    if((selectCanister.getpreval() == null ? null : ((Integer)selectCanister.getpreval())) == (currentlySelectedCanister.getpreval() == null ? null : ((Integer)currentlySelectedCanister.getpreval()))){//sysj\controller.sysj line: 118, column: 8
-                      System.out.println("Canister match");//sysj\controller.sysj line: 120, column: 5
+          if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 112, column: 11
+            if(fillerReq.getprestatus()){//sysj\controller.sysj line: 113, column: 12
+              if(selectCanister.getprestatus()){//sysj\controller.sysj line: 114, column: 13
+                if(percentLiquid.getprestatus()){//sysj\controller.sysj line: 115, column: 15
+                  if(selectCanister.getprestatus()){//sysj\controller.sysj line: 119, column: 11
+                    if((selectCanister.getpreval() == null ? null : ((Integer)selectCanister.getpreval())) == (currentlySelectedCanister.getpreval() == null ? null : ((Integer)currentlySelectedCanister.getpreval()))){//sysj\controller.sysj line: 120, column: 8
+                      System.out.println("Canister match");//sysj\controller.sysj line: 122, column: 5
                       S1897=0;
-                      dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 122, column: 7
+                      dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 124, column: 7
                       currsigs.addElement(dosUnitValveRetract);
                       active[3]=1;
                       ends[3]=1;
@@ -106,15 +106,15 @@ public class LiquidFiller extends ClockDomain{
             case 0 : 
               switch(S1897){
                 case 0 : 
-                  if(!dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 121, column: 12
-                    System.out.println("Canister above bottle");//sysj\controller.sysj line: 124, column: 6
+                  if(!dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 123, column: 12
+                    System.out.println("Canister above bottle");//sysj\controller.sysj line: 126, column: 6
                     S1897=1;
                     active[3]=1;
                     ends[3]=1;
                     break RUN;
                   }
                   else {
-                    dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 122, column: 7
+                    dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 124, column: 7
                     currsigs.addElement(dosUnitValveRetract);
                     active[3]=1;
                     ends[3]=1;
@@ -124,24 +124,24 @@ public class LiquidFiller extends ClockDomain{
                 case 1 : 
                   S1897=1;
                   S1897=2;
-                  valveInletOnOff.setPresent();//sysj\controller.sysj line: 128, column: 7
+                  valveInletOnOff.setPresent();//sysj\controller.sysj line: 130, column: 7
                   currsigs.addElement(valveInletOnOff);
                   active[3]=1;
                   ends[3]=1;
                   break RUN;
                 
                 case 2 : 
-                  if(dosUnitFilled.getprestatus()){//sysj\controller.sysj line: 127, column: 12
-                    System.out.println("Bottle controller filled");//sysj\controller.sysj line: 130, column: 6
+                  if(dosUnitFilled.getprestatus()){//sysj\controller.sysj line: 129, column: 12
+                    System.out.println("Bottle controller filled");//sysj\controller.sysj line: 132, column: 6
                     S1897=3;
-                    dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 133, column: 7
+                    dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 135, column: 7
                     currsigs.addElement(dosUnitValveExtend);
                     active[3]=1;
                     ends[3]=1;
                     break RUN;
                   }
                   else {
-                    valveInletOnOff.setPresent();//sysj\controller.sysj line: 128, column: 7
+                    valveInletOnOff.setPresent();//sysj\controller.sysj line: 130, column: 7
                     currsigs.addElement(valveInletOnOff);
                     active[3]=1;
                     ends[3]=1;
@@ -149,15 +149,15 @@ public class LiquidFiller extends ClockDomain{
                   }
                 
                 case 3 : 
-                  if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 132, column: 12
-                    System.out.println("Canister returned");//sysj\controller.sysj line: 135, column: 6
+                  if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 134, column: 12
+                    System.out.println("Canister returned");//sysj\controller.sysj line: 137, column: 6
                     S1920=1;
                     active[3]=1;
                     ends[3]=1;
                     break RUN;
                   }
                   else {
-                    dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 133, column: 7
+                    dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 135, column: 7
                     currsigs.addElement(dosUnitValveExtend);
                     active[3]=1;
                     ends[3]=1;
@@ -170,15 +170,15 @@ public class LiquidFiller extends ClockDomain{
             case 1 : 
               S1920=1;
               S1920=0;
-              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 11
-                if(fillerReq.getprestatus()){//sysj\controller.sysj line: 111, column: 12
-                  if(selectCanister.getprestatus()){//sysj\controller.sysj line: 112, column: 13
-                    if(percentLiquid.getprestatus()){//sysj\controller.sysj line: 113, column: 15
-                      if(selectCanister.getprestatus()){//sysj\controller.sysj line: 117, column: 11
-                        if((selectCanister.getpreval() == null ? null : ((Integer)selectCanister.getpreval())) == (currentlySelectedCanister.getpreval() == null ? null : ((Integer)currentlySelectedCanister.getpreval()))){//sysj\controller.sysj line: 118, column: 8
-                          System.out.println("Canister match");//sysj\controller.sysj line: 120, column: 5
+              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 112, column: 11
+                if(fillerReq.getprestatus()){//sysj\controller.sysj line: 113, column: 12
+                  if(selectCanister.getprestatus()){//sysj\controller.sysj line: 114, column: 13
+                    if(percentLiquid.getprestatus()){//sysj\controller.sysj line: 115, column: 15
+                      if(selectCanister.getprestatus()){//sysj\controller.sysj line: 119, column: 11
+                        if((selectCanister.getpreval() == null ? null : ((Integer)selectCanister.getpreval())) == (currentlySelectedCanister.getpreval() == null ? null : ((Integer)currentlySelectedCanister.getpreval()))){//sysj\controller.sysj line: 120, column: 8
+                          System.out.println("Canister match");//sysj\controller.sysj line: 122, column: 5
                           S1897=0;
-                          dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 122, column: 7
+                          dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 124, column: 7
                           currsigs.addElement(dosUnitValveRetract);
                           active[3]=1;
                           ends[3]=1;

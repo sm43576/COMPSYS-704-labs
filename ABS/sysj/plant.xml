@@ -51,8 +51,6 @@
 			<iSignal Name="vacOn"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armSource"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armDest"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="enable"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
 			<oSignal Name="pusherRetracted" To="CaploaderCD.pusherRetracted" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="pusherExtended"  To="CaploaderCD.pusherExtended"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />

@@ -93,7 +93,7 @@ Plant(
 			pause;
 
 				
-			abort(valveInjectorOnOff){//
+			abort(motConveyorOnOff){//
 			//		System.out.println("sustaining bottle at pos 1");
 					sustain bottleAtPos1;
 			}
