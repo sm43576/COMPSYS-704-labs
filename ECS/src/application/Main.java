@@ -1,4 +1,4 @@
-package Main;
+package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ public class Main extends Application{
         primaryStage.setScene(new Scene(root,520,350));
         primaryStage.show();
         
-        controller.setZoneCircle("zone1circle",0);
+        controller.setZoneCircle("zone1circle",1);
        
         //scene.getStyleSheets().add(getClass().getResource("application.css"));
     	} catch (Exception e) {

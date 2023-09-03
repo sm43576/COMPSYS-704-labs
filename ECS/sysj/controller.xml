@@ -1,10 +1,26 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS1" Local="true">
-		<ClockDomain Name="ControllerCD" Class="Controller">
+		<ClockDomain Name="HumanPresenceCD" Class="HumanPresence">
 		
-			<iSignal Name="bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottleAtPos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="motConveyorOnOff" To="PlantCD.motConveyorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iChannel Name="zone1P" From="InfraredSensorCD.zone1P" />
+			<iChannel Name="zone2P" From="InfraredSensorCD.zone2P" />
+			<iChannel Name="zone3P" From="InfraredSensorCD.zone3P" />
+			<iChannel Name="zone4P" From="InfraredSensorCD.zone4P" />
+			<iChannel Name="zone5P" From="InfraredSensorCD.zone5P" />
+			<iChannel Name="zone6P" From="InfraredSensorCD.zone6P" />
+			<iChannel Name="zone7P" From="InfraredSensorCD.zone7P" />
+			
+		</ClockDomain>
+		
+		
+		<ClockDomain Name="InfraredSensorCD" Class="InfraredSensor">
+			<oChannel Name="zone1P" To="HumanPresenceCD.zone1P"/>
+			<oChannel Name="zone2P" To="HumanPresenceCD.zone2P"/>
+			<oChannel Name="zone3P" To="HumanPresenceCD.zone3P"/>
+			<oChannel Name="zone4P" To="HumanPresenceCD.zone4P"/>
+			<oChannel Name="zone5P" To="HumanPresenceCD.zone5P"/>
+			<oChannel Name="zone6P" To="HumanPresenceCD.zone6P"/>
+			<oChannel Name="zone7P" To="HumanPresenceCD.zone7P"/>
 
 		</ClockDomain>
 	</SubSystem>

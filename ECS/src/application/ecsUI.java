@@ -1,4 +1,4 @@
-package Main;
+package application;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class ecsUI extends Main {
 	            if (val == 1) {
 	                circle.setFill(Color.RED);
 	            } else {
-	                circle.setFill(Color.GREEN);
+	                circle.setFill(Color.LIGHTGREEN);
 	            }
 	            break; // Break out of the loop once the circle is found and updated
 	        }

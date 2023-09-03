@@ -1,28 +1,51 @@
-Controller(
-		input signal bottleAtPos1, bottleAtPos5;
-		output signal motConveyorOnOff;
+HumanPresence(
+		input boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P; //Infrared Sensor
+
+		output signal zone1light,zone2light,zone3light,zone4light,zone5light,zone6light,zone7light;
+
 		)
 ->{
 
 	while(true) {
-
-		{
-			//Human presense / light intensity
-		}
-		
-		||
-		
-		{
-			// Temperature
-		}
-		
-		||
-		
-		{
-			//Humidity.
-		}
+			//Human presense  light intensity
+			//Ping Location.
+			{receive zone1P; pause;} ||
+			{receive zone2P; pause;} ||
+			{receive zone3P;
+				System.out.println("lights on");
+				pause;
+				//sustain(zone3light);}
+			} ||
+			{receive zone4P;{pause;}} ||
+			{receive zone5P;{pause;}} ||
+			{receive zone6P;{pause;}} ||
+			{receive zone7P;{pause;}}
 	}
+						
 }
 
 
+InfraredSensor(
+		 output boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P;	 
+	)
+	->{	
+		while(true) {
+				
+				send zone3P(true);
+				waitl(120 s);
+				pause;
+			}
+	
+}
+
+
+//TemperatureSensor(
+//		input signal bottleAtPos1, bottleAtPos5;
+//		output signal motConveyorOnOff;
+//		)
+//->{
+//
+//	while(true) {
+//		}
+//}
 	

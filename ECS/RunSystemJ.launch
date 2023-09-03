@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
         <listEntry value="/ECS/lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-desktop.jar"/>
     </listAttribute>
@@ -12,6 +13,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.systemj.SystemJRunner"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="COMPSYS704_Lab_2"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="sysj/Exercise6.xml"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="sysj/controller.xml"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ECS"/>
 </launchConfiguration>
