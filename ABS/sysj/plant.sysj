@@ -37,19 +37,18 @@ Plant(
 		// Capper
 		
 		//Input signals from capper controller
-//		input signal cylPos5ZAxisExtend;
-//		input signal gripperTurnRetract, gripperTurnExtend;
-//		input signal capGripperPos5Extend;
-//		input signal cylClampBottleExtend;
-//		
-//		//Output signals to capper controller
-//		output signal bottleAtPos4;
-//		output signal gripperZAxisLowered;
-//		output signal gripperZAxisLifted;
-//		output signal gripperTurnHomePos;
-//		output signal gripperTurnFinalPos;
-//		output signal cylClampedBottle;
-//		
+		input signal cylPos5ZAxisExtend;
+		input signal gripperTurnRetract, gripperTurnExtend;
+		input signal capGripperPos5Extend;
+		input signal cylClampBottleExtend;
+		
+		//Output signals to capper controller
+		output signal bottleAtPos4;
+		output signal gripperZAxisLowered;
+		output signal gripperZAxisLifted;
+		output signal gripperTurnHomePos;
+		output signal gripperTurnFinalPos;
+		output signal cylClampedBottle;
 		/////////////////////////////////////////////////////////////////////
 		
 		
