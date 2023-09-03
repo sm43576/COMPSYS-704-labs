@@ -1,11 +1,22 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS1" Local="true">
-		<ClockDomain Name="ControllerCD" Class="Controller">
+		<ClockDomain Name="OrchestratorCD" Class="Orchestrator">
+			<!-- Conveyor Channels -->
+			<iChannel Name="conveyorStatus" From="ControllerCD.conveyorStatus" />
+			<oChannel Name="conveyorReq" To="ControllerCD.conveyorReq" />
+			
+			<!-- Rotary Channels-->
+			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
+			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
+		</ClockDomain>>
 		
+		<ClockDomain Name="ControllerCD" Class="Controller">
 			<iSignal Name="bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="bottleAtPos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="motConveyorOnOff" To="PlantCD.motConveyorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-
+			
+			<iChannel Name="conveyorReq" From="OrchestratorCD.conveyorReq" />
+			<oChannel Name="conveyorStatus" To="OrchestratorCD.conveyorStatus" />
 		</ClockDomain>
 				
 		
@@ -29,6 +40,10 @@
 			<iSignal Name="RTbottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="capOnBottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			<iChannel Name="allOperationsFinished" From="OrchestratorCD.rotaryStatus" />
+			<oChannel Name="rotaryStatus" To="OrchestratorCD.rotaryStatus" />
+
 		</ClockDomain>
 		
 			<ClockDomain Name="CaploaderCD" Class="Caploader">
