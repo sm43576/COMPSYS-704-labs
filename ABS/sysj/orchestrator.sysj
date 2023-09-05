@@ -4,6 +4,58 @@ Orchestrator(
 		output Boolean channel conveyorReq, allOperationsFinished;
 		)
 ->{
+	//receive bottle
+	//do action
+	//output bottle
+	
+	/*	POS
+	 * 		number of bottles feed into conveyor
+	 * bottlePlace = 0; amount of bottles placed on the conveyor
+	 * present(x)   //do order.
+	 *
+	 * 		while true()
+	 * 		if bottleinput != POSbottle
+	 * 			if bottleatsensor1 empty
+	 * 				put bottle on conveyor
+	 * `			bottlePLace +=1
+	 * 			
+	 *   If one of the machine active dont spin rotary table.
+	 * ||		Conveyor
+	 * 		
+	 * 
+	 * 
+	 * ||		Filler
+	 *
+	 * 
+	 * 
+	 * ||		Capper
+	 * 
+	 * 
+	 * 
+	 * ||		Caploader
+	 * 
+	 * 	
+	 * 		
+	 * 
+	 * ||   Rotary table
+	 * 		
+	 * while (true)
+	 * 		await(ConveyorDone,FillerDone,CapperDone,CaploaderDone) if no system is on
+	 * 			//rotate(60)				because conveyor is done that means yes bottleatPos1 and no bottleatPOs5
+	 * 				
+	 * 					
+	 * 
+	 * 
+	 * 
+	 * 
+	 * ||
+		 * 		*IGNORE TOO HARD IMPLEMENTATION*
+	 * 		second button UI
+	 * 			takes out bottle if cap is present.
+	 * 
+	 * 
+	
+	*/
 	// Conveyor controlling logic
 	{
 		// Receiving conveyor status
