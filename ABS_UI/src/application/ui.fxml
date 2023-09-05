@@ -23,21 +23,6 @@
          <center>
             <StackPane BorderPane.alignment="CENTER">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-                     <StackPane.margin>
-                        <Insets top="220.0" />
-                     </StackPane.margin>
-                  </Rectangle>
-                  <ImageView fx:id="wheel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
-                     </image>
-                  </ImageView>
                   <StackPane>
                      <children>
                         <Circle fx:id="door1Status" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
@@ -45,7 +30,7 @@
                               <Insets />
                            </StackPane.margin>
                         </Circle>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Capper">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -62,7 +47,7 @@
                               <Insets />
                            </StackPane.margin>
                         </Circle>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filler">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -79,16 +64,31 @@
                               <Insets />
                            </StackPane.margin>
                         </Circle>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cap Loader" textAlignment="CENTER" wrappingWidth="60.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
                      <StackPane.margin>
-                        <Insets left="-5.0" top="-350.0" />
+                        <Insets left="-5.0" top="-370.0" />
                      </StackPane.margin>
                   </StackPane>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+                     <StackPane.margin>
+                        <Insets top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+                     <StackPane.margin>
+                        <Insets top="220.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <ImageView fx:id="wheel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
+                     </image>
+                  </ImageView>
                </children>
                <BorderPane.margin>
                   <Insets top="80.0" />
