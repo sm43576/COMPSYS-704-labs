@@ -408,6 +408,14 @@ Plant(
 			}
 			
 		}
+		||
+		{while(true) {present(moveToPos5 && enable){System.out.println("bottle is now at pos 5"); emit bottleAtPos5;} pause;}}
+		||
+		{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); emit bottleAtPos4;}}pause;}
+		||
+		{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); emit bottleAtPos3;}}pause;}
+		||
+		{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); emit bottleAtPos2;}}pause;}
 	
 /////////////////////////////////////////////////////////////////////
 	
