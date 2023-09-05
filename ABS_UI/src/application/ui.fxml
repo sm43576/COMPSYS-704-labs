@@ -52,7 +52,7 @@
                         <Insets right="5.0" top="-250.0" />
                      </StackPane.margin>
                   </Circle>
-                  <ImageView fx:id="LArrow" fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="lArrow" fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
                      </image>
@@ -60,7 +60,7 @@
                         <Insets right="500.0" top="130.0" />
                      </StackPane.margin>
                   </ImageView>
-                  <ImageView fx:id="RArrow" fitHeight="65.0" fitWidth="150.0" layoutX="85.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="rArrow" fitHeight="65.0" fitWidth="150.0" layoutX="85.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
                      </image>
@@ -129,7 +129,7 @@
                         <Insets top="220.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <ImageView fx:id="wheel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="carousel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
                      </image>

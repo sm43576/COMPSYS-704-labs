@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,10 +17,18 @@ import javafx.util.Duration;
 
 public class Controller {
 	
-	private int wheelAngle = 0;
+	private int carouselAngle = 0;
 	
     @FXML
-	private ImageView wheel;
+	private ImageView carousel;
+    @FXML
+    private Circle fillerStatus, capLStatus, conveyorStatus, carouselStatus;
+    @FXML
+    private Label lblFillerStatus, lblCapLStatus, lblConveyorStatus, lblCarouselStatus;
+    @FXML
+    private Button btnEnable;
+    @FXML
+    private ImageView lArrow, rArrow;
     
 //    @FXML
 //	public void initialize() {
@@ -40,16 +49,16 @@ public class Controller {
     	
     	
     	RotateTransition rotate = new RotateTransition();
-    	rotate.setNode(wheel);
+    	rotate.setNode(carousel);
     	rotate.setDuration(Duration.millis(1000));
     	//rotate.setCycleCount(TranslateTransition.INDEFINITE);
-    	wheel.setRotate(wheelAngle);
+    	carousel.setRotate(carouselAngle);
     	rotate.setByAngle(60);
-    	System.out.println(wheelAngle + " " + (wheelAngle+60));
-    	if (wheelAngle >= 300) {
-    		wheelAngle = 0;
+    	System.out.println(carouselAngle + " " + (carouselAngle+60));
+    	if (carouselAngle >= 300) {
+    		carouselAngle = 0;
     	} else {
-        	wheelAngle = wheelAngle + 60;
+        	carouselAngle = carouselAngle + 60;
     	}
     	rotate.playFromStart();
     }
