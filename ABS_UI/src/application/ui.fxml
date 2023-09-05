@@ -27,32 +27,32 @@
          <center>
             <StackPane BorderPane.alignment="CENTER">
                <children>
-                  <Circle fill="DODGERBLUE" layoutX="407.0" layoutY="35.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="bot2" fill="DODGERBLUE" layoutX="407.0" layoutY="35.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <StackPane.margin>
                         <Insets right="220.0" top="-120.0" />
                      </StackPane.margin>
                   </Circle>
-                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="bot4" fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <StackPane.margin>
                         <Insets right="-220.0" top="-120.0" />
                      </StackPane.margin>
                   </Circle>
-                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="bot5" fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <StackPane.margin>
                         <Insets right="-220.0" top="130.0" />
                      </StackPane.margin>
                   </Circle>
-                  <Circle fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="bot1" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <StackPane.margin>
                         <Insets right="220.0" top="130.0" />
                      </StackPane.margin>
                   </Circle>
-                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="bot3" fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <StackPane.margin>
                         <Insets right="5.0" top="-250.0" />
                      </StackPane.margin>
                   </Circle>
-                  <ImageView fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="LArrow" fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
                      </image>
@@ -60,7 +60,7 @@
                         <Insets right="500.0" top="130.0" />
                      </StackPane.margin>
                   </ImageView>
-                  <ImageView fitHeight="65.0" fitWidth="150.0" layoutX="85.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="RArrow" fitHeight="65.0" fitWidth="150.0" layoutX="85.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
                      </image>
@@ -70,7 +70,7 @@
                   </ImageView>
                   <StackPane layoutX="10.0" layoutY="-170.0">
                      <children>
-                        <Circle fx:id="door1Status11" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle fx:id="capLStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
@@ -87,7 +87,7 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Circle fx:id="door1Status" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle fx:id="capperStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
@@ -104,7 +104,7 @@
                   </StackPane>
                   <StackPane layoutX="10.0" layoutY="-170.0">
                      <children>
-                        <Circle fx:id="door1Status1" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle fx:id="fillerStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
@@ -179,39 +179,39 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="Idle" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Idle" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Idle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Idle" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
                               <Label alignment="CENTER" text="Carousel Status" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="Idle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="lblFillerStatus" text="Idle" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCapLStatus" text="Idle" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCapStatus" text="Idle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblConveyorStatus" text="Idle" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCarouselStatus" text="Idle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
                            </children>
                         </GridPane>
-                        <Button mnemonicParsing="false" text="Enable">
+                        <Button fx:id="btnEnable" mnemonicParsing="false" text="Enable">
                            <font>
                               <Font size="18.0" />
                            </font>
