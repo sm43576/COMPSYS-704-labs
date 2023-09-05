@@ -57,10 +57,10 @@ Controller(
 
 
 RotaryTable(
-        input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1;
+        input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1; //TODO: maybe add these: signal moveToPos5, moveToPos4, moveToPos3, moveToPos2; fromplant
         input Boolean channel allOperationsFinished; // From Orchestrator
         output signal rotaryTableTrigger; // To Plant
-        output Boolean channel rotaryStatus; // To Orchestrator
+        output Boolean channel rotaryStatus; // To Orchestrator //TODO:may need to reemit the plant signals to orch
         )
 ->{
     signal allOperationsFinished;

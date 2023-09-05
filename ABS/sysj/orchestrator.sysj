@@ -25,85 +25,97 @@ Orchestrator(
 		 * || ORder system / bottle placement.
 		 *
 		 * 		while true(){
-		 * 		if bottlePlace != POSorder  // we have one bottle in the system and 5 left
-		 * 			send conveyorReq(true);
-					System.out.println("sending?");
-		 * 			put bottle on conveyor, emit conveyorReq //simulates a bottle entering the conveyor system
-		 * `		bottlePlace +=1 //
-		 * 			// await(rotarytableSignal);
-		 * 
-		 * 		}
+				 	place a bottle if it is not equal to the POS order quantity
+			 * 		if bottlePlace != POSorder  // we have one bottle in the system and 5 left
+			 * 			// Send a request to conveyor controller to move the bottle at pos 1
+			 * 			send conveyorReq(true);
+						System.out.println("sending?");
+			 * 			put bottle on conveyor, emit conveyorReq //simulates a bottle entering the conveyor system
+			 * `		bottlePlace -=1 //
+			 * 
+			 * 			// wait for rotatary status to be done so we can add a new bottle
+			 * 			 await(rotaryStatus == "done")
+			 * 
+			 * 		}
 		 * ----------------------------------------------------------------------------------------------
-		 * ||	COnveyor Status handling.
-		 * 		{// Receiving conveyor status
+		 *
+		 * ||		Filler
+		 * {
+			 * while(true){
+			 * // wait for rotatary status to be done and a bottle is at position 2 so we can start filling process
+			 * 	await(rotaryStatus == "done" and bottle is at pos 2) <-- need another signal from rotary controller to say what components need to be used?
+			 * 	then:
+			 *		tell filler controller to do its work and send it details about the liquid specifications
+			 *		send FillerReq
+			 *		send liquidSpec
+			 *}
+		 *}
+		 * 
+		 * 
+		 * ||		caploader
+		 * {
+			 * while(true){
+			 * // wait for rotatary status to be done and a bottle is at position 3 so we can start cap loading process
+			 * 	await(rotaryStatus == "done" and bottle is at pos 3) <-- need another signal from rotary controller to say what components need to be used?
+			 * 	then:
+			 *		tell cap loader controller to do its work
+			 *		send caploaderReq
+			 *}
+		 *}
+		 * 
+		 * ||		Capper
+		 * {
+			 * while(true){
+			 * // wait for rotatary status to be done and a bottle is at position 4 so we can start cap loading process
+			 * 	await(rotaryStatus == "done" and bottle is at pos 4) <-- need another signal from rotary controller to say what components need to be used?
+			 * 	then:
+			 *		tell cap loader controller to do its work
+			 *		send capScrewerReq
+			 *	}	
+		 *}	 * 
+		 * || //Component Status handling
+		 * 		{// Receiving status from componenets
 					while(true) {
-						receive conveyorStatus;
-						String status = (String) #conveyorStatus;
+						receive conveyorStatus, fillerStatus, capLoaderStatus, capScrewerStatus;
+						String statusConvey = (String) #conveyorStatus;
+						etc
+						
+						if converyorStatus and fillerStatus and capLoaderStatus and CapScrewerStatus == "done"
+							or converyorStatus or fillerStatus or capLoaderStatus or CapScrewerStatus  == "idle"
+							(if components are done or idle)
+						then:
+							abort when rotaryStatus == "done" otherwise do:
+								send a request for rotary to start moving using allOperationsFinished
+						
 						System.out.println(status);
-						switch(status) {
-							case "idle":
-								System.out.println("received Idle");
-								//send(rotaryIdle)
-							case "busy":
-								System.out.println("received Busy");
-								//send(rotaryBusy)
-								
-							case "done":
-								System.out.println("received Done");
-								//send(rotaryDOne)
-							default:
-								System.out.println("afk");
-						}
-						System.out.println("orchestator is here");
+						
 						pause;
 					}	
 				}
-		 * 			await (rotate)
-		 * 			// wait for rotary signal to move it.	
 
-		 * ||		Filler
-		 *
-		 * 
-		 * 
-		 * ||		Capper
-		 * 
-		 * 
-		 * 
-		 * ||		Caploader
-		 * 
-		 * 
-		 * ||		Rotarytable
-		 * 			check filler and req
-		 * 
-		 * 			abort(rotaryTableRotated){
-		 * 				sustain rotaryTableReq
-		 * 			}
-		 * 
-		 * 			abort(rotaryTableRotate)
-		 * 	
-		 * 
-		 * 
-		 * 
-		 * 
-	 * 	
-	 * 		
-	 * 
-	 * ||   Rotary table
-	 * 		
-	 * while (true)
-	 * 		await(ConveyorDone,FillerDone,CapperDone,CaploaderDone) if no system is on
-	 * 			//rotate(60)				because conveyor is done that means yes bottleatPos1 and no bottleatPOs5
-	 * 				
-	 * 					
-	 * 
-	 * 
-	 * 
+
 	 * 
 	 * ||
 		 * 		*IGNORE TOO HARD IMPLEMENTATION*
 	 * 		second button UI
 	 * 			takes out bottle if cap is present.
-	 * 
+	 * Prob don't need:
+	 * switch(status) {
+		case "idle":
+			System.out.println("received Idle");
+			//send(rotaryIdle)
+		case "busy":
+			System.out.println("received Busy");
+			//send(rotaryBusy)
+			
+		case "done":
+			System.out.println("received Done");
+			//send(rotaryDOne)
+		default:
+			System.out.println("afk");
+	}
+	System.out.println("orchestator is here");
+ * 
 	 * 
 	
 	*/
