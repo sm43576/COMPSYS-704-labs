@@ -27,6 +27,31 @@
          <center>
             <StackPane BorderPane.alignment="CENTER">
                <children>
+                  <Circle fill="DODGERBLUE" layoutX="407.0" layoutY="35.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="220.0" top="-120.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="-220.0" top="-120.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="-220.0" top="130.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="220.0" top="130.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="5.0" top="-250.0" />
+                     </StackPane.margin>
+                  </Circle>
                   <ImageView fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
@@ -43,6 +68,23 @@
                         <Insets right="-500.0" top="130.0" />
                      </StackPane.margin>
                   </ImageView>
+                  <StackPane layoutX="10.0" layoutY="-170.0">
+                     <children>
+                        <Circle fx:id="door1Status11" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cap Loader" textAlignment="CENTER" wrappingWidth="60.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets left="-5.0" top="-370.0" />
+                     </StackPane.margin>
+                  </StackPane>
                   <StackPane>
                      <children>
                         <Circle fx:id="door1Status" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
@@ -57,7 +99,7 @@
                         </Text>
                      </children>
                      <StackPane.margin>
-                        <Insets right="-320.0" top="-170.0" />
+                        <Insets right="-325.0" top="-175.0" />
                      </StackPane.margin>
                   </StackPane>
                   <StackPane layoutX="10.0" layoutY="-170.0">
@@ -74,24 +116,7 @@
                         </Text>
                      </children>
                      <StackPane.margin>
-                        <Insets right="320.0" top="-170.0" />
-                     </StackPane.margin>
-                  </StackPane>
-                  <StackPane layoutX="10.0" layoutY="-170.0">
-                     <children>
-                        <Circle fx:id="door1Status11" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </Circle>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cap Loader" textAlignment="CENTER" wrappingWidth="60.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <StackPane.margin>
-                        <Insets left="-5.0" top="-370.0" />
+                        <Insets right="325.0" top="-175.0" />
                      </StackPane.margin>
                   </StackPane>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
