@@ -12,8 +12,10 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
@@ -36,7 +38,61 @@
                         <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
                      </image>
                   </ImageView>
+                  <StackPane>
+                     <children>
+                        <Circle fx:id="door1Status" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets right="-320.0" top="-170.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="-170.0">
+                     <children>
+                        <Circle fx:id="door1Status1" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets right="320.0" top="-170.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="-170.0">
+                     <children>
+                        <Circle fx:id="door1Status11" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door 1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets left="-5.0" top="-350.0" />
+                     </StackPane.margin>
+                  </StackPane>
                </children>
+               <BorderPane.margin>
+                  <Insets top="80.0" />
+               </BorderPane.margin>
             </StackPane>
          </center>
          <bottom>
