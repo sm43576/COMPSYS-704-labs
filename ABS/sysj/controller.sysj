@@ -16,11 +16,11 @@ Controller(
 		System.out.println("received?");
 		System.out.println(req);
 		
-		if(req) {
+		if(req) { //bottle has been placed on the conveyor belt.
 			send conveyorStatus("busy");
 		
 			System.out.println("conveyor busy");
-			await(bottleAtPos5);
+			//await(bottleAtPos5);
 		//	System.out.println("bottle at pos 5 hasn't left yet");
 			pause;
 	
@@ -36,7 +36,12 @@ Controller(
 			send conveyorStatus("done");
 			System.out.println("conveyor done");
 			pause;
-		}else {
+		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1. 
+			// if ( statement)
+			//bottle hasnt been placed on the conveyor but if there is bottleatpos5
+			// turn conveyor belt on 
+			
+			//, else do nothing.
 			System.out.println("conveyor idling");
 			send conveyorStatus("idle");
 		}

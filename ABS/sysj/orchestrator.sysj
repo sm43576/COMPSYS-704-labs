@@ -11,13 +11,24 @@ Orchestrator(
 	/*	POS
 	 * 		number of bottles feed into conveyor
 	 * bottlePlace = 0; amount of bottles placed on the conveyor
+	 * POSbottleamount    = amount of bottles requested by the POS
+	 * bottlePlace  	  = decrement value 
+	 * 
+	 * Assumption - only one order at a time.
+	 * 
+	 * 
+	 * 
+	 * ||
+	 * 
+	 * 
+	 * 
 	 * present(x)   //do order.
 	 *
 	 * 		while true()
-	 * 		if bottleinput != POSbottle
-	 * 			if bottleatsensor1 empty
-	 * 				put bottle on conveyor
-	 * `			bottlePLace +=1
+	 * 		if bottlePlace != POSbottleamount
+	 * 			if (turntable present)
+	 * 				put bottle on conveyor     , emit conveyorReq
+	 * `			bottlePlace +=1
 	 * 			
 	 *   If one of the machine active dont spin rotary table.
 	 * ||		Conveyor
