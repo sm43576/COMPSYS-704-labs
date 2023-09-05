@@ -21,7 +21,7 @@
                <children>
                   <ImageView fx:id="wheel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
+                        <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
                      </image>
                   </ImageView>
                </children>
