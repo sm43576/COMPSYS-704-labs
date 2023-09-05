@@ -93,7 +93,22 @@ Plant(
 			await(enable);
 			pause;
 
-				
+			// in the report talk about condition where barrier for each order. 
+			
+//			abort(motConveyorOnOff){
+//				
+//				present(MotorPos1On){ // a variable that keeps track of the conveyor
+				//sustain bottleAtpos1
+//			}
+//				
+			
+//				present(MotorPos5On){
+//				// bottle has left
+//				// nothing.
+//				// sustain bottleLeftPos5
+//			}
+//		}
+//				
 			abort(motConveyorOnOff){//
 			//		System.out.println("sustaining bottle at pos 1");
 					sustain bottleAtPos1;

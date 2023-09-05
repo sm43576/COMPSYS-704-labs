@@ -10,13 +10,13 @@ Controller(
 	
 	//	System.out.println("Hello World!");
 	//Wait until bottle at position 5 hasn't left yet
-		receive conveyorReq;
+		receive conveyorReq; // send a request everytime bottle on the conveyor belt.
 		
 		Boolean req = (Boolean) #conveyorReq;
 		System.out.println("received?");
 		System.out.println(req);
 		
-		if(req) { //bottle has been placed on the conveyor belt.
+		if(req) { //bottle has entered from left side.
 			send conveyorStatus("busy");
 		
 			System.out.println("conveyor busy");
@@ -24,10 +24,12 @@ Controller(
 		//	System.out.println("bottle at pos 5 hasn't left yet");
 			pause;
 	
+			//bottle at pos1
 			abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
 				present(!bottleAtPos1){ //when bottle is not at position 1
 					System.out.println("Motor is on"); 
-					sustain motConveyorOnOff;  // keep motor on
+				//	{sustain motConveyorOnOff} || {sustain MotorPos1On};    REPLACE
+					sustain motConveyorOnOff && MotorPos1On;  // keep motor on
 	
 				}
 			}
@@ -38,9 +40,13 @@ Controller(
 			pause;
 		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1. 
 			// if ( statement)
+
 			//bottle hasnt been placed on the conveyor but if there is bottleatpos5
-			// turn conveyor belt on 
-			
+			//abort(!bottleAtpos1 && bottleLeftPos5)
+//			{
+//				//{sustain motConveyorOnOff} || {sustain MotorPos5On};    REPLACE
+//			}
+//			
 			//, else do nothing.
 			System.out.println("conveyor idling");
 			send conveyorStatus("idle");
@@ -66,9 +72,9 @@ RotaryTable(
         System.out.println("RECIEVED orchestrator task");
         pause;
         
-        await(RTbottleAtPos1);
-        System.out.println("A bottle is at position 1");
-        pause;
+//        await(RTbottleAtPos1);
+//        System.out.println("A bottle is at position 1");
+//        pause;
         
         // wait until there is no cap on the bottle at position 1 (i.e.) bottle is removed
         await(!capOnBottleAtPos1);

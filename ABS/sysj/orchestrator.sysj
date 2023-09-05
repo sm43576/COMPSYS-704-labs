@@ -18,33 +18,73 @@ Orchestrator(
 	 * 
 	 * 
 	 * 
-	 * ||
-	 * 
 	 * 
 	 * 
 	 * present(x)   //do order.
-	 *
-	 * 		while true()
-	 * 		if bottlePlace != POSbottleamount
-	 * 			if (turntable present)
-	 * 				put bottle on conveyor     , emit conveyorReq
-	 * `			bottlePlace +=1
-	 * 			
-	 *   If one of the machine active dont spin rotary table.
-	 * ||		Conveyor
-	 * 		
-	 * 
-	 * 
-	 * ||		Filler
-	 *
-	 * 
-	 * 
-	 * ||		Capper
-	 * 
-	 * 
-	 * 
-	 * ||		Caploader
-	 * 
+		 * 
+		 * || ORder system / bottle placement.
+		 *
+		 * 		while true(){
+		 * 		if bottlePlace != POSorder  // we have one bottle in the system and 5 left
+		 * 			send conveyorReq(true);
+					System.out.println("sending?");
+		 * 			put bottle on conveyor, emit conveyorReq //simulates a bottle entering the conveyor system
+		 * `		bottlePlace +=1 //
+		 * 			// await(rotarytableSignal);
+		 * 
+		 * 		}
+		 * ----------------------------------------------------------------------------------------------
+		 * ||	COnveyor Status handling.
+		 * 		{// Receiving conveyor status
+					while(true) {
+						receive conveyorStatus;
+						String status = (String) #conveyorStatus;
+						System.out.println(status);
+						switch(status) {
+							case "idle":
+								System.out.println("received Idle");
+								//send(rotaryIdle)
+							case "busy":
+								System.out.println("received Busy");
+								//send(rotaryBusy)
+								
+							case "done":
+								System.out.println("received Done");
+								//send(rotaryDOne)
+							default:
+								System.out.println("afk");
+						}
+						System.out.println("orchestator is here");
+						pause;
+					}	
+				}
+		 * 			await (rotate)
+		 * 			// wait for rotary signal to move it.	
+
+		 * ||		Filler
+		 *
+		 * 
+		 * 
+		 * ||		Capper
+		 * 
+		 * 
+		 * 
+		 * ||		Caploader
+		 * 
+		 * 
+		 * ||		Rotarytable
+		 * 			check filler and req
+		 * 
+		 * 			abort(rotaryTableRotated){
+		 * 				sustain rotaryTableReq
+		 * 			}
+		 * 
+		 * 			abort(rotaryTableRotate)
+		 * 	
+		 * 
+		 * 
+		 * 
+		 * 
 	 * 	
 	 * 		
 	 * 
@@ -67,35 +107,7 @@ Orchestrator(
 	 * 
 	
 	*/
-	// Conveyor controlling logic
-	{
-		// Receiving conveyor status
-		while(true) {
-			receive conveyorStatus;
-			String status = (String) #conveyorStatus;
-			System.out.println(status);
-			switch(status) {
-				case "idle":
-					System.out.println("received Idle");
-				case "busy":
-					System.out.println("received Busy");
-					
-				case "done":
-					System.out.println("received Done");
-				default:
-					System.out.println("afk");
-			}
-			System.out.println("orchestator is here");
-			pause;
-		}	
-	}
-	||
-	{
-		while(true) {
-			send conveyorReq(true);
-			System.out.println("sending?");
-			pause;
-		}
-	}
+
+
 
 }
