@@ -25,6 +25,8 @@ public class Main extends Application {
         
     }
     
+  
+    
     public static void updateSignalStatus(InputSignal sig, Boolean status, Object value) {
     	sig.setStatus(status);
     	sig.setValue(value);
