@@ -66,19 +66,19 @@
 			<oSignal Name="emptyE"           To="UI.emptyE"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" /> 
 			
 			<!-- Capper -->
-			<oSignal Name="bottleAtPos4" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperZAxisLowered" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperZAxisLifted" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperTurnHomePos" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperTurnFinalPos" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="cylClampedBottle" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperGrippedCap" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleAtPos4" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperZAxisLowered" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperZAxisLifted" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperTurnHomePos" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperTurnFinalPos" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="cylClampedBottle" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperGrippedCap" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 
-			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="gripperTurnRetract"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="gripperTurnExtend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="capGripperPos5Extend"   Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="cylClampBottleExtend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="gripperTurnRetract"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="gripperTurnExtend"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="capGripperPos5Extend"   Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="cylClampBottleExtend"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
 		</ClockDomain>
 	</SubSystem>
