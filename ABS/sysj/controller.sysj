@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 Controller(
 		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		input Boolean channel conveyorReq;
@@ -68,7 +69,7 @@ RotaryTable(
         
         // wait until it receives an OK from orchestrator
         if(request) {
-        	emit rotaryStatus("busy");
+        	send rotaryStatus("busy");
         	System.out.println("RECIEVED orchestrator task");
         	await(RTbottleAtPos1);
         	
@@ -78,10 +79,10 @@ RotaryTable(
                 sustain rotaryTableTrigger;
             }
             System.out.println("rotary - done");
-            emit rotaryStatus("done");
+            send rotaryStatus("done");
         }else {
         	System.out.println("rotary - idle");
-        	emit rotaryStatus("idle");
+        	send rotaryStatus("idle");
         }
         pause;
         System.out.println("out - next loop");
@@ -91,7 +92,7 @@ RotaryTable(
 
 LiquidFiller(
 		input Boolean channel fillerReq;
-		input int[] channel percentLiquid;
+		input ArrayList channel percentLiquid;
 		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled;
 		input Integer signal selectedCanister;
 		
@@ -115,8 +116,7 @@ LiquidFiller(
 				present(bottleAtPos2){
 					send fillerStatus("busy");
 					receive percentLiquid;
-	
-					int[] recPercentLiq = (int[])#percentLiquid; // [32,43,22,3]  += 100%				
+					ArrayList recPercentLiq = (ArrayList) #percentLiquid; // [32,43,22,3]  += 100%				
 					int canisterNum = 1;	// reset, select first canister.
 					
 					while(canisterNum<5) {
@@ -134,7 +134,7 @@ LiquidFiller(
 					
 						  
 						 //Send percentage
-						 emit receivedPercentage(recPercentLiq[canisterNum-1]);// send percentage want to befilled
+						 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
 						 
 						 //Receive Percentage filled, check signal
 						 abort(dosUnitFilled){ // close valve once filled
@@ -148,12 +148,13 @@ LiquidFiller(
 						 }
 						 System.out.println("Canister returned");
 					
-						 canisterNum+=1 // switch to the next one.
-						 pause;	 
-					}
+						 canisterNum+=1; // switch to the next one. 
+						 pause;
+					}	
 					send fillerStatus("done");
 			}
 		}
+		pause;
 	}
 }
 
@@ -170,7 +171,7 @@ Capper(
 		input signal gripperZAxisLifted;
 		input signal gripperTurnHomePos;
 		input signal gripperTurnFinalPos;
-		input signal cylClampedBottle;
+		input signal cylClampedBottle;//nani what
 		input signal gripperGrippedCap;
 		
 		//To Capper Plant
@@ -181,15 +182,15 @@ Capper(
 		output signal cylClampBottleExtend; //Clamps the bottle (absence of this signal will unclamp the bottle)
 		)
 
-		signal releaseCap, untwistGripper, raiseGripper, unclampBottle;
+		
 
 ->{
-	
+	signal releaseCap, untwistGripper, raiseGripper, unclampBottle; 
 	while(true) {
 		
 		receive capperReq; //Receive capper request.
 		boolean request = (boolean) #capperReq;
-		
+	
 		if (request) {
 			send capperStatus("busy"); //Tell Orchestrator that Capper is processing its request.
 			
@@ -207,19 +208,20 @@ Capper(
 				||
 				{
 					abort(raiseGripper) {
-						sustain cylPos5AxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
+						sustain cylPos5ZAxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
 					}
 				}
 				||
 				{
-					{await gripperZAxisLowered;} || {await gripperClampedBottle;}//Wait until gripper is lowered and bottle is clamped.
+					//Wait until gripper is lowered and bottle is clamped.
+					{await(gripperZAxisLowered);} || {await(cylClampedBottle);}
 					abort(releaseCap) {
 						sustain capGripperPos5Extend; //Grip the cap
 					}
 				}
 				||
 				{
-					await gripperGrippedCap; //Wait until cap is gripped
+					await(gripperGrippedCap); //Wait until cap is gripped
 					
 					abort (gripperTurnFinalPos) {
 						sustain gripperTurnExtend; // Twist the gripper
@@ -232,7 +234,7 @@ Capper(
 					
 					emit raiseGripper; //Raise gripper
 					emit unclampBottle; //Unclamp bottle
-				}
+				} 
 			}
 		}
 		send capperStatus("done"); //Tell Orchestrator that the capper has finished.

@@ -1,20 +1,29 @@
+import java.util.ArrayList;
 Orchestrator(
 		input String channel conveyorStatus, capperStatus, capLoaderStatus, fillerStatus, rotaryStatus;
 		output Boolean channel conveyorReq, allOperationsFinished, fillerReq, capperReq, capLoaderReq;
-//		output int[] signal percentLiquid;
 		input Order channel order;
 		output Order channel doneOrder;
+		
+		output ArrayList channel percentLiquid;
 		
 		)
 ->{
 	// TODO: Temp delete later
-	int[] liquidPercent = new int[]{10, 10, 20, 60};
-	int quantity = 5;
+	
+//	int quantity = 5;
+//	int bottlePlaced = 0;
 	signal getNextBottle;
 	// final
-	int bottlePlaced = 0;
 	{// Conveyor Orchestator logic
 		// Assumption - only one order at a time.
+		int quantity = 5;
+		int bottlePlaced = 0; 
+		ArrayList liquidPercent = new ArrayList();
+		liquidPercent.add(10);
+		liquidPercent.add(10);
+		liquidPercent.add(20);
+		liquidPercent.add(60);
 		while(true) {
 			// insert present(order) here
 			bottlePlaced = quantity;
@@ -22,7 +31,7 @@ Orchestrator(
 				System.out.println("sending conveyor req?");
 				send conveyorReq(true);
 				bottlePlaced--;
-				
+				System.out.println(liquidPercent.get(3));
 				await(getNextBottle);
 				
 				pause;
@@ -59,7 +68,7 @@ Orchestrator(
 			receive capLoaderStatus;
 			receive capperStatus;
 			
-			String coveyStat = #conveyorStatus;
+			String conveyStat = #conveyorStatus;
 			String fillerStat = #fillerStatus;
 			String screwerStat = #capLoaderStatus;
 			String loaderStat = #capperStatus;

@@ -26,9 +26,6 @@
 			<iSignal Name="selectCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="receivedPercentage" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
-			
-
-			<oSignal Name="receivedPercentage" To="LiquidFillerCD.receivedPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="dosUnitEvac" To="LiquidFillerCD.dosUnitEvac" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="dosUnitFilled" To="LiquidFillerCD.dosUnitFilled" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="selectedCanister" To="LiquidFillerCD.selectedCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
@@ -43,7 +40,6 @@
 			<oSignal Name="capOnBottleAtPos1" To="RotaryTableCD.capOnBottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="bottleAtPos2" To="LiquidFillerCD.bottleAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="bottleAtPos3" To="RotaryTableCD.bottleAtPos3" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
-			<oSignal Name="bottleAtPos4" To="RotaryTableCD.bottleAtPos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="moveToPos5" To="RotaryTableCD.moveToPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="moveToPos4" To="RotaryTableCD.moveToPos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="moveToPos3" To="RotaryTableCD.moveToPos3" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
@@ -78,7 +74,7 @@
 			<oSignal Name="cylClampedBottle" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="gripperGrippedCap" To="CapperCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 
-			<iSignal Name="cycPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="gripperTurnRetract"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="gripperTurnExtend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="capGripperPos5Extend"   Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />

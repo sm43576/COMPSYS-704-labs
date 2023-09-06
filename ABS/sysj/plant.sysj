@@ -15,10 +15,10 @@ Plant(
 		///////////////////////////////////////////////////////////////////
 		
 		// Filler
-		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend ; //to plant
-		input Integer selectCanister,receivedPercentage;
+		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend; //to plant
+		input Integer signal selectCanister,receivedPercentage;
 		output signal dosUnitEvac;  // from plant
-		output Integer signal selectedCanister,dosUnitFilled,receivedPercentage; // from plant
+		output Integer signal selectedCanister,dosUnitFilled; // from PLANT
 		
 		//input
 		//output
@@ -79,14 +79,20 @@ Plant(
 		// LOGIC HERE
 		while(true){
 			present(motConveyorOnOff){
-				present(motorPos1On){ // motor is on and move bottle at pos 1
-					sustain bottleAtPos1;
+				{
+					present(motorPos1On){ // motor is on and move bottle at pos 1
+						sustain bottleAtPos1;
+					}
 				}
 				||
-				present(motorPos5On){ // motor is on and remove bottle at pos 5
-					sustain bottleLeftPos5;
+				{
+					present(motorPos5On){ // motor is on and remove bottle at pos 5
+				
+						sustain bottleLeftPos5;
+					}
 				}
 			}
+			pause;
 		}
 	}		
 		
@@ -109,9 +115,9 @@ Plant(
 		// LOGIC HERE
 		while(true){
 			{//Selected canister
-				await(selectCanister)
+				await(selectCanister); 
 				int canister = #selectCanister;
-				emit selectedCanister(Canister)
+				emit selectedCanister(canister);
 					
 			}
 			
@@ -239,7 +245,7 @@ Plant(
 	// Capper
 		{
 			while(true) {
-				await moveToPos4;//bottle is in position 4. Need to inform controller.
+				await(moveToPos4);//bottle is in position 4. Need to inform controller. 
 				abort (moveToPos5) {
 					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
 				}
@@ -250,10 +256,10 @@ Plant(
 	//Cap Screwer - Move Gripper
 		{
 			while(true) {
-				abort(cylPos5ZaxisExtend) {
+				abort(cylPos5ZAxisExtend) {
 					sustain gripperZAxisLifted; //If cylPos5ZaxisExtend is absent, sustain lifted signal.
 				}
-				abort (!cylPos5ZaxisExtend) {
+				abort (!cylPos5ZAxisExtend) {
 					sustain gripperZAxisLowered; //If cylPos5ZaxisExtend is present, sustain lowered signal.
 				}
 				pause;
@@ -263,7 +269,7 @@ Plant(
 	//Cap Screwer - Gripper
 		{
 			while(true) {
-				await capGripperPos5Extend;
+				await(capGripperPos5Extend);
 				abort (!capGripperPos5Extend) {
 					sustain gripperGrippedCap; 
 				}
@@ -291,7 +297,7 @@ Plant(
 	//Cap Screwer - Clamps
 		{
 			while(true) {
-				await cylClampBottleExtend;
+				await(cylClampBottleExtend);
 				abort (!cylClampBottleExtend) {
 					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
 				}
@@ -354,11 +360,11 @@ Plant(
 		}
 	}
 	||
-	{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}}pause;}
+	{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}pause;}}
 	||
-	{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}}pause;}
+	{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}pause;}}
 	||
-	{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}}pause;}
+	{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
 
 /////////////////////////////////////////////////////////////////////
 	

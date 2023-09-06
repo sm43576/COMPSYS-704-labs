@@ -10,9 +10,9 @@
 			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
 			
 			<!-- Filler Channels-->
-			<iChannel Name="fillerStatus" From="FillerCD.fillerStatus" />
-			<oChannel Name="fillerReq" To="FillerCD.fillerReq" />
-			<oChannel Name="percentLiquid" To="FillerCD.percentLiquid"/>
+			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
+			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />
+			<oChannel Name="percentLiquid" To="LiquidFillerCD.percentLiquid"/>
 			
 			<!-- Capper Channels-->
 			<iChannel Name="capperStatus" From="CapperCD.capperStatus" />
@@ -105,7 +105,7 @@
 			<iSignal Name="cylClampedBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="gripperGrippedCap" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 
-			<oSignal Name="cycPos5ZAxisExtend" To="PlantCD.cycPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="cylPos5ZAxisExtend" To="PlantCD.cycPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="gripperTurnRetract"  To="PlantCD.gripperTurnRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="gripperTurnExtend" To="PlantCD.gripperTurnExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="capGripperPos5Extend"  To="PlantCD.capGripperPos5Extend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
