@@ -21,17 +21,23 @@
 				
 		
 		<ClockDomain Name="LiquidFillerCD" Class="LiquidFiller">		
+			<iChannel Name="fillerReq" From="OrchestratorCD.fillerReq" />
+			<iChannel Name="percentLiquid" From="OrchestratorCD.percentLiquid" />
+			<oChannel Name="fillerStatus" To="OrchestratorCD.fillerStatus" />
+						
+						
 			<iSignal Name="bottleAtPos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="fillerReq" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="selectCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="percentLiquid" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="dosUnitEvac" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="dosUnitFilled" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="currentlySelectedCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="selectedCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
 			<oSignal Name="valveInjectorOnOff" To="PlantCD.valveInjectorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveInletOnOff" To="PlantCD.valveInletOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="dosUnitValveRetract" To="PlantCD.dosUnitValveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="dosUnitValveExtend" To="PlantCD.dosUnitValveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="selectCanister" To="PlantCD.selectCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="receivedPercentage" To="PlantCD.receivedPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
 		</ClockDomain>
 		
 		<ClockDomain Name="RotaryTableCD" Class="RotaryTable">

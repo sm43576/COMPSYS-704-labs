@@ -11,8 +11,8 @@
 			<oSignal Name="bottleAtPos5E" To="UI.bottleAtPos5E" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
 			<oSignal Name="motConveyorOnOffE" To="UI.motConveyorOnOffE" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
 			
-			<iSignal Name="enable"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="refill" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
 			
 			<!-- Filler-->
@@ -20,17 +20,16 @@
 			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="dosUnitValveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="dosUnitValveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selectCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="receivedPercentage" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			
+			
 
-			<oSignal Name="fillerReq" To="LiquidFillerCD.fillerReq" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
-			<oSignal Name="selectCanister" To="LiquidFillerCD.selectCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
-			<oSignal Name="percentLiquid" To="LiquidFillerCD.percentLiquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
-			<oSignal Name="bottleAtPos2" To="LiquidFillerCD.bottleAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
+			<oSignal Name="receivedPercentage" To="LiquidFillerCD.receivedPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="dosUnitEvac" To="LiquidFillerCD.dosUnitEvac" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="dosUnitFilled" To="LiquidFillerCD.dosUnitFilled" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
-			<oSignal Name="currentlySelectedCanister" To="LiquidFillerCD.currentlySelectedCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="selectedCanister" To="LiquidFillerCD.selectedCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 
-			
-			
 			
 			<!-- UI-->	
 			<iSignal Name="removeBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001"/>
@@ -39,6 +38,7 @@
 			<oSignal Name="RTbottleAtPos1" To="RotaryTableCD.RTbottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="tableAlignedWithSensor" To="RotaryTableCD.tableAlignedWithSensor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="capOnBottleAtPos1" To="RotaryTableCD.capOnBottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
+			<oSignal Name="bottleAtPos2" To="LiquidFillerCD.bottleAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="bottleAtPos3" To="RotaryTableCD.bottleAtPos3" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="bottleAtPos4" To="RotaryTableCD.bottleAtPos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="moveToPos5" To="RotaryTableCD.moveToPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
