@@ -65,13 +65,13 @@ Orchestrator(
 	{ // Rotary Orchestrator logic
 		while(true) {
 			receive conveyorStatus; 
-			System.out.println("Received conveyor status");
-			receive fillerStatus;
+			System.out.println("Received conveyor status"); // gets busy signal from conveyor
+			receive fillerStatus; // BLOCKED - waiting for filler status but filler can't send status until a request is received.
 			System.out.println("Received filler status");
 
-			receive capLoaderStatus;
+			receive capLoaderStatus; // BLOCKED - waiting for loader status but loader can't send status until a request is received.
 			System.out.println("Received caploader status");
-			receive capperStatus;
+			receive capperStatus;// BLOCKED - waiting for capper status but capper can't send status until a request is received.
 			System.out.println("Received capper status");
 			System.out.println("All is received");
 			

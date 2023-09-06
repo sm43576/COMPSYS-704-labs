@@ -104,7 +104,7 @@ LiquidFiller(
 ->{
 	
 	while(true) {
-		receive fillerReq;
+		receive fillerReq; // BLOCKED - Hangs here coz there is no filler request at the beginning
 		Boolean request = #fillerReq;// polling the system if its busy or not. 
 		
 		if(request) {
@@ -155,6 +155,8 @@ LiquidFiller(
 					}	
 					send fillerStatus("done");
 			}
+		}else {
+			send fillerStatus("idle");
 		}
 		pause;
 	}
@@ -190,7 +192,7 @@ Capper(
 	signal releaseCap, untwistGripper, raiseGripper, unclampBottle; 
 	while(true) {
 		
-		receive capperReq; //Receive capper request.
+		receive capperReq; //Receive capper request. // BLOCKED - Hangs here coz there is no capper request at the beginning
 		boolean request = (boolean) #capperReq;
 	
 		if (request) {
@@ -238,8 +240,10 @@ Capper(
 					emit unclampBottle; //Unclamp bottle
 				} 
 			}
+			send capperStatus("done"); //Tell Orchestrator that the capper has finished.
+		}else {
+			send capperStatus("idle");
 		}
-		send capperStatus("done"); //Tell Orchestrator that the capper has finished.
 		pause;
 	}
 }
@@ -256,7 +260,7 @@ Caploader(
 		)
 ->{
 	while(true) {
-			receive capLoaderReq;
+			receive capLoaderReq; // BLOCKED - Hangs here coz there is no loader request at the beginning
 			Boolean request = #capLoaderReq;
 			if(request) {
 				System.out.println("caploader doing work..");
