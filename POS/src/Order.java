@@ -7,6 +7,7 @@ public class Order {
 	private String liquidSpecDisplay;
 	private HashMap<String,Integer> liquidSpecs;
 	private String orderStatus;
+	private int[] liquidPercents;
 	
 	 StringBuilder liquidSpecBuilder = new StringBuilder();
 	
@@ -17,13 +18,14 @@ public class Order {
 		this.liquidSpecs = new HashMap<>();
 		this.orderStatus = status;
 		
+		this.liquidPercents = new int[4];
 		// Create hashmap of liquid specs, where key = "Liquid x" and value = percentage of liquid x
 		String liquidType;
         for(int i=0; i<liquidPercent.size(); i++){
             liquidType = String.format("Liquid %s", i+1);
 		    liquidSpecs.put(liquidType, liquidPercent.get(i));
 		    liquidSpecBuilder.append(liquidType).append(": ").append(liquidPercent.get(i)).append(", ");
-		    
+		    this.liquidPercents[i] = (int)liquidPercent.get(i);
         }
         this.liquidSpecDisplay = liquidSpecBuilder.toString().replaceAll(", $", "");
         System.out.println(this.liquidSpecDisplay);
@@ -45,11 +47,8 @@ public class Order {
 		return percentage;
 	}
 	
-	public int getLiquidPercentageArray(String liquid) {
-		int[] percentage;
-		for
-		System.out.println(percentage);
-		return percentage;
+	public int[] getLiquidPercentageArray() {
+		return this.liquidPercents;
 	}
 
 }

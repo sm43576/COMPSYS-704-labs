@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -197,6 +198,9 @@ public class NewOrderController {
     	if (homeController != null) {
             homeController.updateOrderHistoryTable();
         }
+    	System.out.println("eh??");
+    	int[] array = order.getLiquidPercentageArray();
+    	System.out.println(Arrays.toString(array));
     	// sendOrderToOrchestrator(order);
     	Stage stage = (Stage) submit_btn.getScene().getWindow();
    	 	stage.close();
@@ -206,6 +210,7 @@ public class NewOrderController {
     
     public void sendOrderToOrchestrator(Order order) {
     	//TODO sockets here
+    	
     }
 
     
