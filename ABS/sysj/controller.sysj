@@ -23,8 +23,9 @@ Controller(
 			System.out.println("conveyor busy");
 
 			// abort when bottle is at position 1, otherwise turn on motor
-			abort(bottleAtPos1) {
-				present(!bottleAtPos1){ //when bottle is not at position 1
+			present(!bottleAtPos1){
+				System.out.println("ono the bottle isn't at pos 1 what will we do"); 
+				abort(bottleAtPos1) {
 					System.out.println("Motor is on"); 
 					{sustain motConveyorOnOff;} || {sustain motorPos1On;}
 	
