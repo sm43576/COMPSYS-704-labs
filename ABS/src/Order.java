@@ -45,11 +45,5 @@ public class Order {
 		return percentage;
 	}
 	
-	public int getLiquidPercentageArray(String liquid) {
-		int[] percentage;
-		for
-		System.out.println(percentage);
-		return percentage;
-	}
 
 }

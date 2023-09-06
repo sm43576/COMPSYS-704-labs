@@ -2,6 +2,8 @@ Orchestrator(
 		input String channel conveyorStatus;
 		input Boolean channel rotaryStatus;
 		output Boolean channel conveyorReq, allOperationsFinished;
+		input Order channel order;
+		output Order channel doneOrder;
 		)
 ->{
 	//receive bottle
@@ -21,6 +23,9 @@ Orchestrator(
 	 * 
 	 * 
 	 * present(x)   //do order.
+	 * 
+	 * get percent liqiud in array form
+	 * get order quantity
 		 * 
 		 * || ORder system / bottle placement.
 		 *
@@ -36,13 +41,16 @@ Orchestrator(
 			 * 			// wait for rotatary status to be done so we can add a new bottle
 			 * 			 await(rotaryStatus == "done")
 			 * 
-			 * 		}
+			 * 		}else{
+			 * 		send doneOrder(order)
+			 * 		
+			 * }
 		 * ----------------------------------------------------------------------------------------------
 		 *
 		 * ||		Filler
 		 * {
 			 * while(true){
-			 * // wait for rotatary status to be done and a bottle is at position 2 so we can start filling process
+			 * // wait for rotatary status to be done // let controller figure out if it needs to do stuff instead
 			 * 	await(rotaryStatus == "done" and bottle is at pos 2) <-- need another signal from rotary controller to say what components need to be used?
 			 * 	then:
 			 *		tell filler controller to do its work and send it details about the liquid specifications
@@ -55,7 +63,7 @@ Orchestrator(
 		 * ||		caploader
 		 * {
 			 * while(true){
-			 * // wait for rotatary status to be done and a bottle is at position 3 so we can start cap loading process
+			 * // wait for rotatary status to be done // let controller figure out if it needs to do it (i.e: checking if bottle at pos 3)
 			 * 	await(rotaryStatus == "done" and bottle is at pos 3) <-- need another signal from rotary controller to say what components need to be used?
 			 * 	then:
 			 *		tell cap loader controller to do its work

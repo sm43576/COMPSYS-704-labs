@@ -162,6 +162,7 @@ Plant(
 					
 					await(enable);
 					pause;
+					// controller || plant
 					{emit selectCanister(2);} || {emit currentlySelectedCanister(2);}
 					System.out.println("Canister selection");
 					
