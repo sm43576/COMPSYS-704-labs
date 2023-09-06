@@ -4,7 +4,10 @@
 			
 			<!-- Conveyor-->
 			<iSignal Name="motConveyorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="motorPos1On" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="motorPos5On" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="bottleAtPos1" To="ControllerCD.bottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="bottleLeftPos5" To="ControllerCD.bottleLeftPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="bottleAtPos5" To="ControllerCD.bottleAtPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			
 			<oSignal Name="bottleAtPos1E" To="UI.bottleAtPos1E" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="20000"/>
