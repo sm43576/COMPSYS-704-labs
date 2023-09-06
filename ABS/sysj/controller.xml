@@ -8,6 +8,12 @@
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
 			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
+			
+			<!-- Filler Channels-->
+			<iChannel Name="fillerStatus" To="FillerCD.fillerStatus" />
+			<oChannel Name="fillerReq" From="FillerCD.fillerReq" />
+			<oChannel Name="percentLiquid" From="FillerCD.percentLiquid"/>
+						
 		</ClockDomain>
 		
 		<ClockDomain Name="ControllerCD" Class="Controller">
