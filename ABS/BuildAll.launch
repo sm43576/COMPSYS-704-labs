@@ -12,6 +12,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.systemj.compiler.JavaPrettyPrinter"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="ABS"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-d src --nojavac --silence sysj/*.sysj"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-d src --nojavac --silence sysj/orchestrator.sysj"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ABS"/>
 </launchConfiguration>

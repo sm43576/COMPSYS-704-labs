@@ -1,17 +1,18 @@
 Orchestrator(
-		input String channel conveyorStatus;
-		input Boolean channel rotaryStatus;
-		output Boolean channel conveyorReq, allOperationsFinished;
+		input String channel conveyorStatus, capperStatus, capLoaderStatus, fillerStatus, rotaryStatus;
+		output Boolean channel conveyorReq, allOperationsFinished, fillerReq, capperReq, capLoaderReq;
+//		output int[] signal percentLiquid;
 		input Order channel order;
 		output Order channel doneOrder;
+		
 		)
 ->{
 	// TODO: Temp delete later
 	int[] liquidPercent = new int[]{10, 10, 20, 60};
 	int quantity = 5;
-	
+	signal getNextBottle;
 	// final
-	int bottlePlaced;
+	int bottlePlaced = 0;
 	{// Conveyor Orchestator logic
 		// Assumption - only one order at a time.
 		while(true) {
@@ -22,16 +23,7 @@ Orchestrator(
 				send conveyorReq(true);
 				bottlePlaced--;
 				
-				// keep looking at the status until done is found
-				while(true) {
-					receive conveyorStatus;
-					String conveyStat = #conveyorStatus;
-					if(conveyStat == "done") {
-						System.out.println("conveyor done - yeeting loop");
-						break;
-					}
-					pause;
-				}
+				await(getNextBottle);
 				
 				pause;
 			}
@@ -43,7 +35,7 @@ Orchestrator(
 		}
 	}
 	||
-	{// Filler Orchestrator Logic
+	{// Requesting work to filler, capper and caploader
 		while(true) {
 			receive rotaryStatus;
 			String rotaryStat = #rotaryStatus;
@@ -51,35 +43,40 @@ Orchestrator(
 			// wait for rotary status to be done
 			if(rotaryStat == "done") {
 				send fillerReq(true);
+				send capLoaderReq(true);
+				send capperReq(true);
+				emit getNextBottle;
 			}
+			pause;
 		}
 		
 	}
-	
-		
-		 /* 
-		 * ||		caploader
-		 * {
-			 * while(true){
-			 * // wait for rotatary status to be done // let controller figure out if it needs to do it (i.e: checking if bottle at pos 3)
-			 * 	await(rotaryStatus == "done" and bottle is at pos 3) <-- need another signal from rotary controller to say what components need to be used?
-			 * 	then:
-			 *		tell cap loader controller to do its work
-			 *		send caploaderReq
-			 *}
-		 *}
-		 * 
-		 * ||		Capper
-		 * {
-			 * while(true){
-			 * // wait for rotatary status to be done and a bottle is at position 4 so we can start cap loading process
-			 * 	await(rotaryStatus == "done" and bottle is at pos 4) <-- need another signal from rotary controller to say what components need to be used?
-			 * 	then:
-			 *		tell cap loader controller to do its work
-			 *		send capScrewerReq
-			 *	}	
-		 *}	 * 
-		 * || //Component Status handling
+	||
+	{ // Rotary Orchestrator logic
+		while(true) {
+			receive conveyorStatus; 
+			receive fillerStatus;
+			receive capLoaderStatus;
+			receive capperStatus;
+			
+			String coveyStat = #conveyorStatus;
+			String fillerStat = #fillerStatus;
+			String screwerStat = #capLoaderStatus;
+			String loaderStat = #capperStatus;
+			
+			// wait until everything else is done or idle
+			if((conveyStat == "done" || conveyStat == "idle") && 
+				(fillerStat == "done" || fillerStat == "idle") &&  
+				(screwerStat == "done" || screwerStat == "idle") && 
+				(loaderStat == "done" || loaderStat == "idle")) {
+				
+				send allOperationsFinished(true);
+			}
+			pause;
+		}
+	}
+}
+		 /* || //Component Status handling
 		 * 		{// Receiving status from componenets
 					while(true) {
 						receive conveyorStatus, fillerStatus, capLoaderStatus, capScrewerStatus;
@@ -128,4 +125,3 @@ Orchestrator(
 
 
 
-}
