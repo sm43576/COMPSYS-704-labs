@@ -7,8 +7,8 @@ Plant(
 		input signal enable,refill, removeBottle; //TODO: need remove bottle in GUI
 		
 		// Conveyor/////////////////////////////////////////////////////// 
-		input signal motConveyorOnOff;
-		output signal bottleAtPos1, bottleAtPos5, RTbottleAtPos1;
+		input signal motConveyorOnOff, motorPos1On, motorPos5On;
+		output signal bottleAtPos1, bottleAtPos5, RTbottleAtPos1, bottleLeftPos5;
 
 		
 		output signal bottleAtPos1E, bottleAtPos5E, motConveyorOnOffE;
@@ -72,59 +72,24 @@ Plant(
 	signal capDec;
 	int signal capPos;
 	emit capPos(0);
-	
+	signal disablePos5;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Conveyor
 	{
 		// LOGIC HERE
 		while(true){
-			await(enable);
-			//idle 
-//			abort(!enable){// When enabled, the bottle leaves pos5. // TODO: might not need
-//                //The bottle is at pos2
-//			//	System.out.println("sustaining bottle at pos 5");
-//				sustain bottleAtPos5;
-//				pause;
-//			}// once it leaves the abort it changes to false 						
-
-			//After bottle leaves pos5
-		
-			await(enable);
-			pause;
-
-			// in the report talk about condition where barrier for each order. 
-			
-//			abort(motConveyorOnOff){
-//				
-//				present(MotorPos1On){ // a variable that keeps track of the conveyor
-				//sustain bottleAtpos1
-//			}
-//				
-			
-//				present(MotorPos5On){
-//				// bottle has left
-//				// nothing.
-//				// sustain bottleLeftPos5
-//			}
-//		}
-//				
-			abort(motConveyorOnOff){//
-			//		System.out.println("sustaining bottle at pos 1");
+			present(motConveyorOnOff){
+				present(motorPos1On){ // motor is on and move bottle at pos 1
 					sustain bottleAtPos1;
+				}
+				||
+				present(motorPos5On){ // motor is on and remove bottle at pos 5
+					sustain bottleLeftPos5;
+				}
 			}
-			//turns arrow off
-			await(!enable);
-			//its for the ui, usually it should immediately go low but we have the enable to frame it.
-			abort(enable){
-				sustain bottleAtPos1;
-			}
-			//
-
-			await(enable);
-			//System.out.println("im outtt");
-			pause;
 		}
-	} 
+	}		
+		
 	||
 	{
 		// To tell rotary table that bottle is at position 1 since you can't have a signal going into two clock domains
@@ -382,7 +347,17 @@ Plant(
 			}
 		}
 		||
-		{while(true) {present(moveToPos5 && enable){System.out.println("bottle is now at pos 5"); emit bottleAtPos5;} pause;}}
+		{
+			while(true) {
+				abort(bottleLeftPos5){ // stop emitting bottleAtPos5 when bottle has left pos 5
+					present(moveToPos5 && enable){
+						System.out.println("bottle is now at pos 5"); 
+						sustain bottleAtPos5;
+					} 
+				}
+				pause;
+			}
+		}
 		||
 		{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); emit bottleAtPos4;}}pause;}
 		||

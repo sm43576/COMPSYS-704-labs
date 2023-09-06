@@ -1,7 +1,7 @@
 Controller(
-		input signal bottleAtPos1, bottleAtPos5;
+		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		input Boolean channel conveyorReq;
-		output signal motConveyorOnOff;
+		output signal motConveyorOnOff, motorPos1On, motorPos5On;
 		output String channel conveyorStatus;
 		)
 ->{
@@ -20,33 +20,31 @@ Controller(
 			send conveyorStatus("busy");
 		
 			System.out.println("conveyor busy");
-			//await(bottleAtPos5);
-		//	System.out.println("bottle at pos 5 hasn't left yet");
-			pause;
-	
-			//bottle at pos1
-			abort(bottleAtPos1 && !bottleAtPos5) {//cant abort before it let the turntable rotate with bottle at pos5.
+
+			// abort when bottle is at position 1, otherwise turn on motor
+			abort(bottleAtPos1) {
 				present(!bottleAtPos1){ //when bottle is not at position 1
 					System.out.println("Motor is on"); 
-				//	{sustain motConveyorOnOff} || {sustain MotorPos1On};    REPLACE
-					sustain motConveyorOnOff && MotorPos1On;  // keep motor on
+					{sustain motConveyorOnOff;} || {sustain motorPos1On;}
 	
 				}
 			}
-		
+			send conveyorStatus("done");
 			System.out.println("Motor is off");
 			send conveyorStatus("done");
 			System.out.println("conveyor done");
 			pause;
-		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1. 
-			// if ( statement)
-
-			//bottle hasnt been placed on the conveyor but if there is bottleatpos5
-			//abort(!bottleAtpos1 && bottleLeftPos5)
-//			{
-//				//{sustain motConveyorOnOff} || {sustain MotorPos5On};    REPLACE
-//			}
-//			
+		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1.
+			
+			// If there is a bottle at postion 5, turn on motor again-.-
+			present(bottleAtPos5){
+				abort(bottleLeftPos5){ // run until bottle has left position5
+					{sustain motConveyorOnOff;} || {sustain motorPos5On;}
+					|| {send conveyorStatus("busy");}
+				}
+				send conveyorStatus("done");
+			}
+			
 			//, else do nothing.
 			System.out.println("conveyor idling");
 			send conveyorStatus("idle");
@@ -75,17 +73,11 @@ RotaryTable(
 //        await(RTbottleAtPos1);
 //        System.out.println("A bottle is at position 1");
 //        pause;
-        // TODO:DELETE
-        // wait until there is no cap on the bottle at position 1 (i.e.) bottle is removed
-        await(!capOnBottleAtPos1);
-        System.out.println("A cap bottle is NOT on the bottle at pos 1");
-        pause;
-        
         
         // when the rotoray table is aligned with sensor stop sustaining the trigger
         abort(tableAlignedWithSensor){
             System.out.println("emitting rotary trigger");
-//            emit rotaryTableTrigger;
+            sustain rotaryTableTrigger;
         }
 //        emit rotaryStatus("done");
         pause;
