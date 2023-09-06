@@ -82,14 +82,18 @@ Plant(
 				{
 					present(motorPos1On){ // motor is on and move bottle at pos 1
 						System.out.println("moving bottle to 1");
-						sustain bottleAtPos1;
+						abort(!motorPos1On && !motConveyorOnOff) {
+							sustain bottleAtPos1;
+						}
 					}
 				}
 				||
 				{
 					present(motorPos5On){ // motor is on and remove bottle at pos 5
 						System.out.println("moving bottle to leave 5");
-						sustain bottleLeftPos5;
+						abort(!motorPos5On && !motConveyorOnOff) {
+							sustain bottleAtPos5;
+						}
 					}
 				}
 			}

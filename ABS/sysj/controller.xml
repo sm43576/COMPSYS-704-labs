@@ -2,8 +2,8 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="OrchestratorCD" Class="Orchestrator">
 			<!-- Conveyor Channels -->
-			<iChannel Name="conveyorStatus" From="ControllerCD.conveyorStatus" />
-			<oChannel Name="conveyorReq" To="ControllerCD.conveyorReq" />
+			<iChannel Name="conveyorStatus" From="ConveyorCD.conveyorStatus" />
+			<oChannel Name="conveyorReq" To="ConveyorCD.conveyorReq" />
 			
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
@@ -25,8 +25,8 @@
 						
 		</ClockDomain>
 		
-		<ClockDomain Name="ControllerCD" Class="Controller">
-			<iSignal Name="bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+		<ClockDomain Name="ConveyorCD" Class="Conveyor">
+			<iSignal Name="bottleAtPos1" From="PlantCD.bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="bottleLeftPos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="bottleAtPos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="motConveyorOnOff" To="PlantCD.motConveyorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />

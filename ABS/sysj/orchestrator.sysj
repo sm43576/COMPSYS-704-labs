@@ -65,9 +65,15 @@ Orchestrator(
 	{ // Rotary Orchestrator logic
 		while(true) {
 			receive conveyorStatus; 
+			System.out.println("Received conveyor status");
 			receive fillerStatus;
+			System.out.println("Received filler status");
+
 			receive capLoaderStatus;
+			System.out.println("Received caploader status");
 			receive capperStatus;
+			System.out.println("Received capper status");
+			System.out.println("All is received");
 			
 			String conveyStat = #conveyorStatus;
 			String fillerStat = #fillerStatus;

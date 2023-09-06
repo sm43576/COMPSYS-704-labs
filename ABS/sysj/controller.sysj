@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-Controller(
+Conveyor(
 		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		input Boolean channel conveyorReq;
 		output signal motConveyorOnOff, motorPos1On, motorPos5On;
@@ -30,7 +30,6 @@ Controller(
 	
 				}
 			}
-			send conveyorStatus("done");
 			System.out.println("Motor is off");
 			send conveyorStatus("done");
 			System.out.println("conveyor done");
