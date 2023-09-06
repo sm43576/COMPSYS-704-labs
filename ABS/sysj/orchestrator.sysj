@@ -6,60 +6,58 @@ Orchestrator(
 		output Order channel doneOrder;
 		)
 ->{
-	//receive bottle
-	//do action
-	//output bottle
+	// TODO: Temp delete later
+	int[] liquidPercent = new int[]{10, 10, 20, 60};
+	int quantity = 5;
 	
-	/*	POS
-	 * 		number of bottles feed into conveyor
-	 * bottlePlace = 0; amount of bottles placed on the conveyor
-	 * POSbottleamount    = amount of bottles requested by the POS
-	 * bottlePlace  	  = decrement value 
-	 * 
-	 * Assumption - only one order at a time.
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * present(x)   //do order.
-	 * 
-	 * get percent liqiud in array form
-	 * get order quantity
-		 * 
-		 * || ORder system / bottle placement.
-		 *
-		 * 		while true(){
-				 	place a bottle if it is not equal to the POS order quantity
-			 * 		if bottlePlace != POSorder  // we have one bottle in the system and 5 left
-			 * 			// Send a request to conveyor controller to move the bottle at pos 1
-			 * 			send conveyorReq(true);
-						System.out.println("sending?");
-			 * 			put bottle on conveyor, emit conveyorReq //simulates a bottle entering the conveyor system
-			 * `		bottlePlace -=1 //
-			 * 
-			 * 			// wait for rotatary status to be done so we can add a new bottle
-			 * 			 await(rotaryStatus == "done")
-			 * 
-			 * 		}else{
-			 * 		send doneOrder(order)
-			 * 		
-			 * }
-		 * ----------------------------------------------------------------------------------------------
-		 *
-		 * ||		Filler
-		 * {
-			 * while(true){
-			 * // wait for rotatary status to be done // let controller figure out if it needs to do stuff instead
-			 * 	await(rotaryStatus == "done" and bottle is at pos 2) <-- need another signal from rotary controller to say what components need to be used?
-			 * 	then:
-			 *		tell filler controller to do its work and send it details about the liquid specifications
-			 *		send FillerReq
-			 *		send liquidSpec
-			 *}
-		 *}
-		 * 
-		 * 
+	// final
+	int bottlePlaced;
+	{// Conveyor Orchestator logic
+		// Assumption - only one order at a time.
+		while(true) {
+			// insert present(order) here
+			bottlePlaced = quantity;
+			while(bottlePlaced <= 0) {
+				System.out.println("sending conveyor req?");
+				send conveyorReq(true);
+				bottlePlaced--;
+				
+				// keep looking at the status until done is found
+				while(true) {
+					receive conveyorStatus;
+					String conveyStat = #conveyorStatus;
+					if(conveyStat == "done") {
+						System.out.println("conveyor done - yeeting loop");
+						break;
+					}
+					pause;
+				}
+				
+				pause;
+			}
+			
+			System.out.println("Done order");
+			//TODO: send doneOrder signal
+//			send doneOrder(order)
+			pause;
+		}
+	}
+	||
+	{// Filler Orchestrator Logic
+		while(true) {
+			receive rotaryStatus;
+			String rotaryStat = #rotaryStatus;
+			
+			// wait for rotary status to be done
+			if(rotaryStat == "done") {
+				send fillerReq(true);
+			}
+		}
+		
+	}
+	
+		
+		 /* 
 		 * ||		caploader
 		 * {
 			 * while(true){

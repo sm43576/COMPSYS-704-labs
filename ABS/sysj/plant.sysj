@@ -95,8 +95,6 @@ Plant(
 		// To tell rotary table that bottle is at position 1 since you can't have a signal going into two clock domains
 		while(true) {
 			present(bottleAtPos1 && enable){
-				await(!enable);
-				await(enable);
 				emit RTbottleAtPos1; 
 			}
 //			System.out.println("no longer");
@@ -109,49 +107,49 @@ Plant(
 	//Filler /////////////////////////////////////////////////////////////////////
 	{
 		// LOGIC HERE
-				while(true){
-				{//Selected canister
-					await(selectCanister)
-					int canister = #selectCanister;
-					emit selectedCanister(Canister)
-						
-				}
-				
-				||
-				
-				{//Fill Valve
-					await(receivedPercentage);
+		while(true){
+			{//Selected canister
+				await(selectCanister)
+				int canister = #selectCanister;
+				emit selectedCanister(Canister)
 					
-					present(valveInletOnOff){
-						emit dosUnitFilled(receivedPercentage);
-						pause;
+			}
+			
+			||
+			
+			{//Fill Valve
+				await(receivedPercentage);
+				
+				present(valveInletOnOff){
+					emit dosUnitFilled(receivedPercentage);
+					pause;
+				}
+			}
+				
+			||
+			
+			{// Retract/extend Arm
+					abort(dosUnitValveRetract){//  when actuator brings to top
+						sustain dosUnitEvac; //emit canister at bottom
 					}
-				}
+					System.out.println("Canister at top");
 					
-				||
-				
-				{// Retract/extend Arm
-						abort(dosUnitValveRetract){//  when actuator brings to top
-							sustain dosUnitEvac; //emit canister at bottom
-						}
-						System.out.println("Canister at top");
-						
-						await(dosUnitValveExtend);// wait to be brought down to -
-						System.out.println("Canister at bottom");
-						pause;
-						
-					}
-
-					await(enable);
-					await(enable);
+					await(dosUnitValveExtend);// wait to be brought down to -
+					System.out.println("Canister at bottom");
+					pause;
 					
-					//emit two signals
 				}
+	
+				await(enable);
+				await(enable);
+			
+			//emit two signals
+		}
 
 	}
 	/////////////////////////////////////////////////////////////////
 
-//	||
+	||
 	
 //Cap Loader////////////////////////////////////////////	
 	{// Arm
@@ -302,69 +300,66 @@ Plant(
 		}
 	||	
 	//Rotary Table
-		{
-			while(true) {
-				present(rotaryTableTrigger && enable){
-					// Turn the table 60 degrees and move the bottles along by one somehow
-					//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
-					
-					await(!enable); 
-					// if there is a bottle at pos 4 move to pos 5
-					present(bottleAtPos4) {
-						System.out.println("moving bottle at pos 4 to pos 5");
-						emit moveToPos5;
-					}
-					await(enable);
-					// if there is a bottle at pos 3 move to pos 4
-					present(bottleAtPos3){
-						System.out.println("moving bottle at pos 3 to pos 4");
-						emit moveToPos4;
-					}
-					await(!enable); 
-					// if there is a obttle at pos 2 move to pos 3
-					
-					present(bottleAtPos2){
-						System.out.println("moving bottle at pos 2 to pos 3");
-						emit moveToPos3;
-					}
-					await(enable);
-					// if there is a bottle at pos 1 move to pos 2.
-					present(bottleAtPos1){
-						System.out.println("moving bottle at pos 1 to pos 2");
-						emit moveToPos2;
-					}
-					await(enable);
-					await(!enable);
-					// emit table aligned with sensor
-					System.out.println("Table has been aligned");
-					emit tableAlignedWithSensor;
-					pause;
-					
+	{
+		while(true) {
+			present(rotaryTableTrigger){
+				// Turn the table 60 degrees and move the bottles along by one somehow
+				//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
+				
+				
+				// if there is a bottle at pos 4 move to pos 5
+				present(bottleAtPos4) {
+					System.out.println("moving bottle at pos 4 to pos 5");
+					emit moveToPos5;
 				}
 				
+				// if there is a bottle at pos 3 move to pos 4
+				present(bottleAtPos3){
+					System.out.println("moving bottle at pos 3 to pos 4");
+					emit moveToPos4;
+				}
+				// if there is a obttle at pos 2 move to pos 3
+				
+				present(bottleAtPos2){
+					System.out.println("moving bottle at pos 2 to pos 3");
+					emit moveToPos3;
+				}
+				// if there is a bottle at pos 1 move to pos 2.
+				present(bottleAtPos1){
+					System.out.println("moving bottle at pos 1 to pos 2");
+					emit moveToPos2;
+				}
+
+				// emit table aligned with sensor
+				System.out.println("Table has been aligned");
+				emit tableAlignedWithSensor;
 				pause;
 				
 			}
+				
+			pause;
+				
 		}
-		||
-		{
-			while(true) {
-				abort(bottleLeftPos5){ // stop emitting bottleAtPos5 when bottle has left pos 5
-					present(moveToPos5 && enable){
-						System.out.println("bottle is now at pos 5"); 
-						sustain bottleAtPos5;
-					} 
-				}
-				pause;
+	}
+	||
+	{
+		while(true) {
+			abort(bottleLeftPos5){ // stop emitting bottleAtPos5 when bottle has left pos 5
+				present(moveToPos5 && enable){
+					System.out.println("bottle is now at pos 5"); 
+					sustain bottleAtPos5;
+				} 
 			}
+			pause;
 		}
-		||
-		{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); emit bottleAtPos4;}}pause;}
-		||
-		{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); emit bottleAtPos3;}}pause;}
-		||
-		{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); emit bottleAtPos2;}}pause;}
-	
+	}
+	||
+	{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}}pause;}
+	||
+	{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}}pause;}
+	||
+	{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}}pause;}
+
 /////////////////////////////////////////////////////////////////////
 	
 	

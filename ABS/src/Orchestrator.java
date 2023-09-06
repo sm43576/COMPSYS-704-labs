@@ -13,480 +13,26 @@ public class Orchestrator extends ClockDomain{
   private char [] suspended;
   public input_Channel conveyorStatus_in = new input_Channel();
   public input_Channel rotaryStatus_in = new input_Channel();
+  public input_Channel order_in = new input_Channel();
   public output_Channel conveyorReq_o = new output_Channel();
   public output_Channel allOperationsFinished_o = new output_Channel();
-  private String status_thread_2;//sysj\orchestrator.sysj line: 12, column: 4
-  private int S2413 = 1;
-  private int S2340 = 1;
-  private int S2292 = 1;
-  private int S2276 = 1;
-  private int S2271 = 1;
-  private int S2411 = 1;
-  private int S2363 = 1;
-  private int S2347 = 1;
-  private int S2342 = 1;
+  public output_Channel doneOrder_o = new output_Channel();
+  private int[] liquidPercent_thread_1;//sysj/orchestrator.sysj line: 10, column: 2
+  private int quantity_thread_1;//sysj/orchestrator.sysj line: 11, column: 2
+  private int bottlePlaced_thread_1;//sysj/orchestrator.sysj line: 14, column: 2
+  private String conveyStat_thread_1;//sysj/orchestrator.sysj line: 27, column: 6
+  private int S11611 = 1;
+  private int S1935 = 1;
+  private int S45 = 1;
+  private int S7 = 1;
+  private int S2 = 1;
+  private int S68 = 1;
+  private int S52 = 1;
+  private int S47 = 1;
   
-  private int[] ends = new int[4];
-  private int[] tdone = new int[4];
+  private int[] ends = new int[2];
+  private int[] tdone = new int[2];
   
-  public void thread2419(int [] tdone, int [] ends){
-        switch(S2411){
-      case 0 : 
-        active[3]=0;
-        ends[3]=0;
-        tdone[3]=1;
-        break;
-      
-      case 1 : 
-        switch(S2363){
-          case 0 : 
-            switch(S2347){
-              case 0 : 
-                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 32, column: 4
-                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                  S2347=1;
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-                else {
-                  switch(S2342){
-                    case 0 : 
-                      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 32, column: 4
-                        S2342=1;
-                        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                          ends[3]=2;
-                          ;//sysj\orchestrator.sysj line: 32, column: 4
-                          System.out.println("sending?");//sysj\orchestrator.sysj line: 33, column: 4
-                          S2363=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                        ends[3]=2;
-                        ;//sysj\orchestrator.sysj line: 32, column: 4
-                        System.out.println("sending?");//sysj\orchestrator.sysj line: 33, column: 4
-                        S2363=1;
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S2347=1;
-                S2347=0;
-                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 32, column: 4
-                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                  S2347=1;
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-                else {
-                  S2342=0;
-                  if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                    conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 32, column: 4
-                    S2342=1;
-                    if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                      ends[3]=2;
-                      ;//sysj\orchestrator.sysj line: 32, column: 4
-                      System.out.println("sending?");//sysj\orchestrator.sysj line: 33, column: 4
-                      S2363=1;
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                    else {
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                  }
-                  else {
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S2363=1;
-            S2363=0;
-            S2347=0;
-            if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 32, column: 4
-              conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-              S2347=1;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              S2342=0;
-              if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 32, column: 4
-                S2342=1;
-                if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-                  ends[3]=2;
-                  ;//sysj\orchestrator.sysj line: 32, column: 4
-                  System.out.println("sending?");//sysj\orchestrator.sysj line: 33, column: 4
-                  S2363=1;
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-                else {
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-              }
-              else {
-                active[3]=1;
-                ends[3]=1;
-                tdone[3]=1;
-              }
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2418(int [] tdone, int [] ends){
-        switch(S2340){
-      case 0 : 
-        active[2]=0;
-        ends[2]=0;
-        tdone[2]=1;
-        break;
-      
-      case 1 : 
-        switch(S2292){
-          case 0 : 
-            switch(S2276){
-              case 0 : 
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 11, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                  S2276=1;
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
-                }
-                else {
-                  switch(S2271){
-                    case 0 : 
-                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 11, column: 4
-                        S2271=1;
-                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                          ends[2]=2;
-                          ;//sysj\orchestrator.sysj line: 11, column: 4
-                          status_thread_2 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 12, column: 4
-                          System.out.println(status_thread_2);//sysj\orchestrator.sysj line: 13, column: 4
-                          switch (status_thread_2) {//sysj\orchestrator.sysj line: 14, column: 4
-                            case "idle"://sysj\orchestrator.sysj line: 15, column: 5
-                              System.out.println("received Idle");//sysj\orchestrator.sysj line: 16, column: 6
-                            case "busy"://sysj\orchestrator.sysj line: 17, column: 5
-                              System.out.println("received Busy");//sysj\orchestrator.sysj line: 18, column: 6
-                            case "done"://sysj\orchestrator.sysj line: 20, column: 5
-                              System.out.println("received Done");//sysj\orchestrator.sysj line: 21, column: 6
-                            default://sysj\orchestrator.sysj line: 22, column: 5
-                              System.out.println("afk");//sysj\orchestrator.sysj line: 23, column: 6
-                          }
-                          System.out.println("orchestator is here");//sysj\orchestrator.sysj line: 25, column: 4
-                          S2292=1;
-                          active[2]=1;
-                          ends[2]=1;
-                          tdone[2]=1;
-                        }
-                        else {
-                          active[2]=1;
-                          ends[2]=1;
-                          tdone[2]=1;
-                        }
-                      }
-                      else {
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                        ends[2]=2;
-                        ;//sysj\orchestrator.sysj line: 11, column: 4
-                        status_thread_2 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 12, column: 4
-                        System.out.println(status_thread_2);//sysj\orchestrator.sysj line: 13, column: 4
-                        switch (status_thread_2) {//sysj\orchestrator.sysj line: 14, column: 4
-                          case "idle"://sysj\orchestrator.sysj line: 15, column: 5
-                            System.out.println("received Idle");//sysj\orchestrator.sysj line: 16, column: 6
-                          case "busy"://sysj\orchestrator.sysj line: 17, column: 5
-                            System.out.println("received Busy");//sysj\orchestrator.sysj line: 18, column: 6
-                          case "done"://sysj\orchestrator.sysj line: 20, column: 5
-                            System.out.println("received Done");//sysj\orchestrator.sysj line: 21, column: 6
-                          default://sysj\orchestrator.sysj line: 22, column: 5
-                            System.out.println("afk");//sysj\orchestrator.sysj line: 23, column: 6
-                        }
-                        System.out.println("orchestator is here");//sysj\orchestrator.sysj line: 25, column: 4
-                        S2292=1;
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
-                      else {
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S2276=1;
-                S2276=0;
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 11, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                  S2276=1;
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
-                }
-                else {
-                  S2271=0;
-                  if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                    conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 11, column: 4
-                    S2271=1;
-                    if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                      ends[2]=2;
-                      ;//sysj\orchestrator.sysj line: 11, column: 4
-                      status_thread_2 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 12, column: 4
-                      System.out.println(status_thread_2);//sysj\orchestrator.sysj line: 13, column: 4
-                      switch (status_thread_2) {//sysj\orchestrator.sysj line: 14, column: 4
-                        case "idle"://sysj\orchestrator.sysj line: 15, column: 5
-                          System.out.println("received Idle");//sysj\orchestrator.sysj line: 16, column: 6
-                        case "busy"://sysj\orchestrator.sysj line: 17, column: 5
-                          System.out.println("received Busy");//sysj\orchestrator.sysj line: 18, column: 6
-                        case "done"://sysj\orchestrator.sysj line: 20, column: 5
-                          System.out.println("received Done");//sysj\orchestrator.sysj line: 21, column: 6
-                        default://sysj\orchestrator.sysj line: 22, column: 5
-                          System.out.println("afk");//sysj\orchestrator.sysj line: 23, column: 6
-                      }
-                      System.out.println("orchestator is here");//sysj\orchestrator.sysj line: 25, column: 4
-                      S2292=1;
-                      active[2]=1;
-                      ends[2]=1;
-                      tdone[2]=1;
-                    }
-                    else {
-                      active[2]=1;
-                      ends[2]=1;
-                      tdone[2]=1;
-                    }
-                  }
-                  else {
-                    active[2]=1;
-                    ends[2]=1;
-                    tdone[2]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S2292=1;
-            S2292=0;
-            S2276=0;
-            if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 11, column: 4
-              conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-              S2276=1;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              S2271=0;
-              if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 11, column: 4
-                S2271=1;
-                if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-                  ends[2]=2;
-                  ;//sysj\orchestrator.sysj line: 11, column: 4
-                  status_thread_2 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 12, column: 4
-                  System.out.println(status_thread_2);//sysj\orchestrator.sysj line: 13, column: 4
-                  switch (status_thread_2) {//sysj\orchestrator.sysj line: 14, column: 4
-                    case "idle"://sysj\orchestrator.sysj line: 15, column: 5
-                      System.out.println("received Idle");//sysj\orchestrator.sysj line: 16, column: 6
-                    case "busy"://sysj\orchestrator.sysj line: 17, column: 5
-                      System.out.println("received Busy");//sysj\orchestrator.sysj line: 18, column: 6
-                    case "done"://sysj\orchestrator.sysj line: 20, column: 5
-                      System.out.println("received Done");//sysj\orchestrator.sysj line: 21, column: 6
-                    default://sysj\orchestrator.sysj line: 22, column: 5
-                      System.out.println("afk");//sysj\orchestrator.sysj line: 23, column: 6
-                  }
-                  System.out.println("orchestator is here");//sysj\orchestrator.sysj line: 25, column: 4
-                  S2292=1;
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
-                }
-                else {
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
-                }
-              }
-              else {
-                active[2]=1;
-                ends[2]=1;
-                tdone[2]=1;
-              }
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2416(int [] tdone, int [] ends){
-        S2411=1;
-    S2363=0;
-    S2347=0;
-    if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 32, column: 4
-      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-      S2347=1;
-      active[3]=1;
-      ends[3]=1;
-      tdone[3]=1;
-    }
-    else {
-      S2342=0;
-      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 32, column: 4
-        S2342=1;
-        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 32, column: 4
-          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 32, column: 4
-          ends[3]=2;
-          ;//sysj\orchestrator.sysj line: 32, column: 4
-          System.out.println("sending?");//sysj\orchestrator.sysj line: 33, column: 4
-          S2363=1;
-          active[3]=1;
-          ends[3]=1;
-          tdone[3]=1;
-        }
-        else {
-          active[3]=1;
-          ends[3]=1;
-          tdone[3]=1;
-        }
-      }
-      else {
-        active[3]=1;
-        ends[3]=1;
-        tdone[3]=1;
-      }
-    }
-  }
-
-  public void thread2415(int [] tdone, int [] ends){
-        S2340=1;
-    S2292=0;
-    S2276=0;
-    if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 11, column: 4
-      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-      S2276=1;
-      active[2]=1;
-      ends[2]=1;
-      tdone[2]=1;
-    }
-    else {
-      S2271=0;
-      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 11, column: 4
-        S2271=1;
-        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 11, column: 4
-          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 11, column: 4
-          ends[2]=2;
-          ;//sysj\orchestrator.sysj line: 11, column: 4
-          status_thread_2 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 12, column: 4
-          System.out.println(status_thread_2);//sysj\orchestrator.sysj line: 13, column: 4
-          switch (status_thread_2) {//sysj\orchestrator.sysj line: 14, column: 4
-            case "idle"://sysj\orchestrator.sysj line: 15, column: 5
-              System.out.println("received Idle");//sysj\orchestrator.sysj line: 16, column: 6
-            case "busy"://sysj\orchestrator.sysj line: 17, column: 5
-              System.out.println("received Busy");//sysj\orchestrator.sysj line: 18, column: 6
-            case "done"://sysj\orchestrator.sysj line: 20, column: 5
-              System.out.println("received Done");//sysj\orchestrator.sysj line: 21, column: 6
-            default://sysj\orchestrator.sysj line: 22, column: 5
-              System.out.println("afk");//sysj\orchestrator.sysj line: 23, column: 6
-          }
-          System.out.println("orchestator is here");//sysj\orchestrator.sysj line: 25, column: 4
-          S2292=1;
-          active[2]=1;
-          ends[2]=1;
-          tdone[2]=1;
-        }
-        else {
-          active[2]=1;
-          ends[2]=1;
-          tdone[2]=1;
-        }
-      }
-      else {
-        active[2]=1;
-        ends[2]=1;
-        tdone[2]=1;
-      }
-    }
-  }
-
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -494,51 +40,656 @@ public class Orchestrator extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2413){
+      switch(S11611){
         case 0 : 
-          S2413=0;
+          S11611=0;
           break RUN;
         
         case 1 : 
-          S2413=2;
-          S2413=2;
-          thread2415(tdone,ends);
-          thread2416(tdone,ends);
-          int biggest2417 = 0;
-          if(ends[2]>=biggest2417){
-            biggest2417=ends[2];
+          S11611=2;
+          S11611=2;
+          liquidPercent_thread_1 = new int[] = { 10, 10, 20, 60 } ;//sysj/orchestrator.sysj line: 10, column: 2
+          quantity_thread_1 = 5;//sysj/orchestrator.sysj line: 11, column: 2
+                    bottlePlaced_thread_1 = quantity_thread_1;//sysj/orchestrator.sysj line: 19, column: 4
+          S1935=0;
+          if(bottlePlaced_thread_1 <= 0){//sysj/orchestrator.sysj line: 20, column: 10
+            System.out.println("sending conveyor req?");//sysj/orchestrator.sysj line: 21, column: 5
+            S45=0;
+            S7=0;
+            if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj/orchestrator.sysj line: 22, column: 5
+              conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+              S7=1;
+              active[1]=1;
+              ends[1]=1;
+              break RUN;
+            }
+            else {
+              S2=0;
+              if(conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                conveyorReq_o.setVal(true);//sysj/orchestrator.sysj line: 22, column: 5
+                S2=1;
+                if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                  conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                  ends[1]=2;
+                  ;//sysj/orchestrator.sysj line: 22, column: 5
+                  bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                  S45=1;
+                  S68=0;
+                  S52=0;
+                  if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                    conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                    S52=1;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    S47=0;
+                    if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                      conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                      S47=1;
+                      if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                        conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                        ends[1]=2;
+                        ;//sysj/orchestrator.sysj line: 26, column: 6
+                        conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                        if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                          break ;//sysj/orchestrator.sysj line: 29, column: 7
+                        }
+                        S68=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                    }
+                    else {
+                      active[1]=1;
+                      ends[1]=1;
+                      break RUN;
+                    }
+                  }
+                }
+                else {
+                  active[1]=1;
+                  ends[1]=1;
+                  break RUN;
+                }
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            }
           }
-          if(ends[3]>=biggest2417){
-            biggest2417=ends[3];
-          }
-          if(biggest2417 == 1){
+          else {
+            conveyorStatus_in.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+            conveyorReq_o.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+            ends[1]=2;
+            ;//sysj/orchestrator.sysj line: 20, column: 4
+            System.out.println("Done order");//sysj/orchestrator.sysj line: 37, column: 4
+            S1935=1;
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2418(tdone,ends);
-          thread2419(tdone,ends);
-          int biggest2420 = 0;
-          if(ends[2]>=biggest2420){
-            biggest2420=ends[2];
-          }
-          if(ends[3]>=biggest2420){
-            biggest2420=ends[3];
-          }
-          if(biggest2420 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
-          //FINXME code
-          if(biggest2420 == 0){
-            S2413=0;
-            active[1]=0;
-            ends[1]=0;
-            S2413=0;
-            break RUN;
+          switch(S1935){
+            case 0 : 
+              switch(S45){
+                case 0 : 
+                  switch(S7){
+                    case 0 : 
+                      if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj/orchestrator.sysj line: 22, column: 5
+                        conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                        S7=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        switch(S2){
+                          case 0 : 
+                            if(conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                              conveyorReq_o.setVal(true);//sysj/orchestrator.sysj line: 22, column: 5
+                              S2=1;
+                              if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                                conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                                ends[1]=2;
+                                ;//sysj/orchestrator.sysj line: 22, column: 5
+                                bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                                S45=1;
+                                S68=0;
+                                S52=0;
+                                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                  S52=1;
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  S47=0;
+                                  if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                    conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                                    S47=1;
+                                    if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                      conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                      ends[1]=2;
+                                      ;//sysj/orchestrator.sysj line: 26, column: 6
+                                      conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                      if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                        break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                      }
+                                      S68=1;
+                                      active[1]=1;
+                                      ends[1]=1;
+                                      break RUN;
+                                    }
+                                    else {
+                                      active[1]=1;
+                                      ends[1]=1;
+                                      break RUN;
+                                    }
+                                  }
+                                  else {
+                                    active[1]=1;
+                                    ends[1]=1;
+                                    break RUN;
+                                  }
+                                }
+                              }
+                              else {
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[1]=1;
+                              ends[1]=1;
+                              break RUN;
+                            }
+                          
+                          case 1 : 
+                            if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                              conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                              ends[1]=2;
+                              ;//sysj/orchestrator.sysj line: 22, column: 5
+                              bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                              S45=1;
+                              S68=0;
+                              S52=0;
+                              if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                S52=1;
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                              else {
+                                S47=0;
+                                if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                                  S47=1;
+                                  if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                    conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                    ends[1]=2;
+                                    ;//sysj/orchestrator.sysj line: 26, column: 6
+                                    conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                    if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                      break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                    }
+                                    S68=1;
+                                    active[1]=1;
+                                    ends[1]=1;
+                                    break RUN;
+                                  }
+                                  else {
+                                    active[1]=1;
+                                    ends[1]=1;
+                                    break RUN;
+                                  }
+                                }
+                                else {
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                              }
+                            }
+                            else {
+                              active[1]=1;
+                              ends[1]=1;
+                              break RUN;
+                            }
+                          
+                        }
+                      }
+                      break;
+                    
+                    case 1 : 
+                      S7=1;
+                      S7=0;
+                      if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj/orchestrator.sysj line: 22, column: 5
+                        conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                        S7=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        S2=0;
+                        if(conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                          conveyorReq_o.setVal(true);//sysj/orchestrator.sysj line: 22, column: 5
+                          S2=1;
+                          if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                            conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                            ends[1]=2;
+                            ;//sysj/orchestrator.sysj line: 22, column: 5
+                            bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                            S45=1;
+                            S68=0;
+                            S52=0;
+                            if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                              conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                              S52=1;
+                              active[1]=1;
+                              ends[1]=1;
+                              break RUN;
+                            }
+                            else {
+                              S47=0;
+                              if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                                S47=1;
+                                if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                  ends[1]=2;
+                                  ;//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                  if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                    break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                  }
+                                  S68=1;
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                              }
+                              else {
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                            }
+                          }
+                          else {
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                        }
+                        else {
+                          active[1]=1;
+                          ends[1]=1;
+                          break RUN;
+                        }
+                      }
+                    
+                  }
+                  break;
+                
+                case 1 : 
+                  switch(S68){
+                    case 0 : 
+                      switch(S52){
+                        case 0 : 
+                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                            S52=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            switch(S47){
+                              case 0 : 
+                                if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                                  S47=1;
+                                  if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                    conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                    ends[1]=2;
+                                    ;//sysj/orchestrator.sysj line: 26, column: 6
+                                    conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                    if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                      break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                    }
+                                    S68=1;
+                                    active[1]=1;
+                                    ends[1]=1;
+                                    break RUN;
+                                  }
+                                  else {
+                                    active[1]=1;
+                                    ends[1]=1;
+                                    break RUN;
+                                  }
+                                }
+                                else {
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                              
+                              case 1 : 
+                                if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                  ends[1]=2;
+                                  ;//sysj/orchestrator.sysj line: 26, column: 6
+                                  conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                  if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                    break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                  }
+                                  S68=1;
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  active[1]=1;
+                                  ends[1]=1;
+                                  break RUN;
+                                }
+                              
+                            }
+                          }
+                          break;
+                        
+                        case 1 : 
+                          S52=1;
+                          S52=0;
+                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                            S52=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            S47=0;
+                            if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                              conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                              S47=1;
+                              if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                ends[1]=2;
+                                ;//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                  break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                }
+                                S68=1;
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                              else {
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[1]=1;
+                              ends[1]=1;
+                              break RUN;
+                            }
+                          }
+                        
+                      }
+                      break;
+                    
+                    case 1 : 
+                      S68=1;
+                      S68=0;
+                      S52=0;
+                      if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                        conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                        S52=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        S47=0;
+                        if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                          conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                          S47=1;
+                          if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                            ends[1]=2;
+                            ;//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                            if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                              break ;//sysj/orchestrator.sysj line: 29, column: 7
+                            }
+                            S68=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                        }
+                        else {
+                          active[1]=1;
+                          ends[1]=1;
+                          break RUN;
+                        }
+                      }
+                    
+                  }
+                  break;
+                
+                case 2 : 
+                  S45=2;
+                  if(bottlePlaced_thread_1 <= 0){//sysj/orchestrator.sysj line: 20, column: 10
+                    System.out.println("sending conveyor req?");//sysj/orchestrator.sysj line: 21, column: 5
+                    S45=0;
+                    S7=0;
+                    if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj/orchestrator.sysj line: 22, column: 5
+                      conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                      S7=1;
+                      active[1]=1;
+                      ends[1]=1;
+                      break RUN;
+                    }
+                    else {
+                      S2=0;
+                      if(conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                        conveyorReq_o.setVal(true);//sysj/orchestrator.sysj line: 22, column: 5
+                        S2=1;
+                        if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                          conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                          ends[1]=2;
+                          ;//sysj/orchestrator.sysj line: 22, column: 5
+                          bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                          S45=1;
+                          S68=0;
+                          S52=0;
+                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                            S52=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            S47=0;
+                            if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                              conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                              S47=1;
+                              if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                                ends[1]=2;
+                                ;//sysj/orchestrator.sysj line: 26, column: 6
+                                conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                                if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                                  break ;//sysj/orchestrator.sysj line: 29, column: 7
+                                }
+                                S68=1;
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                              else {
+                                active[1]=1;
+                                ends[1]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[1]=1;
+                              ends[1]=1;
+                              break RUN;
+                            }
+                          }
+                        }
+                        else {
+                          active[1]=1;
+                          ends[1]=1;
+                          break RUN;
+                        }
+                      }
+                      else {
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                    }
+                  }
+                  else {
+                    conveyorStatus_in.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+                    conveyorReq_o.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+                    ends[1]=2;
+                    ;//sysj/orchestrator.sysj line: 20, column: 4
+                    System.out.println("Done order");//sysj/orchestrator.sysj line: 37, column: 4
+                    S1935=1;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+              }
+              break;
+            
+            case 1 : 
+              S1935=1;
+              bottlePlaced_thread_1 = quantity_thread_1;//sysj/orchestrator.sysj line: 19, column: 4
+              S1935=0;
+              if(bottlePlaced_thread_1 <= 0){//sysj/orchestrator.sysj line: 20, column: 10
+                System.out.println("sending conveyor req?");//sysj/orchestrator.sysj line: 21, column: 5
+                S45=0;
+                S7=0;
+                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj/orchestrator.sysj line: 22, column: 5
+                  conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                  S7=1;
+                  active[1]=1;
+                  ends[1]=1;
+                  break RUN;
+                }
+                else {
+                  S2=0;
+                  if(conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                    conveyorReq_o.setVal(true);//sysj/orchestrator.sysj line: 22, column: 5
+                    S2=1;
+                    if(!conveyorReq_o.isACK()){//sysj/orchestrator.sysj line: 22, column: 5
+                      conveyorReq_o.setREQ(false);//sysj/orchestrator.sysj line: 22, column: 5
+                      ends[1]=2;
+                      ;//sysj/orchestrator.sysj line: 22, column: 5
+                      bottlePlaced_thread_1 = bottlePlaced_thread_1 - 1;//sysj/orchestrator.sysj line: 23, column: 5
+                      S45=1;
+                      S68=0;
+                      S52=0;
+                      if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj/orchestrator.sysj line: 26, column: 6
+                        conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                        S52=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        S47=0;
+                        if(!conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                          conveyorStatus_in.setACK(true);//sysj/orchestrator.sysj line: 26, column: 6
+                          S47=1;
+                          if(conveyorStatus_in.isREQ()){//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyorStatus_in.setACK(false);//sysj/orchestrator.sysj line: 26, column: 6
+                            ends[1]=2;
+                            ;//sysj/orchestrator.sysj line: 26, column: 6
+                            conveyStat_thread_1 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj/orchestrator.sysj line: 27, column: 6
+                            if(conveyStat_thread_1 == "done") {//sysj/orchestrator.sysj line: 28, column: 31
+                              break ;//sysj/orchestrator.sysj line: 29, column: 7
+                            }
+                            S68=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                        }
+                        else {
+                          active[1]=1;
+                          ends[1]=1;
+                          break RUN;
+                        }
+                      }
+                    }
+                    else {
+                      active[1]=1;
+                      ends[1]=1;
+                      break RUN;
+                    }
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                }
+              }
+              else {
+                conveyorStatus_in.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+                conveyorReq_o.setPreempted();//sysj/orchestrator.sysj line: 20, column: 4
+                ends[1]=2;
+                ;//sysj/orchestrator.sysj line: 20, column: 4
+                System.out.println("Done order");//sysj/orchestrator.sysj line: 37, column: 4
+                S1935=1;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
           }
         
       }
@@ -546,9 +697,9 @@ public class Orchestrator extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0};
+    char [] active1 = {1, 1};
+    char [] paused1 = {0, 0};
+    char [] suspended1 = {0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
@@ -569,8 +720,10 @@ public class Orchestrator extends ClockDomain{
         if(!df){
           conveyorStatus_in.gethook();
           rotaryStatus_in.gethook();
+          order_in.gethook();
           conveyorReq_o.gethook();
           allOperationsFinished_o.gethook();
+          doneOrder_o.gethook();
           df = true;
         }
         runClockDomain();
@@ -583,14 +736,18 @@ public class Orchestrator extends ClockDomain{
       currsigs.removeAllElements();
       conveyorStatus_in.sethook();
       rotaryStatus_in.sethook();
+      order_in.sethook();
       conveyorReq_o.sethook();
       allOperationsFinished_o.sethook();
+      doneOrder_o.sethook();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         conveyorStatus_in.gethook();
         rotaryStatus_in.gethook();
+        order_in.gethook();
         conveyorReq_o.gethook();
         allOperationsFinished_o.gethook();
+        doneOrder_o.gethook();
       }
       runFinisher();
       if(active[1] == 0){

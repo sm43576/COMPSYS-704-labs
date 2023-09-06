@@ -61,43 +61,32 @@ RotaryTable(
         output Boolean channel rotaryStatus; // To Orchestrator 
         )
 ->{
-    signal allOperationsFinished;
     while(true) {
         System.out.println("HELLLLLLLLO");
+        receive allOperationsFinished;
+        Boolean request = #allOperationsFinished;
         
         // wait until it receives an OK from orchestrator
-        await(allOperationsFinished);
-        System.out.println("RECIEVED orchestrator task");
-        pause;
-        
-//        await(RTbottleAtPos1);
-//        System.out.println("A bottle is at position 1");
-//        pause;
-        
-        // when the rotoray table is aligned with sensor stop sustaining the trigger
-        abort(tableAlignedWithSensor){
-            System.out.println("emitting rotary trigger");
-            sustain rotaryTableTrigger;
+        if(request) {
+        	emit rotaryStatus("busy");
+        	System.out.println("RECIEVED orchestrator task");
+        	await(RTbottleAtPos1);
+        	
+        	// when the rotoray table is aligned with sensor stop sustaining the trigger
+            abort(tableAlignedWithSensor){
+                System.out.println("emitting rotary trigger");
+                sustain rotaryTableTrigger;
+            }
+            System.out.println("rotary - done");
+            emit rotaryStatus("done");
+        }else {
+        	System.out.println("rotary - idle");
+        	emit rotaryStatus("idle");
         }
-//        emit rotaryStatus("done");
         pause;
         System.out.println("out - next loop");
         
     }
-//    ||
-//    {
-//       while(true) {
-//    	   // Send idling status to orchestrator.
-//	        abort(!allOperationsFinished){
-//	            loop{
-//	            	System.out.println("idling...");
-//	            	send rotaryStatus("idle");
-//	            	pause;
-//	            }
-//	        }
-//       }
-//    }
- 
 }
 
 LiquidFiller(
@@ -167,42 +156,7 @@ LiquidFiller(
 		}
 	}
 }
-		
-		//if fillerReqs = true{
-//		present(bottleAtPos2){ // if not send done ig
-//			present(fillerReq){
-//				present(selectCanister){
-//					present (percentLiquid){
-//						
-//		//Given the assumption that the selected canister is externally rotated
-//		// wait till the selected canister matches the orchestra.
-//		present(selectCanister){
-//			if (#selectCanister == #currentlySelectedCanister){// wait till canister match
-//				// 
-//				System.out.println("Canister match");
-//				 abort(!dosUnitEvac){ // brings canister to the top
-//						sustain dosUnitValveRetract;//
-//				 }
-//				 System.out.println("Canister above bottle");
-//				 pause;
-//				 
-//				 abort(dosUnitFilled){ // close valve once filled
-//					 sustain valveInletOnOff; 
-//				 }
-//				 System.out.println("Bottle controller filled");
-//				 
-//				 abort(dosUnitEvac){// bring cylinder to the bottom
-//					 sustain dosUnitValveExtend;
-//				 }
-//				 System.out.println("Canister returned");
-//				
-//			}
-//		}
-//		}}}}
-//				pause;
-	}
-	
-}
+
 
 Capper(
 		
@@ -292,11 +246,17 @@ Caploader(
 		output signal pusherExtend,vacOn,armSource,armDest;
 		input Integer signal mode;
 		input signal pusherExtendM,vacOnM,armSourceM,armDestM;
+		
+		input Boolean channel capLoaderReq;
+		output String channel capLoaderStatus;
 		)
 ->{
 	while(true) {
-
-			 // Automatic
+			receive capLoaderReq;
+			Boolean request = #capLoaderReq;
+			if(request) {
+				send capLoaderStatus("busy");
+				// Automatic
 				System.out.println("Automatic state");
 				present (!empty){
 					
@@ -326,8 +286,12 @@ Caploader(
 					}
 					pause;
 		
-					}
-				pause;
+				}
+				send capLoaderStatus("done");
+			}else {
+				send capLoaderStatus("idle");
+			}
+			pause;
 			
 	}
 }

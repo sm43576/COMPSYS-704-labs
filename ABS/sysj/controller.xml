@@ -10,9 +10,18 @@
 			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
 			
 			<!-- Filler Channels-->
-			<iChannel Name="fillerStatus" To="FillerCD.fillerStatus" />
-			<oChannel Name="fillerReq" From="FillerCD.fillerReq" />
-			<oChannel Name="percentLiquid" From="FillerCD.percentLiquid"/>
+			<iChannel Name="fillerStatus" From="FillerCD.fillerStatus" />
+			<oChannel Name="fillerReq" To="FillerCD.fillerReq" />
+			<oChannel Name="percentLiquid" To="FillerCD.percentLiquid"/>
+			
+			<!-- Capper Channels-->
+			<iChannel Name="capperStatus" From="CapperCD.capperStatus" />
+			<oChannel Name="capperReq" To="CapperCD.capperReq" />
+			
+			<!-- Cap Loader Channels-->
+			<iChannel Name="capLoaderStatus" From="CaploaderCD.capLoaderStatus" />
+			<oChannel Name="capLoaderReq" To="CaploaderCD.capLoaderReq" />
+			
 						
 		</ClockDomain>
 		
@@ -80,6 +89,9 @@
 			<iSignal Name="vacOnM"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armSourceM"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armDestM"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+		
+			<iChannel Name="capLoaderReq" From="OrchestratorCD.capLoaderReq" />
+			<oChannel Name="capLoaderStatus" To="OrchestratorCD.capLoaderStatus" />
 		</ClockDomain>
 		
 		
