@@ -271,77 +271,72 @@ Plant(
 			pause;
 		}
 	}
-//	||
-//	
-//	// Cap Screwer
-//		{
-//			while(true) {
-//				await moveToPos4 && enable;//bottle is in position 4. Need to inform controller.
-//				abort (moveToPos5) {
-//					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-//				}
-//				pause;
-//			}
-//		}
-//		||
-//	//Cap Screwer - Move Gripper
-//		{
-//			while(true) {
-//				abort(cylPos5ZaxisExtend && enable) {
-//					sustain gripperZAxisLifted;
-//				}
-//				abort (!cylPos5ZaxisExtend) {
-//					sustain gripperZAxisLowered; 
-//				}
-//				pause;
-//			}
-//		}
-//		||
-//	//Cap Screwer - Gripper
-//		{
-//			while(true) {
-//				await capGripperPos5Extend && enable;
-//				abort (!capGripperPos5Extend) {
-//					sustain gripperGrippedCap; 
-//				}
-//				pause;
-//			}
-//		}
-//		||
-//	//Cap Screwer - Twister
-//
-//		{
-//			while(true) {
-//				present(gripperTurnExtend && !gripperTurnRetract && enable){
-//				abort (gripperTurnRetract){
-//					abort (!gripperTurnExtend) {
-//						sustain gripperTurnHomePos; 
-//					}
-//				}
-//				present(gripperTurnRetract && !gripperTurnExtend && enable) {
-//					abort (gripperTurnExtend) {
-//						abort (!gripperTurnRetracted) {
-//							sustain gripperTurnFinalPos; 
-//						}
-//					}
-//				}
-//				pause;
-//			}
-//		}
-//		|| 
-//	//Cap Screwer - Clamps
-//		{
-//			while(true) {
-//				await cylClampBottleExtend && enable;
-//				abort (!cylClampBottleExtend) {
-//					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
-//				}
-//				pause;
-//			}
-//		}
 	||
-//	
-	//Rotatry Table
+	
+	// Capper
+		{
+			while(true) {
+				await moveToPos4;//bottle is in position 4. Need to inform controller.
+				abort (moveToPos5) {
+					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Move Gripper
+		{
+			while(true) {
+				abort(cylPos5ZaxisExtend) {
+					sustain gripperZAxisLifted; //If cylPos5ZaxisExtend is absent, sustain lifted signal.
+				}
+				abort (!cylPos5ZaxisExtend) {
+					sustain gripperZAxisLowered; //If cylPos5ZaxisExtend is present, sustain lowered signal.
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Gripper
+		{
+			while(true) {
+				await capGripperPos5Extend;
+				abort (!capGripperPos5Extend) {
+					sustain gripperGrippedCap; 
+				}
+				pause;
+			}
+		}
+		||
+	//Cap Screwer - Twister
+		{
+			while(true) {
+				present(gripperTurnExtend && !gripperTurnRetract){
+					abort (gripperTurnRetract){
+						sustain gripperTurnFinalPos; 
+					}
+				}
+				present(gripperTurnRetract && !gripperTurnExtend) {
+					abort (gripperTurnExtend) {
+						sustain gripperTurnHomePos; 
+					}
+				}
+				pause;
+			}
+		}
+		|| 
+	//Cap Screwer - Clamps
+		{
+			while(true) {
+				await cylClampBottleExtend;
+				abort (!cylClampBottleExtend) {
+					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
+				}
+				pause;
+			}
+		}
+	||	
+	//Rotary Table
 		{
 			while(true) {
 				present(rotaryTableTrigger && enable){
@@ -385,29 +380,6 @@ Plant(
 				pause;
 				
 			}
-		}
-		||
-		{
-			{
-				// Random chance for a bottle to have a cap
-				Integer numCutOff = 80;
-				while(true) {
-					present(bottleAtPos1 && enable){
-						Integer randNum = (int)(Math.random()*100);
-						System.out.println("Random Number is " + String.valueOf(randNum));
-						if(randNum > numCutOff ) {
-							abort(removeBottle){
-								System.out.println("remove the bottle plz");
-								sustain capOnBottleAtPos1;
-							}
-						}
-					}
-					pause;
-					await(enable);
-					await(!enable);
-				}
-			}
-			
 		}
 		||
 		{while(true) {present(moveToPos5 && enable){System.out.println("bottle is now at pos 5"); emit bottleAtPos5;} pause;}}

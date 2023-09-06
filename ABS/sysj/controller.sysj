@@ -216,7 +216,7 @@ Capper(
 		
 		//To and from Orchestrator
 		input boolean channel capperReq;
-		output boolean channel capperStatus;
+		output String channel capperStatus;
 		
 		//From Capper Plant
 		input signal bottleAtPos4;
@@ -242,39 +242,56 @@ Capper(
 	while(true) {
 		
 		receive capperReq; //Receive capper request.
+		boolean request = (boolean) #capperReq;
 		
-		await bottleAtPos4;//Check if a bottle is at position 4, if not, wait until it arrives.
-		
-		{ 
-			abort () {
-				sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
+		if (request) {
+			send capperStatus("busy"); //Tell Orchestrator that Capper is processing its request.
+			
+			present (!bottleAtPos4) {
+				send capperStatus("idle");
+			}
+			
+			present(bottleAtPos4) { //Check if a bottle is at position 4, if not, wait until it arrives.
+				
+				{ 
+					abort (unclampBottle) {
+						sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
+					}
+				}
+				||
+				{
+					abort(raiseGripper) {
+						sustain cylPos5AxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
+					}
+				}
+				||
+				{
+					{await gripperZAxisLowered;} || {await gripperClampedBottle;}//Wait until gripper is lowered and bottle is clamped.
+					abort(releaseCap) {
+						sustain capGripperPos5Extend; //Grip the cap
+					}
+				}
+				||
+				{
+					await gripperGrippedCap; //Wait until cap is gripped
+					
+					abort (gripperTurnFinalPos) {
+						sustain gripperTurnExtend; // Twist the gripper
+					}
+					emit releaseCap; //Release the cap
+					
+					abort (gripperTurnHomePos) {
+						emit untwistGripper; //Untwist gripper
+					}
+					
+					emit raiseGripper; //Raise gripper
+					emit unclampBottle; //Unclamp bottle
+				}
 			}
 		}
-		||
-		{
-			abort(raiseGripper) {
-				sustain cylPos5AxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
-			}
-		}
-		||
-		{
-			await gripperZAxisLowered && gripperClampedBottle;//Wait until gripper is lowered and bottle is clamped.
-			abort(releaseCap) {
-				sustain capGripperPos5Extend; //Grip the cap
-			}
-		}
-		||
-		{
-			await gripperGrippedCap; //Wait until cap is gripped
-			emit gripperTurnExtend; // Twist the gripper
-			emit releaseCap; //Release the cap
-			emit untwistGripper; //Untwist gripper
-			emit raiseGripper; //Raise gripper
-			emit unclampBottle; //Unclamp bottle
-		}
+		send capperStatus("done"); //Tell Orchestrator that the capper has finished.
 		pause;
 	}
-	
 }
 
 
