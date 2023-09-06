@@ -53,12 +53,12 @@
 			<iSignal Name="capOnBottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			
-			<iChannel Name="allOperationsFinished" From="OrchestratorCD.rotaryStatus" />
+			<iChannel Name="allOperationsFinished" From="OrchestratorCD.rotaryReq" />
 			<oChannel Name="rotaryStatus" To="OrchestratorCD.rotaryStatus" />
 
 		</ClockDomain>
 		
-			<ClockDomain Name="CaploaderCD" Class="Caploader">
+		<ClockDomain Name="CaploaderCD" Class="Caploader">
 			<iSignal Name="pusherRetracted" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="pusherExtended"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="WPgripped"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
@@ -77,6 +77,28 @@
 			<iSignal Name="vacOnM"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armSourceM"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armDestM"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+		</ClockDomain>
+		
+		
+		<ClockDomain Name="CapperCD" Class="Capper">
+			
+			<iSignal Name="bottleAtPos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperZAxisLowered"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperZAxisLifted"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperTurnHomePos" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperTurnFinalPos" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="cylClampedBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperGrippedCap" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="cycPos5ZAxisExtend" To="PlantCD.cycPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="gripperTurnRetract"  To="PlantCD.gripperTurnRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="gripperTurnExtend" To="PlantCD.gripperTurnExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="capGripperPos5Extend"  To="PlantCD.capGripperPos5Extend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="cylClampBottleExtend"  To="PlantCD.cylClampBottleExtend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			<iChannel Name="capperReq" From="OrchestratorCD.capperReq" />
+			<oChannel Name="capperStatus" To="OrchestratorCD.capperStatus" />
+			
 		</ClockDomain>
 
 	</SubSystem>
