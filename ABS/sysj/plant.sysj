@@ -4,7 +4,7 @@ Plant(
 		
 		
 		// Global ////////////////////////////////////////////////////////
-		input signal enable,refill, removeBottle; //TODO: need remove bottle in GUI
+		input signal  enable,refill, removeBottle; //TODO: need remove bottle in GUI
 		
 		// Conveyor/////////////////////////////////////////////////////// 
 		input signal motConveyorOnOff, motorPos1On, motorPos5On;
@@ -81,17 +81,19 @@ Plant(
 			present(motConveyorOnOff){
 				{
 					present(motorPos1On){ // motor is on and move bottle at pos 1
+						System.out.println("moving bottle to 1");
 						sustain bottleAtPos1;
 					}
 				}
 				||
 				{
 					present(motorPos5On){ // motor is on and remove bottle at pos 5
-				
+						System.out.println("moving bottle to leave 5");
 						sustain bottleLeftPos5;
 					}
 				}
 			}
+			System.out.println("motor is off");
 			pause;
 		}
 	}		
@@ -100,7 +102,8 @@ Plant(
 	{
 		// To tell rotary table that bottle is at position 1 since you can't have a signal going into two clock domains
 		while(true) {
-			present(bottleAtPos1 && enable){
+			present(bottleAtPos1){
+//				System.out.println("sending info to rotary that bottle is at position1");
 				emit RTbottleAtPos1; 
 			}
 //			System.out.println("no longer");
@@ -117,6 +120,7 @@ Plant(
 			{//Selected canister
 				await(selectCanister); 
 				int canister = #selectCanister;
+				System.out.println("canister number received");
 				emit selectedCanister(canister);
 					
 			}
@@ -125,7 +129,7 @@ Plant(
 			
 			{//Fill Valve
 				await(receivedPercentage);
-				
+				System.out.println("filled");
 				present(valveInletOnOff){
 					emit dosUnitFilled(receivedPercentage);
 					pause;
@@ -145,9 +149,6 @@ Plant(
 					pause;
 					
 				}
-	
-				await(enable);
-				await(enable);
 			
 			//emit two signals
 		}
@@ -160,27 +161,23 @@ Plant(
 //Cap Loader////////////////////////////////////////////	
 	{// Arm
 		while(true){
-			abort(armSource && enable){
+			abort(armSource){
 				sustain armAtDest;
 			}
-			await(!enable);
-			abort(armDest && enable){
+			abort(armDest){
 				sustain armAtSource;
 			}
-			await(!enable);
 		}
 	}
 	||
 	{// Pusher
 		while(true){
-			abort(pusherExtend && enable){
+			abort(pusherExtend){
 				sustain pusherRetracted;
 			}
-			await(!enable);
-			abort(!pusherExtend && enable){
+			abort(!pusherExtend){
 				sustain pusherExtended;
 			}
-			await(!enable);
 		}
 	}
 	||
@@ -351,7 +348,7 @@ Plant(
 	{
 		while(true) {
 			abort(bottleLeftPos5){ // stop emitting bottleAtPos5 when bottle has left pos 5
-				present(moveToPos5 && enable){
+				present(moveToPos5){
 					System.out.println("bottle is now at pos 5"); 
 					sustain bottleAtPos5;
 				} 
@@ -360,11 +357,11 @@ Plant(
 		}
 	}
 	||
-	{while(true) {present(moveToPos4 && enable){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}pause;}}
+	{while(true) {present(moveToPos4){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}pause;}}
 	||
-	{while(true) {present(moveToPos3 && enable){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}pause;}}
+	{while(true) {present(moveToPos3){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}pause;}}
 	||
-	{while(true) {present(moveToPos2 && enable){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
+	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
 
 /////////////////////////////////////////////////////////////////////
 	

@@ -27,7 +27,7 @@ Orchestrator(
 		while(true) {
 			// insert present(order) here
 			bottlePlaced = quantity;
-			while(bottlePlaced <= 0) {
+			while(bottlePlaced >= 0) {
 				System.out.println("sending conveyor req?");
 				send conveyorReq(true);
 				bottlePlaced--;
@@ -51,6 +51,7 @@ Orchestrator(
 			
 			// wait for rotary status to be done
 			if(rotaryStat == "done") {
+				System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");
 				send fillerReq(true);
 				send capLoaderReq(true);
 				send capperReq(true);
@@ -78,59 +79,14 @@ Orchestrator(
 				(fillerStat == "done" || fillerStat == "idle") &&  
 				(screwerStat == "done" || screwerStat == "idle") && 
 				(loaderStat == "done" || loaderStat == "idle")) {
-				
+				System.out.println("sending request to rotary?");
 				send allOperationsFinished(true);
 			}
 			pause;
 		}
 	}
 }
-		 /* || //Component Status handling
-		 * 		{// Receiving status from componenets
-					while(true) {
-						receive conveyorStatus, fillerStatus, capLoaderStatus, capScrewerStatus;
-						String statusConvey = (String) #conveyorStatus;
-						etc
-						
-						if converyorStatus and fillerStatus and capLoaderStatus and CapScrewerStatus == "done"
-							or converyorStatus or fillerStatus or capLoaderStatus or CapScrewerStatus  == "idle"
-							(if components are done or idle)
-						then:
-							abort when rotaryStatus == "done" otherwise do:
-								send a request for rotary to start moving using allOperationsFinished
-						
-						System.out.println(status);
-						
-						pause;
-					}	
-				}
 
-
-	 * 
-	 * ||
-		 * 		*IGNORE TOO HARD IMPLEMENTATION*
-	 * 		second button UI
-	 * 			takes out bottle if cap is present.
-	 * Prob don't need:
-	 * switch(status) {
-		case "idle":
-			System.out.println("received Idle");
-			//send(rotaryIdle)
-		case "busy":
-			System.out.println("received Busy");
-			//send(rotaryBusy)
-			
-		case "done":
-			System.out.println("received Done");
-			//send(rotaryDOne)
-		default:
-			System.out.println("afk");
-	}
-	System.out.println("orchestator is here");
- * 
-	 * 
-	
-	*/
 
 
 

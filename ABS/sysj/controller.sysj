@@ -36,13 +36,14 @@ Controller(
 			System.out.println("conveyor done");
 			pause;
 		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1.
-			
 			// If there is a bottle at postion 5, turn on motor again-.-
 			present(bottleAtPos5){
+				System.out.println("Bottle at position 5 is going to be moved");
 				abort(bottleLeftPos5){ // run until bottle has left position5
 					{sustain motConveyorOnOff;} || {sustain motorPos5On;}
 					|| {send conveyorStatus("busy");}
 				}
+				System.out.println("bottle at pos 5 has moved away");
 				send conveyorStatus("done");
 			}
 			
@@ -114,15 +115,16 @@ LiquidFiller(
 			
 				// bottle IS at position 2 then do filler work
 				present(bottleAtPos2){
+					System.out.println("bottle is at pos 2");
 					send fillerStatus("busy");
 					receive percentLiquid;
 					ArrayList recPercentLiq = (ArrayList) #percentLiquid; // [32,43,22,3]  += 100%				
 					int canisterNum = 1;	// reset, select first canister.
 					
 					while(canisterNum<5) {
-
 						//Select Canister
 						abort(selectedCanister){//wait till canister selected
+							System.out.println("selecting canister " + canisterNum);
 						 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
 						}
 					
@@ -199,7 +201,7 @@ Capper(
 			}
 			
 			present(bottleAtPos4) { //Check if a bottle is at position 4, if not, wait until it arrives.
-				
+				System.out.println("Capper doing work...");
 				{ 
 					abort (unclampBottle) {
 						sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
@@ -257,6 +259,7 @@ Caploader(
 			receive capLoaderReq;
 			Boolean request = #capLoaderReq;
 			if(request) {
+				System.out.println("caploader doing work..");
 				send capLoaderStatus("busy");
 				// Automatic
 				System.out.println("Automatic state");
