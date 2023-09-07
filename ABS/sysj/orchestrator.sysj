@@ -75,10 +75,9 @@ Orchestrator(
 		boolean fillerStat=false;
 		boolean capperStat=false;
 		boolean capLoaderStat= false;
-		
-		{// sub reaction
-		
+		while (true) {
 			
+	
 			{ // Check conveyor
 				while (true) {
 					receive conveyorStatus; 
@@ -105,10 +104,10 @@ Orchestrator(
 				}
 				pause;
 				}
-			}
-				
+			}	
 			||
-			{	while(true) {
+			{	
+				while(true) {
 				receive capperStatus; 
 				String capperValue= #capperStatus;
 				if (capperValue == "busy") {
@@ -133,10 +132,7 @@ Orchestrator(
 				pause;
 				}
 			}
-		
-		
-		||
-		
+			||
 			{ // Rotary Orchestrator logic
 				// GOal is to get all the status and emit done if all are done.			
 					// wait until everything else is done or idle
@@ -151,13 +147,12 @@ Orchestrator(
 						send allOperationsFinished(false);
 					}
 					pause;
-				
 				}//while true
 			}	//Rotary close
+			pause;
+		}
 		
-		}//subreaction
 	}// wholereactionclose
-		
 }// this is the reaction to the clock.
 
 
