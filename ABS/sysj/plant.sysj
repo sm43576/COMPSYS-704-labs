@@ -17,8 +17,8 @@ Plant(
 		// Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend; //to plant
 		input Integer signal selectCanister,receivedPercentage;
-		output signal dosUnitEvac;  // from plant
-		output Integer signal selectedCanister,dosUnitFilled; // from PLANT
+		output signal dosUnitEvac,dosUnitFilled;  // from plant
+		output Integer signal selectedCanister; // from PLANT
 		
 		//input
 		//output
@@ -118,46 +118,41 @@ Plant(
 	||
 	
 	//Filler /////////////////////////////////////////////////////////////////////
-	{
-		// LOGIC HERE
-		while(true){
-			{//Selected canister
-				await(selectCanister); 
-				int canister = #selectCanister;
-				System.out.println("canister number received");
-				emit selectedCanister(canister);
-					
-			}
-			
-			||
-			
-			{//Fill Valve
-				await(receivedPercentage);
-				System.out.println("filled");
-				present(valveInletOnOff){
-					emit dosUnitFilled(receivedPercentage);
-					pause;
-				}
-			}
-				
-			||
-			
-			{// Retract/extend Arm
-					abort(dosUnitValveRetract){//  when actuator brings to top
-						sustain dosUnitEvac; //emit canister at bottom
-					}
-					System.out.println("Canister at top");
-					
-					await(dosUnitValveExtend);// wait to be brought down to -
-					System.out.println("Canister at bottom");
-					pause;
-					
-				}
-			
-			//emit two signals
-		}
-
+	{// Selects canister
+		await(selectCanister); 
+		int canister = #selectCanister;
+		System.out.println("canister number received");
+		emit selectedCanister(canister);
+		
 	}
+	||
+	
+	{//Fill Valve
+		await(receivedPercentage);
+		System.out.println("received");
+		int received =(int)#receivedPercentage;
+		System.out.println("filled");
+		
+		/////////////////
+		await(valveInletOnOff);
+		emit dosUnitFilled;
+		
+	}
+	||
+	
+	
+	{// Retract/extend Arm
+		abort(dosUnitValveRetract){//  when actuator brings to top
+			sustain dosUnitEvac; //emit canister at bottom
+		}
+		System.out.println("Canister at top");
+		
+		await(dosUnitValveExtend);// wait to be brought down to -
+		System.out.println("Canister at bottom");
+		pause;
+		
+	}// LOGIC HERE
+
 	/////////////////////////////////////////////////////////////////
 
 	||

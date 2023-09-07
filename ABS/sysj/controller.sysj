@@ -134,11 +134,14 @@ LiquidFiller(
 					
 						  
 						 //Send percentage
-						 System.out.println(recPercentLiq.get(canisterNum-1));
-						 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
+						 int number = (int)(recPercentLiq.get(canisterNum-1));
+						 emit receivedPercentage(number);// send percentage want to befilled
 						 
+						 System.out.println("emitted perecent");
+						 pause;
 						 //Receive Percentage filled, check signal
 						 abort(dosUnitFilled){ // close valve once filled
+							 System.out.println("entered abort");
 							 sustain valveInletOnOff; 
 						 }
 						 
@@ -149,7 +152,7 @@ LiquidFiller(
 						 }
 						 System.out.println("Canister returned");
 					
-						 canisterNum+=1; // switch to the next one. 
+						 canisterNum=canisterNum+1; // switch to the next one. 
 						 pause;
 					}	
 					send fillerStatus("done");
