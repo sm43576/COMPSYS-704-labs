@@ -147,7 +147,9 @@ Orchestrator(
 				(Status.capperStat==false) &&
 				(Status.capLoaderStat==false)){
 				System.out.println("Orch sending rotary req");
+				Status.conveyStat = true;
 				send allOperationsFinished(true);
+				
 			}else {
 				send allOperationsFinished(false);
 			}
