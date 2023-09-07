@@ -20,11 +20,11 @@ Conveyor(
 		if(req) { //bottle has entered from left side.
 			send conveyorStatus("busy");
 		
-			System.out.println("conveyor busy");
+//			System.out.println("conveyor busy");
 
 			// abort when bottle is at position 1, otherwise turn on motor
 			present(!bottleAtPos1){
-				System.out.println("ono the bottle isn't at pos 1 what will we do"); 
+//				System.out.println("ono the bottle isn't at pos 1 what will we do"); 
 				abort(bottleAtPos1) {
 					System.out.println("Motor is on"); 
 					{sustain motConveyorOnOff;} || {sustain motorPos1On;}
@@ -33,7 +33,7 @@ Conveyor(
 			}
 			System.out.println("Motor is off");
 			send conveyorStatus("done");
-			System.out.println("conveyor done");
+//			System.out.println("conveyor done");
 			pause;
 		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1.
 			// If there is a bottle at postion 5, turn on motor again-.-
@@ -48,7 +48,7 @@ Conveyor(
 			}
 			
 			//, else do nothing.
-			System.out.println("conveyor idling");
+//			System.out.println("conveyor idling");
 			send conveyorStatus("idle");
 		}
 		pause;
@@ -64,14 +64,13 @@ RotaryTable(
         )
 ->{
     while(true) {
-        System.out.println("HELLLLLLLLO");
         receive allOperationsFinished;
         Boolean request = #allOperationsFinished;
         
         // wait until it receives an OK from orchestrator
         if(request) {
         	send rotaryStatus("busy");
-        	System.out.println("RECIEVED orchestrator task");
+//        	System.out.println("Rotary - RECIEVED orchestrator task");
         	await(RTbottleAtPos1);
         	
         	// when the rotoray table is aligned with sensor stop sustaining the trigger
@@ -86,7 +85,6 @@ RotaryTable(
         	send rotaryStatus("idle");
         }
         pause;
-        System.out.println("out - next loop");
         
     }
 }
@@ -109,13 +107,14 @@ LiquidFiller(
 		
 		if(request) {
 				// No bottle at position 2 then send idle status
+				System.out.println("Filler - received req from orch");
 				present(!bottleAtPos2){
 					send fillerStatus("idle");
 				}
 			
 				// bottle IS at position 2 then do filler work
 				present(bottleAtPos2){
-					System.out.println("bottle is at pos 2");
+					System.out.println("Filler - bottle is at pos 2");
 					send fillerStatus("busy");
 					receive percentLiquid;
 					ArrayList recPercentLiq = (ArrayList) #percentLiquid; // [32,43,22,3]  += 100%				
@@ -250,7 +249,7 @@ Capper(
 
 
 Caploader(
-		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty,request;
+		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,bottleAtPos3,request;
 		output signal pusherExtend,vacOn,armSource,armDest;
 		input Integer signal mode;
 		input signal pusherExtendM,vacOnM,armSourceM,armDestM;
@@ -263,12 +262,11 @@ Caploader(
 			receive capLoaderReq; // BLOCKED - Hangs here coz there is no loader request at the beginning
 			Boolean request = #capLoaderReq;
 			if(request) {
-				System.out.println("caploader doing work..");
-				send capLoaderStatus("busy");
-				// Automatic
-				System.out.println("Automatic state");
-				present (!empty){
-					
+				
+				present (bottleAtPos3){
+					System.out.println("cap loader - bottle is at pos 3");
+
+					send capLoaderStatus("busy");
 					//Pusher extend
 					present(pusherRetracted) { // every push tick
 						abort(pusherExtended) { //plant emits when its at X
