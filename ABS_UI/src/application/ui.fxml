@@ -129,7 +129,7 @@
                         <Insets top="220.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <ImageView fx:id="carousel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#rotate" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="carousel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#carouselAnimation" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
                      </image>
