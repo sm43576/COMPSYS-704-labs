@@ -25,10 +25,7 @@ Orchestrator(
 		liquidPercent.add(20);
 		liquidPercent.add(60);
 		
-		//send allOperationsFinished(true); // 
-		
 		// present X
-		
 		
 		while(true) {
 			// insert present(order) here
@@ -63,6 +60,11 @@ Orchestrator(
 				send capperReq(true);
 				emit getNextBottle;
 			}
+			else {
+				send fillerReq(false);
+				send capLoaderReq(false);
+				send capperReq(false);
+			}
 			pause;
 		}
 		
@@ -75,19 +77,24 @@ Orchestrator(
 		boolean capLoaderStat= false;
 		
 		{// sub reaction
-			while(true)
+		
+			
 			{ // Check conveyor
-				receive conveyorStatus; 
-				String conveyValue= #conveyorStatus;
-				if (conveyValue == "busy") {
-					conveyStat = true;
+				while (true) {
+					receive conveyorStatus; 
+					String conveyValue= #conveyorStatus;
+					if (conveyValue == "busy") {
+						conveyStat = true;
+					}
+					else {
+						conveyStat = false; //idle and done are the same
+					}
+					pause;
 				}
-				else {
-					conveyStat = false; //idle and done are the same
-				}
-				
+			}	
 			||
 			{//Check filler
+				while(true) {
 				receive fillerStatus; 
 				String fillerValue= #fillerStatus;
 				if (fillerValue == "busy") {
@@ -96,11 +103,12 @@ Orchestrator(
 				else {
 					fillerStat = false; //idle and done are the same
 				}
-				
+				pause;
+				}
 			}
 				
 			||
-			{
+			{	while(true) {
 				receive capperStatus; 
 				String capperValue= #capperStatus;
 				if (capperValue == "busy") {
@@ -109,9 +117,11 @@ Orchestrator(
 				else {
 					capperStat = false; //idle and done are the same
 				}
+				pause;
+				}
 			}
 			||
-			{
+			{	while(true) {
 				receive capLoaderStatus; 
 				String capLoaderValue= #capLoaderStatus;
 				if (capLoaderValue == "busy") {
@@ -120,28 +130,35 @@ Orchestrator(
 				else {
 					capLoaderStat = false; //idle and done are the same
 				}
+				pause;
+				}
 			}
-		}
+		
 		
 		||
 		
-		{ // Rotary Orchestrator logic
-			// GOal is to get all the status and emit done if all are done.			
-			while(true) {
+			{ // Rotary Orchestrator logic
+				// GOal is to get all the status and emit done if all are done.			
+					// wait until everything else is done or idle
+				while(true) {
+					if((conveyStat==true) && 
+						(fillerStat==true) &&
+						(capperStat==true) &&
+						(capLoaderStat==true)){
+	
+						send allOperationsFinished(true);
+					}else {
+						send allOperationsFinished(false);
+					}
+					pause;
 				
-				// wait until everything else is done or idle
-				if((conveyStat == "done" || conveyStat == "idle") && 
-					(fillerStat == "done" || fillerStat == "idle") &&  
-					(screwerStat == "done" || screwerStat == "idle") && 
-					(loaderStat == "done" || loaderStat == "idle")) {
-					System.out.println("sending request to rotary?");
-					send allOperationsFinished(true);
-				}
-				pause;
-			}
-		}
-	}
-}
+				}//while true
+			}	//Rotary close
+		
+		}//subreaction
+	}// wholereactionclose
+		
+}// this is the reaction to the clock.
 
 
 
