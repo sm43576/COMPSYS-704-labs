@@ -25,37 +25,37 @@ public class LiquidFiller extends ClockDomain{
   public input_Channel fillerReq_in = new input_Channel();
   public input_Channel percentLiquid_in = new input_Channel();
   public output_Channel fillerStatus_o = new output_Channel();
-  private Boolean request_thread_8;//sysj\controller.sysj line: 106, column: 3
-  private ArrayList recPercentLiq_thread_8;//sysj\controller.sysj line: 120, column: 6
-  private int canisterNum_thread_8;//sysj\controller.sysj line: 121, column: 6
-  private int S97796 = 1;
-  private int S7988 = 1;
-  private int S7972 = 1;
-  private int S7967 = 1;
-  private int S15468 = 1;
-  private int S8035 = 1;
-  private int S7995 = 1;
-  private int S7990 = 1;
-  private int S8080 = 1;
-  private int S8042 = 1;
-  private int S8037 = 1;
-  private int S8087 = 1;
-  private int S8082 = 1;
-  private int S8199 = 1;
-  private int S8181 = 1;
-  private int S8186 = 1;
-  private int S8216 = 1;
-  private int S8221 = 1;
-  private int S9369 = 1;
-  private int S9364 = 1;
-  private int S15452 = 1;
-  private int S15447 = 1;
+  private Boolean request_thread_8;//sysj\controller.sysj line: 105, column: 3
+  private ArrayList recPercentLiq_thread_8;//sysj\controller.sysj line: 119, column: 6
+  private int canisterNum_thread_8;//sysj\controller.sysj line: 120, column: 6
+  private int S97520 = 1;
+  private int S7712 = 1;
+  private int S7696 = 1;
+  private int S7691 = 1;
+  private int S15192 = 1;
+  private int S7759 = 1;
+  private int S7719 = 1;
+  private int S7714 = 1;
+  private int S7804 = 1;
+  private int S7766 = 1;
+  private int S7761 = 1;
+  private int S7811 = 1;
+  private int S7806 = 1;
+  private int S7923 = 1;
+  private int S7905 = 1;
+  private int S7910 = 1;
+  private int S7940 = 1;
+  private int S7945 = 1;
+  private int S9093 = 1;
+  private int S9088 = 1;
+  private int S15176 = 1;
+  private int S15171 = 1;
   
   private int[] ends = new int[23];
   private int[] tdone = new int[23];
   
-  public void thread118501(int [] tdone, int [] ends){
-        switch(S8221){
+  public void thread113425(int [] tdone, int [] ends){
+        switch(S7945){
       case 0 : 
         active[12]=0;
         ends[12]=0;
@@ -73,8 +73,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread118500(int [] tdone, int [] ends){
-        switch(S8216){
+  public void thread113424(int [] tdone, int [] ends){
+        switch(S7940){
       case 0 : 
         active[11]=0;
         ends[11]=0;
@@ -92,8 +92,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread118498(int [] tdone, int [] ends){
-        S8221=1;
+  public void thread113422(int [] tdone, int [] ends){
+        S7945=1;
     valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 148, column: 43
     currsigs.addElement(valveInjectorOnOff);
     active[12]=1;
@@ -101,8 +101,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[12]=1;
   }
 
-  public void thread118497(int [] tdone, int [] ends){
-        S8216=1;
+  public void thread113421(int [] tdone, int [] ends){
+        S7940=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 148, column: 10
     currsigs.addElement(dosUnitValveExtend);
     active[11]=1;
@@ -110,8 +110,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[11]=1;
   }
 
-  public void thread118495(int [] tdone, int [] ends){
-        switch(S8186){
+  public void thread113419(int [] tdone, int [] ends){
+        switch(S7910){
       case 0 : 
         active[10]=0;
         ends[10]=0;
@@ -119,7 +119,7 @@ public class LiquidFiller extends ClockDomain{
         break;
       
       case 1 : 
-        valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 132, column: 44
+        valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 131, column: 44
         currsigs.addElement(valveInjectorOnOff);
         active[10]=1;
         ends[10]=1;
@@ -129,8 +129,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread118494(int [] tdone, int [] ends){
-        switch(S8181){
+  public void thread113418(int [] tdone, int [] ends){
+        switch(S7905){
       case 0 : 
         active[9]=0;
         ends[9]=0;
@@ -138,7 +138,7 @@ public class LiquidFiller extends ClockDomain{
         break;
       
       case 1 : 
-        dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 132, column: 10
+        dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 131, column: 10
         currsigs.addElement(dosUnitValveRetract);
         active[9]=1;
         ends[9]=1;
@@ -148,18 +148,18 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread118492(int [] tdone, int [] ends){
-        S8186=1;
-    valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 132, column: 44
+  public void thread113416(int [] tdone, int [] ends){
+        S7910=1;
+    valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 131, column: 44
     currsigs.addElement(valveInjectorOnOff);
     active[10]=1;
     ends[10]=1;
     tdone[10]=1;
   }
 
-  public void thread118491(int [] tdone, int [] ends){
-        S8181=1;
-    dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 132, column: 10
+  public void thread113415(int [] tdone, int [] ends){
+        S7905=1;
+    dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 131, column: 10
     currsigs.addElement(dosUnitValveRetract);
     active[9]=1;
     ends[9]=1;
@@ -173,130 +173,130 @@ public class LiquidFiller extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S97796){
+      switch(S97520){
         case 0 : 
-          S97796=0;
+          S97520=0;
           break RUN;
         
         case 1 : 
-          S97796=2;
-          S97796=2;
-          S7988=0;
-          S7972=0;
-          if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 105, column: 3
-            fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
-            S7972=1;
+          S97520=2;
+          S97520=2;
+          S7712=0;
+          S7696=0;
+          if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 104, column: 3
+            fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
+            S7696=1;
             active[8]=1;
             ends[8]=1;
             break RUN;
           }
           else {
-            S7967=0;
-            if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-              fillerReq_in.setACK(true);//sysj\controller.sysj line: 105, column: 3
-              S7967=1;
-              if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
+            S7691=0;
+            if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+              fillerReq_in.setACK(true);//sysj\controller.sysj line: 104, column: 3
+              S7691=1;
+              if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
                 ends[8]=2;
-                ;//sysj\controller.sysj line: 105, column: 3
-                request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 106, column: 3
-                S7988=1;
-                if(request_thread_8){//sysj\controller.sysj line: 108, column: 3
-                  S15468=0;
-                  System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 110, column: 5
-                  S8035=0;
-                  if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 111, column: 13
-                    S7995=0;
-                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                      S7995=1;
+                ;//sysj\controller.sysj line: 104, column: 3
+                request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 105, column: 3
+                S7712=1;
+                if(request_thread_8){//sysj\controller.sysj line: 107, column: 3
+                  S15192=0;
+                  System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 109, column: 5
+                  S7759=0;
+                  if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 13
+                    S7719=0;
+                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                      S7719=1;
                       active[8]=1;
                       ends[8]=1;
                       break RUN;
                     }
                     else {
-                      S7990=0;
-                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                        fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                        S7990=1;
-                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                      S7714=0;
+                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                        fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                        S7714=1;
+                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                           ends[8]=2;
-                          ;//sysj\controller.sysj line: 112, column: 6
-                          S8035=1;
-                          if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                            System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                            S8080=0;
-                            S8042=0;
-                            if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                              S8042=1;
+                          ;//sysj\controller.sysj line: 111, column: 6
+                          S7759=1;
+                          if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                            System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                            S7804=0;
+                            S7766=0;
+                            if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                              S7766=1;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
                             }
                             else {
-                              S8037=0;
-                              if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                S8037=1;
-                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                              S7761=0;
+                              if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                S7761=1;
+                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                   ends[8]=2;
-                                  ;//sysj\controller.sysj line: 118, column: 6
-                                  S8080=1;
-                                  S8087=0;
-                                  if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                    S8087=1;
+                                  ;//sysj\controller.sysj line: 117, column: 6
+                                  S7804=1;
+                                  S7811=0;
+                                  if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                    S7811=1;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
                                   }
                                   else {
-                                    S8082=0;
-                                    if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                      S8082=1;
-                                      if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                    S7806=0;
+                                    if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                      S7806=1;
+                                      if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 119, column: 6
-                                        recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                        canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                        S8080=2;
-                                        if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                          S8199=0;
-                                          System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                          selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                        ;//sysj\controller.sysj line: 118, column: 6
+                                        recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                        canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                        S7804=2;
+                                        if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                          S7923=0;
+                                          System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                          selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                           currsigs.addElement(selectCanister);
-                                          selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                          selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 123, column: 6
-                                          S8080=3;
-                                          S9369=0;
+                                          ;//sysj\controller.sysj line: 122, column: 6
+                                          S7804=3;
+                                          S9093=0;
                                           if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                            S9369=1;
+                                            S9093=1;
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
-                                            S9364=0;
+                                            S9088=0;
                                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                              S9364=1;
+                                              S9088=1;
                                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                 ends[8]=2;
                                                 ;//sysj\controller.sysj line: 155, column: 6
-                                                S7988=2;
+                                                S7712=2;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
@@ -342,7 +342,7 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S7988=2;
+                            S7712=2;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
@@ -362,80 +362,80 @@ public class LiquidFiller extends ClockDomain{
                     }
                   }
                   else {
-                    S8035=1;
-                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                      S8080=0;
-                      S8042=0;
-                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                        S8042=1;
+                    S7759=1;
+                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                      S7804=0;
+                      S7766=0;
+                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                        S7766=1;
                         active[8]=1;
                         ends[8]=1;
                         break RUN;
                       }
                       else {
-                        S8037=0;
-                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                          S8037=1;
-                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                        S7761=0;
+                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                          S7761=1;
+                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                             ends[8]=2;
-                            ;//sysj\controller.sysj line: 118, column: 6
-                            S8080=1;
-                            S8087=0;
-                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                              S8087=1;
+                            ;//sysj\controller.sysj line: 117, column: 6
+                            S7804=1;
+                            S7811=0;
+                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                              S7811=1;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
                             }
                             else {
-                              S8082=0;
-                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                S8082=1;
-                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                              S7806=0;
+                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                S7806=1;
+                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                   ends[8]=2;
-                                  ;//sysj\controller.sysj line: 119, column: 6
-                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                  S8080=2;
-                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                    S8199=0;
-                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                    selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                  ;//sysj\controller.sysj line: 118, column: 6
+                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                  S7804=2;
+                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                    S7923=0;
+                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                    selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                     currsigs.addElement(selectCanister);
-                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
                                   }
                                   else {
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 123, column: 6
-                                    S8080=3;
-                                    S9369=0;
+                                    ;//sysj\controller.sysj line: 122, column: 6
+                                    S7804=3;
+                                    S9093=0;
                                     if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                      S9369=1;
+                                      S9093=1;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S9364=0;
+                                      S9088=0;
                                       if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                         fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                        S9364=1;
+                                        S9088=1;
                                         if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                           ends[8]=2;
                                           ;//sysj\controller.sysj line: 155, column: 6
-                                          S7988=2;
+                                          S7712=2;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
@@ -481,7 +481,7 @@ public class LiquidFiller extends ClockDomain{
                       }
                     }
                     else {
-                      S7988=2;
+                      S7712=2;
                       active[8]=1;
                       ends[8]=1;
                       break RUN;
@@ -489,25 +489,25 @@ public class LiquidFiller extends ClockDomain{
                   }
                 }
                 else {
-                  S15468=1;
-                  S15452=0;
+                  S15192=1;
+                  S15176=0;
                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                    S15452=1;
+                    S15176=1;
                     active[8]=1;
                     ends[8]=1;
                     break RUN;
                   }
                   else {
-                    S15447=0;
+                    S15171=0;
                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                       fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                      S15447=1;
+                      S15171=1;
                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                         ends[8]=2;
                         ;//sysj\controller.sysj line: 158, column: 4
-                        S7988=2;
+                        S7712=2;
                         active[8]=1;
                         ends[8]=1;
                         break RUN;
@@ -540,125 +540,125 @@ public class LiquidFiller extends ClockDomain{
           }
         
         case 2 : 
-          switch(S7988){
+          switch(S7712){
             case 0 : 
-              switch(S7972){
+              switch(S7696){
                 case 0 : 
-                  if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 105, column: 3
-                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
-                    S7972=1;
+                  if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 104, column: 3
+                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
+                    S7696=1;
                     active[8]=1;
                     ends[8]=1;
                     break RUN;
                   }
                   else {
-                    switch(S7967){
+                    switch(S7691){
                       case 0 : 
-                        if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                          fillerReq_in.setACK(true);//sysj\controller.sysj line: 105, column: 3
-                          S7967=1;
-                          if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                            fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
+                        if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                          fillerReq_in.setACK(true);//sysj\controller.sysj line: 104, column: 3
+                          S7691=1;
+                          if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                            fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
                             ends[8]=2;
-                            ;//sysj\controller.sysj line: 105, column: 3
-                            request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 106, column: 3
-                            S7988=1;
-                            if(request_thread_8){//sysj\controller.sysj line: 108, column: 3
-                              S15468=0;
-                              System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 110, column: 5
-                              S8035=0;
-                              if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 111, column: 13
-                                S7995=0;
-                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                                  S7995=1;
+                            ;//sysj\controller.sysj line: 104, column: 3
+                            request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 105, column: 3
+                            S7712=1;
+                            if(request_thread_8){//sysj\controller.sysj line: 107, column: 3
+                              S15192=0;
+                              System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 109, column: 5
+                              S7759=0;
+                              if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 13
+                                S7719=0;
+                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                                  S7719=1;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S7990=0;
-                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                    fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                                    S7990=1;
-                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                                  S7714=0;
+                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                    fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                                    S7714=1;
+                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 112, column: 6
-                                      S8035=1;
-                                      if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                        System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                        S8080=0;
-                                        S8042=0;
-                                        if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                          S8042=1;
+                                      ;//sysj\controller.sysj line: 111, column: 6
+                                      S7759=1;
+                                      if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                        System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                        S7804=0;
+                                        S7766=0;
+                                        if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                          S7766=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S8037=0;
-                                          if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                            fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                            S8037=1;
-                                            if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                          S7761=0;
+                                          if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                            fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                            S7761=1;
+                                            if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 118, column: 6
-                                              S8080=1;
-                                              S8087=0;
-                                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                                S8087=1;
+                                              ;//sysj\controller.sysj line: 117, column: 6
+                                              S7804=1;
+                                              S7811=0;
+                                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                                S7811=1;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
-                                                S8082=0;
-                                                if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                  percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                                  S8082=1;
-                                                  if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                                S7806=0;
+                                                if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                  percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                                  S7806=1;
+                                                  if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                                     ends[8]=2;
-                                                    ;//sysj\controller.sysj line: 119, column: 6
-                                                    recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                                    canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                                    S8080=2;
-                                                    if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                      S8199=0;
-                                                      System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                      selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                                    ;//sysj\controller.sysj line: 118, column: 6
+                                                    recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                                    canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                                    S7804=2;
+                                                    if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                      S7923=0;
+                                                      System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                      selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                       currsigs.addElement(selectCanister);
-                                                      selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                      selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
                                                     }
                                                     else {
                                                       ends[8]=2;
-                                                      ;//sysj\controller.sysj line: 123, column: 6
-                                                      S8080=3;
-                                                      S9369=0;
+                                                      ;//sysj\controller.sysj line: 122, column: 6
+                                                      S7804=3;
+                                                      S9093=0;
                                                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                        S9369=1;
+                                                        S9093=1;
                                                         active[8]=1;
                                                         ends[8]=1;
                                                         break RUN;
                                                       }
                                                       else {
-                                                        S9364=0;
+                                                        S9088=0;
                                                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                           fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                          S9364=1;
+                                                          S9088=1;
                                                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                             ends[8]=2;
                                                             ;//sysj\controller.sysj line: 155, column: 6
-                                                            S7988=2;
+                                                            S7712=2;
                                                             active[8]=1;
                                                             ends[8]=1;
                                                             break RUN;
@@ -704,7 +704,7 @@ public class LiquidFiller extends ClockDomain{
                                         }
                                       }
                                       else {
-                                        S7988=2;
+                                        S7712=2;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
@@ -724,80 +724,80 @@ public class LiquidFiller extends ClockDomain{
                                 }
                               }
                               else {
-                                S8035=1;
-                                if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                  System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                  S8080=0;
-                                  S8042=0;
-                                  if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                    S8042=1;
+                                S7759=1;
+                                if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                  System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                  S7804=0;
+                                  S7766=0;
+                                  if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                    S7766=1;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
                                   }
                                   else {
-                                    S8037=0;
-                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                      S8037=1;
-                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                    S7761=0;
+                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                      S7761=1;
+                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 118, column: 6
-                                        S8080=1;
-                                        S8087=0;
-                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                          S8087=1;
+                                        ;//sysj\controller.sysj line: 117, column: 6
+                                        S7804=1;
+                                        S7811=0;
+                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                          S7811=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S8082=0;
-                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                            S8082=1;
-                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                          S7806=0;
+                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                            S7806=1;
+                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 119, column: 6
-                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                              S8080=2;
-                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                S8199=0;
-                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                              ;//sysj\controller.sysj line: 118, column: 6
+                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                              S7804=2;
+                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                S7923=0;
+                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                 currsigs.addElement(selectCanister);
-                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
                                                 ends[8]=2;
-                                                ;//sysj\controller.sysj line: 123, column: 6
-                                                S8080=3;
-                                                S9369=0;
+                                                ;//sysj\controller.sysj line: 122, column: 6
+                                                S7804=3;
+                                                S9093=0;
                                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                  S9369=1;
+                                                  S9093=1;
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
                                                 }
                                                 else {
-                                                  S9364=0;
+                                                  S9088=0;
                                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                    S9364=1;
+                                                    S9088=1;
                                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                       ends[8]=2;
                                                       ;//sysj\controller.sysj line: 155, column: 6
-                                                      S7988=2;
+                                                      S7712=2;
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
@@ -843,7 +843,7 @@ public class LiquidFiller extends ClockDomain{
                                   }
                                 }
                                 else {
-                                  S7988=2;
+                                  S7712=2;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
@@ -851,25 +851,25 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S15468=1;
-                              S15452=0;
+                              S15192=1;
+                              S15176=0;
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                                S15452=1;
+                                S15176=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S15447=0;
+                                S15171=0;
                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                   fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                                  S15447=1;
+                                  S15171=1;
                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                                     ends[8]=2;
                                     ;//sysj\controller.sysj line: 158, column: 4
-                                    S7988=2;
+                                    S7712=2;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
@@ -901,108 +901,108 @@ public class LiquidFiller extends ClockDomain{
                         }
                       
                       case 1 : 
-                        if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                          fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
+                        if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                          fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
                           ends[8]=2;
-                          ;//sysj\controller.sysj line: 105, column: 3
-                          request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 106, column: 3
-                          S7988=1;
-                          if(request_thread_8){//sysj\controller.sysj line: 108, column: 3
-                            S15468=0;
-                            System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 110, column: 5
-                            S8035=0;
-                            if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 111, column: 13
-                              S7995=0;
-                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                                S7995=1;
+                          ;//sysj\controller.sysj line: 104, column: 3
+                          request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 105, column: 3
+                          S7712=1;
+                          if(request_thread_8){//sysj\controller.sysj line: 107, column: 3
+                            S15192=0;
+                            System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 109, column: 5
+                            S7759=0;
+                            if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 13
+                              S7719=0;
+                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                                S7719=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S7990=0;
-                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                  fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                                  S7990=1;
-                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                                S7714=0;
+                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                  fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                                  S7714=1;
+                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 112, column: 6
-                                    S8035=1;
-                                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                      S8080=0;
-                                      S8042=0;
-                                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                        S8042=1;
+                                    ;//sysj\controller.sysj line: 111, column: 6
+                                    S7759=1;
+                                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                      S7804=0;
+                                      S7766=0;
+                                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                        S7766=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S8037=0;
-                                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                          S8037=1;
-                                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                        S7761=0;
+                                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                          S7761=1;
+                                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 118, column: 6
-                                            S8080=1;
-                                            S8087=0;
-                                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                              S8087=1;
+                                            ;//sysj\controller.sysj line: 117, column: 6
+                                            S7804=1;
+                                            S7811=0;
+                                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                              S7811=1;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
-                                              S8082=0;
-                                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                                S8082=1;
-                                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                              S7806=0;
+                                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                                S7806=1;
+                                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                                   ends[8]=2;
-                                                  ;//sysj\controller.sysj line: 119, column: 6
-                                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                                  S8080=2;
-                                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                    S8199=0;
-                                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                    selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                                  ;//sysj\controller.sysj line: 118, column: 6
+                                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                                  S7804=2;
+                                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                    S7923=0;
+                                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                    selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                     currsigs.addElement(selectCanister);
-                                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
                                                   }
                                                   else {
                                                     ends[8]=2;
-                                                    ;//sysj\controller.sysj line: 123, column: 6
-                                                    S8080=3;
-                                                    S9369=0;
+                                                    ;//sysj\controller.sysj line: 122, column: 6
+                                                    S7804=3;
+                                                    S9093=0;
                                                     if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                      S9369=1;
+                                                      S9093=1;
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
                                                     }
                                                     else {
-                                                      S9364=0;
+                                                      S9088=0;
                                                       if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                         fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                        S9364=1;
+                                                        S9088=1;
                                                         if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                           ends[8]=2;
                                                           ;//sysj\controller.sysj line: 155, column: 6
-                                                          S7988=2;
+                                                          S7712=2;
                                                           active[8]=1;
                                                           ends[8]=1;
                                                           break RUN;
@@ -1048,7 +1048,7 @@ public class LiquidFiller extends ClockDomain{
                                       }
                                     }
                                     else {
-                                      S7988=2;
+                                      S7712=2;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
@@ -1068,80 +1068,80 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S8035=1;
-                              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                S8080=0;
-                                S8042=0;
-                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                  S8042=1;
+                              S7759=1;
+                              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                S7804=0;
+                                S7766=0;
+                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                  S7766=1;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S8037=0;
-                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                    S8037=1;
-                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                  S7761=0;
+                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                    S7761=1;
+                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 118, column: 6
-                                      S8080=1;
-                                      S8087=0;
-                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                        S8087=1;
+                                      ;//sysj\controller.sysj line: 117, column: 6
+                                      S7804=1;
+                                      S7811=0;
+                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                        S7811=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S8082=0;
-                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                          S8082=1;
-                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                        S7806=0;
+                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                          S7806=1;
+                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 119, column: 6
-                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                            S8080=2;
-                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                              S8199=0;
-                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                              selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                            ;//sysj\controller.sysj line: 118, column: 6
+                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                            S7804=2;
+                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                              S7923=0;
+                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                              selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                               currsigs.addElement(selectCanister);
-                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 123, column: 6
-                                              S8080=3;
-                                              S9369=0;
+                                              ;//sysj\controller.sysj line: 122, column: 6
+                                              S7804=3;
+                                              S9093=0;
                                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                S9369=1;
+                                                S9093=1;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
-                                                S9364=0;
+                                                S9088=0;
                                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                  S9364=1;
+                                                  S9088=1;
                                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                     ends[8]=2;
                                                     ;//sysj\controller.sysj line: 155, column: 6
-                                                    S7988=2;
+                                                    S7712=2;
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
@@ -1187,7 +1187,7 @@ public class LiquidFiller extends ClockDomain{
                                 }
                               }
                               else {
-                                S7988=2;
+                                S7712=2;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
@@ -1195,25 +1195,25 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S15468=1;
-                            S15452=0;
+                            S15192=1;
+                            S15176=0;
                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                              S15452=1;
+                              S15176=1;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
                             }
                             else {
-                              S15447=0;
+                              S15171=0;
                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                 fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                                S15447=1;
+                                S15171=1;
                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                                   ends[8]=2;
                                   ;//sysj\controller.sysj line: 158, column: 4
-                                  S7988=2;
+                                  S7712=2;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
@@ -1243,122 +1243,122 @@ public class LiquidFiller extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  S7972=1;
-                  S7972=0;
-                  if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 105, column: 3
-                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
-                    S7972=1;
+                  S7696=1;
+                  S7696=0;
+                  if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 104, column: 3
+                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
+                    S7696=1;
                     active[8]=1;
                     ends[8]=1;
                     break RUN;
                   }
                   else {
-                    S7967=0;
-                    if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                      fillerReq_in.setACK(true);//sysj\controller.sysj line: 105, column: 3
-                      S7967=1;
-                      if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                        fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
+                    S7691=0;
+                    if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                      fillerReq_in.setACK(true);//sysj\controller.sysj line: 104, column: 3
+                      S7691=1;
+                      if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                        fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
                         ends[8]=2;
-                        ;//sysj\controller.sysj line: 105, column: 3
-                        request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 106, column: 3
-                        S7988=1;
-                        if(request_thread_8){//sysj\controller.sysj line: 108, column: 3
-                          S15468=0;
-                          System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 110, column: 5
-                          S8035=0;
-                          if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 111, column: 13
-                            S7995=0;
-                            if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                              S7995=1;
+                        ;//sysj\controller.sysj line: 104, column: 3
+                        request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 105, column: 3
+                        S7712=1;
+                        if(request_thread_8){//sysj\controller.sysj line: 107, column: 3
+                          S15192=0;
+                          System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 109, column: 5
+                          S7759=0;
+                          if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 13
+                            S7719=0;
+                            if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                              S7719=1;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
                             }
                             else {
-                              S7990=0;
-                              if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                                S7990=1;
-                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                              S7714=0;
+                              if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                                S7714=1;
+                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                   ends[8]=2;
-                                  ;//sysj\controller.sysj line: 112, column: 6
-                                  S8035=1;
-                                  if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                    System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                    S8080=0;
-                                    S8042=0;
-                                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                      S8042=1;
+                                  ;//sysj\controller.sysj line: 111, column: 6
+                                  S7759=1;
+                                  if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                    System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                    S7804=0;
+                                    S7766=0;
+                                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                      S7766=1;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S8037=0;
-                                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                        S8037=1;
-                                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                      S7761=0;
+                                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                        S7761=1;
+                                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 118, column: 6
-                                          S8080=1;
-                                          S8087=0;
-                                          if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                            S8087=1;
+                                          ;//sysj\controller.sysj line: 117, column: 6
+                                          S7804=1;
+                                          S7811=0;
+                                          if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                            S7811=1;
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
-                                            S8082=0;
-                                            if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                              S8082=1;
-                                              if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                            S7806=0;
+                                            if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                              S7806=1;
+                                              if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                                 ends[8]=2;
-                                                ;//sysj\controller.sysj line: 119, column: 6
-                                                recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                                canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                                S8080=2;
-                                                if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                  S8199=0;
-                                                  System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                  selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                                ;//sysj\controller.sysj line: 118, column: 6
+                                                recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                                canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                                S7804=2;
+                                                if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                  S7923=0;
+                                                  System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                  selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                   currsigs.addElement(selectCanister);
-                                                  selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                  selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
                                                 }
                                                 else {
                                                   ends[8]=2;
-                                                  ;//sysj\controller.sysj line: 123, column: 6
-                                                  S8080=3;
-                                                  S9369=0;
+                                                  ;//sysj\controller.sysj line: 122, column: 6
+                                                  S7804=3;
+                                                  S9093=0;
                                                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                    S9369=1;
+                                                    S9093=1;
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
                                                   }
                                                   else {
-                                                    S9364=0;
+                                                    S9088=0;
                                                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                      S9364=1;
+                                                      S9088=1;
                                                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                         ends[8]=2;
                                                         ;//sysj\controller.sysj line: 155, column: 6
-                                                        S7988=2;
+                                                        S7712=2;
                                                         active[8]=1;
                                                         ends[8]=1;
                                                         break RUN;
@@ -1404,7 +1404,7 @@ public class LiquidFiller extends ClockDomain{
                                     }
                                   }
                                   else {
-                                    S7988=2;
+                                    S7712=2;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
@@ -1424,80 +1424,80 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S8035=1;
-                            if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                              System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                              S8080=0;
-                              S8042=0;
-                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                S8042=1;
+                            S7759=1;
+                            if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                              System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                              S7804=0;
+                              S7766=0;
+                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                S7766=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S8037=0;
-                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                  fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                  S8037=1;
-                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                S7761=0;
+                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                  fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                  S7761=1;
+                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 118, column: 6
-                                    S8080=1;
-                                    S8087=0;
-                                    if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                      S8087=1;
+                                    ;//sysj\controller.sysj line: 117, column: 6
+                                    S7804=1;
+                                    S7811=0;
+                                    if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                      S7811=1;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S8082=0;
-                                      if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                        S8082=1;
-                                        if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                      S7806=0;
+                                      if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                        S7806=1;
+                                        if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 119, column: 6
-                                          recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                          canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                          S8080=2;
-                                          if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                            S8199=0;
-                                            System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                            selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                          ;//sysj\controller.sysj line: 118, column: 6
+                                          recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                          canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                          S7804=2;
+                                          if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                            S7923=0;
+                                            System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                            selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                             currsigs.addElement(selectCanister);
-                                            selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                            selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 123, column: 6
-                                            S8080=3;
-                                            S9369=0;
+                                            ;//sysj\controller.sysj line: 122, column: 6
+                                            S7804=3;
+                                            S9093=0;
                                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                              S9369=1;
+                                              S9093=1;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
-                                              S9364=0;
+                                              S9088=0;
                                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                S9364=1;
+                                                S9088=1;
                                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                   ends[8]=2;
                                                   ;//sysj\controller.sysj line: 155, column: 6
-                                                  S7988=2;
+                                                  S7712=2;
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
@@ -1543,7 +1543,7 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S7988=2;
+                              S7712=2;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
@@ -1551,25 +1551,25 @@ public class LiquidFiller extends ClockDomain{
                           }
                         }
                         else {
-                          S15468=1;
-                          S15452=0;
+                          S15192=1;
+                          S15176=0;
                           if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                            S15452=1;
+                            S15176=1;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
                           }
                           else {
-                            S15447=0;
+                            S15171=0;
                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                               fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                              S15447=1;
+                              S15171=1;
                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                                 ends[8]=2;
                                 ;//sysj\controller.sysj line: 158, column: 4
-                                S7988=2;
+                                S7712=2;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
@@ -1605,103 +1605,103 @@ public class LiquidFiller extends ClockDomain{
               break;
             
             case 1 : 
-              switch(S15468){
+              switch(S15192){
                 case 0 : 
-                  switch(S8035){
+                  switch(S7759){
                     case 0 : 
-                      switch(S7995){
+                      switch(S7719){
                         case 0 : 
-                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                            S7995=1;
+                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                            S7719=1;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
                           }
                           else {
-                            switch(S7990){
+                            switch(S7714){
                               case 0 : 
-                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                  fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                                  S7990=1;
-                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                  fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                                  S7714=1;
+                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 112, column: 6
-                                    S8035=1;
-                                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                      S8080=0;
-                                      S8042=0;
-                                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                        S8042=1;
+                                    ;//sysj\controller.sysj line: 111, column: 6
+                                    S7759=1;
+                                    if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                      System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                      S7804=0;
+                                      S7766=0;
+                                      if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                        S7766=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S8037=0;
-                                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                          S8037=1;
-                                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                        S7761=0;
+                                        if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                          fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                          S7761=1;
+                                          if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 118, column: 6
-                                            S8080=1;
-                                            S8087=0;
-                                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                              S8087=1;
+                                            ;//sysj\controller.sysj line: 117, column: 6
+                                            S7804=1;
+                                            S7811=0;
+                                            if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                              S7811=1;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
-                                              S8082=0;
-                                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                                S8082=1;
-                                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                              S7806=0;
+                                              if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                                S7806=1;
+                                                if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                                   ends[8]=2;
-                                                  ;//sysj\controller.sysj line: 119, column: 6
-                                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                                  S8080=2;
-                                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                    S8199=0;
-                                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                    selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                                  ;//sysj\controller.sysj line: 118, column: 6
+                                                  recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                                  canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                                  S7804=2;
+                                                  if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                    S7923=0;
+                                                    System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                    selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                     currsigs.addElement(selectCanister);
-                                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                    selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
                                                   }
                                                   else {
                                                     ends[8]=2;
-                                                    ;//sysj\controller.sysj line: 123, column: 6
-                                                    S8080=3;
-                                                    S9369=0;
+                                                    ;//sysj\controller.sysj line: 122, column: 6
+                                                    S7804=3;
+                                                    S9093=0;
                                                     if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                      S9369=1;
+                                                      S9093=1;
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
                                                     }
                                                     else {
-                                                      S9364=0;
+                                                      S9088=0;
                                                       if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                         fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                        S9364=1;
+                                                        S9088=1;
                                                         if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                           ends[8]=2;
                                                           ;//sysj\controller.sysj line: 155, column: 6
-                                                          S7988=2;
+                                                          S7712=2;
                                                           active[8]=1;
                                                           ends[8]=1;
                                                           break RUN;
@@ -1747,7 +1747,7 @@ public class LiquidFiller extends ClockDomain{
                                       }
                                     }
                                     else {
-                                      S7988=2;
+                                      S7712=2;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
@@ -1766,84 +1766,84 @@ public class LiquidFiller extends ClockDomain{
                                 }
                               
                               case 1 : 
-                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                                if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                   ends[8]=2;
-                                  ;//sysj\controller.sysj line: 112, column: 6
-                                  S8035=1;
-                                  if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                    System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                    S8080=0;
-                                    S8042=0;
-                                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                      S8042=1;
+                                  ;//sysj\controller.sysj line: 111, column: 6
+                                  S7759=1;
+                                  if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                    System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                    S7804=0;
+                                    S7766=0;
+                                    if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                      S7766=1;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S8037=0;
-                                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                        S8037=1;
-                                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                      S7761=0;
+                                      if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                        S7761=1;
+                                        if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 118, column: 6
-                                          S8080=1;
-                                          S8087=0;
-                                          if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                            S8087=1;
+                                          ;//sysj\controller.sysj line: 117, column: 6
+                                          S7804=1;
+                                          S7811=0;
+                                          if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                            S7811=1;
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
-                                            S8082=0;
-                                            if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                              S8082=1;
-                                              if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                            S7806=0;
+                                            if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                              S7806=1;
+                                              if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                                 ends[8]=2;
-                                                ;//sysj\controller.sysj line: 119, column: 6
-                                                recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                                canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                                S8080=2;
-                                                if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                  S8199=0;
-                                                  System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                  selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                                ;//sysj\controller.sysj line: 118, column: 6
+                                                recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                                canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                                S7804=2;
+                                                if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                  S7923=0;
+                                                  System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                  selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                   currsigs.addElement(selectCanister);
-                                                  selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                  selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
                                                 }
                                                 else {
                                                   ends[8]=2;
-                                                  ;//sysj\controller.sysj line: 123, column: 6
-                                                  S8080=3;
-                                                  S9369=0;
+                                                  ;//sysj\controller.sysj line: 122, column: 6
+                                                  S7804=3;
+                                                  S9093=0;
                                                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                    S9369=1;
+                                                    S9093=1;
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
                                                   }
                                                   else {
-                                                    S9364=0;
+                                                    S9088=0;
                                                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                      S9364=1;
+                                                      S9088=1;
                                                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                         ends[8]=2;
                                                         ;//sysj\controller.sysj line: 155, column: 6
-                                                        S7988=2;
+                                                        S7712=2;
                                                         active[8]=1;
                                                         ends[8]=1;
                                                         break RUN;
@@ -1889,7 +1889,7 @@ public class LiquidFiller extends ClockDomain{
                                     }
                                   }
                                   else {
-                                    S7988=2;
+                                    S7712=2;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
@@ -1906,98 +1906,98 @@ public class LiquidFiller extends ClockDomain{
                           break;
                         
                         case 1 : 
-                          S7995=1;
-                          S7995=0;
-                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                            S7995=1;
+                          S7719=1;
+                          S7719=0;
+                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                            S7719=1;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
                           }
                           else {
-                            S7990=0;
-                            if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                              fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                              S7990=1;
-                              if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                            S7714=0;
+                            if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                              fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                              S7714=1;
+                              if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                                 ends[8]=2;
-                                ;//sysj\controller.sysj line: 112, column: 6
-                                S8035=1;
-                                if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                  System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                  S8080=0;
-                                  S8042=0;
-                                  if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                    S8042=1;
+                                ;//sysj\controller.sysj line: 111, column: 6
+                                S7759=1;
+                                if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                  System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                  S7804=0;
+                                  S7766=0;
+                                  if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                    S7766=1;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
                                   }
                                   else {
-                                    S8037=0;
-                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                      S8037=1;
-                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                    S7761=0;
+                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                      S7761=1;
+                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 118, column: 6
-                                        S8080=1;
-                                        S8087=0;
-                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                          S8087=1;
+                                        ;//sysj\controller.sysj line: 117, column: 6
+                                        S7804=1;
+                                        S7811=0;
+                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                          S7811=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S8082=0;
-                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                            S8082=1;
-                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                          S7806=0;
+                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                            S7806=1;
+                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 119, column: 6
-                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                              S8080=2;
-                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                S8199=0;
-                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                              ;//sysj\controller.sysj line: 118, column: 6
+                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                              S7804=2;
+                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                S7923=0;
+                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                 currsigs.addElement(selectCanister);
-                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
                                                 ends[8]=2;
-                                                ;//sysj\controller.sysj line: 123, column: 6
-                                                S8080=3;
-                                                S9369=0;
+                                                ;//sysj\controller.sysj line: 122, column: 6
+                                                S7804=3;
+                                                S9093=0;
                                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                  S9369=1;
+                                                  S9093=1;
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
                                                 }
                                                 else {
-                                                  S9364=0;
+                                                  S9088=0;
                                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                    S9364=1;
+                                                    S9088=1;
                                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                       ends[8]=2;
                                                       ;//sysj\controller.sysj line: 155, column: 6
-                                                      S7988=2;
+                                                      S7712=2;
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
@@ -2043,7 +2043,7 @@ public class LiquidFiller extends ClockDomain{
                                   }
                                 }
                                 else {
-                                  S7988=2;
+                                  S7712=2;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
@@ -2066,80 +2066,80 @@ public class LiquidFiller extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      switch(S8080){
+                      switch(S7804){
                         case 0 : 
-                          switch(S8042){
+                          switch(S7766){
                             case 0 : 
-                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                S8042=1;
+                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                S7766=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                switch(S8037){
+                                switch(S7761){
                                   case 0 : 
-                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                      S8037=1;
-                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                    if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                      S7761=1;
+                                      if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                        fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 118, column: 6
-                                        S8080=1;
-                                        S8087=0;
-                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                          S8087=1;
+                                        ;//sysj\controller.sysj line: 117, column: 6
+                                        S7804=1;
+                                        S7811=0;
+                                        if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                          S7811=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S8082=0;
-                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                            S8082=1;
-                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                          S7806=0;
+                                          if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                            S7806=1;
+                                            if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                              percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 119, column: 6
-                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                              S8080=2;
-                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                                S8199=0;
-                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                                selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                              ;//sysj\controller.sysj line: 118, column: 6
+                                              recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                              canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                              S7804=2;
+                                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                                S7923=0;
+                                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                                selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                                 currsigs.addElement(selectCanister);
-                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
                                                 ends[8]=2;
-                                                ;//sysj\controller.sysj line: 123, column: 6
-                                                S8080=3;
-                                                S9369=0;
+                                                ;//sysj\controller.sysj line: 122, column: 6
+                                                S7804=3;
+                                                S9093=0;
                                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                  S9369=1;
+                                                  S9093=1;
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
                                                 }
                                                 else {
-                                                  S9364=0;
+                                                  S9088=0;
                                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                    S9364=1;
+                                                    S9088=1;
                                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                       ends[8]=2;
                                                       ;//sysj\controller.sysj line: 155, column: 6
-                                                      S7988=2;
+                                                      S7712=2;
                                                       active[8]=1;
                                                       ends[8]=1;
                                                       break RUN;
@@ -2184,63 +2184,63 @@ public class LiquidFiller extends ClockDomain{
                                     }
                                   
                                   case 1 : 
-                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 118, column: 6
-                                      S8080=1;
-                                      S8087=0;
-                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                        S8087=1;
+                                      ;//sysj\controller.sysj line: 117, column: 6
+                                      S7804=1;
+                                      S7811=0;
+                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                        S7811=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S8082=0;
-                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                          S8082=1;
-                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                        S7806=0;
+                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                          S7806=1;
+                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 119, column: 6
-                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                            S8080=2;
-                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                              S8199=0;
-                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                              selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                            ;//sysj\controller.sysj line: 118, column: 6
+                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                            S7804=2;
+                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                              S7923=0;
+                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                              selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                               currsigs.addElement(selectCanister);
-                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 123, column: 6
-                                              S8080=3;
-                                              S9369=0;
+                                              ;//sysj\controller.sysj line: 122, column: 6
+                                              S7804=3;
+                                              S9093=0;
                                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                S9369=1;
+                                                S9093=1;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
-                                                S9364=0;
+                                                S9088=0;
                                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                  S9364=1;
+                                                  S9088=1;
                                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                     ends[8]=2;
                                                     ;//sysj\controller.sysj line: 155, column: 6
-                                                    S7988=2;
+                                                    S7712=2;
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
@@ -2283,77 +2283,77 @@ public class LiquidFiller extends ClockDomain{
                               break;
                             
                             case 1 : 
-                              S8042=1;
-                              S8042=0;
-                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                S8042=1;
+                              S7766=1;
+                              S7766=0;
+                              if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                S7766=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S8037=0;
-                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                  fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                  S8037=1;
-                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                S7761=0;
+                                if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                  fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                  S7761=1;
+                                  if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 118, column: 6
-                                    S8080=1;
-                                    S8087=0;
-                                    if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                      S8087=1;
+                                    ;//sysj\controller.sysj line: 117, column: 6
+                                    S7804=1;
+                                    S7811=0;
+                                    if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                      S7811=1;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S8082=0;
-                                      if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                        S8082=1;
-                                        if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                      S7806=0;
+                                      if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                        S7806=1;
+                                        if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 119, column: 6
-                                          recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                          canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                          S8080=2;
-                                          if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                            S8199=0;
-                                            System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                            selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                          ;//sysj\controller.sysj line: 118, column: 6
+                                          recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                          canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                          S7804=2;
+                                          if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                            S7923=0;
+                                            System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                            selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                             currsigs.addElement(selectCanister);
-                                            selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                            selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 123, column: 6
-                                            S8080=3;
-                                            S9369=0;
+                                            ;//sysj\controller.sysj line: 122, column: 6
+                                            S7804=3;
+                                            S9093=0;
                                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                              S9369=1;
+                                              S9093=1;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
-                                              S9364=0;
+                                              S9088=0;
                                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                S9364=1;
+                                                S9088=1;
                                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                   ends[8]=2;
                                                   ;//sysj\controller.sysj line: 155, column: 6
-                                                  S7988=2;
+                                                  S7712=2;
                                                   active[8]=1;
                                                   ends[8]=1;
                                                   break RUN;
@@ -2402,60 +2402,60 @@ public class LiquidFiller extends ClockDomain{
                           break;
                         
                         case 1 : 
-                          switch(S8087){
+                          switch(S7811){
                             case 0 : 
-                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                S8087=1;
+                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                S7811=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                switch(S8082){
+                                switch(S7806){
                                   case 0 : 
-                                    if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                      S8082=1;
-                                      if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                    if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                      S7806=1;
+                                      if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 119, column: 6
-                                        recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                        canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                        S8080=2;
-                                        if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                          S8199=0;
-                                          System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                          selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                        ;//sysj\controller.sysj line: 118, column: 6
+                                        recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                        canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                        S7804=2;
+                                        if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                          S7923=0;
+                                          System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                          selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                           currsigs.addElement(selectCanister);
-                                          selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                          selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
                                           ends[8]=2;
-                                          ;//sysj\controller.sysj line: 123, column: 6
-                                          S8080=3;
-                                          S9369=0;
+                                          ;//sysj\controller.sysj line: 122, column: 6
+                                          S7804=3;
+                                          S9093=0;
                                           if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                            S9369=1;
+                                            S9093=1;
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
                                           }
                                           else {
-                                            S9364=0;
+                                            S9088=0;
                                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                              S9364=1;
+                                              S9088=1;
                                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                 ends[8]=2;
                                                 ;//sysj\controller.sysj line: 155, column: 6
-                                                S7988=2;
+                                                S7712=2;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
@@ -2487,45 +2487,45 @@ public class LiquidFiller extends ClockDomain{
                                     }
                                   
                                   case 1 : 
-                                    if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                    if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 119, column: 6
-                                      recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                      canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                      S8080=2;
-                                      if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                        S8199=0;
-                                        System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                        selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                      ;//sysj\controller.sysj line: 118, column: 6
+                                      recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                      canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                      S7804=2;
+                                      if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                        S7923=0;
+                                        System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                        selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                         currsigs.addElement(selectCanister);
-                                        selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                        selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 123, column: 6
-                                        S8080=3;
-                                        S9369=0;
+                                        ;//sysj\controller.sysj line: 122, column: 6
+                                        S7804=3;
+                                        S9093=0;
                                         if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                          S9369=1;
+                                          S9093=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S9364=0;
+                                          S9088=0;
                                           if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                             fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                            S9364=1;
+                                            S9088=1;
                                             if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                               ends[8]=2;
                                               ;//sysj\controller.sysj line: 155, column: 6
-                                              S7988=2;
+                                              S7712=2;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
@@ -2555,59 +2555,59 @@ public class LiquidFiller extends ClockDomain{
                               break;
                             
                             case 1 : 
-                              S8087=1;
-                              S8087=0;
-                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                S8087=1;
+                              S7811=1;
+                              S7811=0;
+                              if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                S7811=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S8082=0;
-                                if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                  percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                  S8082=1;
-                                  if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                S7806=0;
+                                if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                  percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                  S7806=1;
+                                  if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                    percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                     ends[8]=2;
-                                    ;//sysj\controller.sysj line: 119, column: 6
-                                    recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                    canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                    S8080=2;
-                                    if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                      S8199=0;
-                                      System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                      selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                    ;//sysj\controller.sysj line: 118, column: 6
+                                    recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                    canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                    S7804=2;
+                                    if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                      S7923=0;
+                                      System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                      selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                       currsigs.addElement(selectCanister);
-                                      selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                      selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
                                     }
                                     else {
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 123, column: 6
-                                      S8080=3;
-                                      S9369=0;
+                                      ;//sysj\controller.sysj line: 122, column: 6
+                                      S7804=3;
+                                      S9093=0;
                                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                        S9369=1;
+                                        S9093=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S9364=0;
+                                        S9088=0;
                                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                           fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                          S9364=1;
+                                          S9088=1;
                                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                             ends[8]=2;
                                             ;//sysj\controller.sysj line: 155, column: 6
-                                            S7988=2;
+                                            S7712=2;
                                             active[8]=1;
                                             ends[8]=1;
                                             break RUN;
@@ -2643,41 +2643,42 @@ public class LiquidFiller extends ClockDomain{
                           break;
                         
                         case 2 : 
-                          switch(S8199){
+                          switch(S7923){
                             case 0 : 
-                              if(selectedCanister.getprestatus()){//sysj\controller.sysj line: 125, column: 13
-                                S8199=1;
-                                thread118491(tdone,ends);
-                                thread118492(tdone,ends);
-                                int biggest118493 = 0;
-                                if(ends[9]>=biggest118493){
-                                  biggest118493=ends[9];
+                              if(selectedCanister.getprestatus()){//sysj\controller.sysj line: 124, column: 13
+                                S7923=1;
+                                thread113415(tdone,ends);
+                                thread113416(tdone,ends);
+                                int biggest113417 = 0;
+                                if(ends[9]>=biggest113417){
+                                  biggest113417=ends[9];
                                 }
-                                if(ends[10]>=biggest118493){
-                                  biggest118493=ends[10];
+                                if(ends[10]>=biggest113417){
+                                  biggest113417=ends[10];
                                 }
-                                if(biggest118493 == 1){
+                                if(biggest113417 == 1){
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                               }
                               else {
-                                selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                 currsigs.addElement(selectCanister);
-                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                             
                             case 1 : 
-                              if(!dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 131, column: 14
-                                System.out.println("Canister above bottle");//sysj\controller.sysj line: 134, column: 8
+                              if(!dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 130, column: 14
+                                System.out.println("Canister above bottle");//sysj\controller.sysj line: 133, column: 8
+                                System.out.println(recPercentLiq_thread_8.get(canisterNum_thread_8 - 1));//sysj\controller.sysj line: 137, column: 8
                                 receivedPercentage.setPresent();//sysj\controller.sysj line: 138, column: 8
                                 currsigs.addElement(receivedPercentage);
                                 receivedPercentage.setValue(recPercentLiq_thread_8.get(canisterNum_thread_8 - 1));//sysj\controller.sysj line: 138, column: 8
-                                S8199=2;
+                                S7923=2;
                                 valveInletOnOff.setPresent();//sysj\controller.sysj line: 142, column: 9
                                 currsigs.addElement(valveInletOnOff);
                                 active[8]=1;
@@ -2685,27 +2686,28 @@ public class LiquidFiller extends ClockDomain{
                                 break RUN;
                               }
                               else {
-                                thread118494(tdone,ends);
-                                thread118495(tdone,ends);
-                                int biggest118496 = 0;
-                                if(ends[9]>=biggest118496){
-                                  biggest118496=ends[9];
+                                thread113418(tdone,ends);
+                                thread113419(tdone,ends);
+                                int biggest113420 = 0;
+                                if(ends[9]>=biggest113420){
+                                  biggest113420=ends[9];
                                 }
-                                if(ends[10]>=biggest118496){
-                                  biggest118496=ends[10];
+                                if(ends[10]>=biggest113420){
+                                  biggest113420=ends[10];
                                 }
-                                if(biggest118496 == 1){
+                                if(biggest113420 == 1){
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 //FINXME code
-                                if(biggest118496 == 0){
-                                  System.out.println("Canister above bottle");//sysj\controller.sysj line: 134, column: 8
+                                if(biggest113420 == 0){
+                                  System.out.println("Canister above bottle");//sysj\controller.sysj line: 133, column: 8
+                                  System.out.println(recPercentLiq_thread_8.get(canisterNum_thread_8 - 1));//sysj\controller.sysj line: 137, column: 8
                                   receivedPercentage.setPresent();//sysj\controller.sysj line: 138, column: 8
                                   currsigs.addElement(receivedPercentage);
                                   receivedPercentage.setValue(recPercentLiq_thread_8.get(canisterNum_thread_8 - 1));//sysj\controller.sysj line: 138, column: 8
-                                  S8199=2;
+                                  S7923=2;
                                   valveInletOnOff.setPresent();//sysj\controller.sysj line: 142, column: 9
                                   currsigs.addElement(valveInletOnOff);
                                   active[8]=1;
@@ -2717,17 +2719,17 @@ public class LiquidFiller extends ClockDomain{
                             case 2 : 
                               if(dosUnitFilled.getprestatus()){//sysj\controller.sysj line: 141, column: 14
                                 System.out.println("Bottle controller filled");//sysj\controller.sysj line: 145, column: 8
-                                S8199=3;
-                                thread118497(tdone,ends);
-                                thread118498(tdone,ends);
-                                int biggest118499 = 0;
-                                if(ends[11]>=biggest118499){
-                                  biggest118499=ends[11];
+                                S7923=3;
+                                thread113421(tdone,ends);
+                                thread113422(tdone,ends);
+                                int biggest113423 = 0;
+                                if(ends[11]>=biggest113423){
+                                  biggest113423=ends[11];
                                 }
-                                if(ends[12]>=biggest118499){
-                                  biggest118499=ends[12];
+                                if(ends[12]>=biggest113423){
+                                  biggest113423=ends[12];
                                 }
-                                if(biggest118499 == 1){
+                                if(biggest113423 == 1){
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
@@ -2745,31 +2747,31 @@ public class LiquidFiller extends ClockDomain{
                               if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 147, column: 14
                                 System.out.println("Canister returned");//sysj\controller.sysj line: 150, column: 8
                                 canisterNum_thread_8 += 1;//sysj\controller.sysj line: 152, column: 8
-                                S8199=4;
+                                S7923=4;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                thread118500(tdone,ends);
-                                thread118501(tdone,ends);
-                                int biggest118502 = 0;
-                                if(ends[11]>=biggest118502){
-                                  biggest118502=ends[11];
+                                thread113424(tdone,ends);
+                                thread113425(tdone,ends);
+                                int biggest113426 = 0;
+                                if(ends[11]>=biggest113426){
+                                  biggest113426=ends[11];
                                 }
-                                if(ends[12]>=biggest118502){
-                                  biggest118502=ends[12];
+                                if(ends[12]>=biggest113426){
+                                  biggest113426=ends[12];
                                 }
-                                if(biggest118502 == 1){
+                                if(biggest113426 == 1){
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 //FINXME code
-                                if(biggest118502 == 0){
+                                if(biggest113426 == 0){
                                   System.out.println("Canister returned");//sysj\controller.sysj line: 150, column: 8
                                   canisterNum_thread_8 += 1;//sysj\controller.sysj line: 152, column: 8
-                                  S8199=4;
+                                  S7923=4;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
@@ -2777,39 +2779,39 @@ public class LiquidFiller extends ClockDomain{
                               }
                             
                             case 4 : 
-                              S8199=4;
-                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                S8199=0;
-                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                              S7923=4;
+                              if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                S7923=0;
+                                System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                 currsigs.addElement(selectCanister);
-                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
                                 ends[8]=2;
-                                ;//sysj\controller.sysj line: 123, column: 6
-                                S8080=3;
-                                S9369=0;
+                                ;//sysj\controller.sysj line: 122, column: 6
+                                S7804=3;
+                                S9093=0;
                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                  S9369=1;
+                                  S9093=1;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S9364=0;
+                                  S9088=0;
                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                    S9364=1;
+                                    S9088=1;
                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                       ends[8]=2;
                                       ;//sysj\controller.sysj line: 155, column: 6
-                                      S7988=2;
+                                      S7712=2;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
@@ -2832,26 +2834,26 @@ public class LiquidFiller extends ClockDomain{
                           break;
                         
                         case 3 : 
-                          switch(S9369){
+                          switch(S9093){
                             case 0 : 
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                S9369=1;
+                                S9093=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                switch(S9364){
+                                switch(S9088){
                                   case 0 : 
                                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                       fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                      S9364=1;
+                                      S9088=1;
                                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                         ends[8]=2;
                                         ;//sysj\controller.sysj line: 155, column: 6
-                                        S7988=2;
+                                        S7712=2;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
@@ -2873,7 +2875,7 @@ public class LiquidFiller extends ClockDomain{
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                       ends[8]=2;
                                       ;//sysj\controller.sysj line: 155, column: 6
-                                      S7988=2;
+                                      S7712=2;
                                       active[8]=1;
                                       ends[8]=1;
                                       break RUN;
@@ -2889,25 +2891,25 @@ public class LiquidFiller extends ClockDomain{
                               break;
                             
                             case 1 : 
-                              S9369=1;
-                              S9369=0;
+                              S9093=1;
+                              S9093=0;
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                S9369=1;
+                                S9093=1;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
                               }
                               else {
-                                S9364=0;
+                                S9088=0;
                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                  S9364=1;
+                                  S9088=1;
                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                     ends[8]=2;
                                     ;//sysj\controller.sysj line: 155, column: 6
-                                    S7988=2;
+                                    S7712=2;
                                     active[8]=1;
                                     ends[8]=1;
                                     break RUN;
@@ -2935,26 +2937,26 @@ public class LiquidFiller extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  switch(S15452){
+                  switch(S15176){
                     case 0 : 
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                        S15452=1;
+                        S15176=1;
                         active[8]=1;
                         ends[8]=1;
                         break RUN;
                       }
                       else {
-                        switch(S15447){
+                        switch(S15171){
                           case 0 : 
                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                               fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                              S15447=1;
+                              S15171=1;
                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                                 ends[8]=2;
                                 ;//sysj\controller.sysj line: 158, column: 4
-                                S7988=2;
+                                S7712=2;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
@@ -2976,7 +2978,7 @@ public class LiquidFiller extends ClockDomain{
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                               ends[8]=2;
                               ;//sysj\controller.sysj line: 158, column: 4
-                              S7988=2;
+                              S7712=2;
                               active[8]=1;
                               ends[8]=1;
                               break RUN;
@@ -2992,25 +2994,25 @@ public class LiquidFiller extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      S15452=1;
-                      S15452=0;
+                      S15176=1;
+                      S15176=0;
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                        S15452=1;
+                        S15176=1;
                         active[8]=1;
                         ends[8]=1;
                         break RUN;
                       }
                       else {
-                        S15447=0;
+                        S15171=0;
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                           fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                          S15447=1;
+                          S15171=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                             ends[8]=2;
                             ;//sysj\controller.sysj line: 158, column: 4
-                            S7988=2;
+                            S7712=2;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
@@ -3035,123 +3037,123 @@ public class LiquidFiller extends ClockDomain{
               break;
             
             case 2 : 
-              S7988=2;
-              S7988=0;
-              S7972=0;
-              if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 105, column: 3
-                fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
-                S7972=1;
+              S7712=2;
+              S7712=0;
+              S7696=0;
+              if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 104, column: 3
+                fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
+                S7696=1;
                 active[8]=1;
                 ends[8]=1;
                 break RUN;
               }
               else {
-                S7967=0;
-                if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                  fillerReq_in.setACK(true);//sysj\controller.sysj line: 105, column: 3
-                  S7967=1;
-                  if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 105, column: 3
-                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 105, column: 3
+                S7691=0;
+                if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                  fillerReq_in.setACK(true);//sysj\controller.sysj line: 104, column: 3
+                  S7691=1;
+                  if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 104, column: 3
+                    fillerReq_in.setACK(false);//sysj\controller.sysj line: 104, column: 3
                     ends[8]=2;
-                    ;//sysj\controller.sysj line: 105, column: 3
-                    request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 106, column: 3
-                    S7988=1;
-                    if(request_thread_8){//sysj\controller.sysj line: 108, column: 3
-                      S15468=0;
-                      System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 110, column: 5
-                      S8035=0;
-                      if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 111, column: 13
-                        S7995=0;
-                        if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 112, column: 6
-                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
-                          S7995=1;
+                    ;//sysj\controller.sysj line: 104, column: 3
+                    request_thread_8 = (fillerReq_in.getVal() == null ? null : ((Boolean)fillerReq_in.getVal()));//sysj\controller.sysj line: 105, column: 3
+                    S7712=1;
+                    if(request_thread_8){//sysj\controller.sysj line: 107, column: 3
+                      S15192=0;
+                      System.out.println("Filler - received req from orch");//sysj\controller.sysj line: 109, column: 5
+                      S7759=0;
+                      if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 110, column: 13
+                        S7719=0;
+                        if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 111, column: 6
+                          fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
+                          S7719=1;
                           active[8]=1;
                           ends[8]=1;
                           break RUN;
                         }
                         else {
-                          S7990=0;
-                          if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                            fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 112, column: 6
-                            S7990=1;
-                            if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 112, column: 6
-                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 112, column: 6
+                          S7714=0;
+                          if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                            fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 111, column: 6
+                            S7714=1;
+                            if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 111, column: 6
+                              fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 111, column: 6
                               ends[8]=2;
-                              ;//sysj\controller.sysj line: 112, column: 6
-                              S8035=1;
-                              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                                System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                                S8080=0;
-                                S8042=0;
-                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                                  S8042=1;
+                              ;//sysj\controller.sysj line: 111, column: 6
+                              S7759=1;
+                              if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                                System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                                S7804=0;
+                                S7766=0;
+                                if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                                  fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                                  S7766=1;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S8037=0;
-                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                    fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                                    S8037=1;
-                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                                  S7761=0;
+                                  if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                    fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                                    S7761=1;
+                                    if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                      fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 118, column: 6
-                                      S8080=1;
-                                      S8087=0;
-                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                        S8087=1;
+                                      ;//sysj\controller.sysj line: 117, column: 6
+                                      S7804=1;
+                                      S7811=0;
+                                      if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                        percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                        S7811=1;
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S8082=0;
-                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                          S8082=1;
-                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                        S7806=0;
+                                        if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                          percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                          S7806=1;
+                                          if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                            percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                             ends[8]=2;
-                                            ;//sysj\controller.sysj line: 119, column: 6
-                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                            S8080=2;
-                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                              S8199=0;
-                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                              selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                            ;//sysj\controller.sysj line: 118, column: 6
+                                            recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                            canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                            S7804=2;
+                                            if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                              S7923=0;
+                                              System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                              selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                               currsigs.addElement(selectCanister);
-                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                              selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
                                             }
                                             else {
                                               ends[8]=2;
-                                              ;//sysj\controller.sysj line: 123, column: 6
-                                              S8080=3;
-                                              S9369=0;
+                                              ;//sysj\controller.sysj line: 122, column: 6
+                                              S7804=3;
+                                              S9093=0;
                                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                                S9369=1;
+                                                S9093=1;
                                                 active[8]=1;
                                                 ends[8]=1;
                                                 break RUN;
                                               }
                                               else {
-                                                S9364=0;
+                                                S9088=0;
                                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                                  S9364=1;
+                                                  S9088=1;
                                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                                     ends[8]=2;
                                                     ;//sysj\controller.sysj line: 155, column: 6
-                                                    S7988=2;
+                                                    S7712=2;
                                                     active[8]=1;
                                                     ends[8]=1;
                                                     break RUN;
@@ -3197,7 +3199,7 @@ public class LiquidFiller extends ClockDomain{
                                 }
                               }
                               else {
-                                S7988=2;
+                                S7712=2;
                                 active[8]=1;
                                 ends[8]=1;
                                 break RUN;
@@ -3217,80 +3219,80 @@ public class LiquidFiller extends ClockDomain{
                         }
                       }
                       else {
-                        S8035=1;
-                        if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 116, column: 13
-                          System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 117, column: 6
-                          S8080=0;
-                          S8042=0;
-                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
-                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
-                            S8042=1;
+                        S7759=1;
+                        if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 115, column: 13
+                          System.out.println("Filler - bottle is at pos 2");//sysj\controller.sysj line: 116, column: 6
+                          S7804=0;
+                          S7766=0;
+                          if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 117, column: 6
+                            fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
+                            S7766=1;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;
                           }
                           else {
-                            S8037=0;
-                            if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                              fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 118, column: 6
-                              S8037=1;
-                              if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 118, column: 6
-                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 118, column: 6
+                            S7761=0;
+                            if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                              fillerStatus_o.setVal("busy");//sysj\controller.sysj line: 117, column: 6
+                              S7761=1;
+                              if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 117, column: 6
+                                fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 117, column: 6
                                 ends[8]=2;
-                                ;//sysj\controller.sysj line: 118, column: 6
-                                S8080=1;
-                                S8087=0;
-                                if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 119, column: 6
-                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
-                                  S8087=1;
+                                ;//sysj\controller.sysj line: 117, column: 6
+                                S7804=1;
+                                S7811=0;
+                                if(!percentLiquid_in.isPartnerPresent() || percentLiquid_in.isPartnerPreempted()){//sysj\controller.sysj line: 118, column: 6
+                                  percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
+                                  S7811=1;
                                   active[8]=1;
                                   ends[8]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S8082=0;
-                                  if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                    percentLiquid_in.setACK(true);//sysj\controller.sysj line: 119, column: 6
-                                    S8082=1;
-                                    if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 119, column: 6
-                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 119, column: 6
+                                  S7806=0;
+                                  if(!percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                    percentLiquid_in.setACK(true);//sysj\controller.sysj line: 118, column: 6
+                                    S7806=1;
+                                    if(percentLiquid_in.isREQ()){//sysj\controller.sysj line: 118, column: 6
+                                      percentLiquid_in.setACK(false);//sysj\controller.sysj line: 118, column: 6
                                       ends[8]=2;
-                                      ;//sysj\controller.sysj line: 119, column: 6
-                                      recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 120, column: 6
-                                      canisterNum_thread_8 = 1;//sysj\controller.sysj line: 121, column: 6
-                                      S8080=2;
-                                      if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 123, column: 12
-                                        S8199=0;
-                                        System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 8
-                                        selectCanister.setPresent();//sysj\controller.sysj line: 127, column: 9
+                                      ;//sysj\controller.sysj line: 118, column: 6
+                                      recPercentLiq_thread_8 = (ArrayList)(percentLiquid_in.getVal() == null ? null : ((ArrayList)percentLiquid_in.getVal()));//sysj\controller.sysj line: 119, column: 6
+                                      canisterNum_thread_8 = 1;//sysj\controller.sysj line: 120, column: 6
+                                      S7804=2;
+                                      if(canisterNum_thread_8 < 5){//sysj\controller.sysj line: 122, column: 12
+                                        S7923=0;
+                                        System.out.println("selecting canister " + canisterNum_thread_8);//sysj\controller.sysj line: 125, column: 8
+                                        selectCanister.setPresent();//sysj\controller.sysj line: 126, column: 9
                                         currsigs.addElement(selectCanister);
-                                        selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 127, column: 9
+                                        selectCanister.setValue(canisterNum_thread_8);//sysj\controller.sysj line: 126, column: 9
                                         active[8]=1;
                                         ends[8]=1;
                                         break RUN;
                                       }
                                       else {
                                         ends[8]=2;
-                                        ;//sysj\controller.sysj line: 123, column: 6
-                                        S8080=3;
-                                        S9369=0;
+                                        ;//sysj\controller.sysj line: 122, column: 6
+                                        S7804=3;
+                                        S9093=0;
                                         if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 155, column: 6
                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
-                                          S9369=1;
+                                          S9093=1;
                                           active[8]=1;
                                           ends[8]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S9364=0;
+                                          S9088=0;
                                           if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                             fillerStatus_o.setVal("done");//sysj\controller.sysj line: 155, column: 6
-                                            S9364=1;
+                                            S9088=1;
                                             if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 155, column: 6
                                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 155, column: 6
                                               ends[8]=2;
                                               ;//sysj\controller.sysj line: 155, column: 6
-                                              S7988=2;
+                                              S7712=2;
                                               active[8]=1;
                                               ends[8]=1;
                                               break RUN;
@@ -3336,7 +3338,7 @@ public class LiquidFiller extends ClockDomain{
                           }
                         }
                         else {
-                          S7988=2;
+                          S7712=2;
                           active[8]=1;
                           ends[8]=1;
                           break RUN;
@@ -3344,25 +3346,25 @@ public class LiquidFiller extends ClockDomain{
                       }
                     }
                     else {
-                      S15468=1;
-                      S15452=0;
+                      S15192=1;
+                      S15176=0;
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
-                        S15452=1;
+                        S15176=1;
                         active[8]=1;
                         ends[8]=1;
                         break RUN;
                       }
                       else {
-                        S15447=0;
+                        S15171=0;
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                           fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 158, column: 4
-                          S15447=1;
+                          S15171=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 158, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 158, column: 4
                             ends[8]=2;
                             ;//sysj\controller.sysj line: 158, column: 4
-                            S7988=2;
+                            S7712=2;
                             active[8]=1;
                             ends[8]=1;
                             break RUN;

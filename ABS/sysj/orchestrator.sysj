@@ -19,11 +19,6 @@ Orchestrator(
 		// Assumption - only one order at a time.
 		int quantity = 5;
 		int bottlePlaced = 0; 
-		ArrayList liquidPercent = new ArrayList();
-		liquidPercent.add(10);
-		liquidPercent.add(10);
-		liquidPercent.add(20);
-		liquidPercent.add(60);
 		
 		// present X
 		
@@ -49,6 +44,11 @@ Orchestrator(
 	}
 	||
 	{// Requesting work to filler, capper and caploader
+		ArrayList liquidPercent = new ArrayList();
+		liquidPercent.add(10);
+		liquidPercent.add(10);
+		liquidPercent.add(20);
+		liquidPercent.add(60);
 		while(true) {
 			receive rotaryStatus;
 			String rotaryStat = #rotaryStatus;
@@ -57,6 +57,7 @@ Orchestrator(
 			if(rotaryStat == "done") {
 				System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");
 				send fillerReq(true);
+				send percentLiquid(liquidPercent);
 				send capLoaderReq(true);
 				send capperReq(true);
 				emit getNextBottle;
@@ -80,7 +81,7 @@ Orchestrator(
 				Status.conveyStat = true;
 			}
 			else {
-//				System.out.println("Orch received - convey done");
+				System.out.println("Orch received - convey done");
 				Status.conveyStat = false; //idle and done are the same
 			}
 			pause;
@@ -97,7 +98,7 @@ Orchestrator(
 				Status.fillerStat = true;
 			}
 			else {
-//				System.out.println("Orch received - filler done");
+				System.out.println("Orch received - filler done");
 				Status.fillerStat = false; //idle and done are the same
 			}
 			pause;
@@ -113,7 +114,7 @@ Orchestrator(
 				Status.capperStat = true;
 			}
 			else {
-//				System.out.println("Orch received - capper done");
+				System.out.println("Orch received - capper done");
 				Status.capperStat = false;
 			}
 			
@@ -129,7 +130,7 @@ Orchestrator(
 				Status.capLoaderStat = true;
 			}
 			else {
-//				System.out.println("Orch received - loader done");
+				System.out.println("Orch received - loader done");
 				Status.capLoaderStat = false; //idle and done are the same
 			}
 			pause;

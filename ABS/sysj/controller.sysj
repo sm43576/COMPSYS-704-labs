@@ -81,7 +81,6 @@ RotaryTable(
             System.out.println("rotary - done");
             send rotaryStatus("done");
         }else {
-        	System.out.println("rotary - idle");
         	send rotaryStatus("idle");
         }
         pause;
@@ -135,6 +134,7 @@ LiquidFiller(
 					
 						  
 						 //Send percentage
+						 System.out.println(recPercentLiq.get(canisterNum-1));
 						 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
 						 
 						 //Receive Percentage filled, check signal
