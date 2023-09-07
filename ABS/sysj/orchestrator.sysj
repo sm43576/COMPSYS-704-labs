@@ -70,90 +70,161 @@ Orchestrator(
 		
 	}
 	||
-	{	// True = Something happpening in the state
-		boolean conveyStat =false;
-		boolean fillerStat=false;
-		boolean capperStat=false;
-		boolean capLoaderStat= false;
-		while (true) {
-			
-	
-			{ // Check conveyor
-				while (true) {
-					receive conveyorStatus; 
-					String conveyValue= #conveyorStatus;
-					if (conveyValue == "busy") {
-						conveyStat = true;
-					}
-					else {
-						conveyStat = false; //idle and done are the same
-					}
-					pause;
-				}
-			}	
-			||
-			{//Check filler
-				while(true) {
-				receive fillerStatus; 
-				String fillerValue= #fillerStatus;
-				if (fillerValue == "busy") {
-					fillerStat = true;
-				}
-				else {
-					fillerStat = false; //idle and done are the same
-				}
-				pause;
-				}
-			}	
-			||
-			{	
-				while(true) {
-				receive capperStatus; 
-				String capperValue= #capperStatus;
-				if (capperValue == "busy") {
-					capperStat = true;
-				}
-				else {
-					capperStat = false; //idle and done are the same
-				}
-				pause;
-				}
+	{
+		while(true) {
+			receive conveyorStatus; 
+			String conveyValue= #conveyorStatus;
+			if (conveyValue == "busy") {
+				Status.conveyStat = true;
 			}
-			||
-			{	while(true) {
-				receive capLoaderStatus; 
-				String capLoaderValue= #capLoaderStatus;
-				if (capLoaderValue == "busy") {
-					capLoaderStat = true;
-				}
-				else {
-					capLoaderStat = false; //idle and done are the same
-				}
-				pause;
-				}
+			else {
+				Status.conveyStat = false; //idle and done are the same
 			}
-			||
-			{ // Rotary Orchestrator logic
-				// GOal is to get all the status and emit done if all are done.			
-					// wait until everything else is done or idle
-				while(true) {
-					if((conveyStat==true) && 
-						(fillerStat==true) &&
-						(capperStat==true) &&
-						(capLoaderStat==true)){
-	
-						send allOperationsFinished(true);
-					}else {
-						send allOperationsFinished(false);
-					}
-					pause;
-				}//while true
-			}	//Rotary close
 			pause;
 		}
-		
-	}// wholereactionclose
-}// this is the reaction to the clock.
+	}
+	||
+	{
+		//Check filler
+		while(true) {
+			receive fillerStatus; 
+			String fillerValue= #fillerStatus;
+			if (fillerValue == "busy") {
+				Status.fillerStat = true;
+			}
+			else {
+				Status.fillerStat = false; //idle and done are the same
+			}
+			pause;
+		}
+	}
+	||
+	{	
+		while(true) {
+			receive capperStatus; 
+			String capperValue= #capperStatus;
+			if (capperValue == "busy") {
+				Status.capperStat = true;
+			}
+			else {
+			}
+			pause;
+		}
+	}
+	||
+	{	while(true) {
+			receive capLoaderStatus; 
+			String capLoaderValue= #capLoaderStatus;
+			if (capLoaderValue == "busy") {
+				Status.capLoaderStat = true;
+			}
+			else {
+				Status.capLoaderStat = false; //idle and done are the same
+			}
+			pause;
+		}
+	}
+	||
+	{ // Rotary Orchestrator logic
+		// GOal is to get all the status and emit done if all are done.			
+		// wait until everything else is done or idle
+		while(true) {
+			if((Status.conveyStat==true) && 
+				(Status.fillerStat==true) &&
+				(Status.capperStat==true) &&
+				(Status.capLoaderStat==true)){
+	
+				send allOperationsFinished(true);
+			}else {
+				send allOperationsFinished(false);
+			}
+			pause;
+		}//while true
+	}
+}
+//	{	// True = Something happpening in the state
+//		boolean conveyStat = false;
+//		boolean fillerStat = false;
+//		boolean capperStat = false;
+//		boolean capLoaderStat = false;
+//		while (true) {
+//			
+//			{ // Check conveyor
+//				while (true) {
+//					receive conveyorStatus; 
+//					String conveyValue= #conveyorStatus;
+//					if (conveyValue == "busy") {
+//						conveyStat = true;
+//					}
+//					else {
+//						conveyStat = false; //idle and done are the same
+//					}
+//					pause;
+//				}
+//			}	
+//			||
+//			{//Check filler
+//				while(true) {
+//					receive fillerStatus; 
+//					String fillerValue= #fillerStatus;
+//					if (fillerValue == "busy") {
+//						fillerStat = true;
+//					}
+//					else {
+//						fillerStat = false; //idle and done are the same
+//					}
+//					pause;
+//				}
+//			}	
+//			||
+//			{	
+//				while(true) {
+//					receive capperStatus; 
+//					String capperValue= #capperStatus;
+//					if (capperValue == "busy") {
+//						capperStat = true;
+//					}
+//					else {
+//						capperStat = false; //idle and done are the same
+//					}
+//					pause;
+//				}
+//			}
+//			||
+//			{	while(true) {
+//					receive capLoaderStatus; 
+//					String capLoaderValue= #capLoaderStatus;
+//					if (capLoaderValue == "busy") {
+//						capLoaderStat = true;
+//					}
+//					else {
+//						capLoaderStat = false; //idle and done are the same
+//					}
+//					pause;
+//				}
+//			}
+//			||
+//			{ // Rotary Orchestrator logic
+//				// GOal is to get all the status and emit done if all are done.			
+//					// wait until everything else is done or idle
+//				while(true) {
+//					if((conveyStat==true) && 
+//						(fillerStat==true) &&
+//						(capperStat==true) &&
+//						(capLoaderStat==true)){
+//	
+//						send allOperationsFinished(true);
+//					}else {
+//						send allOperationsFinished(false);
+//					}
+//					pause;
+//				}//while true
+//			}	//Rotary close
+//			pause;
+//		}
+//		
+//	}// wholereactionclose
+//}// this is the reaction to the clock.
 
 
 
