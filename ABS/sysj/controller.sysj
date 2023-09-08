@@ -69,8 +69,7 @@ RotaryTable(
 }
 
 LiquidFiller(
-		input Boolean channel fillerReq;
-		input ArrayList channel percentLiquid;
+		input ArrayList channel fillerReq;
 		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled;
 		input Integer signal selectedCanister;
 		
@@ -81,62 +80,58 @@ LiquidFiller(
 ->{
 	
 	while(true) {
-		receive fillerReq; // BLOCKED - Hangs here coz there is no filler request at the beginning
-		Boolean request = #fillerReq;// polling the system if its busy or not. 
+		receive fillerReq; 
 		
-		if(request) {
-				// No bottle at position 2 then send idle status
-				System.out.println("FillerController: - Received request");
-				present(!bottleAtPos2){
-					System.out.println("FillerController: - Idle (no bottle at pos 2).");
-					send fillerStatus("idle");
+		// No bottle at position 2 then send idle status
+		System.out.println("FillerController: - Received request");
+		present(!bottleAtPos2){
+			System.out.println("FillerController: - Idle (no bottle at pos 2).");
+			send fillerStatus("idle");
+		}
+	
+		// bottle IS at position 2 then do filler work
+		present(bottleAtPos2){
+			System.out.println("FillerController: - Bottle detected at position 2.");
+			ArrayList recPercentLiq = (ArrayList) #fillerReq; // [32,43,22,3]  += 100%				
+			int canisterNum = 1;	// reset, select first canister.
+			
+			while(canisterNum<5) {
+				//Select Canister
+				abort(selectedCanister){//wait till canister selected
+					System.out.println("selecting canister " + canisterNum);
+				 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
 				}
 			
-				// bottle IS at position 2 then do filler work
-				present(bottleAtPos2){
-					System.out.println("FillerController: - Bottle detected at position 2.");
-					receive percentLiquid;
-					ArrayList recPercentLiq = (ArrayList) #percentLiquid; // [32,43,22,3]  += 100%				
-					int canisterNum = 1;	// reset, select first canister.
-					
-					while(canisterNum<5) {
-						//Select Canister
-						abort(selectedCanister){//wait till canister selected
-							System.out.println("selecting canister " + canisterNum);
-						 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
-						}
-					
-						//Brings canister to the top
-						 abort(!dosUnitEvac){ 
-								{sustain dosUnitValveRetract;} || {sustain valveInjectorOnOff;}
-						 }
-						 System.out.println("Canister above bottle");
-					
-						  
-						 //Send percentage
-						 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
-						 
-						 //Receive Percentage filled, check signal
-						 abort(dosUnitFilled){ // close valve once filled
-							 sustain valveInletOnOff; 
-						 }
-						 
-						 System.out.println("Bottle controller filled");
-						 
-						 abort(dosUnitEvac){// bring cylinder to the bottom
-							 {sustain dosUnitValveExtend;} || {sustain valveInjectorOnOff;}
-						 }
-						 System.out.println("Canister returned");
-					
-						 canisterNum+=1; // switch to the next one. 
-						 pause;
-					}	
-					send fillerStatus("done");
-			}
+				//Brings canister to the top
+				 abort(!dosUnitEvac){ 
+						{sustain dosUnitValveRetract;} || {sustain valveInjectorOnOff;}
+				 }
+				 System.out.println("Canister above bottle");
+			
+				  
+				 //Send percentage
+				 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
+				 
+				 //Receive Percentage filled, check signal
+				 abort(dosUnitFilled){ // close valve once filled
+					 sustain valveInletOnOff; 
+				 }
+				 
+				 System.out.println("Bottle controller filled");
+				 
+				 abort(dosUnitEvac){// bring cylinder to the bottom
+					 {sustain dosUnitValveExtend;} || {sustain valveInjectorOnOff;}
+				 }
+				 System.out.println("Canister returned");
+			
+				 canisterNum+=1; // switch to the next one. 
+				 pause;
+			}	
+			send fillerStatus("done");
 		}
-		
 		pause;
 	}
+		
 }
 
 

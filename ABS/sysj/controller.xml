@@ -11,9 +11,7 @@
 			
 			<!-- Filler Channels-->
 			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
-			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />
-			<oChannel Name="percentLiquid" To="LiquidFillerCD.percentLiquid"/>
-			
+			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />			
 			<!-- Capper Channels-->
 			<iChannel Name="capperStatus" From="CapperCD.capperStatus" />
 			<oChannel Name="capperReq" To="CapperCD.capperReq" />
@@ -40,7 +38,6 @@
 		
 		<ClockDomain Name="LiquidFillerCD" Class="LiquidFiller">		
 			<iChannel Name="fillerReq" From="OrchestratorCD.fillerReq" />
-			<iChannel Name="percentLiquid" From="OrchestratorCD.percentLiquid" />
 			<oChannel Name="fillerStatus" To="OrchestratorCD.fillerStatus" />
 						
 						

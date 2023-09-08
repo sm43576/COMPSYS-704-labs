@@ -4,23 +4,17 @@ Orchestrator(
 		output Boolean channel conveyorReq, rotaryReq, fillerReq, capperReq, capLoaderReq;
 		input Order channel order;
 		output Order channel doneOrder;
-		
-		output ArrayList channel percentLiquid;
-		
 		)
 ->{
-	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigFillerReq, sigRotaryReq;
+	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
+	ArrayList signal sigFillerReq;
 	signal recConveyorStatus, recCapperStatus, recCapLoaderStatus, recFillerStatus, recRotaryStatus;
 	signal getNextBottle;
 	{
 		
 		int quantity = 5;
 		int bottlePlaced = 0; 
-		ArrayList liquidPercent = new ArrayList();
-		liquidPercent.add(10);
-		liquidPercent.add(10);
-		liquidPercent.add(20);
-		liquidPercent.add(60);
+		
 		
 		while(true) {
 			// insert present(order) here
@@ -81,7 +75,8 @@ Orchestrator(
 		while(true) {
 			await(sigFillerReq);
 			System.out.println("Orch: Sending filler request");
-			send fillerReq(true); 
+			ArrayList req = (ArrayList) #sigFillerReq;
+			send fillerReq(req); 
 			receive fillerStatus;
 			System.out.println("Orch: Received filler status");
 			String res = (String) #fillerStatus; 
@@ -102,6 +97,12 @@ Orchestrator(
 	}
 	||
 	{
+		ArrayList liquidPercent = new ArrayList();
+		liquidPercent.add(10);
+		liquidPercent.add(10);
+		liquidPercent.add(20);
+		liquidPercent.add(60);
+		
 		while(true) {
 			//Startup procedure.
 			await(recConveyorStatus); //Await for first bottle to be delivered to position 1.
@@ -111,7 +112,7 @@ Orchestrator(
 			while(true) {
 				
 				System.out.println("Orch: New bottle. Preparing to send requests..");
-				emit sigFillerReq;
+				emit sigFillerReq(liquidPercent);
 				emit sigCapLoaderReq;
 				emit sigCapperReq;
 				{await(recFillerStatus);} || {await(recCapLoaderStatus);} || {await(recCapperStatus);}
