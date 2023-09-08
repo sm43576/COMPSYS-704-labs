@@ -7,7 +7,7 @@
 			
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
-			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
+			<oChannel Name="rotaryReq" To="RotaryTableCD.rotaryReq" />
 			
 			<!-- Filler Channels-->
 			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
@@ -65,7 +65,7 @@
 			<iSignal Name="capOnBottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			
-			<iChannel Name="allOperationsFinished" From="OrchestratorCD.rotaryReq" />
+			<iChannel Name="rotaryReq" From="OrchestratorCD.rotaryReq" />
 			<oChannel Name="rotaryStatus" To="OrchestratorCD.rotaryStatus" />
 
 		</ClockDomain>
