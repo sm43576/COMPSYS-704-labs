@@ -22,6 +22,10 @@
 			<iChannel Name="capLoaderStatus" From="CaploaderCD.capLoaderStatus" />
 			<oChannel Name="capLoaderReq" To="CaploaderCD.capLoaderReq" />
 			
+			<!-- POS Signals-->
+			<iSignal Name="order" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
+			<iSignal Name="recOrderStatus" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
+			<oSignal Name="orderStatus" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="40001"/>
 						
 		</ClockDomain>
 		
