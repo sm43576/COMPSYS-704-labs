@@ -133,44 +133,6 @@ Orchestrator(
 			
 	}
 }
-//	||
-//	{// Requesting work to filler, capper and caploader
-//		while(true) {
-//			receive rotaryStatus;
-//			String rotaryStat = #rotaryStatus;
-//			
-//			// wait for rotary status to be done
-//			if(rotaryStat == "done") {
-//				System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");
-//				send fillerReq(true);
-//				send capLoaderReq(true);
-//				send capperReq(true);
-//				emit getNextBottle;
-//			}
-	
-	
-//			pause;
-//		}
-//		
-//	}
-//	||
-//	{ // Rotary Orchestrator logic
-//		// GOal is to get all the status and emit done if all are done.			
-//		// wait until everything else is done or idle
-//		// False = done, true = busy
-//		while(true) {
-//			if((Status.conveyStat==false) && 
-//				(Status.fillerStat==false) &&
-//				(Status.capperStat==false) &&
-//				(Status.capLoaderStat==false)){
-//				System.out.println("Orch sending rotary req");
-//				send rotaryReq(true);
-//			}else {
-//				send rotaryReq(false);
-//			}
-//			pause;
-//		}//while true
-//	}
 
 
 
