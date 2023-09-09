@@ -27,7 +27,7 @@
       <Circle id="zone4circle" fx:id="zone4circle" fill="DODGERBLUE" layoutX="148.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
       <Circle id="zone5circle" fx:id="zone5circle" fill="DODGERBLUE" layoutX="431.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
       <Circle id="zone6circle" fx:id="zone6circle" fill="DODGERBLUE" layoutX="717.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <ProgressIndicator id="zone7humid" fx:id="humid6" layoutX="747.0" layoutY="425.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
+      <ProgressIndicator id="humid6" fx:id="humid6" layoutX="747.0" layoutY="425.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
       <ProgressIndicator id="humid7" fx:id="humid7" layoutX="747.0" layoutY="171.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
       <ProgressIndicator id="humid5" fx:id="humid5" layoutX="465.0" layoutY="418.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
       <ProgressIndicator id="humid4" fx:id="humid4" layoutX="165.0" layoutY="418.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />

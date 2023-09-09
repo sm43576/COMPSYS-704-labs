@@ -1,26 +1,33 @@
 HumanPresence(
 		input boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P; //Infrared Sensor
 
-		output signal zone1light,zone2light,zone3light,zone4light,zone5light,zone6light,zone7light;
+		output signal zone1Light,zone2Light,zone3Light,zone4Light,zone5Light,zone6Light,zone7Light;
+		
+		
 
 		)
 ->{
-
-	while(true) {
-			//Human presense  light intensity
-			//Ping Location.
-			{receive zone1P; pause;} ||
-			{receive zone2P; pause;} ||
-			{receive zone3P;
-				System.out.println("lights on");
-				pause;
-				//sustain(zone3light);}
-			} ||
-			{receive zone4P;{pause;}} ||
-			{receive zone5P;{pause;}} ||
-			{receive zone6P;{pause;}} ||
-			{receive zone7P;{pause;}}
-	}
+		//Human presense  light intensity
+		//Ping Location.
+		{	receive zone1P;
+			System.out.println("lights on");
+			emit zone1Light;
+		} ||
+		{receive zone2P; pause;} ||
+		{ while(true){
+			receive zone3P;
+			sustain zone3Light;
+			waitl(5 s);
+			System.out.println("waited 5min");
+			pause;
+			//emit zone3Light;
+			
+		}} ||
+		{receive zone4P;{pause;}} ||
+		{receive zone5P;{pause;}} ||
+		{receive zone6P;{pause;}} ||
+		{receive zone7P;{pause;}}
+	
 						
 }
 
@@ -32,7 +39,8 @@ InfraredSensor(
 		while(true) {
 				
 				send zone3P(true);
-				waitl(120 s);
+				waitl(5 s);
+				send zone3P(false);
 				pause;
 			}
 	
