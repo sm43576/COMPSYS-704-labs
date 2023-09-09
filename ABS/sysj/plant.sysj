@@ -25,9 +25,8 @@ Plant(
 		
 		// CapLoader
 		
-		input signal pusherExtend,vacOn,armSource,armDest;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		input signal pusherExtend,vacOn,armSource,armDest,magReq;
+		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,magEmpty;
 		/////////////////////////////////////////////////////////////////////	
 		
 		
@@ -177,12 +176,17 @@ Plant(
 //Cap Loader////////////////////////////////////////////	
 	{// Arm
 		while(true){
-			abort(armSource){
-				sustain armAtDest;
+			present(armSource && !armDest){
+				abort (armDest){
+					sustain armAtSource; 
+				}
 			}
-			abort(armDest){
-				sustain armAtSource;
+			present(armDest && !armSource) {
+				abort (armSource) {
+					sustain armAtDest;
+				}
 			}
+			pause;
 		}
 	}
 	||
@@ -194,20 +198,15 @@ Plant(
 			abort(!pusherExtend){
 				sustain pusherExtended;
 			}
+			pause;
 		}
 	}
 	||
 	{// Vacuum
 		while(true){
 			present(vacOn && armAtSource){
-				if((Integer)#capPos == 1){
-					emit capPos(0);
-					abort(!vacOn){
-						sustain WPgripped; 
-					}
-					present(armAtSource){
-						emit capPos(1);
-					}
+				abort(magEmpty || !vacOn) {
+					sustain WPgripped;
 				}
 			}
 			pause;
@@ -215,24 +214,18 @@ Plant(
 	}
 	||
 	{
-		/*
-		 * Cap positions
-		 * 0 = at Mag
-		 * 1 = at pick-up
-		 */
 		while(true){
-			// At mag
-			abort(empty){
+			abort(magEmpty){
 				while(true){
 						await(pusherRetracted);
 						await(pusherExtended);
-						// At pick-up
-						emit capPos(1);
 						await(pusherRetracted);
 						emit capDec;
+						pause;
 				}
 			}
-			await(refill);
+			await(magReq);
+			pause;
 		}
 	}
 	||
@@ -243,13 +236,10 @@ Plant(
 				if(capcount > 0)
 					capcount--;
 			}
-			present(refill){
+			present(magReq){
 				capcount = 5;
 			}
-//			present(pusherRetracted){
-				if(capcount == 0)
-					emit empty;
-//			}
+			if(capcount == 0) emit magEmpty;
 			pause;
 		}
 	}
@@ -322,6 +312,7 @@ Plant(
 	{
 		while(true) {
 			present(rotaryTableTrigger){
+				
 				// Turn the table 60 degrees and move the bottles along by one somehow
 				//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
 				System.out.println("table triggered now moving");
@@ -331,32 +322,29 @@ Plant(
 					System.out.println("moving bottle at pos 4 to pos 5");
 					emit moveToPos5;
 				}
-				pause;
 				
 				// if there is a bottle at pos 3 move to pos 4
 				present(bottleAtPos3){
 					System.out.println("moving bottle at pos 3 to pos 4");
 					emit moveToPos4;
 				}
-				pause;
 				// if there is a obttle at pos 2 move to pos 3
 				
 				present(bottleAtPos2){
 					System.out.println("moving bottle at pos 2 to pos 3");
 					emit moveToPos3;
 				}
-				pause;
 				// if there is a bottle at pos 1 move to pos 2.
 				present(bottleAtPos1){
 					System.out.println("moving bottle at pos 1 to pos 2");
 					emit moveToPos2;
 				}
-				pause;
 				// emit table aligned with sensor
 				System.out.println("Table has been aligned");
-				emit tableAlignedWithSensor;
-				pause;
 				
+				abort(!rotaryTableTrigger) {
+					sustain tableAlignedWithSensor;
+				}				
 			}
 				
 			pause;
@@ -382,26 +370,4 @@ Plant(
 	||
 	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
 
-/////////////////////////////////////////////////////////////////////
-	
-	
-	
-//	||
-//	{//Emit Signals - GOing to UI
-//		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
-//		||
-//		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
-//		||
-//		{while(true) {present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
-//		
-////		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
-////		||
-////		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
-////		||
-////		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
-////		||
-////		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
-////		||
-////		{while(true){present(empty){emit emptyE;} pause;}}
-//	}
 }

@@ -116,13 +116,15 @@ Orchestrator(
 				emit sigCapLoaderReq;
 				emit sigCapperReq;
 				{await(recFillerStatus);} || {await(recCapLoaderStatus);} || {await(recCapperStatus);}
+				System.out.println("Orch: All done!");
 				
+				//Send request to get new bottle on conveyor.
+				emit getNextBottle;
+				await(recConveyorStatus); //Await for that to finish.
 				//Completed all tasks, send request to rotary.
 				emit sigRotaryReq;
 				await(recRotaryStatus);
 				
-				//Send request to get new bottle on conveyor.
-				emit getNextBottle;
 				
 				pause;
 			}
