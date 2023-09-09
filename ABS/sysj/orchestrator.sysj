@@ -2,14 +2,137 @@ import java.util.ArrayList;
 Orchestrator(
 		input String channel conveyorStatus, capperStatus, capLoaderStatus, fillerStatus, rotaryStatus;
 		output Boolean channel conveyorReq, rotaryReq, fillerReq, capperReq, capLoaderReq;
-		input Order channel order;
-		output Order channel doneOrder;
+		
+		// --- TO and FROM POS ---
+		input signal recOrderStatus;
+		input Order signal order;
+		output Order signal orderStatus;
 		)
 ->{
 	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
 	ArrayList signal sigFillerReq;
 	signal recConveyorStatus, recCapperStatus, recCapLoaderStatus, recFillerStatus, recRotaryStatus;
 	signal getNextBottle;
+	
+	// --- POS ---
+	signal startOrder;
+	signal orderIsDone;
+	signal initABS;
+	signal foundCurrentOrder;
+	Order signal currentOrder;
+	{ 	
+		// TODO changed to internal valued signal
+		ArrayList fifoQueue = new ArrayList();
+		ArrayList liquidPercent = new ArrayList();
+		
+		// --------------- POS logic  ---------------
+		while(true) {
+			
+			{ // --- POS checking for new orders and adding it to queue --- 
+				System.out.println("awaiting order");
+				present(order){
+					System.out.println("got order!");
+					Order newOrder = #order;
+					System.out.println(newOrder.getQuantity());
+					// Add order to the queue (FIFO)
+					fifoQueue.add(newOrder);
+					
+					// set current order to the first item in queue at start
+					present(initABS){
+						System.out.println("start of ABS get first item");
+						Order tempOrder = (Order)fifoQueue.get(0);
+						
+						
+						fifoQueue.remove(0);
+						System.out.println(newOrder.getCustomerID());
+						
+						// Change order status to "Started" and send it back to POS
+						tempOrder.setOrderStatus("Started");
+						System.out.println("emitting orderstatus: started");
+						
+						abort(recOrderStatus){
+							sustain orderStatus(tempOrder);
+						}
+						
+						System.out.println("orch received: recOrderStatus");
+						
+						// set flag to start orders
+						abort(foundCurrentOrder){
+							emit currentOrder(tempOrder);
+							emit startOrder;
+						}
+						
+					}
+				}
+				
+				// Get next order in queue when order is finished
+				present(orderIsDone){
+					present(currentOrder){
+						Order tempOrder = #currentOrder;
+						// change order status to done and send it back to POS
+						tempOrder.setOrderStatus("Done");
+						abort(recOrderStatus){
+							sustain orderStatus(tempOrder);
+						}
+						
+						// Get next order
+						System.out.println("initialising next order...");
+						Order nextOrder = (Order)fifoQueue.get(0);
+						fifoQueue.remove(0);
+						
+						// Change order status to "Started" and send it back to POS for next order
+						nextOrder.setOrderStatus("Started");
+						System.out.println("emitting next orderstatus: started");
+						abort(recOrderStatus){
+							sustain orderStatus(nextOrder);
+						}
+						
+						// set flag to start orders
+						abort(foundCurrentOrder){
+							emit currentOrder(nextOrder);
+							emit startOrder;
+						}
+						
+					}
+				}
+	
+			}
+			pause;
+		}
+			
+	}
+	||
+	{
+		// POS: Sustain initABS on first start up so we know to take in the first order as soon as we get it
+		while(true) {
+			abort(currentOrder){
+				sustain initABS;
+			}
+			pause;
+		}
+	}
+//	||
+//	{
+//		// To access items in current order from valued signal
+//		while(true) {
+//			present(startOrder){
+//				System.out.println("started order");
+//				present(currentOrder){
+//					System.out.println("found current order");
+//					Order myOrder = #currentOrder;
+//					int quantity = myOrder.getQuantity();
+//					System.out.println("quantity is: " + quantity);
+//					
+//					emit foundCurrentOrder;
+//				}
+//			}
+//			pause;
+//		}
+//	}
+// --------------- POS logic end  ---------------
+
+
+	||
 	{
 		
 		int quantity = 10;
@@ -128,12 +251,9 @@ Orchestrator(
 				
 				pause;
 			}
-			pause;
 		}
-			
-	}
+	}	
 }
-
 
 
 

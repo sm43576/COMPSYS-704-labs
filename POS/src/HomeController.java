@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -14,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -36,7 +39,8 @@ public class HomeController {
 	
 	private Customer customer = new Customer();
 	private int nextOrderNum;
-    
+    private ArrayList<Customer> customersList = new ArrayList<Customer>();
+	
     @FXML
     public void initialize() {
         order_hist_title.setText("Order History");
@@ -57,13 +61,11 @@ public class HomeController {
                     if (item == null || empty) {
                         setText(null);
                         setGraphic(null);
-                        System.out.println("its empty");
                     } else {
                         setText(null); // Clear the text
                         Label label = new Label(item);
                         label.setWrapText(true);
                         setGraphic(label);
-                        System.out.println("its not empty");
                     }
                 }
             };
@@ -90,14 +92,64 @@ public class HomeController {
     	if (event.getCode() == KeyCode.ENTER) {
     		String id = customer_ID_input.getText();
 	    	System.out.println(id);
-	    	Customer newCustomer = new Customer();
-	    	newCustomer.setCustomerID(id);
-	    	this.customer = newCustomer;
-	    	order_hist_title.setText("Order History for "+this.customer.getCustomerID());
+	    	
+	    	// Check if the customer ID exists before
+	    	Customer foundCustomer = findCustomer(id);
+	    	if(foundCustomer == null) {
+	    		// create new customer if ID doesn't exist
+		    	Customer newCustomer = new Customer();
+		    	newCustomer.setCustomerID(id);
+		    	this.customersList.add(newCustomer);
+		    	this.customer = newCustomer;
+	    	}else { 
+	    		// if a customer exists we show the existing order history for that customer
+	    		this.customer = foundCustomer;
+	    	}
+	     	order_hist_title.setText("Order History for "+this.customer.getCustomerID());
+	    	updateOrderHistoryTable();
 	    	new_order_btn.setDisable(false);
     	}
     }
     
+    public ArrayList<Customer> getCustomerList(){
+    	return this.customersList;
+    }
+    
+    // Finding customer in the list of customers
+    public Customer findCustomer(String name) {
+    	Customer foundCustomer = null;
+    	
+    	for(int i=0; i<this.customersList.size(); i++) {
+    		Customer currentCustomer = this.customersList.get(i);
+    		String id = currentCustomer.getCustomerID();
+    		if(id.equals(name)) {
+    			foundCustomer = currentCustomer;
+    			break;
+    		}
+    	}
+    	
+    	return foundCustomer;
+    }
+    
+    // Updating the order status in a customer's order list
+    public void updateOrderStatusInList(Customer customer, Order order){
+    	List<Order> orderList = customer.getOrdersList();
+    	System.out.println(orderList);
+    	System.out.println(customer + " vs this.customer: " + this.customer);
+    	for(int i=0; i<orderList.size(); i++) {
+    		Order currentOrder = orderList.get(i);
+    		int currentNum = currentOrder.getOrderNum();
+    		int targetNum = order.getOrderNum();
+    		
+    		if(currentNum == targetNum) {
+    			// set order status if order numbers match
+    			String newStatus = order.getOrderStatus();
+    			currentOrder.setOrderStatus(newStatus);
+    			System.out.println(currentOrder.getOrderStatus());
+    			break;
+    		}
+    	}
+    }
     
     @FXML
     void openNewOrderWindow(MouseEvent event) throws IOException { // opens the new order window
@@ -119,8 +171,12 @@ public class HomeController {
     
     public void updateOrderHistoryTable() {
     	ObservableList<Order> observableOrderList = FXCollections.observableArrayList(this.customer.getOrdersList());
-    	System.out.println(this.customer.getOrdersList().get(0).getLiquidSpecDisplay());
+    	if(!this.customer.getOrdersList().isEmpty()) {
+    		System.out.println("updating history tbale");
+    		System.out.println(this.customer.getOrdersList().get(0).getOrderStatus());
+    	}
     	history_table.setItems(observableOrderList);
+    	history_table.refresh();
     }
 
     
