@@ -28,26 +28,26 @@ public class LiquidFiller extends ClockDomain{
   public output_Channel fillerStatus_o = new output_Channel();
   private ArrayList recPercentLiq_thread_7;//sysj\controller.sysj line: 95, column: 4
   private int canisterNum_thread_7;//sysj\controller.sysj line: 96, column: 4
-  private int S22448 = 1;
-  private int S5216 = 1;
-  private int S5200 = 1;
-  private int S5195 = 1;
-  private int S5223 = 1;
-  private int S5218 = 1;
-  private int S5401 = 1;
-  private int S5436 = 1;
-  private int S5441 = 1;
-  private int S5446 = 1;
-  private int S5463 = 1;
-  private int S5468 = 1;
-  private int S5956 = 1;
-  private int S5951 = 1;
+  private int S22388 = 1;
+  private int S5156 = 1;
+  private int S5140 = 1;
+  private int S5135 = 1;
+  private int S5163 = 1;
+  private int S5158 = 1;
+  private int S5341 = 1;
+  private int S5376 = 1;
+  private int S5381 = 1;
+  private int S5386 = 1;
+  private int S5403 = 1;
+  private int S5408 = 1;
+  private int S5896 = 1;
+  private int S5891 = 1;
   
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
   
-  public void thread31184(int [] tdone, int [] ends){
-        switch(S5468){
+  public void thread31124(int [] tdone, int [] ends){
+        switch(S5408){
       case 0 : 
         active[11]=0;
         ends[11]=0;
@@ -65,8 +65,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread31183(int [] tdone, int [] ends){
-        switch(S5463){
+  public void thread31123(int [] tdone, int [] ends){
+        switch(S5403){
       case 0 : 
         active[10]=0;
         ends[10]=0;
@@ -84,8 +84,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread31181(int [] tdone, int [] ends){
-        S5468=1;
+  public void thread31121(int [] tdone, int [] ends){
+        S5408=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 120, column: 36
     currsigs.addElement(dosUnitValveExtend);
     active[11]=1;
@@ -93,8 +93,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[11]=1;
   }
 
-  public void thread31180(int [] tdone, int [] ends){
-        S5463=1;
+  public void thread31120(int [] tdone, int [] ends){
+        S5403=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 120, column: 8
     currsigs.addElement(valveInletOnOff);
     active[10]=1;
@@ -102,8 +102,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[10]=1;
   }
 
-  public void thread31178(int [] tdone, int [] ends){
-        switch(S5446){
+  public void thread31118(int [] tdone, int [] ends){
+        switch(S5386){
       case 0 : 
         active[9]=0;
         ends[9]=0;
@@ -121,8 +121,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread31177(int [] tdone, int [] ends){
-        switch(S5441){
+  public void thread31117(int [] tdone, int [] ends){
+        switch(S5381){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -140,8 +140,8 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread31175(int [] tdone, int [] ends){
-        S5468=1;
+  public void thread31115(int [] tdone, int [] ends){
+        S5408=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 120, column: 36
     currsigs.addElement(dosUnitValveExtend);
     active[11]=1;
@@ -149,8 +149,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[11]=1;
   }
 
-  public void thread31174(int [] tdone, int [] ends){
-        S5463=1;
+  public void thread31114(int [] tdone, int [] ends){
+        S5403=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 120, column: 8
     currsigs.addElement(valveInletOnOff);
     active[10]=1;
@@ -158,8 +158,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[10]=1;
   }
 
-  public void thread31172(int [] tdone, int [] ends){
-        S5446=1;
+  public void thread31112(int [] tdone, int [] ends){
+        S5386=1;
     valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 114, column: 42
     currsigs.addElement(valveInjectorOnOff);
     active[9]=1;
@@ -167,8 +167,8 @@ public class LiquidFiller extends ClockDomain{
     tdone[9]=1;
   }
 
-  public void thread31171(int [] tdone, int [] ends){
-        S5441=1;
+  public void thread31111(int [] tdone, int [] ends){
+        S5381=1;
     dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 114, column: 8
     currsigs.addElement(dosUnitValveRetract);
     active[8]=1;
@@ -183,65 +183,65 @@ public class LiquidFiller extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S22448){
+      switch(S22388){
         case 0 : 
-          S22448=0;
+          S22388=0;
           break RUN;
         
         case 1 : 
-          S22448=2;
-          S22448=2;
-          S5216=0;
-          S5200=0;
+          S22388=2;
+          S22388=2;
+          S5156=0;
+          S5140=0;
           if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 83, column: 3
             fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
-            S5200=1;
+            S5140=1;
             active[7]=1;
             ends[7]=1;
             break RUN;
           }
           else {
-            S5195=0;
+            S5135=0;
             if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
               fillerReq_in.setACK(true);//sysj\controller.sysj line: 83, column: 3
-              S5195=1;
+              S5135=1;
               if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                 fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
                 ends[7]=2;
                 ;//sysj\controller.sysj line: 83, column: 3
                 System.out.println("FillerController: - Received request");//sysj\controller.sysj line: 86, column: 3
-                S5216=1;
+                S5156=1;
                 if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 87, column: 11
                   System.out.println("FillerController: - Idle (no bottle at pos 2).");//sysj\controller.sysj line: 88, column: 4
-                  S5223=0;
+                  S5163=0;
                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                    S5223=1;
+                    S5163=1;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
                   }
                   else {
-                    S5218=0;
+                    S5158=0;
                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                       fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                      S5218=1;
+                      S5158=1;
                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                         ends[7]=2;
                         ;//sysj\controller.sysj line: 89, column: 4
-                        S5216=2;
+                        S5156=2;
                         if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                           System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                           recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                           canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                          S5401=0;
+                          S5341=0;
                           if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                             System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                             selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                             currsigs.addElement(selectPercentage);
                             selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                            S5436=0;
+                            S5376=0;
                             System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                             selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                             currsigs.addElement(selectCanister);
@@ -253,25 +253,25 @@ public class LiquidFiller extends ClockDomain{
                           else {
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 98, column: 4
-                            S5401=1;
-                            S5956=0;
+                            S5341=1;
+                            S5896=0;
                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                              S5956=1;
+                              S5896=1;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
                             }
                             else {
-                              S5951=0;
+                              S5891=0;
                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                S5951=1;
+                                S5891=1;
                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                   ends[7]=2;
                                   ;//sysj\controller.sysj line: 126, column: 4
-                                  S5216=3;
+                                  S5156=3;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
@@ -291,7 +291,7 @@ public class LiquidFiller extends ClockDomain{
                           }
                         }
                         else {
-                          S5216=3;
+                          S5156=3;
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
@@ -311,18 +311,18 @@ public class LiquidFiller extends ClockDomain{
                   }
                 }
                 else {
-                  S5216=2;
+                  S5156=2;
                   if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                     System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                     recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                     canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                    S5401=0;
+                    S5341=0;
                     if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                       System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                       selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                       currsigs.addElement(selectPercentage);
                       selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                      S5436=0;
+                      S5376=0;
                       System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                       selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                       currsigs.addElement(selectCanister);
@@ -334,25 +334,25 @@ public class LiquidFiller extends ClockDomain{
                     else {
                       ends[7]=2;
                       ;//sysj\controller.sysj line: 98, column: 4
-                      S5401=1;
-                      S5956=0;
+                      S5341=1;
+                      S5896=0;
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                        S5956=1;
+                        S5896=1;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;
                       }
                       else {
-                        S5951=0;
+                        S5891=0;
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                           fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                          S5951=1;
+                          S5891=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 126, column: 4
-                            S5216=3;
+                            S5156=3;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -372,7 +372,7 @@ public class LiquidFiller extends ClockDomain{
                     }
                   }
                   else {
-                    S5216=3;
+                    S5156=3;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
@@ -393,60 +393,60 @@ public class LiquidFiller extends ClockDomain{
           }
         
         case 2 : 
-          switch(S5216){
+          switch(S5156){
             case 0 : 
-              switch(S5200){
+              switch(S5140){
                 case 0 : 
                   if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 83, column: 3
                     fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
-                    S5200=1;
+                    S5140=1;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
                   }
                   else {
-                    switch(S5195){
+                    switch(S5135){
                       case 0 : 
                         if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                           fillerReq_in.setACK(true);//sysj\controller.sysj line: 83, column: 3
-                          S5195=1;
+                          S5135=1;
                           if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                             fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 83, column: 3
                             System.out.println("FillerController: - Received request");//sysj\controller.sysj line: 86, column: 3
-                            S5216=1;
+                            S5156=1;
                             if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 87, column: 11
                               System.out.println("FillerController: - Idle (no bottle at pos 2).");//sysj\controller.sysj line: 88, column: 4
-                              S5223=0;
+                              S5163=0;
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                                S5223=1;
+                                S5163=1;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
                               }
                               else {
-                                S5218=0;
+                                S5158=0;
                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                                   fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                                  S5218=1;
+                                  S5158=1;
                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                                     ends[7]=2;
                                     ;//sysj\controller.sysj line: 89, column: 4
-                                    S5216=2;
+                                    S5156=2;
                                     if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                                       System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                                       recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                                       canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                                      S5401=0;
+                                      S5341=0;
                                       if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                         System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                         selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                         currsigs.addElement(selectPercentage);
                                         selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                        S5436=0;
+                                        S5376=0;
                                         System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                         selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                         currsigs.addElement(selectCanister);
@@ -458,25 +458,25 @@ public class LiquidFiller extends ClockDomain{
                                       else {
                                         ends[7]=2;
                                         ;//sysj\controller.sysj line: 98, column: 4
-                                        S5401=1;
-                                        S5956=0;
+                                        S5341=1;
+                                        S5896=0;
                                         if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                          S5956=1;
+                                          S5896=1;
                                           active[7]=1;
                                           ends[7]=1;
                                           break RUN;
                                         }
                                         else {
-                                          S5951=0;
+                                          S5891=0;
                                           if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                             fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                            S5951=1;
+                                            S5891=1;
                                             if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                               ends[7]=2;
                                               ;//sysj\controller.sysj line: 126, column: 4
-                                              S5216=3;
+                                              S5156=3;
                                               active[7]=1;
                                               ends[7]=1;
                                               break RUN;
@@ -496,7 +496,7 @@ public class LiquidFiller extends ClockDomain{
                                       }
                                     }
                                     else {
-                                      S5216=3;
+                                      S5156=3;
                                       active[7]=1;
                                       ends[7]=1;
                                       break RUN;
@@ -516,18 +516,18 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S5216=2;
+                              S5156=2;
                               if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                                 System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                                 recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                                 canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                                S5401=0;
+                                S5341=0;
                                 if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                   System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                   selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                   currsigs.addElement(selectPercentage);
                                   selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                  S5436=0;
+                                  S5376=0;
                                   System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                   selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                   currsigs.addElement(selectCanister);
@@ -539,25 +539,25 @@ public class LiquidFiller extends ClockDomain{
                                 else {
                                   ends[7]=2;
                                   ;//sysj\controller.sysj line: 98, column: 4
-                                  S5401=1;
-                                  S5956=0;
+                                  S5341=1;
+                                  S5896=0;
                                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                    S5956=1;
+                                    S5896=1;
                                     active[7]=1;
                                     ends[7]=1;
                                     break RUN;
                                   }
                                   else {
-                                    S5951=0;
+                                    S5891=0;
                                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                       fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                      S5951=1;
+                                      S5891=1;
                                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                         ends[7]=2;
                                         ;//sysj\controller.sysj line: 126, column: 4
-                                        S5216=3;
+                                        S5156=3;
                                         active[7]=1;
                                         ends[7]=1;
                                         break RUN;
@@ -577,7 +577,7 @@ public class LiquidFiller extends ClockDomain{
                                 }
                               }
                               else {
-                                S5216=3;
+                                S5156=3;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
@@ -602,38 +602,38 @@ public class LiquidFiller extends ClockDomain{
                           ends[7]=2;
                           ;//sysj\controller.sysj line: 83, column: 3
                           System.out.println("FillerController: - Received request");//sysj\controller.sysj line: 86, column: 3
-                          S5216=1;
+                          S5156=1;
                           if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 87, column: 11
                             System.out.println("FillerController: - Idle (no bottle at pos 2).");//sysj\controller.sysj line: 88, column: 4
-                            S5223=0;
+                            S5163=0;
                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                              S5223=1;
+                              S5163=1;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
                             }
                             else {
-                              S5218=0;
+                              S5158=0;
                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                                 fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                                S5218=1;
+                                S5158=1;
                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                                   ends[7]=2;
                                   ;//sysj\controller.sysj line: 89, column: 4
-                                  S5216=2;
+                                  S5156=2;
                                   if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                                     System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                                     recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                                     canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                                    S5401=0;
+                                    S5341=0;
                                     if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                       System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                       selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                       currsigs.addElement(selectPercentage);
                                       selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                      S5436=0;
+                                      S5376=0;
                                       System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                       selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                       currsigs.addElement(selectCanister);
@@ -645,25 +645,25 @@ public class LiquidFiller extends ClockDomain{
                                     else {
                                       ends[7]=2;
                                       ;//sysj\controller.sysj line: 98, column: 4
-                                      S5401=1;
-                                      S5956=0;
+                                      S5341=1;
+                                      S5896=0;
                                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                        S5956=1;
+                                        S5896=1;
                                         active[7]=1;
                                         ends[7]=1;
                                         break RUN;
                                       }
                                       else {
-                                        S5951=0;
+                                        S5891=0;
                                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                           fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                          S5951=1;
+                                          S5891=1;
                                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                             ends[7]=2;
                                             ;//sysj\controller.sysj line: 126, column: 4
-                                            S5216=3;
+                                            S5156=3;
                                             active[7]=1;
                                             ends[7]=1;
                                             break RUN;
@@ -683,7 +683,7 @@ public class LiquidFiller extends ClockDomain{
                                     }
                                   }
                                   else {
-                                    S5216=3;
+                                    S5156=3;
                                     active[7]=1;
                                     ends[7]=1;
                                     break RUN;
@@ -703,18 +703,18 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S5216=2;
+                            S5156=2;
                             if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                               System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                               recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                               canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                              S5401=0;
+                              S5341=0;
                               if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                 System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                 selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                 currsigs.addElement(selectPercentage);
                                 selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                S5436=0;
+                                S5376=0;
                                 System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                 selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                 currsigs.addElement(selectCanister);
@@ -726,25 +726,25 @@ public class LiquidFiller extends ClockDomain{
                               else {
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 98, column: 4
-                                S5401=1;
-                                S5956=0;
+                                S5341=1;
+                                S5896=0;
                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                  S5956=1;
+                                  S5896=1;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S5951=0;
+                                  S5891=0;
                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                    S5951=1;
+                                    S5891=1;
                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                       ends[7]=2;
                                       ;//sysj\controller.sysj line: 126, column: 4
-                                      S5216=3;
+                                      S5156=3;
                                       active[7]=1;
                                       ends[7]=1;
                                       break RUN;
@@ -764,7 +764,7 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S5216=3;
+                              S5156=3;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
@@ -782,57 +782,57 @@ public class LiquidFiller extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  S5200=1;
-                  S5200=0;
+                  S5140=1;
+                  S5140=0;
                   if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 83, column: 3
                     fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
-                    S5200=1;
+                    S5140=1;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
                   }
                   else {
-                    S5195=0;
+                    S5135=0;
                     if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                       fillerReq_in.setACK(true);//sysj\controller.sysj line: 83, column: 3
-                      S5195=1;
+                      S5135=1;
                       if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                         fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
                         ends[7]=2;
                         ;//sysj\controller.sysj line: 83, column: 3
                         System.out.println("FillerController: - Received request");//sysj\controller.sysj line: 86, column: 3
-                        S5216=1;
+                        S5156=1;
                         if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 87, column: 11
                           System.out.println("FillerController: - Idle (no bottle at pos 2).");//sysj\controller.sysj line: 88, column: 4
-                          S5223=0;
+                          S5163=0;
                           if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                            S5223=1;
+                            S5163=1;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
                           }
                           else {
-                            S5218=0;
+                            S5158=0;
                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                               fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                              S5218=1;
+                              S5158=1;
                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 89, column: 4
-                                S5216=2;
+                                S5156=2;
                                 if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                                   System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                                   recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                                   canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                                  S5401=0;
+                                  S5341=0;
                                   if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                     System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                     selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                     currsigs.addElement(selectPercentage);
                                     selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                    S5436=0;
+                                    S5376=0;
                                     System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                     selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                     currsigs.addElement(selectCanister);
@@ -844,25 +844,25 @@ public class LiquidFiller extends ClockDomain{
                                   else {
                                     ends[7]=2;
                                     ;//sysj\controller.sysj line: 98, column: 4
-                                    S5401=1;
-                                    S5956=0;
+                                    S5341=1;
+                                    S5896=0;
                                     if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                      S5956=1;
+                                      S5896=1;
                                       active[7]=1;
                                       ends[7]=1;
                                       break RUN;
                                     }
                                     else {
-                                      S5951=0;
+                                      S5891=0;
                                       if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                         fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                        S5951=1;
+                                        S5891=1;
                                         if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                           ends[7]=2;
                                           ;//sysj\controller.sysj line: 126, column: 4
-                                          S5216=3;
+                                          S5156=3;
                                           active[7]=1;
                                           ends[7]=1;
                                           break RUN;
@@ -882,7 +882,7 @@ public class LiquidFiller extends ClockDomain{
                                   }
                                 }
                                 else {
-                                  S5216=3;
+                                  S5156=3;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
@@ -902,18 +902,18 @@ public class LiquidFiller extends ClockDomain{
                           }
                         }
                         else {
-                          S5216=2;
+                          S5156=2;
                           if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                             System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                             recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                             canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                            S5401=0;
+                            S5341=0;
                             if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                               System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                               selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                               currsigs.addElement(selectPercentage);
                               selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                              S5436=0;
+                              S5376=0;
                               System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                               selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                               currsigs.addElement(selectCanister);
@@ -925,25 +925,25 @@ public class LiquidFiller extends ClockDomain{
                             else {
                               ends[7]=2;
                               ;//sysj\controller.sysj line: 98, column: 4
-                              S5401=1;
-                              S5956=0;
+                              S5341=1;
+                              S5896=0;
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                S5956=1;
+                                S5896=1;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
                               }
                               else {
-                                S5951=0;
+                                S5891=0;
                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                  S5951=1;
+                                  S5891=1;
                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                     ends[7]=2;
                                     ;//sysj\controller.sysj line: 126, column: 4
-                                    S5216=3;
+                                    S5156=3;
                                     active[7]=1;
                                     ends[7]=1;
                                     break RUN;
@@ -963,7 +963,7 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S5216=3;
+                            S5156=3;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -987,37 +987,37 @@ public class LiquidFiller extends ClockDomain{
               break;
             
             case 1 : 
-              switch(S5223){
+              switch(S5163){
                 case 0 : 
                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                    S5223=1;
+                    S5163=1;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
                   }
                   else {
-                    switch(S5218){
+                    switch(S5158){
                       case 0 : 
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                           fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                          S5218=1;
+                          S5158=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 89, column: 4
-                            S5216=2;
+                            S5156=2;
                             if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                               System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                               recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                               canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                              S5401=0;
+                              S5341=0;
                               if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                 System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                 selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                 currsigs.addElement(selectPercentage);
                                 selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                S5436=0;
+                                S5376=0;
                                 System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                 selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                 currsigs.addElement(selectCanister);
@@ -1029,25 +1029,25 @@ public class LiquidFiller extends ClockDomain{
                               else {
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 98, column: 4
-                                S5401=1;
-                                S5956=0;
+                                S5341=1;
+                                S5896=0;
                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                  S5956=1;
+                                  S5896=1;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S5951=0;
+                                  S5891=0;
                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                    S5951=1;
+                                    S5891=1;
                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                       ends[7]=2;
                                       ;//sysj\controller.sysj line: 126, column: 4
-                                      S5216=3;
+                                      S5156=3;
                                       active[7]=1;
                                       ends[7]=1;
                                       break RUN;
@@ -1067,7 +1067,7 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S5216=3;
+                              S5156=3;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
@@ -1090,18 +1090,18 @@ public class LiquidFiller extends ClockDomain{
                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                           ends[7]=2;
                           ;//sysj\controller.sysj line: 89, column: 4
-                          S5216=2;
+                          S5156=2;
                           if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                             System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                             recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                             canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                            S5401=0;
+                            S5341=0;
                             if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                               System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                               selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                               currsigs.addElement(selectPercentage);
                               selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                              S5436=0;
+                              S5376=0;
                               System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                               selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                               currsigs.addElement(selectCanister);
@@ -1113,25 +1113,25 @@ public class LiquidFiller extends ClockDomain{
                             else {
                               ends[7]=2;
                               ;//sysj\controller.sysj line: 98, column: 4
-                              S5401=1;
-                              S5956=0;
+                              S5341=1;
+                              S5896=0;
                               if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                S5956=1;
+                                S5896=1;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
                               }
                               else {
-                                S5951=0;
+                                S5891=0;
                                 if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                  S5951=1;
+                                  S5891=1;
                                   if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                     ends[7]=2;
                                     ;//sysj\controller.sysj line: 126, column: 4
-                                    S5216=3;
+                                    S5156=3;
                                     active[7]=1;
                                     ends[7]=1;
                                     break RUN;
@@ -1151,7 +1151,7 @@ public class LiquidFiller extends ClockDomain{
                             }
                           }
                           else {
-                            S5216=3;
+                            S5156=3;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -1168,36 +1168,36 @@ public class LiquidFiller extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  S5223=1;
-                  S5223=0;
+                  S5163=1;
+                  S5163=0;
                   if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                     fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                    S5223=1;
+                    S5163=1;
                     active[7]=1;
                     ends[7]=1;
                     break RUN;
                   }
                   else {
-                    S5218=0;
+                    S5158=0;
                     if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                       fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                      S5218=1;
+                      S5158=1;
                       if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                         ends[7]=2;
                         ;//sysj\controller.sysj line: 89, column: 4
-                        S5216=2;
+                        S5156=2;
                         if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                           System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                           recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                           canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                          S5401=0;
+                          S5341=0;
                           if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                             System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                             selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                             currsigs.addElement(selectPercentage);
                             selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                            S5436=0;
+                            S5376=0;
                             System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                             selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                             currsigs.addElement(selectCanister);
@@ -1209,25 +1209,25 @@ public class LiquidFiller extends ClockDomain{
                           else {
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 98, column: 4
-                            S5401=1;
-                            S5956=0;
+                            S5341=1;
+                            S5896=0;
                             if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                              S5956=1;
+                              S5896=1;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
                             }
                             else {
-                              S5951=0;
+                              S5891=0;
                               if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                S5951=1;
+                                S5891=1;
                                 if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                   ends[7]=2;
                                   ;//sysj\controller.sysj line: 126, column: 4
-                                  S5216=3;
+                                  S5156=3;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
@@ -1247,7 +1247,7 @@ public class LiquidFiller extends ClockDomain{
                           }
                         }
                         else {
-                          S5216=3;
+                          S5156=3;
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
@@ -1270,22 +1270,22 @@ public class LiquidFiller extends ClockDomain{
               break;
             
             case 2 : 
-              switch(S5401){
+              switch(S5341){
                 case 0 : 
-                  switch(S5436){
+                  switch(S5376){
                     case 0 : 
                       if(selectedCanister.getprestatus()){//sysj\controller.sysj line: 104, column: 11
-                        S5436=1;
-                        thread31171(tdone,ends);
-                        thread31172(tdone,ends);
-                        int biggest31173 = 0;
-                        if(ends[8]>=biggest31173){
-                          biggest31173=ends[8];
+                        S5376=1;
+                        thread31111(tdone,ends);
+                        thread31112(tdone,ends);
+                        int biggest31113 = 0;
+                        if(ends[8]>=biggest31113){
+                          biggest31113=ends[8];
                         }
-                        if(ends[9]>=biggest31173){
-                          biggest31173=ends[9];
+                        if(ends[9]>=biggest31113){
+                          biggest31113=ends[9];
                         }
-                        if(biggest31173 == 1){
+                        if(biggest31113 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
@@ -1302,50 +1302,50 @@ public class LiquidFiller extends ClockDomain{
                     
                     case 1 : 
                       if(dosUnitFilled.getprestatus() && valveInjectorActive.getprestatus()){//sysj\controller.sysj line: 113, column: 12
-                        S5436=2;
-                        thread31174(tdone,ends);
-                        thread31175(tdone,ends);
-                        int biggest31176 = 0;
-                        if(ends[10]>=biggest31176){
-                          biggest31176=ends[10];
+                        S5376=2;
+                        thread31114(tdone,ends);
+                        thread31115(tdone,ends);
+                        int biggest31116 = 0;
+                        if(ends[10]>=biggest31116){
+                          biggest31116=ends[10];
                         }
-                        if(ends[11]>=biggest31176){
-                          biggest31176=ends[11];
+                        if(ends[11]>=biggest31116){
+                          biggest31116=ends[11];
                         }
-                        if(biggest31176 == 1){
+                        if(biggest31116 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                       }
                       else {
-                        thread31177(tdone,ends);
-                        thread31178(tdone,ends);
-                        int biggest31179 = 0;
-                        if(ends[8]>=biggest31179){
-                          biggest31179=ends[8];
+                        thread31117(tdone,ends);
+                        thread31118(tdone,ends);
+                        int biggest31119 = 0;
+                        if(ends[8]>=biggest31119){
+                          biggest31119=ends[8];
                         }
-                        if(ends[9]>=biggest31179){
-                          biggest31179=ends[9];
+                        if(ends[9]>=biggest31119){
+                          biggest31119=ends[9];
                         }
-                        if(biggest31179 == 1){
+                        if(biggest31119 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                         //FINXME code
-                        if(biggest31179 == 0){
-                          S5436=2;
-                          thread31180(tdone,ends);
-                          thread31181(tdone,ends);
-                          int biggest31182 = 0;
-                          if(ends[10]>=biggest31182){
-                            biggest31182=ends[10];
+                        if(biggest31119 == 0){
+                          S5376=2;
+                          thread31120(tdone,ends);
+                          thread31121(tdone,ends);
+                          int biggest31122 = 0;
+                          if(ends[10]>=biggest31122){
+                            biggest31122=ends[10];
                           }
-                          if(ends[11]>=biggest31182){
-                            biggest31182=ends[11];
+                          if(ends[11]>=biggest31122){
+                            biggest31122=ends[11];
                           }
-                          if(biggest31182 == 1){
+                          if(biggest31122 == 1){
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -1356,30 +1356,30 @@ public class LiquidFiller extends ClockDomain{
                     case 2 : 
                       if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 119, column: 12
                         canisterNum_thread_7 += 1;//sysj\controller.sysj line: 123, column: 6
-                        S5436=3;
+                        S5376=3;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;
                       }
                       else {
-                        thread31183(tdone,ends);
-                        thread31184(tdone,ends);
-                        int biggest31185 = 0;
-                        if(ends[10]>=biggest31185){
-                          biggest31185=ends[10];
+                        thread31123(tdone,ends);
+                        thread31124(tdone,ends);
+                        int biggest31125 = 0;
+                        if(ends[10]>=biggest31125){
+                          biggest31125=ends[10];
                         }
-                        if(ends[11]>=biggest31185){
-                          biggest31185=ends[11];
+                        if(ends[11]>=biggest31125){
+                          biggest31125=ends[11];
                         }
-                        if(biggest31185 == 1){
+                        if(biggest31125 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                         //FINXME code
-                        if(biggest31185 == 0){
+                        if(biggest31125 == 0){
                           canisterNum_thread_7 += 1;//sysj\controller.sysj line: 123, column: 6
-                          S5436=3;
+                          S5376=3;
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
@@ -1387,13 +1387,13 @@ public class LiquidFiller extends ClockDomain{
                       }
                     
                     case 3 : 
-                      S5436=3;
+                      S5376=3;
                       if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                         System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                         selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                         currsigs.addElement(selectPercentage);
                         selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                        S5436=0;
+                        S5376=0;
                         System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                         selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                         currsigs.addElement(selectCanister);
@@ -1405,25 +1405,25 @@ public class LiquidFiller extends ClockDomain{
                       else {
                         ends[7]=2;
                         ;//sysj\controller.sysj line: 98, column: 4
-                        S5401=1;
-                        S5956=0;
+                        S5341=1;
+                        S5896=0;
                         if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                           fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                          S5956=1;
+                          S5896=1;
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                         else {
-                          S5951=0;
+                          S5891=0;
                           if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                             fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                            S5951=1;
+                            S5891=1;
                             if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                               ends[7]=2;
                               ;//sysj\controller.sysj line: 126, column: 4
-                              S5216=3;
+                              S5156=3;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
@@ -1446,26 +1446,26 @@ public class LiquidFiller extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  switch(S5956){
+                  switch(S5896){
                     case 0 : 
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                        S5956=1;
+                        S5896=1;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;
                       }
                       else {
-                        switch(S5951){
+                        switch(S5891){
                           case 0 : 
                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                               fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                              S5951=1;
+                              S5891=1;
                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 126, column: 4
-                                S5216=3;
+                                S5156=3;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
@@ -1487,7 +1487,7 @@ public class LiquidFiller extends ClockDomain{
                               fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                               ends[7]=2;
                               ;//sysj\controller.sysj line: 126, column: 4
-                              S5216=3;
+                              S5156=3;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
@@ -1503,25 +1503,25 @@ public class LiquidFiller extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      S5956=1;
-                      S5956=0;
+                      S5896=1;
+                      S5896=0;
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                        S5956=1;
+                        S5896=1;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;
                       }
                       else {
-                        S5951=0;
+                        S5891=0;
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                           fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                          S5951=1;
+                          S5891=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 126, column: 4
-                            S5216=3;
+                            S5156=3;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -1546,58 +1546,58 @@ public class LiquidFiller extends ClockDomain{
               break;
             
             case 3 : 
-              S5216=3;
-              S5216=0;
-              S5200=0;
+              S5156=3;
+              S5156=0;
+              S5140=0;
               if(!fillerReq_in.isPartnerPresent() || fillerReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 83, column: 3
                 fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
-                S5200=1;
+                S5140=1;
                 active[7]=1;
                 ends[7]=1;
                 break RUN;
               }
               else {
-                S5195=0;
+                S5135=0;
                 if(!fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                   fillerReq_in.setACK(true);//sysj\controller.sysj line: 83, column: 3
-                  S5195=1;
+                  S5135=1;
                   if(fillerReq_in.isREQ()){//sysj\controller.sysj line: 83, column: 3
                     fillerReq_in.setACK(false);//sysj\controller.sysj line: 83, column: 3
                     ends[7]=2;
                     ;//sysj\controller.sysj line: 83, column: 3
                     System.out.println("FillerController: - Received request");//sysj\controller.sysj line: 86, column: 3
-                    S5216=1;
+                    S5156=1;
                     if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 87, column: 11
                       System.out.println("FillerController: - Idle (no bottle at pos 2).");//sysj\controller.sysj line: 88, column: 4
-                      S5223=0;
+                      S5163=0;
                       if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 89, column: 4
                         fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
-                        S5223=1;
+                        S5163=1;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;
                       }
                       else {
-                        S5218=0;
+                        S5158=0;
                         if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                           fillerStatus_o.setVal("idle");//sysj\controller.sysj line: 89, column: 4
-                          S5218=1;
+                          S5158=1;
                           if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 89, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 89, column: 4
                             ends[7]=2;
                             ;//sysj\controller.sysj line: 89, column: 4
-                            S5216=2;
+                            S5156=2;
                             if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                               System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                               recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                               canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                              S5401=0;
+                              S5341=0;
                               if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                                 System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                                 selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                                 currsigs.addElement(selectPercentage);
                                 selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                                S5436=0;
+                                S5376=0;
                                 System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                                 selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                                 currsigs.addElement(selectCanister);
@@ -1609,25 +1609,25 @@ public class LiquidFiller extends ClockDomain{
                               else {
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 98, column: 4
-                                S5401=1;
-                                S5956=0;
+                                S5341=1;
+                                S5896=0;
                                 if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                                   fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                                  S5956=1;
+                                  S5896=1;
                                   active[7]=1;
                                   ends[7]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S5951=0;
+                                  S5891=0;
                                   if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                     fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                                    S5951=1;
+                                    S5891=1;
                                     if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                       fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                       ends[7]=2;
                                       ;//sysj\controller.sysj line: 126, column: 4
-                                      S5216=3;
+                                      S5156=3;
                                       active[7]=1;
                                       ends[7]=1;
                                       break RUN;
@@ -1647,7 +1647,7 @@ public class LiquidFiller extends ClockDomain{
                               }
                             }
                             else {
-                              S5216=3;
+                              S5156=3;
                               active[7]=1;
                               ends[7]=1;
                               break RUN;
@@ -1667,18 +1667,18 @@ public class LiquidFiller extends ClockDomain{
                       }
                     }
                     else {
-                      S5216=2;
+                      S5156=2;
                       if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 93, column: 11
                         System.out.println("FillerController: - Bottle detected at position 2.");//sysj\controller.sysj line: 94, column: 4
                         recPercentLiq_thread_7 = (ArrayList)(fillerReq_in.getVal() == null ? null : ((ArrayList)fillerReq_in.getVal()));//sysj\controller.sysj line: 95, column: 4
                         canisterNum_thread_7 = 1;//sysj\controller.sysj line: 96, column: 4
-                        S5401=0;
+                        S5341=0;
                         if(canisterNum_thread_7 < 5){//sysj\controller.sysj line: 98, column: 10
                           System.out.println("selecting percentage " + recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 101, column: 6
                           selectPercentage.setPresent();//sysj\controller.sysj line: 102, column: 6
                           currsigs.addElement(selectPercentage);
                           selectPercentage.setValue(recPercentLiq_thread_7.get(canisterNum_thread_7 - 1));//sysj\controller.sysj line: 102, column: 6
-                          S5436=0;
+                          S5376=0;
                           System.out.println("selecting canister " + canisterNum_thread_7);//sysj\controller.sysj line: 105, column: 6
                           selectCanister.setPresent();//sysj\controller.sysj line: 106, column: 7
                           currsigs.addElement(selectCanister);
@@ -1690,25 +1690,25 @@ public class LiquidFiller extends ClockDomain{
                         else {
                           ends[7]=2;
                           ;//sysj\controller.sysj line: 98, column: 4
-                          S5401=1;
-                          S5956=0;
+                          S5341=1;
+                          S5896=0;
                           if(!fillerStatus_o.isPartnerPresent() || fillerStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 126, column: 4
                             fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
-                            S5956=1;
+                            S5896=1;
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
                           }
                           else {
-                            S5951=0;
+                            S5891=0;
                             if(fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                               fillerStatus_o.setVal("done");//sysj\controller.sysj line: 126, column: 4
-                              S5951=1;
+                              S5891=1;
                               if(!fillerStatus_o.isACK()){//sysj\controller.sysj line: 126, column: 4
                                 fillerStatus_o.setREQ(false);//sysj\controller.sysj line: 126, column: 4
                                 ends[7]=2;
                                 ;//sysj\controller.sysj line: 126, column: 4
-                                S5216=3;
+                                S5156=3;
                                 active[7]=1;
                                 ends[7]=1;
                                 break RUN;
@@ -1728,7 +1728,7 @@ public class LiquidFiller extends ClockDomain{
                         }
                       }
                       else {
-                        S5216=3;
+                        S5156=3;
                         active[7]=1;
                         ends[7]=1;
                         break RUN;

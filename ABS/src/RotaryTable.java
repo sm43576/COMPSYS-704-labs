@@ -19,13 +19,13 @@ public class RotaryTable extends ClockDomain{
   public input_Channel rotaryReq_in = new input_Channel();
   public output_Channel rotaryStatus_o = new output_Channel();
   private Boolean request_thread_6;//sysj\controller.sysj line: 52, column: 9
-  private int S5193 = 1;
+  private int S5133 = 1;
   private int S4485 = 1;
   private int S4469 = 1;
   private int S4464 = 1;
-  private int S4495 = 1;
-  private int S4502 = 1;
+  private int S4490 = 1;
   private int S4497 = 1;
+  private int S4492 = 1;
   
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
@@ -37,14 +37,14 @@ public class RotaryTable extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S5193){
+      switch(S5133){
         case 0 : 
-          S5193=0;
+          S5133=0;
           break RUN;
         
         case 1 : 
-          S5193=2;
-          S5193=2;
+          S5133=2;
+          S5133=2;
           S4485=0;
           S4469=0;
           if(!rotaryReq_in.isPartnerPresent() || rotaryReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 51, column: 9
@@ -66,7 +66,9 @@ public class RotaryTable extends ClockDomain{
                 request_thread_6 = (boolean)(rotaryReq_in.getVal() == null ? null : ((Boolean)rotaryReq_in.getVal()));//sysj\controller.sysj line: 52, column: 9
                 S4485=1;
                 if(request_thread_6){//sysj\controller.sysj line: 55, column: 9
-                  S4495=0;
+                  S4490=0;
+                  rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
+                  currsigs.addElement(rotaryTableTrigger);
                   active[6]=1;
                   ends[6]=1;
                   break RUN;
@@ -116,7 +118,9 @@ public class RotaryTable extends ClockDomain{
                             request_thread_6 = (boolean)(rotaryReq_in.getVal() == null ? null : ((Boolean)rotaryReq_in.getVal()));//sysj\controller.sysj line: 52, column: 9
                             S4485=1;
                             if(request_thread_6){//sysj\controller.sysj line: 55, column: 9
-                              S4495=0;
+                              S4490=0;
+                              rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
+                              currsigs.addElement(rotaryTableTrigger);
                               active[6]=1;
                               ends[6]=1;
                               break RUN;
@@ -148,7 +152,9 @@ public class RotaryTable extends ClockDomain{
                           request_thread_6 = (boolean)(rotaryReq_in.getVal() == null ? null : ((Boolean)rotaryReq_in.getVal()));//sysj\controller.sysj line: 52, column: 9
                           S4485=1;
                           if(request_thread_6){//sysj\controller.sysj line: 55, column: 9
-                            S4495=0;
+                            S4490=0;
+                            rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
+                            currsigs.addElement(rotaryTableTrigger);
                             active[6]=1;
                             ends[6]=1;
                             break RUN;
@@ -192,7 +198,9 @@ public class RotaryTable extends ClockDomain{
                         request_thread_6 = (boolean)(rotaryReq_in.getVal() == null ? null : ((Boolean)rotaryReq_in.getVal()));//sysj\controller.sysj line: 52, column: 9
                         S4485=1;
                         if(request_thread_6){//sysj\controller.sysj line: 55, column: 9
-                          S4495=0;
+                          S4490=0;
+                          rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
+                          currsigs.addElement(rotaryTableTrigger);
                           active[6]=1;
                           ends[6]=1;
                           break RUN;
@@ -221,39 +229,24 @@ public class RotaryTable extends ClockDomain{
               break;
             
             case 1 : 
-              switch(S4495){
+              switch(S4490){
                 case 0 : 
-                  if(RTbottleAtPos1.getprestatus()){//sysj\controller.sysj line: 56, column: 16
-                    S4495=1;
-                    rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
-                    currsigs.addElement(rotaryTableTrigger);
-                    active[6]=1;
-                    ends[6]=1;
-                    break RUN;
-                  }
-                  else {
-                    active[6]=1;
-                    ends[6]=1;
-                    break RUN;
-                  }
-                
-                case 1 : 
                   if(tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 59, column: 19
                     System.out.println("RotaryController - finished");//sysj\controller.sysj line: 62, column: 13
-                    S4495=2;
-                    S4502=0;
+                    S4490=1;
+                    S4497=0;
                     if(!rotaryStatus_o.isPartnerPresent() || rotaryStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 63, column: 13
                       rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
-                      S4502=1;
+                      S4497=1;
                       active[6]=1;
                       ends[6]=1;
                       break RUN;
                     }
                     else {
-                      S4497=0;
+                      S4492=0;
                       if(rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                         rotaryStatus_o.setVal("done");//sysj\controller.sysj line: 63, column: 13
-                        S4497=1;
+                        S4492=1;
                         if(!rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                           rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
                           ends[6]=2;
@@ -284,22 +277,22 @@ public class RotaryTable extends ClockDomain{
                     break RUN;
                   }
                 
-                case 2 : 
-                  switch(S4502){
+                case 1 : 
+                  switch(S4497){
                     case 0 : 
                       if(!rotaryStatus_o.isPartnerPresent() || rotaryStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 63, column: 13
                         rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
-                        S4502=1;
+                        S4497=1;
                         active[6]=1;
                         ends[6]=1;
                         break RUN;
                       }
                       else {
-                        switch(S4497){
+                        switch(S4492){
                           case 0 : 
                             if(rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                               rotaryStatus_o.setVal("done");//sysj\controller.sysj line: 63, column: 13
-                              S4497=1;
+                              S4492=1;
                               if(!rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                                 rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
                                 ends[6]=2;
@@ -342,20 +335,20 @@ public class RotaryTable extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      S4502=1;
-                      S4502=0;
+                      S4497=1;
+                      S4497=0;
                       if(!rotaryStatus_o.isPartnerPresent() || rotaryStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 63, column: 13
                         rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
-                        S4502=1;
+                        S4497=1;
                         active[6]=1;
                         ends[6]=1;
                         break RUN;
                       }
                       else {
-                        S4497=0;
+                        S4492=0;
                         if(rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                           rotaryStatus_o.setVal("done");//sysj\controller.sysj line: 63, column: 13
-                          S4497=1;
+                          S4492=1;
                           if(!rotaryStatus_o.isACK()){//sysj\controller.sysj line: 63, column: 13
                             rotaryStatus_o.setREQ(false);//sysj\controller.sysj line: 63, column: 13
                             ends[6]=2;
@@ -407,7 +400,9 @@ public class RotaryTable extends ClockDomain{
                     request_thread_6 = (boolean)(rotaryReq_in.getVal() == null ? null : ((Boolean)rotaryReq_in.getVal()));//sysj\controller.sysj line: 52, column: 9
                     S4485=1;
                     if(request_thread_6){//sysj\controller.sysj line: 55, column: 9
-                      S4495=0;
+                      S4490=0;
+                      rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 60, column: 17
+                      currsigs.addElement(rotaryTableTrigger);
                       active[6]=1;
                       ends[6]=1;
                       break RUN;

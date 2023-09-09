@@ -31,71 +31,71 @@ public class Capper extends ClockDomain{
   private Signal raiseGripper_12;
   private Signal unclampBottle_12;
   private boolean request_thread_12;//sysj\controller.sysj line: 164, column: 3
-  private int S30779 = 1;
-  private int S22475 = 1;
-  private int S22459 = 1;
-  private int S22454 = 1;
-  private int S22522 = 1;
-  private int S22482 = 1;
+  private int S30719 = 1;
+  private int S22415 = 1;
+  private int S22399 = 1;
+  private int S22394 = 1;
+  private int S22462 = 1;
+  private int S22422 = 1;
+  private int S22417 = 1;
+  private int S22545 = 1;
+  private int S22468 = 1;
+  private int S22474 = 1;
+  private int S22490 = 1;
+  private int S22489 = 1;
   private int S22477 = 1;
-  private int S22605 = 1;
-  private int S22528 = 1;
-  private int S22534 = 1;
-  private int S22550 = 1;
-  private int S22549 = 1;
-  private int S22537 = 1;
-  private int S22540 = 1;
-  private int S22563 = 1;
-  private int S22560 = 1;
-  private int S22612 = 1;
-  private int S22607 = 1;
+  private int S22480 = 1;
+  private int S22503 = 1;
+  private int S22500 = 1;
+  private int S22552 = 1;
+  private int S22547 = 1;
   
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
   
-  public void thread31296(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
+  public void thread31236(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread31294(int [] tdone, int [] ends){
-        S22540=1;
+  public void thread31234(int [] tdone, int [] ends){
+        S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread31293(int [] tdone, int [] ends){
-        S22537=1;
+  public void thread31233(int [] tdone, int [] ends){
+        S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-  public void thread31292(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31293(tdone,ends);
-    thread31294(tdone,ends);
-    int biggest31295 = 0;
-    if(ends[16]>=biggest31295){
-      biggest31295=ends[16];
+  public void thread31232(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31233(tdone,ends);
+    thread31234(tdone,ends);
+    int biggest31235 = 0;
+    if(ends[16]>=biggest31235){
+      biggest31235=ends[16];
     }
-    if(ends[17]>=biggest31295){
-      biggest31295=ends[17];
+    if(ends[17]>=biggest31235){
+      biggest31235=ends[17];
     }
-    if(biggest31295 == 1){
+    if(biggest31235 == 1){
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-  public void thread31291(int [] tdone, int [] ends){
-        S22534=1;
+  public void thread31231(int [] tdone, int [] ends){
+        S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
     active[14]=1;
@@ -103,8 +103,8 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-  public void thread31290(int [] tdone, int [] ends){
-        S22528=1;
+  public void thread31230(int [] tdone, int [] ends){
+        S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
     active[13]=1;
@@ -112,49 +112,49 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-  public void thread31288(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
+  public void thread31228(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread31286(int [] tdone, int [] ends){
-        S22540=1;
+  public void thread31226(int [] tdone, int [] ends){
+        S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread31285(int [] tdone, int [] ends){
-        S22537=1;
+  public void thread31225(int [] tdone, int [] ends){
+        S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-  public void thread31284(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31285(tdone,ends);
-    thread31286(tdone,ends);
-    int biggest31287 = 0;
-    if(ends[16]>=biggest31287){
-      biggest31287=ends[16];
+  public void thread31224(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31225(tdone,ends);
+    thread31226(tdone,ends);
+    int biggest31227 = 0;
+    if(ends[16]>=biggest31227){
+      biggest31227=ends[16];
     }
-    if(ends[17]>=biggest31287){
-      biggest31287=ends[17];
+    if(ends[17]>=biggest31227){
+      biggest31227=ends[17];
     }
-    if(biggest31287 == 1){
+    if(biggest31227 == 1){
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-  public void thread31283(int [] tdone, int [] ends){
-        S22534=1;
+  public void thread31223(int [] tdone, int [] ends){
+        S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
     active[14]=1;
@@ -162,8 +162,8 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-  public void thread31282(int [] tdone, int [] ends){
-        S22528=1;
+  public void thread31222(int [] tdone, int [] ends){
+        S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
     active[13]=1;
@@ -171,8 +171,8 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-  public void thread31280(int [] tdone, int [] ends){
-        switch(S22563){
+  public void thread31220(int [] tdone, int [] ends){
+        switch(S22503){
       case 0 : 
         active[18]=0;
         ends[18]=0;
@@ -180,10 +180,10 @@ public class Capper extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S22560){
+        switch(S22500){
           case 0 : 
             if(gripperGrippedCap.getprestatus()){//sysj\controller.sysj line: 196, column: 12
-              S22560=1;
+              S22500=1;
               gripperTurnExtend.setPresent();//sysj\controller.sysj line: 199, column: 7
               currsigs.addElement(gripperTurnExtend);
               active[18]=1;
@@ -207,7 +207,7 @@ public class Capper extends ClockDomain{
               currsigs.addElement(raiseGripper_12);
               unclampBottle_12.setPresent();//sysj\controller.sysj line: 208, column: 6
               currsigs.addElement(unclampBottle_12);
-              S22563=0;
+              S22503=0;
               active[18]=0;
               ends[18]=0;
               tdone[18]=1;
@@ -227,8 +227,8 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31278(int [] tdone, int [] ends){
-        switch(S22540){
+  public void thread31218(int [] tdone, int [] ends){
+        switch(S22480){
       case 0 : 
         active[17]=0;
         ends[17]=0;
@@ -237,7 +237,7 @@ public class Capper extends ClockDomain{
       
       case 1 : 
         if(cylClampedBottle.getprestatus()){//sysj\controller.sysj line: 189, column: 46
-          S22540=0;
+          S22480=0;
           active[17]=0;
           ends[17]=0;
           tdone[17]=1;
@@ -252,8 +252,8 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31277(int [] tdone, int [] ends){
-        switch(S22537){
+  public void thread31217(int [] tdone, int [] ends){
+        switch(S22477){
       case 0 : 
         active[16]=0;
         ends[16]=0;
@@ -262,7 +262,7 @@ public class Capper extends ClockDomain{
       
       case 1 : 
         if(gripperZAxisLowered.getprestatus()){//sysj\controller.sysj line: 189, column: 13
-          S22537=0;
+          S22477=0;
           active[16]=0;
           ends[16]=0;
           tdone[16]=1;
@@ -277,8 +277,8 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31276(int [] tdone, int [] ends){
-        switch(S22550){
+  public void thread31216(int [] tdone, int [] ends){
+        switch(S22490){
       case 0 : 
         active[15]=0;
         ends[15]=0;
@@ -286,25 +286,25 @@ public class Capper extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S22549){
+        switch(S22489){
           case 0 : 
-            thread31277(tdone,ends);
-            thread31278(tdone,ends);
-            int biggest31279 = 0;
-            if(ends[16]>=biggest31279){
-              biggest31279=ends[16];
+            thread31217(tdone,ends);
+            thread31218(tdone,ends);
+            int biggest31219 = 0;
+            if(ends[16]>=biggest31219){
+              biggest31219=ends[16];
             }
-            if(ends[17]>=biggest31279){
-              biggest31279=ends[17];
+            if(ends[17]>=biggest31219){
+              biggest31219=ends[17];
             }
-            if(biggest31279 == 1){
+            if(biggest31219 == 1){
               active[15]=1;
               ends[15]=1;
               tdone[15]=1;
             }
             //FINXME code
-            if(biggest31279 == 0){
-              S22549=1;
+            if(biggest31219 == 0){
+              S22489=1;
               capGripperPos5Extend.setPresent();//sysj\controller.sysj line: 191, column: 7
               currsigs.addElement(capGripperPos5Extend);
               active[15]=1;
@@ -315,7 +315,7 @@ public class Capper extends ClockDomain{
           
           case 1 : 
             if(releaseCap_12.getprestatus()){//sysj\controller.sysj line: 190, column: 12
-              S22550=0;
+              S22490=0;
               active[15]=0;
               ends[15]=0;
               tdone[15]=1;
@@ -335,8 +335,8 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31275(int [] tdone, int [] ends){
-        switch(S22534){
+  public void thread31215(int [] tdone, int [] ends){
+        switch(S22474){
       case 0 : 
         active[14]=0;
         ends[14]=0;
@@ -345,7 +345,7 @@ public class Capper extends ClockDomain{
       
       case 1 : 
         if(raiseGripper_12.getprestatus()){//sysj\controller.sysj line: 182, column: 12
-          S22534=0;
+          S22474=0;
           active[14]=0;
           ends[14]=0;
           tdone[14]=1;
@@ -362,8 +362,8 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31274(int [] tdone, int [] ends){
-        switch(S22528){
+  public void thread31214(int [] tdone, int [] ends){
+        switch(S22468){
       case 0 : 
         active[13]=0;
         ends[13]=0;
@@ -372,7 +372,7 @@ public class Capper extends ClockDomain{
       
       case 1 : 
         if(unclampBottle_12.getprestatus()){//sysj\controller.sysj line: 176, column: 13
-          S22528=0;
+          S22468=0;
           active[13]=0;
           ends[13]=0;
           tdone[13]=1;
@@ -389,580 +389,108 @@ public class Capper extends ClockDomain{
     }
   }
 
-  public void thread31272(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31270(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31269(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31268(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31269(tdone,ends);
-    thread31270(tdone,ends);
-    int biggest31271 = 0;
-    if(ends[16]>=biggest31271){
-      biggest31271=ends[16];
-    }
-    if(ends[17]>=biggest31271){
-      biggest31271=ends[17];
-    }
-    if(biggest31271 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31267(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31266(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31264(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31262(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31261(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31260(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31261(tdone,ends);
-    thread31262(tdone,ends);
-    int biggest31263 = 0;
-    if(ends[16]>=biggest31263){
-      biggest31263=ends[16];
-    }
-    if(ends[17]>=biggest31263){
-      biggest31263=ends[17];
-    }
-    if(biggest31263 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31259(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31258(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31256(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31254(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31253(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31252(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31253(tdone,ends);
-    thread31254(tdone,ends);
-    int biggest31255 = 0;
-    if(ends[16]>=biggest31255){
-      biggest31255=ends[16];
-    }
-    if(ends[17]>=biggest31255){
-      biggest31255=ends[17];
-    }
-    if(biggest31255 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31251(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31250(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31248(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31246(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31245(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31244(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31245(tdone,ends);
-    thread31246(tdone,ends);
-    int biggest31247 = 0;
-    if(ends[16]>=biggest31247){
-      biggest31247=ends[16];
-    }
-    if(ends[17]>=biggest31247){
-      biggest31247=ends[17];
-    }
-    if(biggest31247 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31243(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31242(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31240(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31238(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31237(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31236(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31237(tdone,ends);
-    thread31238(tdone,ends);
-    int biggest31239 = 0;
-    if(ends[16]>=biggest31239){
-      biggest31239=ends[16];
-    }
-    if(ends[17]>=biggest31239){
-      biggest31239=ends[17];
-    }
-    if(biggest31239 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31235(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31234(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31232(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31230(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31229(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31228(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31229(tdone,ends);
-    thread31230(tdone,ends);
-    int biggest31231 = 0;
-    if(ends[16]>=biggest31231){
-      biggest31231=ends[16];
-    }
-    if(ends[17]>=biggest31231){
-      biggest31231=ends[17];
-    }
-    if(biggest31231 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31227(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31226(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31224(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31222(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31221(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31220(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31221(tdone,ends);
-    thread31222(tdone,ends);
-    int biggest31223 = 0;
-    if(ends[16]>=biggest31223){
-      biggest31223=ends[16];
-    }
-    if(ends[17]>=biggest31223){
-      biggest31223=ends[17];
-    }
-    if(biggest31223 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31219(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
-  }
-
-  public void thread31218(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
-  }
-
-  public void thread31216(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31214(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31213(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
   public void thread31212(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31213(tdone,ends);
-    thread31214(tdone,ends);
-    int biggest31215 = 0;
-    if(ends[16]>=biggest31215){
-      biggest31215=ends[16];
-    }
-    if(ends[17]>=biggest31215){
-      biggest31215=ends[17];
-    }
-    if(biggest31215 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31211(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
   }
 
   public void thread31210(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31209(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
   }
 
   public void thread31208(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
+        S22490=1;
+    S22489=0;
+    thread31209(tdone,ends);
+    thread31210(tdone,ends);
+    int biggest31211 = 0;
+    if(ends[16]>=biggest31211){
+      biggest31211=ends[16];
+    }
+    if(ends[17]>=biggest31211){
+      biggest31211=ends[17];
+    }
+    if(biggest31211 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31207(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
   }
 
   public void thread31206(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31205(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
   }
 
   public void thread31204(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31205(tdone,ends);
-    thread31206(tdone,ends);
-    int biggest31207 = 0;
-    if(ends[16]>=biggest31207){
-      biggest31207=ends[16];
-    }
-    if(ends[17]>=biggest31207){
-      biggest31207=ends[17];
-    }
-    if(biggest31207 == 1){
-      active[15]=1;
-      ends[15]=1;
-      tdone[15]=1;
-    }
-  }
-
-  public void thread31203(int [] tdone, int [] ends){
-        S22534=1;
-    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
-    currsigs.addElement(cylPos5ZAxisExtend);
-    active[14]=1;
-    ends[14]=1;
-    tdone[14]=1;
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
   }
 
   public void thread31202(int [] tdone, int [] ends){
-        S22528=1;
-    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
-    currsigs.addElement(cylClampBottleExtend);
-    active[13]=1;
-    ends[13]=1;
-    tdone[13]=1;
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31201(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
   }
 
   public void thread31200(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
-    active[18]=1;
-    ends[18]=1;
-    tdone[18]=1;
-  }
-
-  public void thread31198(int [] tdone, int [] ends){
-        S22540=1;
-    active[17]=1;
-    ends[17]=1;
-    tdone[17]=1;
-  }
-
-  public void thread31197(int [] tdone, int [] ends){
-        S22537=1;
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
-  }
-
-  public void thread31196(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31197(tdone,ends);
-    thread31198(tdone,ends);
-    int biggest31199 = 0;
-    if(ends[16]>=biggest31199){
-      biggest31199=ends[16];
+        S22490=1;
+    S22489=0;
+    thread31201(tdone,ends);
+    thread31202(tdone,ends);
+    int biggest31203 = 0;
+    if(ends[16]>=biggest31203){
+      biggest31203=ends[16];
     }
-    if(ends[17]>=biggest31199){
-      biggest31199=ends[17];
+    if(ends[17]>=biggest31203){
+      biggest31203=ends[17];
     }
-    if(biggest31199 == 1){
+    if(biggest31203 == 1){
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-  public void thread31195(int [] tdone, int [] ends){
-        S22534=1;
+  public void thread31199(int [] tdone, int [] ends){
+        S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
     active[14]=1;
@@ -970,8 +498,8 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-  public void thread31194(int [] tdone, int [] ends){
-        S22528=1;
+  public void thread31198(int [] tdone, int [] ends){
+        S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
     active[13]=1;
@@ -979,49 +507,49 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-  public void thread31192(int [] tdone, int [] ends){
-        S22563=1;
-    S22560=0;
+  public void thread31196(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread31190(int [] tdone, int [] ends){
-        S22540=1;
+  public void thread31194(int [] tdone, int [] ends){
+        S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread31189(int [] tdone, int [] ends){
-        S22537=1;
+  public void thread31193(int [] tdone, int [] ends){
+        S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-  public void thread31188(int [] tdone, int [] ends){
-        S22550=1;
-    S22549=0;
-    thread31189(tdone,ends);
-    thread31190(tdone,ends);
-    int biggest31191 = 0;
-    if(ends[16]>=biggest31191){
-      biggest31191=ends[16];
+  public void thread31192(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31193(tdone,ends);
+    thread31194(tdone,ends);
+    int biggest31195 = 0;
+    if(ends[16]>=biggest31195){
+      biggest31195=ends[16];
     }
-    if(ends[17]>=biggest31191){
-      biggest31191=ends[17];
+    if(ends[17]>=biggest31195){
+      biggest31195=ends[17];
     }
-    if(biggest31191 == 1){
+    if(biggest31195 == 1){
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-  public void thread31187(int [] tdone, int [] ends){
-        S22534=1;
+  public void thread31191(int [] tdone, int [] ends){
+        S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
     active[14]=1;
@@ -1029,8 +557,480 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
+  public void thread31190(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31188(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
   public void thread31186(int [] tdone, int [] ends){
-        S22528=1;
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31185(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31184(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31185(tdone,ends);
+    thread31186(tdone,ends);
+    int biggest31187 = 0;
+    if(ends[16]>=biggest31187){
+      biggest31187=ends[16];
+    }
+    if(ends[17]>=biggest31187){
+      biggest31187=ends[17];
+    }
+    if(biggest31187 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31183(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31182(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31180(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31178(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31177(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31176(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31177(tdone,ends);
+    thread31178(tdone,ends);
+    int biggest31179 = 0;
+    if(ends[16]>=biggest31179){
+      biggest31179=ends[16];
+    }
+    if(ends[17]>=biggest31179){
+      biggest31179=ends[17];
+    }
+    if(biggest31179 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31175(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31174(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31172(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31170(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31169(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31168(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31169(tdone,ends);
+    thread31170(tdone,ends);
+    int biggest31171 = 0;
+    if(ends[16]>=biggest31171){
+      biggest31171=ends[16];
+    }
+    if(ends[17]>=biggest31171){
+      biggest31171=ends[17];
+    }
+    if(biggest31171 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31167(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31166(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31164(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31162(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31161(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31160(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31161(tdone,ends);
+    thread31162(tdone,ends);
+    int biggest31163 = 0;
+    if(ends[16]>=biggest31163){
+      biggest31163=ends[16];
+    }
+    if(ends[17]>=biggest31163){
+      biggest31163=ends[17];
+    }
+    if(biggest31163 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31159(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31158(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31156(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31154(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31153(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31152(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31153(tdone,ends);
+    thread31154(tdone,ends);
+    int biggest31155 = 0;
+    if(ends[16]>=biggest31155){
+      biggest31155=ends[16];
+    }
+    if(ends[17]>=biggest31155){
+      biggest31155=ends[17];
+    }
+    if(biggest31155 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31151(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31150(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31148(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31146(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31145(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31144(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31145(tdone,ends);
+    thread31146(tdone,ends);
+    int biggest31147 = 0;
+    if(ends[16]>=biggest31147){
+      biggest31147=ends[16];
+    }
+    if(ends[17]>=biggest31147){
+      biggest31147=ends[17];
+    }
+    if(biggest31147 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31143(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31142(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31140(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31138(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31137(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31136(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31137(tdone,ends);
+    thread31138(tdone,ends);
+    int biggest31139 = 0;
+    if(ends[16]>=biggest31139){
+      biggest31139=ends[16];
+    }
+    if(ends[17]>=biggest31139){
+      biggest31139=ends[17];
+    }
+    if(biggest31139 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31135(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31134(int [] tdone, int [] ends){
+        S22468=1;
+    cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
+    currsigs.addElement(cylClampBottleExtend);
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
+  }
+
+  public void thread31132(int [] tdone, int [] ends){
+        S22503=1;
+    S22500=0;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread31130(int [] tdone, int [] ends){
+        S22480=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread31129(int [] tdone, int [] ends){
+        S22477=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread31128(int [] tdone, int [] ends){
+        S22490=1;
+    S22489=0;
+    thread31129(tdone,ends);
+    thread31130(tdone,ends);
+    int biggest31131 = 0;
+    if(ends[16]>=biggest31131){
+      biggest31131=ends[16];
+    }
+    if(ends[17]>=biggest31131){
+      biggest31131=ends[17];
+    }
+    if(biggest31131 == 1){
+      active[15]=1;
+      ends[15]=1;
+      tdone[15]=1;
+    }
+  }
+
+  public void thread31127(int [] tdone, int [] ends){
+        S22474=1;
+    cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
+    currsigs.addElement(cylPos5ZAxisExtend);
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
+  }
+
+  public void thread31126(int [] tdone, int [] ends){
+        S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
     active[13]=1;
@@ -1045,88 +1045,88 @@ public class Capper extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S30779){
+      switch(S30719){
         case 0 : 
-          S30779=0;
+          S30719=0;
           break RUN;
         
         case 1 : 
-          S30779=2;
-          S30779=2;
+          S30719=2;
+          S30719=2;
           releaseCap_12.setClear();//sysj\controller.sysj line: 160, column: 2
           untwistGripper_12.setClear();//sysj\controller.sysj line: 160, column: 2
           raiseGripper_12.setClear();//sysj\controller.sysj line: 160, column: 2
           unclampBottle_12.setClear();//sysj\controller.sysj line: 160, column: 2
-          S22475=0;
-          S22459=0;
+          S22415=0;
+          S22399=0;
           if(!capperReq_in.isPartnerPresent() || capperReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 163, column: 3
             capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
-            S22459=1;
+            S22399=1;
             active[12]=1;
             ends[12]=1;
             break RUN;
           }
           else {
-            S22454=0;
+            S22394=0;
             if(!capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
               capperReq_in.setACK(true);//sysj\controller.sysj line: 163, column: 3
-              S22454=1;
+              S22394=1;
               if(capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                 capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
                 ends[12]=2;
                 ;//sysj\controller.sysj line: 163, column: 3
                 request_thread_12 = (boolean)(capperReq_in.getVal() == null ? false : ((Boolean)capperReq_in.getVal()).booleanValue());//sysj\controller.sysj line: 164, column: 3
-                S22475=1;
+                S22415=1;
                 if(request_thread_12){//sysj\controller.sysj line: 166, column: 3
                   System.out.println("CapperController: Received request");//sysj\controller.sysj line: 167, column: 4
-                  S22522=0;
+                  S22462=0;
                   if(!bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 169, column: 13
-                    S22482=0;
+                    S22422=0;
                     if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                       capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                      S22482=1;
+                      S22422=1;
                       active[12]=1;
                       ends[12]=1;
                       break RUN;
                     }
                     else {
-                      S22477=0;
+                      S22417=0;
                       if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                         capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                        S22477=1;
+                        S22417=1;
                         if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                           capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                           ends[12]=2;
                           ;//sysj\controller.sysj line: 170, column: 5
-                          S22522=1;
+                          S22462=1;
                           if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                             System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                            S22605=0;
-                            thread31186(tdone,ends);
-                            thread31187(tdone,ends);
-                            thread31188(tdone,ends);
-                            thread31192(tdone,ends);
-                            int biggest31193 = 0;
-                            if(ends[13]>=biggest31193){
-                              biggest31193=ends[13];
+                            S22545=0;
+                            thread31126(tdone,ends);
+                            thread31127(tdone,ends);
+                            thread31128(tdone,ends);
+                            thread31132(tdone,ends);
+                            int biggest31133 = 0;
+                            if(ends[13]>=biggest31133){
+                              biggest31133=ends[13];
                             }
-                            if(ends[14]>=biggest31193){
-                              biggest31193=ends[14];
+                            if(ends[14]>=biggest31133){
+                              biggest31133=ends[14];
                             }
-                            if(ends[15]>=biggest31193){
-                              biggest31193=ends[15];
+                            if(ends[15]>=biggest31133){
+                              biggest31133=ends[15];
                             }
-                            if(ends[18]>=biggest31193){
-                              biggest31193=ends[18];
+                            if(ends[18]>=biggest31133){
+                              biggest31133=ends[18];
                             }
-                            if(biggest31193 == 1){
+                            if(biggest31133 == 1){
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
                             }
                           }
                           else {
-                            S22475=2;
+                            S22415=2;
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
@@ -1146,35 +1146,35 @@ public class Capper extends ClockDomain{
                     }
                   }
                   else {
-                    S22522=1;
+                    S22462=1;
                     if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                       System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                      S22605=0;
-                      thread31194(tdone,ends);
-                      thread31195(tdone,ends);
-                      thread31196(tdone,ends);
-                      thread31200(tdone,ends);
-                      int biggest31201 = 0;
-                      if(ends[13]>=biggest31201){
-                        biggest31201=ends[13];
+                      S22545=0;
+                      thread31134(tdone,ends);
+                      thread31135(tdone,ends);
+                      thread31136(tdone,ends);
+                      thread31140(tdone,ends);
+                      int biggest31141 = 0;
+                      if(ends[13]>=biggest31141){
+                        biggest31141=ends[13];
                       }
-                      if(ends[14]>=biggest31201){
-                        biggest31201=ends[14];
+                      if(ends[14]>=biggest31141){
+                        biggest31141=ends[14];
                       }
-                      if(ends[15]>=biggest31201){
-                        biggest31201=ends[15];
+                      if(ends[15]>=biggest31141){
+                        biggest31141=ends[15];
                       }
-                      if(ends[18]>=biggest31201){
-                        biggest31201=ends[18];
+                      if(ends[18]>=biggest31141){
+                        biggest31141=ends[18];
                       }
-                      if(biggest31201 == 1){
+                      if(biggest31141 == 1){
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
                       }
                     }
                     else {
-                      S22475=2;
+                      S22415=2;
                       active[12]=1;
                       ends[12]=1;
                       break RUN;
@@ -1182,7 +1182,7 @@ public class Capper extends ClockDomain{
                   }
                 }
                 else {
-                  S22475=2;
+                  S22415=2;
                   active[12]=1;
                   ends[12]=1;
                   break RUN;
@@ -1206,79 +1206,79 @@ public class Capper extends ClockDomain{
           untwistGripper_12.setClear();//sysj\controller.sysj line: 160, column: 2
           raiseGripper_12.setClear();//sysj\controller.sysj line: 160, column: 2
           unclampBottle_12.setClear();//sysj\controller.sysj line: 160, column: 2
-          switch(S22475){
+          switch(S22415){
             case 0 : 
-              switch(S22459){
+              switch(S22399){
                 case 0 : 
                   if(!capperReq_in.isPartnerPresent() || capperReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 163, column: 3
                     capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
-                    S22459=1;
+                    S22399=1;
                     active[12]=1;
                     ends[12]=1;
                     break RUN;
                   }
                   else {
-                    switch(S22454){
+                    switch(S22394){
                       case 0 : 
                         if(!capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                           capperReq_in.setACK(true);//sysj\controller.sysj line: 163, column: 3
-                          S22454=1;
+                          S22394=1;
                           if(capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                             capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
                             ends[12]=2;
                             ;//sysj\controller.sysj line: 163, column: 3
                             request_thread_12 = (boolean)(capperReq_in.getVal() == null ? false : ((Boolean)capperReq_in.getVal()).booleanValue());//sysj\controller.sysj line: 164, column: 3
-                            S22475=1;
+                            S22415=1;
                             if(request_thread_12){//sysj\controller.sysj line: 166, column: 3
                               System.out.println("CapperController: Received request");//sysj\controller.sysj line: 167, column: 4
-                              S22522=0;
+                              S22462=0;
                               if(!bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 169, column: 13
-                                S22482=0;
+                                S22422=0;
                                 if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                                   capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                                  S22482=1;
+                                  S22422=1;
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
                                 }
                                 else {
-                                  S22477=0;
+                                  S22417=0;
                                   if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                     capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                                    S22477=1;
+                                    S22417=1;
                                     if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                       capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                                       ends[12]=2;
                                       ;//sysj\controller.sysj line: 170, column: 5
-                                      S22522=1;
+                                      S22462=1;
                                       if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                         System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                        S22605=0;
-                                        thread31202(tdone,ends);
-                                        thread31203(tdone,ends);
-                                        thread31204(tdone,ends);
-                                        thread31208(tdone,ends);
-                                        int biggest31209 = 0;
-                                        if(ends[13]>=biggest31209){
-                                          biggest31209=ends[13];
+                                        S22545=0;
+                                        thread31142(tdone,ends);
+                                        thread31143(tdone,ends);
+                                        thread31144(tdone,ends);
+                                        thread31148(tdone,ends);
+                                        int biggest31149 = 0;
+                                        if(ends[13]>=biggest31149){
+                                          biggest31149=ends[13];
                                         }
-                                        if(ends[14]>=biggest31209){
-                                          biggest31209=ends[14];
+                                        if(ends[14]>=biggest31149){
+                                          biggest31149=ends[14];
                                         }
-                                        if(ends[15]>=biggest31209){
-                                          biggest31209=ends[15];
+                                        if(ends[15]>=biggest31149){
+                                          biggest31149=ends[15];
                                         }
-                                        if(ends[18]>=biggest31209){
-                                          biggest31209=ends[18];
+                                        if(ends[18]>=biggest31149){
+                                          biggest31149=ends[18];
                                         }
-                                        if(biggest31209 == 1){
+                                        if(biggest31149 == 1){
                                           active[12]=1;
                                           ends[12]=1;
                                           break RUN;
                                         }
                                       }
                                       else {
-                                        S22475=2;
+                                        S22415=2;
                                         active[12]=1;
                                         ends[12]=1;
                                         break RUN;
@@ -1298,35 +1298,35 @@ public class Capper extends ClockDomain{
                                 }
                               }
                               else {
-                                S22522=1;
+                                S22462=1;
                                 if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                   System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                  S22605=0;
-                                  thread31210(tdone,ends);
-                                  thread31211(tdone,ends);
-                                  thread31212(tdone,ends);
-                                  thread31216(tdone,ends);
-                                  int biggest31217 = 0;
-                                  if(ends[13]>=biggest31217){
-                                    biggest31217=ends[13];
+                                  S22545=0;
+                                  thread31150(tdone,ends);
+                                  thread31151(tdone,ends);
+                                  thread31152(tdone,ends);
+                                  thread31156(tdone,ends);
+                                  int biggest31157 = 0;
+                                  if(ends[13]>=biggest31157){
+                                    biggest31157=ends[13];
                                   }
-                                  if(ends[14]>=biggest31217){
-                                    biggest31217=ends[14];
+                                  if(ends[14]>=biggest31157){
+                                    biggest31157=ends[14];
                                   }
-                                  if(ends[15]>=biggest31217){
-                                    biggest31217=ends[15];
+                                  if(ends[15]>=biggest31157){
+                                    biggest31157=ends[15];
                                   }
-                                  if(ends[18]>=biggest31217){
-                                    biggest31217=ends[18];
+                                  if(ends[18]>=biggest31157){
+                                    biggest31157=ends[18];
                                   }
-                                  if(biggest31217 == 1){
+                                  if(biggest31157 == 1){
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
                                   }
                                 }
                                 else {
-                                  S22475=2;
+                                  S22415=2;
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -1334,7 +1334,7 @@ public class Capper extends ClockDomain{
                               }
                             }
                             else {
-                              S22475=2;
+                              S22415=2;
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
@@ -1358,57 +1358,57 @@ public class Capper extends ClockDomain{
                           ends[12]=2;
                           ;//sysj\controller.sysj line: 163, column: 3
                           request_thread_12 = (boolean)(capperReq_in.getVal() == null ? false : ((Boolean)capperReq_in.getVal()).booleanValue());//sysj\controller.sysj line: 164, column: 3
-                          S22475=1;
+                          S22415=1;
                           if(request_thread_12){//sysj\controller.sysj line: 166, column: 3
                             System.out.println("CapperController: Received request");//sysj\controller.sysj line: 167, column: 4
-                            S22522=0;
+                            S22462=0;
                             if(!bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 169, column: 13
-                              S22482=0;
+                              S22422=0;
                               if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                                 capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                                S22482=1;
+                                S22422=1;
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
                               }
                               else {
-                                S22477=0;
+                                S22417=0;
                                 if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                   capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                                  S22477=1;
+                                  S22417=1;
                                   if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                     capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                                     ends[12]=2;
                                     ;//sysj\controller.sysj line: 170, column: 5
-                                    S22522=1;
+                                    S22462=1;
                                     if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                       System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                      S22605=0;
-                                      thread31218(tdone,ends);
-                                      thread31219(tdone,ends);
-                                      thread31220(tdone,ends);
-                                      thread31224(tdone,ends);
-                                      int biggest31225 = 0;
-                                      if(ends[13]>=biggest31225){
-                                        biggest31225=ends[13];
+                                      S22545=0;
+                                      thread31158(tdone,ends);
+                                      thread31159(tdone,ends);
+                                      thread31160(tdone,ends);
+                                      thread31164(tdone,ends);
+                                      int biggest31165 = 0;
+                                      if(ends[13]>=biggest31165){
+                                        biggest31165=ends[13];
                                       }
-                                      if(ends[14]>=biggest31225){
-                                        biggest31225=ends[14];
+                                      if(ends[14]>=biggest31165){
+                                        biggest31165=ends[14];
                                       }
-                                      if(ends[15]>=biggest31225){
-                                        biggest31225=ends[15];
+                                      if(ends[15]>=biggest31165){
+                                        biggest31165=ends[15];
                                       }
-                                      if(ends[18]>=biggest31225){
-                                        biggest31225=ends[18];
+                                      if(ends[18]>=biggest31165){
+                                        biggest31165=ends[18];
                                       }
-                                      if(biggest31225 == 1){
+                                      if(biggest31165 == 1){
                                         active[12]=1;
                                         ends[12]=1;
                                         break RUN;
                                       }
                                     }
                                     else {
-                                      S22475=2;
+                                      S22415=2;
                                       active[12]=1;
                                       ends[12]=1;
                                       break RUN;
@@ -1428,35 +1428,35 @@ public class Capper extends ClockDomain{
                               }
                             }
                             else {
-                              S22522=1;
+                              S22462=1;
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                S22605=0;
-                                thread31226(tdone,ends);
-                                thread31227(tdone,ends);
-                                thread31228(tdone,ends);
-                                thread31232(tdone,ends);
-                                int biggest31233 = 0;
-                                if(ends[13]>=biggest31233){
-                                  biggest31233=ends[13];
+                                S22545=0;
+                                thread31166(tdone,ends);
+                                thread31167(tdone,ends);
+                                thread31168(tdone,ends);
+                                thread31172(tdone,ends);
+                                int biggest31173 = 0;
+                                if(ends[13]>=biggest31173){
+                                  biggest31173=ends[13];
                                 }
-                                if(ends[14]>=biggest31233){
-                                  biggest31233=ends[14];
+                                if(ends[14]>=biggest31173){
+                                  biggest31173=ends[14];
                                 }
-                                if(ends[15]>=biggest31233){
-                                  biggest31233=ends[15];
+                                if(ends[15]>=biggest31173){
+                                  biggest31173=ends[15];
                                 }
-                                if(ends[18]>=biggest31233){
-                                  biggest31233=ends[18];
+                                if(ends[18]>=biggest31173){
+                                  biggest31173=ends[18];
                                 }
-                                if(biggest31233 == 1){
+                                if(biggest31173 == 1){
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
                                 }
                               }
                               else {
-                                S22475=2;
+                                S22415=2;
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -1464,7 +1464,7 @@ public class Capper extends ClockDomain{
                             }
                           }
                           else {
-                            S22475=2;
+                            S22415=2;
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
@@ -1481,76 +1481,76 @@ public class Capper extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  S22459=1;
-                  S22459=0;
+                  S22399=1;
+                  S22399=0;
                   if(!capperReq_in.isPartnerPresent() || capperReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 163, column: 3
                     capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
-                    S22459=1;
+                    S22399=1;
                     active[12]=1;
                     ends[12]=1;
                     break RUN;
                   }
                   else {
-                    S22454=0;
+                    S22394=0;
                     if(!capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                       capperReq_in.setACK(true);//sysj\controller.sysj line: 163, column: 3
-                      S22454=1;
+                      S22394=1;
                       if(capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                         capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
                         ends[12]=2;
                         ;//sysj\controller.sysj line: 163, column: 3
                         request_thread_12 = (boolean)(capperReq_in.getVal() == null ? false : ((Boolean)capperReq_in.getVal()).booleanValue());//sysj\controller.sysj line: 164, column: 3
-                        S22475=1;
+                        S22415=1;
                         if(request_thread_12){//sysj\controller.sysj line: 166, column: 3
                           System.out.println("CapperController: Received request");//sysj\controller.sysj line: 167, column: 4
-                          S22522=0;
+                          S22462=0;
                           if(!bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 169, column: 13
-                            S22482=0;
+                            S22422=0;
                             if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                               capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                              S22482=1;
+                              S22422=1;
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
                             }
                             else {
-                              S22477=0;
+                              S22417=0;
                               if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                 capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                                S22477=1;
+                                S22417=1;
                                 if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                   capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                                   ends[12]=2;
                                   ;//sysj\controller.sysj line: 170, column: 5
-                                  S22522=1;
+                                  S22462=1;
                                   if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                     System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                    S22605=0;
-                                    thread31234(tdone,ends);
-                                    thread31235(tdone,ends);
-                                    thread31236(tdone,ends);
-                                    thread31240(tdone,ends);
-                                    int biggest31241 = 0;
-                                    if(ends[13]>=biggest31241){
-                                      biggest31241=ends[13];
+                                    S22545=0;
+                                    thread31174(tdone,ends);
+                                    thread31175(tdone,ends);
+                                    thread31176(tdone,ends);
+                                    thread31180(tdone,ends);
+                                    int biggest31181 = 0;
+                                    if(ends[13]>=biggest31181){
+                                      biggest31181=ends[13];
                                     }
-                                    if(ends[14]>=biggest31241){
-                                      biggest31241=ends[14];
+                                    if(ends[14]>=biggest31181){
+                                      biggest31181=ends[14];
                                     }
-                                    if(ends[15]>=biggest31241){
-                                      biggest31241=ends[15];
+                                    if(ends[15]>=biggest31181){
+                                      biggest31181=ends[15];
                                     }
-                                    if(ends[18]>=biggest31241){
-                                      biggest31241=ends[18];
+                                    if(ends[18]>=biggest31181){
+                                      biggest31181=ends[18];
                                     }
-                                    if(biggest31241 == 1){
+                                    if(biggest31181 == 1){
                                       active[12]=1;
                                       ends[12]=1;
                                       break RUN;
                                     }
                                   }
                                   else {
-                                    S22475=2;
+                                    S22415=2;
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
@@ -1570,35 +1570,35 @@ public class Capper extends ClockDomain{
                             }
                           }
                           else {
-                            S22522=1;
+                            S22462=1;
                             if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                               System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                              S22605=0;
-                              thread31242(tdone,ends);
-                              thread31243(tdone,ends);
-                              thread31244(tdone,ends);
-                              thread31248(tdone,ends);
-                              int biggest31249 = 0;
-                              if(ends[13]>=biggest31249){
-                                biggest31249=ends[13];
+                              S22545=0;
+                              thread31182(tdone,ends);
+                              thread31183(tdone,ends);
+                              thread31184(tdone,ends);
+                              thread31188(tdone,ends);
+                              int biggest31189 = 0;
+                              if(ends[13]>=biggest31189){
+                                biggest31189=ends[13];
                               }
-                              if(ends[14]>=biggest31249){
-                                biggest31249=ends[14];
+                              if(ends[14]>=biggest31189){
+                                biggest31189=ends[14];
                               }
-                              if(ends[15]>=biggest31249){
-                                biggest31249=ends[15];
+                              if(ends[15]>=biggest31189){
+                                biggest31189=ends[15];
                               }
-                              if(ends[18]>=biggest31249){
-                                biggest31249=ends[18];
+                              if(ends[18]>=biggest31189){
+                                biggest31189=ends[18];
                               }
-                              if(biggest31249 == 1){
+                              if(biggest31189 == 1){
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
                               }
                             }
                             else {
-                              S22475=2;
+                              S22415=2;
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
@@ -1606,7 +1606,7 @@ public class Capper extends ClockDomain{
                           }
                         }
                         else {
-                          S22475=2;
+                          S22415=2;
                           active[12]=1;
                           ends[12]=1;
                           break RUN;
@@ -1629,56 +1629,56 @@ public class Capper extends ClockDomain{
               break;
             
             case 1 : 
-              switch(S22522){
+              switch(S22462){
                 case 0 : 
-                  switch(S22482){
+                  switch(S22422){
                     case 0 : 
                       if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                         capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                        S22482=1;
+                        S22422=1;
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
                       }
                       else {
-                        switch(S22477){
+                        switch(S22417){
                           case 0 : 
                             if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                               capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                              S22477=1;
+                              S22417=1;
                               if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                                 capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                                 ends[12]=2;
                                 ;//sysj\controller.sysj line: 170, column: 5
-                                S22522=1;
+                                S22462=1;
                                 if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                   System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                  S22605=0;
-                                  thread31250(tdone,ends);
-                                  thread31251(tdone,ends);
-                                  thread31252(tdone,ends);
-                                  thread31256(tdone,ends);
-                                  int biggest31257 = 0;
-                                  if(ends[13]>=biggest31257){
-                                    biggest31257=ends[13];
+                                  S22545=0;
+                                  thread31190(tdone,ends);
+                                  thread31191(tdone,ends);
+                                  thread31192(tdone,ends);
+                                  thread31196(tdone,ends);
+                                  int biggest31197 = 0;
+                                  if(ends[13]>=biggest31197){
+                                    biggest31197=ends[13];
                                   }
-                                  if(ends[14]>=biggest31257){
-                                    biggest31257=ends[14];
+                                  if(ends[14]>=biggest31197){
+                                    biggest31197=ends[14];
                                   }
-                                  if(ends[15]>=biggest31257){
-                                    biggest31257=ends[15];
+                                  if(ends[15]>=biggest31197){
+                                    biggest31197=ends[15];
                                   }
-                                  if(ends[18]>=biggest31257){
-                                    biggest31257=ends[18];
+                                  if(ends[18]>=biggest31197){
+                                    biggest31197=ends[18];
                                   }
-                                  if(biggest31257 == 1){
+                                  if(biggest31197 == 1){
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
                                   }
                                 }
                                 else {
-                                  S22475=2;
+                                  S22415=2;
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -1701,35 +1701,35 @@ public class Capper extends ClockDomain{
                               capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                               ends[12]=2;
                               ;//sysj\controller.sysj line: 170, column: 5
-                              S22522=1;
+                              S22462=1;
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                S22605=0;
-                                thread31258(tdone,ends);
-                                thread31259(tdone,ends);
-                                thread31260(tdone,ends);
-                                thread31264(tdone,ends);
-                                int biggest31265 = 0;
-                                if(ends[13]>=biggest31265){
-                                  biggest31265=ends[13];
+                                S22545=0;
+                                thread31198(tdone,ends);
+                                thread31199(tdone,ends);
+                                thread31200(tdone,ends);
+                                thread31204(tdone,ends);
+                                int biggest31205 = 0;
+                                if(ends[13]>=biggest31205){
+                                  biggest31205=ends[13];
                                 }
-                                if(ends[14]>=biggest31265){
-                                  biggest31265=ends[14];
+                                if(ends[14]>=biggest31205){
+                                  biggest31205=ends[14];
                                 }
-                                if(ends[15]>=biggest31265){
-                                  biggest31265=ends[15];
+                                if(ends[15]>=biggest31205){
+                                  biggest31205=ends[15];
                                 }
-                                if(ends[18]>=biggest31265){
-                                  biggest31265=ends[18];
+                                if(ends[18]>=biggest31205){
+                                  biggest31205=ends[18];
                                 }
-                                if(biggest31265 == 1){
+                                if(biggest31205 == 1){
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
                                 }
                               }
                               else {
-                                S22475=2;
+                                S22415=2;
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -1746,53 +1746,53 @@ public class Capper extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      S22482=1;
-                      S22482=0;
+                      S22422=1;
+                      S22422=0;
                       if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                         capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                        S22482=1;
+                        S22422=1;
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
                       }
                       else {
-                        S22477=0;
+                        S22417=0;
                         if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                           capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                          S22477=1;
+                          S22417=1;
                           if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                             capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                             ends[12]=2;
                             ;//sysj\controller.sysj line: 170, column: 5
-                            S22522=1;
+                            S22462=1;
                             if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                               System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                              S22605=0;
-                              thread31266(tdone,ends);
-                              thread31267(tdone,ends);
-                              thread31268(tdone,ends);
-                              thread31272(tdone,ends);
-                              int biggest31273 = 0;
-                              if(ends[13]>=biggest31273){
-                                biggest31273=ends[13];
+                              S22545=0;
+                              thread31206(tdone,ends);
+                              thread31207(tdone,ends);
+                              thread31208(tdone,ends);
+                              thread31212(tdone,ends);
+                              int biggest31213 = 0;
+                              if(ends[13]>=biggest31213){
+                                biggest31213=ends[13];
                               }
-                              if(ends[14]>=biggest31273){
-                                biggest31273=ends[14];
+                              if(ends[14]>=biggest31213){
+                                biggest31213=ends[14];
                               }
-                              if(ends[15]>=biggest31273){
-                                biggest31273=ends[15];
+                              if(ends[15]>=biggest31213){
+                                biggest31213=ends[15];
                               }
-                              if(ends[18]>=biggest31273){
-                                biggest31273=ends[18];
+                              if(ends[18]>=biggest31213){
+                                biggest31213=ends[18];
                               }
-                              if(biggest31273 == 1){
+                              if(biggest31213 == 1){
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
                               }
                             }
                             else {
-                              S22475=2;
+                              S22415=2;
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
@@ -1815,51 +1815,51 @@ public class Capper extends ClockDomain{
                   break;
                 
                 case 1 : 
-                  switch(S22605){
+                  switch(S22545){
                     case 0 : 
-                      thread31274(tdone,ends);
-                      thread31275(tdone,ends);
-                      thread31276(tdone,ends);
-                      thread31280(tdone,ends);
-                      int biggest31281 = 0;
-                      if(ends[13]>=biggest31281){
-                        biggest31281=ends[13];
+                      thread31214(tdone,ends);
+                      thread31215(tdone,ends);
+                      thread31216(tdone,ends);
+                      thread31220(tdone,ends);
+                      int biggest31221 = 0;
+                      if(ends[13]>=biggest31221){
+                        biggest31221=ends[13];
                       }
-                      if(ends[14]>=biggest31281){
-                        biggest31281=ends[14];
+                      if(ends[14]>=biggest31221){
+                        biggest31221=ends[14];
                       }
-                      if(ends[15]>=biggest31281){
-                        biggest31281=ends[15];
+                      if(ends[15]>=biggest31221){
+                        biggest31221=ends[15];
                       }
-                      if(ends[18]>=biggest31281){
-                        biggest31281=ends[18];
+                      if(ends[18]>=biggest31221){
+                        biggest31221=ends[18];
                       }
-                      if(biggest31281 == 1){
+                      if(biggest31221 == 1){
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
                       }
                       //FINXME code
-                      if(biggest31281 == 0){
-                        S22605=1;
-                        S22612=0;
+                      if(biggest31221 == 0){
+                        S22545=1;
+                        S22552=0;
                         if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 210, column: 5
                           capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
-                          S22612=1;
+                          S22552=1;
                           active[12]=1;
                           ends[12]=1;
                           break RUN;
                         }
                         else {
-                          S22607=0;
+                          S22547=0;
                           if(capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                             capperStatus_o.setVal("done");//sysj\controller.sysj line: 210, column: 5
-                            S22607=1;
+                            S22547=1;
                             if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                               capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
                               ends[12]=2;
                               ;//sysj\controller.sysj line: 210, column: 5
-                              S22475=2;
+                              S22415=2;
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
@@ -1879,26 +1879,26 @@ public class Capper extends ClockDomain{
                       }
                     
                     case 1 : 
-                      switch(S22612){
+                      switch(S22552){
                         case 0 : 
                           if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 210, column: 5
                             capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
-                            S22612=1;
+                            S22552=1;
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
                           }
                           else {
-                            switch(S22607){
+                            switch(S22547){
                               case 0 : 
                                 if(capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                                   capperStatus_o.setVal("done");//sysj\controller.sysj line: 210, column: 5
-                                  S22607=1;
+                                  S22547=1;
                                   if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                                     capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
                                     ends[12]=2;
                                     ;//sysj\controller.sysj line: 210, column: 5
-                                    S22475=2;
+                                    S22415=2;
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
@@ -1920,7 +1920,7 @@ public class Capper extends ClockDomain{
                                   capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
                                   ends[12]=2;
                                   ;//sysj\controller.sysj line: 210, column: 5
-                                  S22475=2;
+                                  S22415=2;
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -1936,25 +1936,25 @@ public class Capper extends ClockDomain{
                           break;
                         
                         case 1 : 
-                          S22612=1;
-                          S22612=0;
+                          S22552=1;
+                          S22552=0;
                           if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 210, column: 5
                             capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
-                            S22612=1;
+                            S22552=1;
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
                           }
                           else {
-                            S22607=0;
+                            S22547=0;
                             if(capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                               capperStatus_o.setVal("done");//sysj\controller.sysj line: 210, column: 5
-                              S22607=1;
+                              S22547=1;
                               if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 210, column: 5
                                 capperStatus_o.setREQ(false);//sysj\controller.sysj line: 210, column: 5
                                 ends[12]=2;
                                 ;//sysj\controller.sysj line: 210, column: 5
-                                S22475=2;
+                                S22415=2;
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -1982,77 +1982,77 @@ public class Capper extends ClockDomain{
               break;
             
             case 2 : 
-              S22475=2;
-              S22475=0;
-              S22459=0;
+              S22415=2;
+              S22415=0;
+              S22399=0;
               if(!capperReq_in.isPartnerPresent() || capperReq_in.isPartnerPreempted()){//sysj\controller.sysj line: 163, column: 3
                 capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
-                S22459=1;
+                S22399=1;
                 active[12]=1;
                 ends[12]=1;
                 break RUN;
               }
               else {
-                S22454=0;
+                S22394=0;
                 if(!capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                   capperReq_in.setACK(true);//sysj\controller.sysj line: 163, column: 3
-                  S22454=1;
+                  S22394=1;
                   if(capperReq_in.isREQ()){//sysj\controller.sysj line: 163, column: 3
                     capperReq_in.setACK(false);//sysj\controller.sysj line: 163, column: 3
                     ends[12]=2;
                     ;//sysj\controller.sysj line: 163, column: 3
                     request_thread_12 = (boolean)(capperReq_in.getVal() == null ? false : ((Boolean)capperReq_in.getVal()).booleanValue());//sysj\controller.sysj line: 164, column: 3
-                    S22475=1;
+                    S22415=1;
                     if(request_thread_12){//sysj\controller.sysj line: 166, column: 3
                       System.out.println("CapperController: Received request");//sysj\controller.sysj line: 167, column: 4
-                      S22522=0;
+                      S22462=0;
                       if(!bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 169, column: 13
-                        S22482=0;
+                        S22422=0;
                         if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 170, column: 5
                           capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
-                          S22482=1;
+                          S22422=1;
                           active[12]=1;
                           ends[12]=1;
                           break RUN;
                         }
                         else {
-                          S22477=0;
+                          S22417=0;
                           if(capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                             capperStatus_o.setVal("idle");//sysj\controller.sysj line: 170, column: 5
-                            S22477=1;
+                            S22417=1;
                             if(!capperStatus_o.isACK()){//sysj\controller.sysj line: 170, column: 5
                               capperStatus_o.setREQ(false);//sysj\controller.sysj line: 170, column: 5
                               ends[12]=2;
                               ;//sysj\controller.sysj line: 170, column: 5
-                              S22522=1;
+                              S22462=1;
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                                S22605=0;
-                                thread31282(tdone,ends);
-                                thread31283(tdone,ends);
-                                thread31284(tdone,ends);
-                                thread31288(tdone,ends);
-                                int biggest31289 = 0;
-                                if(ends[13]>=biggest31289){
-                                  biggest31289=ends[13];
+                                S22545=0;
+                                thread31222(tdone,ends);
+                                thread31223(tdone,ends);
+                                thread31224(tdone,ends);
+                                thread31228(tdone,ends);
+                                int biggest31229 = 0;
+                                if(ends[13]>=biggest31229){
+                                  biggest31229=ends[13];
                                 }
-                                if(ends[14]>=biggest31289){
-                                  biggest31289=ends[14];
+                                if(ends[14]>=biggest31229){
+                                  biggest31229=ends[14];
                                 }
-                                if(ends[15]>=biggest31289){
-                                  biggest31289=ends[15];
+                                if(ends[15]>=biggest31229){
+                                  biggest31229=ends[15];
                                 }
-                                if(ends[18]>=biggest31289){
-                                  biggest31289=ends[18];
+                                if(ends[18]>=biggest31229){
+                                  biggest31229=ends[18];
                                 }
-                                if(biggest31289 == 1){
+                                if(biggest31229 == 1){
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
                                 }
                               }
                               else {
-                                S22475=2;
+                                S22415=2;
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -2072,35 +2072,35 @@ public class Capper extends ClockDomain{
                         }
                       }
                       else {
-                        S22522=1;
+                        S22462=1;
                         if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                           System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
-                          S22605=0;
-                          thread31290(tdone,ends);
-                          thread31291(tdone,ends);
-                          thread31292(tdone,ends);
-                          thread31296(tdone,ends);
-                          int biggest31297 = 0;
-                          if(ends[13]>=biggest31297){
-                            biggest31297=ends[13];
+                          S22545=0;
+                          thread31230(tdone,ends);
+                          thread31231(tdone,ends);
+                          thread31232(tdone,ends);
+                          thread31236(tdone,ends);
+                          int biggest31237 = 0;
+                          if(ends[13]>=biggest31237){
+                            biggest31237=ends[13];
                           }
-                          if(ends[14]>=biggest31297){
-                            biggest31297=ends[14];
+                          if(ends[14]>=biggest31237){
+                            biggest31237=ends[14];
                           }
-                          if(ends[15]>=biggest31297){
-                            biggest31297=ends[15];
+                          if(ends[15]>=biggest31237){
+                            biggest31237=ends[15];
                           }
-                          if(ends[18]>=biggest31297){
-                            biggest31297=ends[18];
+                          if(ends[18]>=biggest31237){
+                            biggest31237=ends[18];
                           }
-                          if(biggest31297 == 1){
+                          if(biggest31237 == 1){
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
                           }
                         }
                         else {
-                          S22475=2;
+                          S22415=2;
                           active[12]=1;
                           ends[12]=1;
                           break RUN;
@@ -2108,7 +2108,7 @@ public class Capper extends ClockDomain{
                       }
                     }
                     else {
-                      S22475=2;
+                      S22415=2;
                       active[12]=1;
                       ends[12]=1;
                       break RUN;

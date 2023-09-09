@@ -12,7 +12,7 @@ Orchestrator(
 	signal getNextBottle;
 	{
 		
-		int quantity = 5;
+		int quantity = 10;
 		int bottlePlaced = 0; 
 		
 		

@@ -53,7 +53,7 @@ RotaryTable(
         
         // wait until it receives an OK from orchestrator
         if(request) {
-        	await(RTbottleAtPos1);
+        	//await(RTbottleAtPos1);
         	
         	// when the rotoray table is aligned with sensor stop sustaining the trigger
             abort(tableAlignedWithSensor){
