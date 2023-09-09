@@ -21,13 +21,14 @@
 			<iSignal Name="dosUnitValveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="dosUnitValveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="selectCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="receivedPercentage" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selectPercentage" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
 			<oSignal Name="dosUnitEvac" To="LiquidFillerCD.dosUnitEvac" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 			<oSignal Name="dosUnitFilled" To="LiquidFillerCD.dosUnitFilled" Class="com.systemj.ipc.SimpleClient" IP="127.0.01" Port="10000"/>
 			<oSignal Name="selectedCanister" To="LiquidFillerCD.selectedCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="selectedPercentage" To="LiquidFillerCD.selectedPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
+			<oSignal Name="valveInjectorActive" To="LiquidFillerCD.valveInjectorActive" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000"/>
 
-			
 			<!-- UI-->	
 			
 			<!-- Rotary-->

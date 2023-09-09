@@ -70,11 +70,11 @@ RotaryTable(
 
 LiquidFiller(
 		input ArrayList channel fillerReq;
-		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled;
-		input Integer signal selectedCanister;
+		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled, valveInjectorActive;
+		input Integer signal selectedCanister, selectedPercentage;
 		
 		output signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
-		output Integer signal selectCanister,receivedPercentage;	
+		output Integer signal selectCanister, selectPercentage;	
 		output String channel fillerStatus;
 		)
 ->{
@@ -97,32 +97,28 @@ LiquidFiller(
 			
 			while(canisterNum<5) {
 				//Select Canister
+				abort(selectedPercentage){//wait till canister selected
+					System.out.println("selecting percentage " + recPercentLiq.get(canisterNum-1));
+					emit selectPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
+				}
 				abort(selectedCanister){//wait till canister selected
 					System.out.println("selecting canister " + canisterNum);
 				 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
 				}
 			
-				//Brings canister to the top
-				 abort(!dosUnitEvac){ 
+				//Turn on valve injector & bring up pressure canister up to fill with liquid.
+				//On abort, stop sending signal to bring to top (canister should stay at the top)
+				//Not emitting valveInjectorOnOff should turn off the valve injector.
+				 System.out.println("FillerController: Turning on valve injector and bringing canister to top...");
+				 abort(dosUnitFilled && valveInjectorActive){ 
 						{sustain dosUnitValveRetract;} || {sustain valveInjectorOnOff;}
 				 }
-				 System.out.println("Canister above bottle");
-			
-				  
-				 //Send percentage
-				 emit receivedPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
+				 System.out.println("FillerController: Canister at top. Turned off valve injector.");
 				 
-				 //Receive Percentage filled, check signal
-				 abort(dosUnitFilled){ // close valve once filled
-					 sustain valveInletOnOff; 
+				 System.out.println("FillerController: Turning on valve inlet & forcing bottle down.");
+				 abort(dosUnitEvac){
+					 {sustain valveInletOnOff;}||{sustain dosUnitValveExtend;} //Turn on valve inlet and bring bottle to bottom.
 				 }
-				 
-				 System.out.println("Bottle controller filled");
-				 
-				 abort(dosUnitEvac){// bring cylinder to the bottom
-					 {sustain dosUnitValveExtend;} || {sustain valveInjectorOnOff;}
-				 }
-				 System.out.println("Canister returned");
 			
 				 canisterNum+=1; // switch to the next one. 
 				 pause;

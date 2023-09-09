@@ -16,12 +16,10 @@ Plant(
 		
 		// Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend; //to plant
-		input Integer signal selectCanister,receivedPercentage;
-		output signal dosUnitEvac;  // from plant
-		output Integer signal selectedCanister,dosUnitFilled; // from PLANT
+		input Integer signal selectCanister, selectPercentage;
+		output signal dosUnitEvac, valveInjectorActive;  // from plant
+		output Integer signal selectedCanister, selectedPercentage,dosUnitFilled; // from PLANT
 		
-		//input
-		//output
 		
 		///////////////////////////////////////////////////////////////////
 		
@@ -119,42 +117,56 @@ Plant(
 	
 	//Filler /////////////////////////////////////////////////////////////////////
 	{
-		// LOGIC HERE
-		while(true){
-			{//Selected canister
+		int signal canister;
+		int signal percent;
+		{ //Filler canister selection.
+			while(true) {
+				//Select canister
 				await(selectCanister); 
-				int canister = #selectCanister;
-				System.out.println("canister number received");
-				emit selectedCanister(canister);
-					
+				emit canister(#selectCanister); //Record selected canister
+				emit selectedCanister(#selectCanister); //Send back ok.
+				pause;
 			}
-			
-			||
-			
-			{//Fill Valve
-				await(receivedPercentage);
-				System.out.println("filled");
-				present(valveInletOnOff){
-					emit dosUnitFilled(receivedPercentage);
-					pause;
-				}
+		}
+		||
+		{ //Filler percentage selection.
+			while(true) {
+				//Select percentage.
+				await(selectPercentage);
+				emit percent(#selectPercentage); //Record selected percentage
+				emit selectedPercentage(#selectPercentage); //Send back ok.
+				pause;
 			}
-				
-			||
-			
-			{// Retract/extend Arm
-					abort(dosUnitValveRetract){//  when actuator brings to top
-						sustain dosUnitEvac; //emit canister at bottom
+		}
+		||
+		{ //Filler Injector
+			while(true) {
+				present(valveInjectorOnOff){
+					abort(!valveInjectorOnOff){
+						sustain valveInjectorActive;
 					}
-					System.out.println("Canister at top");
-					
-					await(dosUnitValveExtend);// wait to be brought down to -
-					System.out.println("Canister at bottom");
-					pause;
-					
 				}
-			
-			//emit two signals
+				pause;
+			}
+		}
+		||
+		{ //Pressure canister.
+			while(true) {
+				
+				present(dosUnitValveExtend && !dosUnitValveRetract){
+					abort (dosUnitValveRetract){
+						sustain dosUnitEvac; 
+					}
+				}
+				present(dosUnitValveRetract && !dosUnitValveExtend) {
+					System.out.println("FillerPlant: Filling with canister " + #canister + " Percent: " + #percent);
+					abort (dosUnitValveExtend) {
+						sustain dosUnitFilled; 
+					}
+				}
+				pause;
+				
+			}
 		}
 
 	}
