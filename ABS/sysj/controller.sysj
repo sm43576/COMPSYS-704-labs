@@ -8,49 +8,33 @@ Conveyor(
 ->{
 
 	while(true) {
-	
-	//	System.out.println("Hello World!");
-	//Wait until bottle at position 5 hasn't left yet
+
 		receive conveyorReq; // send a request everytime bottle on the conveyor belt.
 		
-		Boolean req = (Boolean) #conveyorReq;
-		System.out.println("received?");
-		System.out.println(req);
-		
+		Boolean req = (Boolean) #conveyorReq;		
 		if(req) { //bottle has entered from left side.
-			send conveyorStatus("busy");
-		
-//			System.out.println("conveyor busy");
-
+			System.out.println("ConveyorController: Request received from orch.");
+			present(bottleAtPos5){
+				System.out.println("ConveyorController: Moving bottle 5...");
+				abort(bottleLeftPos5){ // run until bottle has left position5
+					{sustain motConveyorOnOff;} || {sustain motorPos5On;}
+				}
+				System.out.println("ConveyorController: Moved bottle 5.");
+			}	
+			
 			// abort when bottle is at position 1, otherwise turn on motor
-			present(!bottleAtPos1){
-//				System.out.println("ono the bottle isn't at pos 1 what will we do"); 
+			present(!bottleAtPos1 && !bottleAtPos5){
+				System.out.println("ConveyorController: No bottle at pos 1 or pos 5."); 
 				abort(bottleAtPos1) {
-					System.out.println("Motor is on"); 
+					System.out.println("ConveyorController: Motor is on"); 
 					{sustain motConveyorOnOff;} || {sustain motorPos1On;}
 	
 				}
 			}
-			System.out.println("Motor is off");
+			System.out.println("ConveyorController: Motor is off");
 			send conveyorStatus("done");
-//			System.out.println("conveyor done");
 			pause;
-		}else {  //handle if bottleatPOs5 and nobottle on conveyor near pos1.
-			// If there is a bottle at postion 5, turn on motor again-.-
-			present(bottleAtPos5){
-				System.out.println("Bottle at position 5 is going to be moved");
-				abort(bottleLeftPos5){ // run until bottle has left position5
-					{sustain motConveyorOnOff;} || {sustain motorPos5On;}
-					|| {send conveyorStatus("busy");}
-				}
-				System.out.println("bottle at pos 5 has moved away");
-				send conveyorStatus("done");
-			}
-			
-			//, else do nothing.
-//			System.out.println("conveyor idling");
-			send conveyorStatus("idle");
-		}
+		} 	
 		pause;
 	}
 }
@@ -58,110 +42,92 @@ Conveyor(
 
 RotaryTable(
         input signal tableAlignedWithSensor, capOnBottleAtPos1, RTbottleAtPos1;
-        input Boolean channel allOperationsFinished; // From Orchestrator
+        input Boolean channel rotaryReq; // From Orchestrator
         output signal rotaryTableTrigger; // To Plant
         output Boolean channel rotaryStatus; // To Orchestrator 
         )
 ->{
     while(true) {
-        receive allOperationsFinished;
-        Boolean request = #allOperationsFinished;
+        receive rotaryReq;
+        Boolean request = (boolean) #rotaryReq;
         
         // wait until it receives an OK from orchestrator
         if(request) {
-        	send rotaryStatus("busy");
-//        	System.out.println("Rotary - RECIEVED orchestrator task");
-        	await(RTbottleAtPos1);
+        	//await(RTbottleAtPos1);
         	
         	// when the rotoray table is aligned with sensor stop sustaining the trigger
             abort(tableAlignedWithSensor){
-                System.out.println("emitting rotary trigger");
                 sustain rotaryTableTrigger;
             }
-            System.out.println("rotary - done");
+            System.out.println("RotaryController - finished");
             send rotaryStatus("done");
-        }else {
-        	send rotaryStatus("idle");
         }
+        
         pause;
         
     }
 }
 
 LiquidFiller(
-		input Boolean channel fillerReq;
-		input ArrayList channel percentLiquid;
-		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled;
-		input Integer signal selectedCanister;
+		input ArrayList channel fillerReq;
+		input signal bottleAtPos2,dosUnitEvac,dosUnitFilled, valveInjectorActive;
+		input Integer signal selectedCanister, selectedPercentage;
 		
 		output signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
-		output Integer signal selectCanister,receivedPercentage;	
+		output Integer signal selectCanister, selectPercentage;	
 		output String channel fillerStatus;
 		)
 ->{
 	
 	while(true) {
-		receive fillerReq; // BLOCKED - Hangs here coz there is no filler request at the beginning
-		Boolean request = #fillerReq;// polling the system if its busy or not. 
+		receive fillerReq; 
 		
-		if(request) {
-				// No bottle at position 2 then send idle status
-				System.out.println("Filler - received req from orch");
-				present(!bottleAtPos2){
-					send fillerStatus("idle");
+		// No bottle at position 2 then send idle status
+		System.out.println("FillerController: - Received request");
+		present(!bottleAtPos2){
+			System.out.println("FillerController: - Idle (no bottle at pos 2).");
+			send fillerStatus("idle");
+		}
+	
+		// bottle IS at position 2 then do filler work
+		present(bottleAtPos2){
+			System.out.println("FillerController: - Bottle detected at position 2.");
+			ArrayList recPercentLiq = (ArrayList) #fillerReq; // [32,43,22,3]  += 100%				
+			int canisterNum = 1;	// reset, select first canister.
+			
+			while(canisterNum<5) {
+				//Select Canister
+				abort(selectedPercentage){//wait till canister selected
+					System.out.println("selecting percentage " + recPercentLiq.get(canisterNum-1));
+					emit selectPercentage(recPercentLiq.get(canisterNum-1));// send percentage want to befilled
+				}
+				abort(selectedCanister){//wait till canister selected
+					System.out.println("selecting canister " + canisterNum);
+				 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
 				}
 			
-				// bottle IS at position 2 then do filler work
-				present(bottleAtPos2){
-					System.out.println("Filler - bottle is at pos 2");
-					send fillerStatus("busy");
-					receive percentLiquid;
-					ArrayList recPercentLiq = (ArrayList) #percentLiquid; // [32,43,22,3]  += 100%				
-					int canisterNum = 1;	// reset, select first canister.
-					
-					while(canisterNum<5) {
-						//Select Canister
-						abort(selectedCanister){//wait till canister selected
-							System.out.println("selecting canister " + canisterNum);
-						 	sustain selectCanister(canisterNum);  // send the selected canisterNUm we want.
-						}
-					
-						//Brings canister to the top
-						 abort(!dosUnitEvac){ 
-								{sustain dosUnitValveRetract;} || {sustain valveInjectorOnOff;}
-						 }
-						 System.out.println("Canister above bottle");
-					
-						  
-						 //Send percentage
-						 int number = (int)(recPercentLiq.get(canisterNum-1));
-						 emit receivedPercentage(number);// send percentage want to befilled
-						 
-						 System.out.println("emitted perecent");
-						 pause;
-						 //Receive Percentage filled, check signal
-						 abort(dosUnitFilled){ // close valve once filled
-							 System.out.println("entered abort");
-							 sustain valveInletOnOff; 
-						 }
-						 
-						 System.out.println("Bottle controller filled");
-						 
-						 abort(dosUnitEvac){// bring cylinder to the bottom
-							 {sustain dosUnitValveExtend;} || {sustain valveInjectorOnOff;}
-						 }
-						 System.out.println("Canister returned");
-					
-						 canisterNum=canisterNum+1; // switch to the next one. 
-						 pause;
-					}	
-					send fillerStatus("done");
-			}
-		}else {
-			send fillerStatus("idle");
+				//Turn on valve injector & bring up pressure canister up to fill with liquid.
+				//On abort, stop sending signal to bring to top (canister should stay at the top)
+				//Not emitting valveInjectorOnOff should turn off the valve injector.
+				 //System.out.println("FillerController: Turning on valve injector and bringing canister to top...");
+				 abort(dosUnitFilled && valveInjectorActive){ 
+						{sustain dosUnitValveRetract;} || {sustain valveInjectorOnOff;}
+				 }
+				 //System.out.println("FillerController: Canister at top. Turned off valve injector.");
+				 
+				 //System.out.println("FillerController: Turning on valve inlet & forcing bottle down.");
+				 abort(dosUnitEvac){
+					 {sustain valveInletOnOff;}||{sustain dosUnitValveExtend;} //Turn on valve inlet and bring bottle to bottom.
+				 }
+			
+				 canisterNum+=1; // switch to the next one. 
+				 pause;
+			}	
+			send fillerStatus("done");
 		}
 		pause;
 	}
+		
 }
 
 
@@ -198,14 +164,14 @@ Capper(
 		boolean request = (boolean) #capperReq;
 	
 		if (request) {
-			send capperStatus("busy"); //Tell Orchestrator that Capper is processing its request.
+			System.out.println("CapperController: Received request");
 			
 			present (!bottleAtPos4) {
 				send capperStatus("idle");
 			}
 			
 			present(bottleAtPos4) { //Check if a bottle is at position 4, if not, wait until it arrives.
-				System.out.println("Capper doing work...");
+				System.out.println("CapperController: Capper doing work...");
 				{ 
 					abort (unclampBottle) {
 						sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
@@ -241,10 +207,8 @@ Capper(
 					emit raiseGripper; //Raise gripper
 					emit unclampBottle; //Unclamp bottle
 				} 
+				send capperStatus("done"); //Tell Orchestrator that the capper has finished.
 			}
-			send capperStatus("done"); //Tell Orchestrator that the capper has finished.
-		}else {
-			send capperStatus("idle");
 		}
 		pause;
 	}
@@ -252,56 +216,65 @@ Capper(
 
 
 Caploader(
-		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,bottleAtPos3,request;
-		output signal pusherExtend,vacOn,armSource,armDest;
-		input Integer signal mode;
-		input signal pusherExtendM,vacOnM,armSourceM,armDestM;
+		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,bottleAtPos3, magEmpty;
+		output signal pusherExtend,vacOn,armSource,armDest, magReq;
 		
 		input Boolean channel capLoaderReq;
 		output String channel capLoaderStatus;
 		)
 ->{
+	signal vacOff;
 	while(true) {
 			receive capLoaderReq; // BLOCKED - Hangs here coz there is no loader request at the beginning
 			Boolean request = #capLoaderReq;
 			if(request) {
-				
-				present (bottleAtPos3){
-					System.out.println("cap loader - bottle is at pos 3");
-
-					send capLoaderStatus("busy");
-					//Pusher extend
-					present(pusherRetracted) { // every push tick
-						abort(pusherExtended) { //plant emits when its at X
-							sustain pusherExtend; // otherwise sustain
-						}
-					}
-					pause;
-					
-					//Move arm to object to pickup
-					abort(armAtSource) {
-						sustain armSource;
-					}
-					pause;
-					
-					//Pickup Object
-					abort(WPgripped){
-						sustain vacOn;
-					}
-					pause;
-					
-					//return object to destination
-					abort (armAtDest) {
-						{sustain armDest;} || {sustain vacOn;}
-					}
-					pause;
-		
-				}
 				send capLoaderStatus("done");
-			}else {
-				send capLoaderStatus("idle");
+
+//				present (!bottleAtPos3) {
+//					send capLoaderStatus("idle");
+//					
+//				}
+//				
+//				present (bottleAtPos3){
+//					System.out.println("Caploader Controller - bottle is at pos 3");
+//					
+//					//Check if magazine empty
+//					
+//					present(magEmpty) {
+//						abort(!magEmpty){
+//							sustain magReq;
+//						}
+//					}
+//
+//					//Pusher extend
+//					present(pusherRetracted) { // every push tick
+//						abort(pusherExtended) { //plant emits when its at X
+//							sustain pusherExtend; // otherwise sustain
+//						}
+//					}
+//					pause;
+//					
+//					//Move arm to object to pickup
+//					abort(armAtSource) {
+//						sustain armSource;
+//					}
+//				
+//					{
+//						abort(vacOff) {
+//							sustain vacOn;
+//						}	
+//					}
+//					||
+//					{
+//						await(WPgripped);
+//						abort (armAtDest) {
+//							sustain armDest;
+//						}
+//						emit vacOff;
+//					}
+//					send capLoaderStatus("done");
+//				}
 			}
 			pause;
-			
 	}
 }

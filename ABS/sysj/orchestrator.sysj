@@ -1,162 +1,139 @@
 import java.util.ArrayList;
 Orchestrator(
 		input String channel conveyorStatus, capperStatus, capLoaderStatus, fillerStatus, rotaryStatus;
-		output Boolean channel conveyorReq, allOperationsFinished, fillerReq, capperReq, capLoaderReq;
+		output Boolean channel conveyorReq, rotaryReq, fillerReq, capperReq, capLoaderReq;
 		input Order channel order;
 		output Order channel doneOrder;
-		
-		output ArrayList channel percentLiquid;
-		
 		)
 ->{
-	// TODO: Temp delete later
-	
-//	int quantity = 5;
-//	int bottlePlaced = 0;
+	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
+	ArrayList signal sigFillerReq;
+	signal recConveyorStatus, recCapperStatus, recCapLoaderStatus, recFillerStatus, recRotaryStatus;
 	signal getNextBottle;
-	// final
-	{// Conveyor Orchestator logic
-		// Assumption - only one order at a time.
-		int quantity = 5;
+	{
+		
+		int quantity = 10;
 		int bottlePlaced = 0; 
 		
-		// present X
 		
 		while(true) {
 			// insert present(order) here
 			bottlePlaced = quantity;
 			while(bottlePlaced >= 0) {
-				System.out.println("sending conveyor req?");
-				send conveyorReq(true);
+				System.out.println("Orch: Sending conveyor request");
+				emit sigConveyorReq(true);
+				await(recConveyorStatus);
+				System.out.println("Orch: Received conveyor status");
 				bottlePlaced--;
-				System.out.println("Number of bottles left to do: " + bottlePlaced);
 				await(getNextBottle);
-				
+				System.out.println("Orch: Number of bottles left to do: " + bottlePlaced);
 				pause;
 			}
 			
 			System.out.println("Done order");
 			halt;
-			//TODO: send doneOrder signal
-//			send doneOrder(order)
 			pause;
 		}
 	}
 	||
-	{// Requesting work to filler, capper and caploader
+	{
+		while(true) {
+			await(sigConveyorReq); //Internal signal to send conveyor request
+			send conveyorReq(true); //Send actual request
+			receive conveyorStatus; //Receive actual response.
+			String res = (String) #conveyorStatus; //Retrieve string from actual response.
+			emit recConveyorStatus(res); //Emit internal signal that request has been received.
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigCapperReq);  
+			System.out.println("Orch: Sending capper request");
+			send capperReq(true); 
+			receive capperStatus; 
+			System.out.println("Orch: Received capper status");
+			String res = (String) #capperStatus; 
+			emit recCapperStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigCapLoaderReq);
+			System.out.println("Orch: Sending cap loader request");
+			send capLoaderReq(true); 
+			receive capLoaderStatus; 
+			System.out.println("Orch: Received cap loader status");
+
+			String res = (String) #capLoaderStatus; 
+			emit recCapLoaderStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigFillerReq);
+			System.out.println("Orch: Sending filler request");
+			ArrayList req = (ArrayList) #sigFillerReq;
+			send fillerReq(req); 
+			receive fillerStatus;
+			System.out.println("Orch: Received filler status");
+			String res = (String) #fillerStatus; 
+			emit recFillerStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigRotaryReq);
+			System.out.println("Orch: Sending rotary request");
+			send rotaryReq(true);
+			receive rotaryStatus; 
+			System.out.println("Orch: Received rotary status");
+			String res = (String) #rotaryStatus; 
+			emit recRotaryStatus(res); 
+		}
+	}
+	||
+	{
 		ArrayList liquidPercent = new ArrayList();
 		liquidPercent.add(10);
 		liquidPercent.add(10);
 		liquidPercent.add(20);
 		liquidPercent.add(60);
-		while(true) {
-			receive rotaryStatus;
-			String rotaryStat = #rotaryStatus;
-			
-			// wait for rotary status to be done
-			if(rotaryStat == "done") {
-				System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");
-				send fillerReq(true);
-				send percentLiquid(liquidPercent);
-				send capLoaderReq(true);
-				send capperReq(true);
-				emit getNextBottle;
-			}
-			else {
-				send fillerReq(false);
-				send capLoaderReq(false);
-				send capperReq(false);
-			}
-			pause;
-		}
 		
-	}
-	||
-	{
 		while(true) {
-			receive conveyorStatus; 
-			String conveyValue= #conveyorStatus;
-			if (conveyValue == "busy") {
-				System.out.println("Orch received - convey busy");
-				Status.conveyStat = true;
-			}
-			else {
-				System.out.println("Orch received - convey done");
-				Status.conveyStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{
-		//Check filler
-		while(true) {
-			receive fillerStatus; 
-			String fillerValue= #fillerStatus;
-			if (fillerValue == "busy") {
-				System.out.println("Orch received - filler busy");
-				Status.fillerStat = true;
-			}
-			else {
-				System.out.println("Orch received - filler done");
-				Status.fillerStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{	
-		while(true) {
-			receive capperStatus; 
-			String capperValue= #capperStatus;
-			if (capperValue == "busy") {
-				System.out.println("Orch received - capper busy");
-				Status.capperStat = true;
-			}
-			else {
-				System.out.println("Orch received - capper done");
-				Status.capperStat = false;
-			}
+			//Startup procedure.
+			await(recConveyorStatus); //Await for first bottle to be delivered to position 1.
+			emit sigRotaryReq; //Turn rotary table.
+			await(recRotaryStatus);
 			
-			pause;
-		}
-	}
-	||
-	{	while(true) {
-			receive capLoaderStatus; 
-			String capLoaderValue= #capLoaderStatus;
-			if (capLoaderValue == "busy") {
-				System.out.println("Orch received - loader busy");
-				Status.capLoaderStat = true;
-			}
-			else {
-				System.out.println("Orch received - loader done");
-				Status.capLoaderStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{ // Rotary Orchestrator logic
-		// GOal is to get all the status and emit done if all are done.			
-		// wait until everything else is done or idle
-		// False = done, true = busy
-		while(true) {
-			if((Status.conveyStat==false) && 
-				(Status.fillerStat==false) &&
-				(Status.capperStat==false) &&
-				(Status.capLoaderStat==false)){
-				System.out.println("Orch sending rotary req");
-				Status.conveyStat = true;
-				send allOperationsFinished(true);
+			while(true) {
 				
-			}else {
-				send allOperationsFinished(false);
+				System.out.println("Orch: New bottle. Preparing to send requests..");
+				emit sigFillerReq(liquidPercent);
+				emit sigCapLoaderReq;
+				emit sigCapperReq;
+				{await(recFillerStatus);} || {await(recCapLoaderStatus);} || {await(recCapperStatus);}
+				System.out.println("Orch: All done!");
+				
+				//Send request to get new bottle on conveyor.
+				emit getNextBottle;
+				await(recConveyorStatus); //Await for that to finish.
+				//Completed all tasks, send request to rotary.
+				emit sigRotaryReq;
+				await(recRotaryStatus);
+				
+				
+				pause;
 			}
 			pause;
-		}//while true
+		}
+			
 	}
 }
+
 
 
 
