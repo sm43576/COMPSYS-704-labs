@@ -25,7 +25,7 @@ public class HumanPresence extends ClockDomain{
   public input_Channel zone5P_in = new input_Channel();
   public input_Channel zone6P_in = new input_Channel();
   public input_Channel zone7P_in = new input_Channel();
-  private int S294 = 1;
+  private int S228 = 1;
   private int S23 = 1;
   private int S6 = 1;
   private int S1 = 1;
@@ -33,33 +33,32 @@ public class HumanPresence extends ClockDomain{
   private int S46 = 1;
   private int S30 = 1;
   private int S25 = 1;
-  private int S196 = 1;
-  private int S82 = 1;
+  private int S130 = 1;
+  private int S74 = 1;
   private int S54 = 1;
   private int S49 = 1;
-  private int S84 = 1;
-  private int S220 = 1;
-  private int S219 = 1;
-  private int S203 = 1;
-  private int S198 = 1;
-  private int S244 = 1;
-  private int S243 = 1;
-  private int S227 = 1;
-  private int S222 = 1;
-  private int S268 = 1;
-  private int S267 = 1;
-  private int S251 = 1;
-  private int S246 = 1;
-  private int S292 = 1;
-  private int S291 = 1;
-  private int S275 = 1;
-  private int S270 = 1;
+  private int S154 = 1;
+  private int S153 = 1;
+  private int S137 = 1;
+  private int S132 = 1;
+  private int S178 = 1;
+  private int S177 = 1;
+  private int S161 = 1;
+  private int S156 = 1;
+  private int S202 = 1;
+  private int S201 = 1;
+  private int S185 = 1;
+  private int S180 = 1;
+  private int S226 = 1;
+  private int S225 = 1;
+  private int S209 = 1;
+  private int S204 = 1;
   
   private int[] ends = new int[10];
   private int[] tdone = new int[10];
   
-  public void thread945(int [] tdone, int [] ends){
-        switch(S292){
+  public void thread783(int [] tdone, int [] ends){
+        switch(S226){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -67,28 +66,28 @@ public class HumanPresence extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S291){
+        switch(S225){
           case 0 : 
-            switch(S275){
+            switch(S209){
               case 0 : 
-                if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
-                  zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
-                  S275=1;
+                if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 32, column: 4
+                  zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
+                  S209=1;
                   active[8]=1;
                   ends[8]=1;
                   tdone[8]=1;
                 }
                 else {
-                  switch(S270){
+                  switch(S204){
                     case 0 : 
-                      if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-                        zone7P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
-                        S270=1;
-                        if(zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-                          zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+                      if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+                        zone7P_in.setACK(true);//sysj/controller.sysj line: 32, column: 4
+                        S204=1;
+                        if(zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+                          zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
                           ends[8]=2;
-                          ;//sysj/controller.sysj line: 29, column: 4
-                          S291=1;
+                          ;//sysj/controller.sysj line: 32, column: 4
+                          S225=1;
                           active[8]=1;
                           ends[8]=1;
                           tdone[8]=1;
@@ -107,11 +106,11 @@ public class HumanPresence extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-                        zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+                      if(zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+                        zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
                         ends[8]=2;
-                        ;//sysj/controller.sysj line: 29, column: 4
-                        S291=1;
+                        ;//sysj/controller.sysj line: 32, column: 4
+                        S225=1;
                         active[8]=1;
                         ends[8]=1;
                         tdone[8]=1;
@@ -128,25 +127,25 @@ public class HumanPresence extends ClockDomain{
                 break;
               
               case 1 : 
-                S275=1;
-                S275=0;
-                if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
-                  zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
-                  S275=1;
+                S209=1;
+                S209=0;
+                if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 32, column: 4
+                  zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
+                  S209=1;
                   active[8]=1;
                   ends[8]=1;
                   tdone[8]=1;
                 }
                 else {
-                  S270=0;
-                  if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-                    zone7P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
-                    S270=1;
-                    if(zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-                      zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+                  S204=0;
+                  if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+                    zone7P_in.setACK(true);//sysj/controller.sysj line: 32, column: 4
+                    S204=1;
+                    if(zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+                      zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
                       ends[8]=2;
-                      ;//sysj/controller.sysj line: 29, column: 4
-                      S291=1;
+                      ;//sysj/controller.sysj line: 32, column: 4
+                      S225=1;
                       active[8]=1;
                       ends[8]=1;
                       tdone[8]=1;
@@ -169,8 +168,8 @@ public class HumanPresence extends ClockDomain{
             break;
           
           case 1 : 
-            S291=1;
-            S292=0;
+            S225=1;
+            S226=0;
             active[8]=0;
             ends[8]=0;
             tdone[8]=1;
@@ -182,8 +181,8 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread944(int [] tdone, int [] ends){
-        switch(S268){
+  public void thread782(int [] tdone, int [] ends){
+        switch(S202){
       case 0 : 
         active[7]=0;
         ends[7]=0;
@@ -191,28 +190,28 @@ public class HumanPresence extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S267){
+        switch(S201){
           case 0 : 
-            switch(S251){
+            switch(S185){
               case 0 : 
-                if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 28, column: 4
-                  zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
-                  S251=1;
+                if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 31, column: 4
+                  zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
+                  S185=1;
                   active[7]=1;
                   ends[7]=1;
                   tdone[7]=1;
                 }
                 else {
-                  switch(S246){
+                  switch(S180){
                     case 0 : 
-                      if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-                        zone6P_in.setACK(true);//sysj/controller.sysj line: 28, column: 4
-                        S246=1;
-                        if(zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-                          zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
+                      if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+                        zone6P_in.setACK(true);//sysj/controller.sysj line: 31, column: 4
+                        S180=1;
+                        if(zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+                          zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
                           ends[7]=2;
-                          ;//sysj/controller.sysj line: 28, column: 4
-                          S267=1;
+                          ;//sysj/controller.sysj line: 31, column: 4
+                          S201=1;
                           active[7]=1;
                           ends[7]=1;
                           tdone[7]=1;
@@ -231,11 +230,11 @@ public class HumanPresence extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-                        zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
+                      if(zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+                        zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
                         ends[7]=2;
-                        ;//sysj/controller.sysj line: 28, column: 4
-                        S267=1;
+                        ;//sysj/controller.sysj line: 31, column: 4
+                        S201=1;
                         active[7]=1;
                         ends[7]=1;
                         tdone[7]=1;
@@ -252,25 +251,25 @@ public class HumanPresence extends ClockDomain{
                 break;
               
               case 1 : 
-                S251=1;
-                S251=0;
-                if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 28, column: 4
-                  zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
-                  S251=1;
+                S185=1;
+                S185=0;
+                if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 31, column: 4
+                  zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
+                  S185=1;
                   active[7]=1;
                   ends[7]=1;
                   tdone[7]=1;
                 }
                 else {
-                  S246=0;
-                  if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-                    zone6P_in.setACK(true);//sysj/controller.sysj line: 28, column: 4
-                    S246=1;
-                    if(zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-                      zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
+                  S180=0;
+                  if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+                    zone6P_in.setACK(true);//sysj/controller.sysj line: 31, column: 4
+                    S180=1;
+                    if(zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+                      zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
                       ends[7]=2;
-                      ;//sysj/controller.sysj line: 28, column: 4
-                      S267=1;
+                      ;//sysj/controller.sysj line: 31, column: 4
+                      S201=1;
                       active[7]=1;
                       ends[7]=1;
                       tdone[7]=1;
@@ -293,8 +292,8 @@ public class HumanPresence extends ClockDomain{
             break;
           
           case 1 : 
-            S267=1;
-            S268=0;
+            S201=1;
+            S202=0;
             active[7]=0;
             ends[7]=0;
             tdone[7]=1;
@@ -306,8 +305,8 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread943(int [] tdone, int [] ends){
-        switch(S244){
+  public void thread781(int [] tdone, int [] ends){
+        switch(S178){
       case 0 : 
         active[6]=0;
         ends[6]=0;
@@ -315,28 +314,28 @@ public class HumanPresence extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S243){
+        switch(S177){
           case 0 : 
-            switch(S227){
+            switch(S161){
               case 0 : 
-                if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 27, column: 4
-                  zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
-                  S227=1;
+                if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 30, column: 4
+                  zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
+                  S161=1;
                   active[6]=1;
                   ends[6]=1;
                   tdone[6]=1;
                 }
                 else {
-                  switch(S222){
+                  switch(S156){
                     case 0 : 
-                      if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-                        zone5P_in.setACK(true);//sysj/controller.sysj line: 27, column: 4
-                        S222=1;
-                        if(zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-                          zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
+                      if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+                        zone5P_in.setACK(true);//sysj/controller.sysj line: 30, column: 4
+                        S156=1;
+                        if(zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+                          zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
                           ends[6]=2;
-                          ;//sysj/controller.sysj line: 27, column: 4
-                          S243=1;
+                          ;//sysj/controller.sysj line: 30, column: 4
+                          S177=1;
                           active[6]=1;
                           ends[6]=1;
                           tdone[6]=1;
@@ -355,11 +354,11 @@ public class HumanPresence extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-                        zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
+                      if(zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+                        zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
                         ends[6]=2;
-                        ;//sysj/controller.sysj line: 27, column: 4
-                        S243=1;
+                        ;//sysj/controller.sysj line: 30, column: 4
+                        S177=1;
                         active[6]=1;
                         ends[6]=1;
                         tdone[6]=1;
@@ -376,25 +375,25 @@ public class HumanPresence extends ClockDomain{
                 break;
               
               case 1 : 
-                S227=1;
-                S227=0;
-                if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 27, column: 4
-                  zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
-                  S227=1;
+                S161=1;
+                S161=0;
+                if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 30, column: 4
+                  zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
+                  S161=1;
                   active[6]=1;
                   ends[6]=1;
                   tdone[6]=1;
                 }
                 else {
-                  S222=0;
-                  if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-                    zone5P_in.setACK(true);//sysj/controller.sysj line: 27, column: 4
-                    S222=1;
-                    if(zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-                      zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
+                  S156=0;
+                  if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+                    zone5P_in.setACK(true);//sysj/controller.sysj line: 30, column: 4
+                    S156=1;
+                    if(zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+                      zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
                       ends[6]=2;
-                      ;//sysj/controller.sysj line: 27, column: 4
-                      S243=1;
+                      ;//sysj/controller.sysj line: 30, column: 4
+                      S177=1;
                       active[6]=1;
                       ends[6]=1;
                       tdone[6]=1;
@@ -417,8 +416,8 @@ public class HumanPresence extends ClockDomain{
             break;
           
           case 1 : 
-            S243=1;
-            S244=0;
+            S177=1;
+            S178=0;
             active[6]=0;
             ends[6]=0;
             tdone[6]=1;
@@ -430,8 +429,8 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread942(int [] tdone, int [] ends){
-        switch(S220){
+  public void thread780(int [] tdone, int [] ends){
+        switch(S154){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -439,28 +438,28 @@ public class HumanPresence extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S219){
+        switch(S153){
           case 0 : 
-            switch(S203){
+            switch(S137){
               case 0 : 
-                if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 26, column: 4
-                  zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
-                  S203=1;
+                if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
+                  zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+                  S137=1;
                   active[5]=1;
                   ends[5]=1;
                   tdone[5]=1;
                 }
                 else {
-                  switch(S198){
+                  switch(S132){
                     case 0 : 
-                      if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-                        zone4P_in.setACK(true);//sysj/controller.sysj line: 26, column: 4
-                        S198=1;
-                        if(zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-                          zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
+                      if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+                        zone4P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
+                        S132=1;
+                        if(zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+                          zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
                           ends[5]=2;
-                          ;//sysj/controller.sysj line: 26, column: 4
-                          S219=1;
+                          ;//sysj/controller.sysj line: 29, column: 4
+                          S153=1;
                           active[5]=1;
                           ends[5]=1;
                           tdone[5]=1;
@@ -479,11 +478,11 @@ public class HumanPresence extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-                        zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
+                      if(zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+                        zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
                         ends[5]=2;
-                        ;//sysj/controller.sysj line: 26, column: 4
-                        S219=1;
+                        ;//sysj/controller.sysj line: 29, column: 4
+                        S153=1;
                         active[5]=1;
                         ends[5]=1;
                         tdone[5]=1;
@@ -500,25 +499,25 @@ public class HumanPresence extends ClockDomain{
                 break;
               
               case 1 : 
-                S203=1;
-                S203=0;
-                if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 26, column: 4
-                  zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
-                  S203=1;
+                S137=1;
+                S137=0;
+                if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
+                  zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+                  S137=1;
                   active[5]=1;
                   ends[5]=1;
                   tdone[5]=1;
                 }
                 else {
-                  S198=0;
-                  if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-                    zone4P_in.setACK(true);//sysj/controller.sysj line: 26, column: 4
-                    S198=1;
-                    if(zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-                      zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
+                  S132=0;
+                  if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+                    zone4P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
+                    S132=1;
+                    if(zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+                      zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
                       ends[5]=2;
-                      ;//sysj/controller.sysj line: 26, column: 4
-                      S219=1;
+                      ;//sysj/controller.sysj line: 29, column: 4
+                      S153=1;
                       active[5]=1;
                       ends[5]=1;
                       tdone[5]=1;
@@ -541,8 +540,8 @@ public class HumanPresence extends ClockDomain{
             break;
           
           case 1 : 
-            S219=1;
-            S220=0;
+            S153=1;
+            S154=0;
             active[5]=0;
             ends[5]=0;
             tdone[5]=1;
@@ -554,8 +553,8 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread941(int [] tdone, int [] ends){
-        switch(S196){
+  public void thread779(int [] tdone, int [] ends){
+        switch(S130){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -563,7 +562,7 @@ public class HumanPresence extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S82){
+        switch(S74){
           case 0 : 
             switch(S54){
               case 0 : 
@@ -584,13 +583,29 @@ public class HumanPresence extends ClockDomain{
                           zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
                           ends[4]=2;
                           ;//sysj/controller.sysj line: 18, column: 4
-                          S82=1;
-                          zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-                          currsigs.addElement(zone3Light);
-                          System.out.println("Emitted zone3Light");
-                          active[4]=1;
-                          ends[4]=1;
-                          tdone[4]=1;
+                          S74=1;
+                          if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+                            zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+                            currsigs.addElement(zone3Light);
+                            zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+                            System.out.println("Emitted zone3Light");
+                            System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                            S74=2;
+                            active[4]=1;
+                            ends[4]=1;
+                            tdone[4]=1;
+                          }
+                          else {
+                            zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+                            currsigs.addElement(zone3Light);
+                            zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+                            System.out.println("Emitted zone3Light");
+                            System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                            S74=2;
+                            active[4]=1;
+                            ends[4]=1;
+                            tdone[4]=1;
+                          }
                         }
                         else {
                           active[4]=1;
@@ -610,13 +625,29 @@ public class HumanPresence extends ClockDomain{
                         zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
                         ends[4]=2;
                         ;//sysj/controller.sysj line: 18, column: 4
-                        S82=1;
-                        zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-                        currsigs.addElement(zone3Light);
-                        System.out.println("Emitted zone3Light");
-                        active[4]=1;
-                        ends[4]=1;
-                        tdone[4]=1;
+                        S74=1;
+                        if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+                          zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+                          currsigs.addElement(zone3Light);
+                          zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+                          System.out.println("Emitted zone3Light");
+                          System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                          S74=2;
+                          active[4]=1;
+                          ends[4]=1;
+                          tdone[4]=1;
+                        }
+                        else {
+                          zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+                          currsigs.addElement(zone3Light);
+                          zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+                          System.out.println("Emitted zone3Light");
+                          System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                          S74=2;
+                          active[4]=1;
+                          ends[4]=1;
+                          tdone[4]=1;
+                        }
                       }
                       else {
                         active[4]=1;
@@ -648,13 +679,29 @@ public class HumanPresence extends ClockDomain{
                       zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
                       ends[4]=2;
                       ;//sysj/controller.sysj line: 18, column: 4
-                      S82=1;
-                      zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-                      currsigs.addElement(zone3Light);
-                      System.out.println("Emitted zone3Light");
-                      active[4]=1;
-                      ends[4]=1;
-                      tdone[4]=1;
+                      S74=1;
+                      if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+                        zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+                        currsigs.addElement(zone3Light);
+                        zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+                        System.out.println("Emitted zone3Light");
+                        System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                        S74=2;
+                        active[4]=1;
+                        ends[4]=1;
+                        tdone[4]=1;
+                      }
+                      else {
+                        zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+                        currsigs.addElement(zone3Light);
+                        zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+                        System.out.println("Emitted zone3Light");
+                        System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                        S74=2;
+                        active[4]=1;
+                        ends[4]=1;
+                        tdone[4]=1;
+                      }
                     }
                     else {
                       active[4]=1;
@@ -674,61 +721,7 @@ public class HumanPresence extends ClockDomain{
             break;
           
           case 1 : 
-            zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-            currsigs.addElement(zone3Light);
-            System.out.println("Emitted zone3Light");
-            active[4]=1;
-            ends[4]=1;
-            tdone[4]=1;
-            break;
-          
-          case 2 : 
-            switch(S84){
-              case 0 : 
-                S84=0;
-                if(com.systemj.Timer.getMs() - __start_thread_4 >= (5) * 1000){//sysj/controller.sysj line: 17, column: 5
-                  ends[4]=2;
-                  ;//sysj/controller.sysj line: 17, column: 5
-                  System.out.println("waited 5min");//sysj/controller.sysj line: 21, column: 4
-                  S82=3;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                else {
-                  S84=1;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                break;
-              
-              case 1 : 
-                S84=1;
-                S84=0;
-                if(com.systemj.Timer.getMs() - __start_thread_4 >= (5) * 1000){//sysj/controller.sysj line: 17, column: 5
-                  ends[4]=2;
-                  ;//sysj/controller.sysj line: 17, column: 5
-                  System.out.println("waited 5min");//sysj/controller.sysj line: 21, column: 4
-                  S82=3;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                else {
-                  S84=1;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                break;
-              
-            }
-            break;
-          
-          case 3 : 
-            S82=3;
-            S82=0;
+            S74=0;
             S54=0;
             if(!zone3P_in.isPartnerPresent() || zone3P_in.isPartnerPreempted()){//sysj/controller.sysj line: 18, column: 4
               zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
@@ -746,13 +739,87 @@ public class HumanPresence extends ClockDomain{
                   zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
                   ends[4]=2;
                   ;//sysj/controller.sysj line: 18, column: 4
-                  S82=1;
-                  zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-                  currsigs.addElement(zone3Light);
-                  System.out.println("Emitted zone3Light");
+                  S74=1;
+                  if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+                    zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+                    currsigs.addElement(zone3Light);
+                    zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+                    System.out.println("Emitted zone3Light");
+                    System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                    S74=2;
+                    active[4]=1;
+                    ends[4]=1;
+                    tdone[4]=1;
+                  }
+                  else {
+                    zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+                    currsigs.addElement(zone3Light);
+                    zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+                    System.out.println("Emitted zone3Light");
+                    System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                    S74=2;
+                    active[4]=1;
+                    ends[4]=1;
+                    tdone[4]=1;
+                  }
+                }
+                else {
                   active[4]=1;
                   ends[4]=1;
                   tdone[4]=1;
+                }
+              }
+              else {
+                active[4]=1;
+                ends[4]=1;
+                tdone[4]=1;
+              }
+            }
+            break;
+          
+          case 2 : 
+            S74=2;
+            S74=0;
+            S54=0;
+            if(!zone3P_in.isPartnerPresent() || zone3P_in.isPartnerPreempted()){//sysj/controller.sysj line: 18, column: 4
+              zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
+              S54=1;
+              active[4]=1;
+              ends[4]=1;
+              tdone[4]=1;
+            }
+            else {
+              S49=0;
+              if(!zone3P_in.isREQ()){//sysj/controller.sysj line: 18, column: 4
+                zone3P_in.setACK(true);//sysj/controller.sysj line: 18, column: 4
+                S49=1;
+                if(zone3P_in.isREQ()){//sysj/controller.sysj line: 18, column: 4
+                  zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
+                  ends[4]=2;
+                  ;//sysj/controller.sysj line: 18, column: 4
+                  S74=1;
+                  if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+                    zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+                    currsigs.addElement(zone3Light);
+                    zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+                    System.out.println("Emitted zone3Light");
+                    System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                    S74=2;
+                    active[4]=1;
+                    ends[4]=1;
+                    tdone[4]=1;
+                  }
+                  else {
+                    zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+                    currsigs.addElement(zone3Light);
+                    zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+                    System.out.println("Emitted zone3Light");
+                    System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+                    S74=2;
+                    active[4]=1;
+                    ends[4]=1;
+                    tdone[4]=1;
+                  }
                 }
                 else {
                   active[4]=1;
@@ -774,7 +841,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread940(int [] tdone, int [] ends){
+  public void thread778(int [] tdone, int [] ends){
         switch(S47){
       case 0 : 
         active[3]=0;
@@ -898,7 +965,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread939(int [] tdone, int [] ends){
+  public void thread777(int [] tdone, int [] ends){
         switch(S23){
       case 0 : 
         active[2]=0;
@@ -1021,27 +1088,27 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread937(int [] tdone, int [] ends){
-        S292=1;
-    S291=0;
-    S275=0;
-    if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
-      zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
-      S275=1;
+  public void thread775(int [] tdone, int [] ends){
+        S226=1;
+    S225=0;
+    S209=0;
+    if(!zone7P_in.isPartnerPresent() || zone7P_in.isPartnerPreempted()){//sysj/controller.sysj line: 32, column: 4
+      zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
+      S209=1;
       active[8]=1;
       ends[8]=1;
       tdone[8]=1;
     }
     else {
-      S270=0;
-      if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-        zone7P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
-        S270=1;
-        if(zone7P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
-          zone7P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+      S204=0;
+      if(!zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+        zone7P_in.setACK(true);//sysj/controller.sysj line: 32, column: 4
+        S204=1;
+        if(zone7P_in.isREQ()){//sysj/controller.sysj line: 32, column: 4
+          zone7P_in.setACK(false);//sysj/controller.sysj line: 32, column: 4
           ends[8]=2;
-          ;//sysj/controller.sysj line: 29, column: 4
-          S291=1;
+          ;//sysj/controller.sysj line: 32, column: 4
+          S225=1;
           active[8]=1;
           ends[8]=1;
           tdone[8]=1;
@@ -1060,27 +1127,27 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread936(int [] tdone, int [] ends){
-        S268=1;
-    S267=0;
-    S251=0;
-    if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 28, column: 4
-      zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
-      S251=1;
+  public void thread774(int [] tdone, int [] ends){
+        S202=1;
+    S201=0;
+    S185=0;
+    if(!zone6P_in.isPartnerPresent() || zone6P_in.isPartnerPreempted()){//sysj/controller.sysj line: 31, column: 4
+      zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
+      S185=1;
       active[7]=1;
       ends[7]=1;
       tdone[7]=1;
     }
     else {
-      S246=0;
-      if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-        zone6P_in.setACK(true);//sysj/controller.sysj line: 28, column: 4
-        S246=1;
-        if(zone6P_in.isREQ()){//sysj/controller.sysj line: 28, column: 4
-          zone6P_in.setACK(false);//sysj/controller.sysj line: 28, column: 4
+      S180=0;
+      if(!zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+        zone6P_in.setACK(true);//sysj/controller.sysj line: 31, column: 4
+        S180=1;
+        if(zone6P_in.isREQ()){//sysj/controller.sysj line: 31, column: 4
+          zone6P_in.setACK(false);//sysj/controller.sysj line: 31, column: 4
           ends[7]=2;
-          ;//sysj/controller.sysj line: 28, column: 4
-          S267=1;
+          ;//sysj/controller.sysj line: 31, column: 4
+          S201=1;
           active[7]=1;
           ends[7]=1;
           tdone[7]=1;
@@ -1099,27 +1166,27 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread935(int [] tdone, int [] ends){
-        S244=1;
-    S243=0;
-    S227=0;
-    if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 27, column: 4
-      zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
-      S227=1;
+  public void thread773(int [] tdone, int [] ends){
+        S178=1;
+    S177=0;
+    S161=0;
+    if(!zone5P_in.isPartnerPresent() || zone5P_in.isPartnerPreempted()){//sysj/controller.sysj line: 30, column: 4
+      zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
+      S161=1;
       active[6]=1;
       ends[6]=1;
       tdone[6]=1;
     }
     else {
-      S222=0;
-      if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-        zone5P_in.setACK(true);//sysj/controller.sysj line: 27, column: 4
-        S222=1;
-        if(zone5P_in.isREQ()){//sysj/controller.sysj line: 27, column: 4
-          zone5P_in.setACK(false);//sysj/controller.sysj line: 27, column: 4
+      S156=0;
+      if(!zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+        zone5P_in.setACK(true);//sysj/controller.sysj line: 30, column: 4
+        S156=1;
+        if(zone5P_in.isREQ()){//sysj/controller.sysj line: 30, column: 4
+          zone5P_in.setACK(false);//sysj/controller.sysj line: 30, column: 4
           ends[6]=2;
-          ;//sysj/controller.sysj line: 27, column: 4
-          S243=1;
+          ;//sysj/controller.sysj line: 30, column: 4
+          S177=1;
           active[6]=1;
           ends[6]=1;
           tdone[6]=1;
@@ -1138,27 +1205,27 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread934(int [] tdone, int [] ends){
-        S220=1;
-    S219=0;
-    S203=0;
-    if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 26, column: 4
-      zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
-      S203=1;
+  public void thread772(int [] tdone, int [] ends){
+        S154=1;
+    S153=0;
+    S137=0;
+    if(!zone4P_in.isPartnerPresent() || zone4P_in.isPartnerPreempted()){//sysj/controller.sysj line: 29, column: 4
+      zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
+      S137=1;
       active[5]=1;
       ends[5]=1;
       tdone[5]=1;
     }
     else {
-      S198=0;
-      if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-        zone4P_in.setACK(true);//sysj/controller.sysj line: 26, column: 4
-        S198=1;
-        if(zone4P_in.isREQ()){//sysj/controller.sysj line: 26, column: 4
-          zone4P_in.setACK(false);//sysj/controller.sysj line: 26, column: 4
+      S132=0;
+      if(!zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+        zone4P_in.setACK(true);//sysj/controller.sysj line: 29, column: 4
+        S132=1;
+        if(zone4P_in.isREQ()){//sysj/controller.sysj line: 29, column: 4
+          zone4P_in.setACK(false);//sysj/controller.sysj line: 29, column: 4
           ends[5]=2;
-          ;//sysj/controller.sysj line: 26, column: 4
-          S219=1;
+          ;//sysj/controller.sysj line: 29, column: 4
+          S153=1;
           active[5]=1;
           ends[5]=1;
           tdone[5]=1;
@@ -1177,9 +1244,9 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread933(int [] tdone, int [] ends){
-        S196=1;
-    S82=0;
+  public void thread771(int [] tdone, int [] ends){
+        S130=1;
+    S74=0;
     S54=0;
     if(!zone3P_in.isPartnerPresent() || zone3P_in.isPartnerPreempted()){//sysj/controller.sysj line: 18, column: 4
       zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
@@ -1197,13 +1264,29 @@ public class HumanPresence extends ClockDomain{
           zone3P_in.setACK(false);//sysj/controller.sysj line: 18, column: 4
           ends[4]=2;
           ;//sysj/controller.sysj line: 18, column: 4
-          S82=1;
-          zone3Light.setPresent();//sysj/controller.sysj line: 19, column: 4
-          currsigs.addElement(zone3Light);
-          System.out.println("Emitted zone3Light");
-          active[4]=1;
-          ends[4]=1;
-          tdone[4]=1;
+          S74=1;
+          if((zone3P_in.getVal() == null ? false : ((Boolean)zone3P_in.getVal()).booleanValue()) == true){//sysj/controller.sysj line: 19, column: 8
+            zone3Light.setPresent();//sysj/controller.sysj line: 20, column: 5
+            currsigs.addElement(zone3Light);
+            zone3Light.setValue(0);//sysj/controller.sysj line: 20, column: 5
+            System.out.println("Emitted zone3Light");
+            System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+            S74=2;
+            active[4]=1;
+            ends[4]=1;
+            tdone[4]=1;
+          }
+          else {
+            zone3Light.setPresent();//sysj/controller.sysj line: 23, column: 5
+            currsigs.addElement(zone3Light);
+            zone3Light.setValue(1);//sysj/controller.sysj line: 23, column: 5
+            System.out.println("Emitted zone3Light");
+            System.out.println("waited 5min");//sysj/controller.sysj line: 25, column: 4
+            S74=2;
+            active[4]=1;
+            ends[4]=1;
+            tdone[4]=1;
+          }
         }
         else {
           active[4]=1;
@@ -1219,7 +1302,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread932(int [] tdone, int [] ends){
+  public void thread770(int [] tdone, int [] ends){
         S47=1;
     S46=0;
     S30=0;
@@ -1258,7 +1341,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread931(int [] tdone, int [] ends){
+  public void thread769(int [] tdone, int [] ends){
         S23=1;
     S6=0;
     if(!zone1P_in.isPartnerPresent() || zone1P_in.isPartnerPreempted()){//sysj/controller.sysj line: 12, column: 5
@@ -1307,90 +1390,90 @@ public class HumanPresence extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S294){
+      switch(S228){
         case 0 : 
-          S294=0;
+          S228=0;
           break RUN;
         
         case 1 : 
-          S294=2;
-          S294=2;
-          thread931(tdone,ends);
-          thread932(tdone,ends);
-          thread933(tdone,ends);
-          thread934(tdone,ends);
-          thread935(tdone,ends);
-          thread936(tdone,ends);
-          thread937(tdone,ends);
-          int biggest938 = 0;
-          if(ends[2]>=biggest938){
-            biggest938=ends[2];
+          S228=2;
+          S228=2;
+          thread769(tdone,ends);
+          thread770(tdone,ends);
+          thread771(tdone,ends);
+          thread772(tdone,ends);
+          thread773(tdone,ends);
+          thread774(tdone,ends);
+          thread775(tdone,ends);
+          int biggest776 = 0;
+          if(ends[2]>=biggest776){
+            biggest776=ends[2];
           }
-          if(ends[3]>=biggest938){
-            biggest938=ends[3];
+          if(ends[3]>=biggest776){
+            biggest776=ends[3];
           }
-          if(ends[4]>=biggest938){
-            biggest938=ends[4];
+          if(ends[4]>=biggest776){
+            biggest776=ends[4];
           }
-          if(ends[5]>=biggest938){
-            biggest938=ends[5];
+          if(ends[5]>=biggest776){
+            biggest776=ends[5];
           }
-          if(ends[6]>=biggest938){
-            biggest938=ends[6];
+          if(ends[6]>=biggest776){
+            biggest776=ends[6];
           }
-          if(ends[7]>=biggest938){
-            biggest938=ends[7];
+          if(ends[7]>=biggest776){
+            biggest776=ends[7];
           }
-          if(ends[8]>=biggest938){
-            biggest938=ends[8];
+          if(ends[8]>=biggest776){
+            biggest776=ends[8];
           }
-          if(biggest938 == 1){
+          if(biggest776 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread939(tdone,ends);
-          thread940(tdone,ends);
-          thread941(tdone,ends);
-          thread942(tdone,ends);
-          thread943(tdone,ends);
-          thread944(tdone,ends);
-          thread945(tdone,ends);
-          int biggest946 = 0;
-          if(ends[2]>=biggest946){
-            biggest946=ends[2];
+          thread777(tdone,ends);
+          thread778(tdone,ends);
+          thread779(tdone,ends);
+          thread780(tdone,ends);
+          thread781(tdone,ends);
+          thread782(tdone,ends);
+          thread783(tdone,ends);
+          int biggest784 = 0;
+          if(ends[2]>=biggest784){
+            biggest784=ends[2];
           }
-          if(ends[3]>=biggest946){
-            biggest946=ends[3];
+          if(ends[3]>=biggest784){
+            biggest784=ends[3];
           }
-          if(ends[4]>=biggest946){
-            biggest946=ends[4];
+          if(ends[4]>=biggest784){
+            biggest784=ends[4];
           }
-          if(ends[5]>=biggest946){
-            biggest946=ends[5];
+          if(ends[5]>=biggest784){
+            biggest784=ends[5];
           }
-          if(ends[6]>=biggest946){
-            biggest946=ends[6];
+          if(ends[6]>=biggest784){
+            biggest784=ends[6];
           }
-          if(ends[7]>=biggest946){
-            biggest946=ends[7];
+          if(ends[7]>=biggest784){
+            biggest784=ends[7];
           }
-          if(ends[8]>=biggest946){
-            biggest946=ends[8];
+          if(ends[8]>=biggest784){
+            biggest784=ends[8];
           }
-          if(biggest946 == 1){
+          if(biggest784 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest946 == 0){
-            S294=0;
+          if(biggest784 == 0){
+            S228=0;
             active[1]=0;
             ends[1]=0;
-            S294=0;
+            S228=0;
             break RUN;
           }
         

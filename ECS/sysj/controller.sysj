@@ -1,7 +1,7 @@
 HumanPresence(
 		input boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P; //Infrared Sensor
 
-		output signal zone1Light,zone2Light,zone3Light,zone4Light,zone5Light,zone6Light,zone7Light;
+		output Integer signal zone1Light,zone2Light,zone3Light,zone4Light,zone5Light,zone6Light,zone7Light;
 		
 		
 
@@ -16,11 +16,14 @@ HumanPresence(
 		{receive zone2P; pause;} ||
 		{ while(true){
 			receive zone3P;
-			sustain zone3Light;
-			waitl(5 s);
+			if (#zone3P==true) {
+				emit zone3Light(0);
+			}
+			else {
+				emit zone3Light(1);
+			}
 			System.out.println("waited 5min");
 			pause;
-			//emit zone3Light;
 			
 		}} ||
 		{receive zone4P;{pause;}} ||
@@ -37,10 +40,13 @@ InfraredSensor(
 	)
 	->{	
 		while(true) {
-				
 				send zone3P(true);
 				waitl(5 s);
+				System.out.println("sent");
+				pause; //need pause here for tick
 				send zone3P(false);
+				waitl(5 s);
+				System.out.println("sent");
 				pause;
 			}
 	

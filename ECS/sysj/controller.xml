@@ -10,9 +10,6 @@
 			<iChannel Name="zone6P" From="InfraredSensorCD.zone6P" />
 			<iChannel Name="zone7P" From="InfraredSensorCD.zone7P" />
 			
-			<iSignal Name="request"         Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="pusherExtend" To="PlantCD.pusherExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			
 			<oSignal Name="zone1Light" To="ecsUI.zone1Light" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20010" />
 			<oSignal Name="zone3Light" To="ecsUI.zone3Light" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20010" />
 			
