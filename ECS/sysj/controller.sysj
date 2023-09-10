@@ -46,14 +46,14 @@ HumanPresence(
 			receive zone3P;
 			pause;
 			if (#zone3P==true) {
-				System.out.println("detected");
+//				System.out.println("detected");
 				emit zone3Light("detected"); // detected
 				pause;
 				
 			}
 			else if(#zone3P==false) {
 			//	abort(receiveSignal){
-					System.out.println("notdetected");
+//					System.out.println("notdetected");
 					emit zone3Light("notdetected"); // detected
 			//	}
 				pause;
@@ -164,26 +164,39 @@ InfraredSensor(
 }
 
 /////////////Temperature sensor
-Temperature(
-		input Integer channel zone1T,zone2T,zone3T,zone4T,zone5T,zone6T,zone7T;
-		output String signal zone1Temp,zone2Temp,zone3Temp,zone4Temp,zone5Temp,zone6Temp,zone7Temp;
+TemperatureSensor(
+
+		input Integer signal getTemp1R;
+		output signal getTemp1,window1;
+		
+		output Integer signal zone1Temp,zone2Temp,zone3Temp,zone4Temp,zone5Temp,zone6Temp,zone7Temp;
 		)
 ->{
 	//Zone1
-	int temperature = 22;		//GET TEMP
-
-	while(true) {
-		if(temperature<25){
-				emit zone1Temp(temperature+1); // detected
-				temperature = temperature+1;
+	{
+		while(true){
+			abort(getTemp1R){
+				sustain getTemp1;
 			}
-		else if(temperature>25) {
-			emit zone1Temp(temperature-1); // detected
-			temperature = temperature-1;
-			
-		}
+			pause;
+
+			if(#getTemp1R>28) {
+				emit window1;
+				
+			} else if (#getTemp1R<20) {
+				emit window1;
+			}
+		System.out.println(#getTemp1R);
+		emit zone1Temp(#getTemp1R);
 		pause;
-	}	
+		waitl(5 s);
+	}} ||
+	{
+		while(true) {
+			pause;
+		}
+	}
+
 }
 	
 

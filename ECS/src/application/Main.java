@@ -44,7 +44,7 @@ public class Main extends Application{
         humanIndicator.addConsumer("ecsUI", "zone1Light", (status, value) -> updateLight(status,value,"zone1circle",controller));
         humanIndicator.addConsumer("ecsUI", "zone3Light", (status,value) -> updateLight(status,value,"zone3circle",controller));
 //        
-//        tempIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight("zone1circle", status));
+        tempIndicator.addConsumer("ecsUI", "zone1Temp", (status, value) -> updateTemp(status,value,"temp1",controller));
 //        humidIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight(zone3circle.EMERGENCYOFFUI, status));
 
 //        //Tests
@@ -59,9 +59,7 @@ public class Main extends Application{
     }
     
     public static void updateLight(Boolean Status,Object value,String zone,ecsUI controller) { 
-    	System.out.println(Status);
-    	System.out.println(value);
-    	
+
     	if(value!= null) {
 	    	String text = (String) value;
 	    	if (text.equals("detected")) {
@@ -77,23 +75,17 @@ public class Main extends Application{
     }
     
 //    
-//    public static void updateTemp(String zone,ecsUI controller,Boolean status) {   	
-//    	
-//    }
+    public static void updateTemp(Boolean Status,Object value,String zone,ecsUI controller) { 	
+    	if(value!= null) {
+    		System.out.println("Set");
+    		int text = (int) value;
+    		controller.setTemp(zone,text);
+    	}
+    }
 //    public static void updateHumid(String zone,ecsUI controller,Boolean status) {   	
 //    }
     
-    public static void sendReceivedStatusSignal() {
-        try {
-            SimpleClient s1 = new SimpleClient("127.0.0.1", 40000, "HumanPresenceCD", "receiveSignal");
-            s1.sustain(1000); // Emitting an order for 1 seconds
-            System.out.println("emitted received order status to orch");
-//            s2.close(); // close when necessary
-            
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
     
     
     

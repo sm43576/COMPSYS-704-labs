@@ -43,7 +43,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label id="temp1" fx:id="temp1" alignment="CENTER" layoutX="129.0" layoutY="101.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black;" text="27C">
+      <Label id="temp1" fx:id="temp1" alignment="CENTER" layoutX="129.0" layoutY="101.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black;" text="32C">
          <font>
             <Font size="32.0" />
          </font>

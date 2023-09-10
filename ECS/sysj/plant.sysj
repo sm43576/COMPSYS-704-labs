@@ -1,14 +1,35 @@
 
 TemperaturePlant(
-		input signal pusherExtend,vacOn,armSource,armDest;
-		input signal enable,refill;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
-		)
+		input signal getTemp1,window1;
+		output signal openedWindow1;
+		output Integer signal getTemp1R;
+	)
 ->
 {
+;
 	{
-		pause;
+		int zone1Temp = 32;
+		while(true) {
+			present(getTemp1){
+				sustain getTemp1R(zone1Temp);
+				System.out.println("Sent Temp");
+			}
+			pause;
+			
+
+//			System.out.println("trigger");
+			pause;
+		}
+	} ||
+	
+	{
+		while(true) {
+			present(window1){
+				System.out.println("windowOpen");
+				pause;
+			}
+			pause;
+		}
 	}
-	pause;
+
 }

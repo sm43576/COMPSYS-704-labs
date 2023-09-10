@@ -35,10 +35,10 @@ public class InfraredSensor extends ClockDomain{
   private int S1561 = 1;
   private int S1556 = 1;
   
-  private int[] ends = new int[13];
-  private int[] tdone = new int[13];
+  private int[] ends = new int[15];
+  private int[] tdone = new int[15];
   
-  public void thread2396(int [] tdone, int [] ends){
+  public void thread2555(int [] tdone, int [] ends){
         switch(S2340){
       case 0 : 
         active[11]=0;
@@ -452,7 +452,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2395(int [] tdone, int [] ends){
+  public void thread2554(int [] tdone, int [] ends){
         switch(S1503){
       case 0 : 
         active[10]=0;
@@ -926,7 +926,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2393(int [] tdone, int [] ends){
+  public void thread2552(int [] tdone, int [] ends){
         S2340=1;
     S1526=0;
     S1510=0;
@@ -965,7 +965,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2392(int [] tdone, int [] ends){
+  public void thread2551(int [] tdone, int [] ends){
         S1503=1;
     S689=0;
     S673=0;
@@ -1019,38 +1019,38 @@ public class InfraredSensor extends ClockDomain{
         case 1 : 
           S2342=2;
           S2342=2;
-          thread2392(tdone,ends);
-          thread2393(tdone,ends);
-          int biggest2394 = 0;
-          if(ends[10]>=biggest2394){
-            biggest2394=ends[10];
+          thread2551(tdone,ends);
+          thread2552(tdone,ends);
+          int biggest2553 = 0;
+          if(ends[10]>=biggest2553){
+            biggest2553=ends[10];
           }
-          if(ends[11]>=biggest2394){
-            biggest2394=ends[11];
+          if(ends[11]>=biggest2553){
+            biggest2553=ends[11];
           }
-          if(biggest2394 == 1){
+          if(biggest2553 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2395(tdone,ends);
-          thread2396(tdone,ends);
-          int biggest2397 = 0;
-          if(ends[10]>=biggest2397){
-            biggest2397=ends[10];
+          thread2554(tdone,ends);
+          thread2555(tdone,ends);
+          int biggest2556 = 0;
+          if(ends[10]>=biggest2556){
+            biggest2556=ends[10];
           }
-          if(ends[11]>=biggest2397){
-            biggest2397=ends[11];
+          if(ends[11]>=biggest2556){
+            biggest2556=ends[11];
           }
-          if(biggest2397 == 1){
+          if(biggest2556 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2397 == 0){
+          if(biggest2556 == 0){
             S2342=0;
             active[9]=0;
             ends[9]=0;
@@ -1063,9 +1063,9 @@ public class InfraredSensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

@@ -57,6 +57,7 @@ public class ecsUI extends Main {
 	        	System.out.println("match");
 	        	String text = Integer.toString(val) + "C";
 	            tempLabel.setText(text);
+	            tempLabel.setStyle("-fx-background-color: yellow; -fx-border-color: black; -fx-border-width: 2px;");;
 	            break; // Break out of the loop once the circle is found and updated
 	        }
 		}
