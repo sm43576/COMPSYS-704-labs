@@ -195,6 +195,7 @@ Plant(
 			abort(pusherExtend){
 				sustain pusherRetracted;
 			}
+			System.out.println("Aborted");
 			abort(!pusherExtend){
 				sustain pusherExtended;
 			}
@@ -232,6 +233,7 @@ Plant(
 	{
 		int capcount = 5;
 		while(true){
+			//System.out.println("CAPCOUNT" + capcount);
 			present(capDec){
 				if(capcount > 0)
 					capcount--;

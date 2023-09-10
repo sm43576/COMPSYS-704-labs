@@ -49,6 +49,8 @@
 			<iSignal Name="armSource"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="armDest"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="magReq"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="pusherExtend"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+
 
 
 			<oSignal Name="pusherRetracted" To="CaploaderCD.pusherRetracted" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />

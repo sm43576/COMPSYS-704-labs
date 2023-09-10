@@ -28,6 +28,7 @@ public class Caploader extends ClockDomain{
   public output_Channel capLoaderStatus_o = new output_Channel();
   private Signal vacOff_19;
   private Boolean request_thread_19;//sysj\controller.sysj line: 229, column: 4
+<<<<<<< Updated upstream
   private int S31067 = 1;
   private int S30743 = 1;
   private int S30727 = 1;
@@ -38,6 +39,119 @@ public class Caploader extends ClockDomain{
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
   
+=======
+  private int S38231 = 1;
+  private int S30743 = 1;
+  private int S30727 = 1;
+  private int S30722 = 1;
+  private int S31362 = 1;
+  private int S30750 = 1;
+  private int S30745 = 1;
+  private int S30787 = 1;
+  private int S30812 = 1;
+  private int S30823 = 1;
+  private int S30822 = 1;
+  private int S30847 = 1;
+  private int S30842 = 1;
+  
+  private int[] ends = new int[22];
+  private int[] tdone = new int[22];
+  
+  public void thread38406(int [] tdone, int [] ends){
+        switch(S30823){
+      case 0 : 
+        active[21]=0;
+        ends[21]=0;
+        tdone[21]=1;
+        break;
+      
+      case 1 : 
+        switch(S30822){
+          case 0 : 
+            if(WPgripped.getprestatus()){//sysj\controller.sysj line: 269, column: 13
+              S30822=1;
+              armDest.setPresent();//sysj\controller.sysj line: 271, column: 8
+              currsigs.addElement(armDest);
+              active[21]=1;
+              ends[21]=1;
+              tdone[21]=1;
+            }
+            else {
+              active[21]=1;
+              ends[21]=1;
+              tdone[21]=1;
+            }
+            break;
+          
+          case 1 : 
+            if(armAtDest.getprestatus()){//sysj\controller.sysj line: 270, column: 14
+              vacOff_19.setPresent();//sysj\controller.sysj line: 273, column: 7
+              currsigs.addElement(vacOff_19);
+              S30823=0;
+              active[21]=0;
+              ends[21]=0;
+              tdone[21]=1;
+            }
+            else {
+              armDest.setPresent();//sysj\controller.sysj line: 271, column: 8
+              currsigs.addElement(armDest);
+              active[21]=1;
+              ends[21]=1;
+              tdone[21]=1;
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread38405(int [] tdone, int [] ends){
+        switch(S30812){
+      case 0 : 
+        active[20]=0;
+        ends[20]=0;
+        tdone[20]=1;
+        break;
+      
+      case 1 : 
+        if(vacOff_19.getprestatus()){//sysj\controller.sysj line: 263, column: 13
+          S30812=0;
+          active[20]=0;
+          ends[20]=0;
+          tdone[20]=1;
+        }
+        else {
+          vacOn.setPresent();//sysj\controller.sysj line: 264, column: 8
+          currsigs.addElement(vacOn);
+          active[20]=1;
+          ends[20]=1;
+          tdone[20]=1;
+        }
+        break;
+      
+    }
+  }
+
+  public void thread38403(int [] tdone, int [] ends){
+        S30823=1;
+    S30822=0;
+    active[21]=1;
+    ends[21]=1;
+    tdone[21]=1;
+  }
+
+  public void thread38402(int [] tdone, int [] ends){
+        S30812=1;
+    vacOn.setPresent();//sysj\controller.sysj line: 264, column: 8
+    currsigs.addElement(vacOn);
+    active[20]=1;
+    ends[20]=1;
+    tdone[20]=1;
+  }
+
+>>>>>>> Stashed changes
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -45,6 +159,7 @@ public class Caploader extends ClockDomain{
     }
     
     RUN: while(true){
+<<<<<<< Updated upstream
       switch(S31067){
         case 0 : 
           S31067=0;
@@ -53,6 +168,16 @@ public class Caploader extends ClockDomain{
         case 1 : 
           S31067=2;
           S31067=2;
+=======
+      switch(S38231){
+        case 0 : 
+          S38231=0;
+          break RUN;
+        
+        case 1 : 
+          S38231=2;
+          S38231=2;
+>>>>>>> Stashed changes
           vacOff_19.setClear();//sysj\controller.sysj line: 226, column: 2
           S30743=0;
           S30727=0;
@@ -75,6 +200,7 @@ public class Caploader extends ClockDomain{
                 request_thread_19 = (capLoaderReq_in.getVal() == null ? null : ((Boolean)capLoaderReq_in.getVal()));//sysj\controller.sysj line: 229, column: 4
                 S30743=1;
                 if(request_thread_19){//sysj\controller.sysj line: 230, column: 4
+<<<<<<< Updated upstream
                   S30750=0;
                   if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
                     capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 231, column: 5
@@ -93,9 +219,57 @@ public class Caploader extends ClockDomain{
                         ends[19]=2;
                         ;//sysj\controller.sysj line: 231, column: 5
                         S30743=2;
-                        active[19]=1;
-                        ends[19]=1;
-                        break RUN;
+=======
+                  S31362=0;
+                  if(!bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 233, column: 14
+                    S30750=0;
+                    if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                      capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                      S30750=1;
+                      active[19]=1;
+                      ends[19]=1;
+                      break RUN;
+                    }
+                    else {
+                      S30745=0;
+                      if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                        capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                        S30745=1;
+                        if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                          capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                          ends[19]=2;
+                          ;//sysj\controller.sysj line: 234, column: 6
+                          S31362=1;
+                          if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                            System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                            S30787=0;
+                            if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                              System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                              magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                              currsigs.addElement(magReq);
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                            else {
+                              S30787=1;
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          }
+                          else {
+                            S30743=2;
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                        }
+                        else {
+                          active[19]=1;
+                          ends[19]=1;
+                          break RUN;
+                        }
                       }
                       else {
                         active[19]=1;
@@ -103,7 +277,36 @@ public class Caploader extends ClockDomain{
                         break RUN;
                       }
                     }
+                  }
+                  else {
+                    S31362=1;
+                    if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                      System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                      S30787=0;
+                      if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                        System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                        magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                        currsigs.addElement(magReq);
+>>>>>>> Stashed changes
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+<<<<<<< Updated upstream
+=======
+                        S30787=1;
+>>>>>>> Stashed changes
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                    }
                     else {
+<<<<<<< Updated upstream
+=======
+                      S30743=2;
+>>>>>>> Stashed changes
                       active[19]=1;
                       ends[19]=1;
                       break RUN;
@@ -156,6 +359,7 @@ public class Caploader extends ClockDomain{
                             request_thread_19 = (capLoaderReq_in.getVal() == null ? null : ((Boolean)capLoaderReq_in.getVal()));//sysj\controller.sysj line: 229, column: 4
                             S30743=1;
                             if(request_thread_19){//sysj\controller.sysj line: 230, column: 4
+<<<<<<< Updated upstream
                               S30750=0;
                               if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
                                 capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 231, column: 5
@@ -174,9 +378,57 @@ public class Caploader extends ClockDomain{
                                     ends[19]=2;
                                     ;//sysj\controller.sysj line: 231, column: 5
                                     S30743=2;
-                                    active[19]=1;
-                                    ends[19]=1;
-                                    break RUN;
+=======
+                              S31362=0;
+                              if(!bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 233, column: 14
+                                S30750=0;
+                                if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                                  capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                  S30750=1;
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  S30745=0;
+                                  if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                    capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                                    S30745=1;
+                                    if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                      capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                      ends[19]=2;
+                                      ;//sysj\controller.sysj line: 234, column: 6
+                                      S31362=1;
+                                      if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                        System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                        S30787=0;
+                                        if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                          System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                          magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                          currsigs.addElement(magReq);
+                                          active[19]=1;
+                                          ends[19]=1;
+                                          break RUN;
+                                        }
+                                        else {
+                                          S30787=1;
+                                          active[19]=1;
+                                          ends[19]=1;
+                                          break RUN;
+                                        }
+                                      }
+                                      else {
+                                        S30743=2;
+                                        active[19]=1;
+                                        ends[19]=1;
+                                        break RUN;
+                                      }
+                                    }
+                                    else {
+                                      active[19]=1;
+                                      ends[19]=1;
+                                      break RUN;
+                                    }
                                   }
                                   else {
                                     active[19]=1;
@@ -184,7 +436,36 @@ public class Caploader extends ClockDomain{
                                     break RUN;
                                   }
                                 }
+                              }
+                              else {
+                                S31362=1;
+                                if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                  System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                  S30787=0;
+                                  if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                    System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                    magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                    currsigs.addElement(magReq);
+>>>>>>> Stashed changes
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                  else {
+<<<<<<< Updated upstream
+=======
+                                    S30787=1;
+>>>>>>> Stashed changes
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                }
                                 else {
+<<<<<<< Updated upstream
+=======
+                                  S30743=2;
+>>>>>>> Stashed changes
                                   active[19]=1;
                                   ends[19]=1;
                                   break RUN;
@@ -218,6 +499,7 @@ public class Caploader extends ClockDomain{
                           request_thread_19 = (capLoaderReq_in.getVal() == null ? null : ((Boolean)capLoaderReq_in.getVal()));//sysj\controller.sysj line: 229, column: 4
                           S30743=1;
                           if(request_thread_19){//sysj\controller.sysj line: 230, column: 4
+<<<<<<< Updated upstream
                             S30750=0;
                             if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
                               capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 231, column: 5
@@ -236,9 +518,57 @@ public class Caploader extends ClockDomain{
                                   ends[19]=2;
                                   ;//sysj\controller.sysj line: 231, column: 5
                                   S30743=2;
-                                  active[19]=1;
-                                  ends[19]=1;
-                                  break RUN;
+=======
+                            S31362=0;
+                            if(!bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 233, column: 14
+                              S30750=0;
+                              if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                                capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                S30750=1;
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                              else {
+                                S30745=0;
+                                if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                  capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                                  S30745=1;
+                                  if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                    capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                    ends[19]=2;
+                                    ;//sysj\controller.sysj line: 234, column: 6
+                                    S31362=1;
+                                    if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                      System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                      S30787=0;
+                                      if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                        System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                        magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                        currsigs.addElement(magReq);
+                                        active[19]=1;
+                                        ends[19]=1;
+                                        break RUN;
+                                      }
+                                      else {
+                                        S30787=1;
+                                        active[19]=1;
+                                        ends[19]=1;
+                                        break RUN;
+                                      }
+                                    }
+                                    else {
+                                      S30743=2;
+                                      active[19]=1;
+                                      ends[19]=1;
+                                      break RUN;
+                                    }
+                                  }
+                                  else {
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
                                 }
                                 else {
                                   active[19]=1;
@@ -246,7 +576,36 @@ public class Caploader extends ClockDomain{
                                   break RUN;
                                 }
                               }
+                            }
+                            else {
+                              S31362=1;
+                              if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                S30787=0;
+                                if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                  System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                  magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                  currsigs.addElement(magReq);
+>>>>>>> Stashed changes
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                                else {
+<<<<<<< Updated upstream
+=======
+                                  S30787=1;
+>>>>>>> Stashed changes
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              }
                               else {
+<<<<<<< Updated upstream
+=======
+                                S30743=2;
+>>>>>>> Stashed changes
                                 active[19]=1;
                                 ends[19]=1;
                                 break RUN;
@@ -292,6 +651,7 @@ public class Caploader extends ClockDomain{
                         request_thread_19 = (capLoaderReq_in.getVal() == null ? null : ((Boolean)capLoaderReq_in.getVal()));//sysj\controller.sysj line: 229, column: 4
                         S30743=1;
                         if(request_thread_19){//sysj\controller.sysj line: 230, column: 4
+<<<<<<< Updated upstream
                           S30750=0;
                           if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
                             capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 231, column: 5
@@ -310,9 +670,57 @@ public class Caploader extends ClockDomain{
                                 ends[19]=2;
                                 ;//sysj\controller.sysj line: 231, column: 5
                                 S30743=2;
-                                active[19]=1;
-                                ends[19]=1;
-                                break RUN;
+=======
+                          S31362=0;
+                          if(!bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 233, column: 14
+                            S30750=0;
+                            if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                              capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                              S30750=1;
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                            else {
+                              S30745=0;
+                              if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                                S30745=1;
+                                if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                  capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                  ends[19]=2;
+                                  ;//sysj\controller.sysj line: 234, column: 6
+                                  S31362=1;
+                                  if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                    System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                    S30787=0;
+                                    if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                      System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                      magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                      currsigs.addElement(magReq);
+                                      active[19]=1;
+                                      ends[19]=1;
+                                      break RUN;
+                                    }
+                                    else {
+                                      S30787=1;
+                                      active[19]=1;
+                                      ends[19]=1;
+                                      break RUN;
+                                    }
+                                  }
+                                  else {
+                                    S30743=2;
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                }
+                                else {
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
                               }
                               else {
                                 active[19]=1;
@@ -320,7 +728,36 @@ public class Caploader extends ClockDomain{
                                 break RUN;
                               }
                             }
+                          }
+                          else {
+                            S31362=1;
+                            if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                              System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                              S30787=0;
+                              if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                currsigs.addElement(magReq);
+>>>>>>> Stashed changes
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                              else {
+<<<<<<< Updated upstream
+=======
+                                S30787=1;
+>>>>>>> Stashed changes
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
                             else {
+<<<<<<< Updated upstream
+=======
+                              S30743=2;
+>>>>>>> Stashed changes
                               active[19]=1;
                               ends[19]=1;
                               break RUN;
@@ -351,6 +788,7 @@ public class Caploader extends ClockDomain{
               break;
             
             case 1 : 
+<<<<<<< Updated upstream
               switch(S30750){
                 case 0 : 
                   if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
@@ -382,10 +820,237 @@ public class Caploader extends ClockDomain{
                           }
                         }
                         else {
+=======
+              switch(S31362){
+                case 0 : 
+                  switch(S30750){
+                    case 0 : 
+                      if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                        capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                        S30750=1;
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+                        switch(S30745){
+                          case 0 : 
+                            if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                              capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                              S30745=1;
+                              if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                                capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                                ends[19]=2;
+                                ;//sysj\controller.sysj line: 234, column: 6
+                                S31362=1;
+                                if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                  System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                  S30787=0;
+                                  if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                    System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                    magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                    currsigs.addElement(magReq);
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                  else {
+                                    S30787=1;
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                }
+                                else {
+                                  S30743=2;
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              }
+                              else {
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          
+                          case 1 : 
+                            if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                              capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                              ends[19]=2;
+                              ;//sysj\controller.sysj line: 234, column: 6
+                              S31362=1;
+                              if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                S30787=0;
+                                if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                  System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                  magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                  currsigs.addElement(magReq);
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  S30787=1;
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              }
+                              else {
+                                S30743=2;
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          
+                        }
+                      }
+                      break;
+                    
+                    case 1 : 
+                      S30750=1;
+                      S30750=0;
+                      if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                        capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                        S30750=1;
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+                        S30745=0;
+                        if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                          capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                          S30745=1;
+                          if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                            capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                            ends[19]=2;
+                            ;//sysj\controller.sysj line: 234, column: 6
+                            S31362=1;
+                            if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                              System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                              S30787=0;
+                              if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                currsigs.addElement(magReq);
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                              else {
+                                S30787=1;
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              S30743=2;
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          }
+                          else {
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                        }
+                        else {
                           active[19]=1;
                           ends[19]=1;
                           break RUN;
                         }
+                      }
+                    
+                  }
+                  break;
+                
+                case 1 : 
+                  switch(S30787){
+                    case 0 : 
+                      if(!magEmpty.getprestatus()){//sysj\controller.sysj line: 245, column: 13
+                        S30787=1;
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+                        magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                        currsigs.addElement(magReq);
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                    
+                    case 1 : 
+                      if(pusherRetracted.getprestatus()){//sysj\controller.sysj line: 250, column: 12
+                        S30787=2;
+                        pusherExtend.setPresent();//sysj\controller.sysj line: 252, column: 7
+                        currsigs.addElement(pusherExtend);
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                    
+                    case 2 : 
+                      if(pusherExtended.getprestatus()){//sysj\controller.sysj line: 251, column: 12
+                        System.out.println("pusher ok");//sysj\controller.sysj line: 255, column: 6
+                        S30787=3;
+                        armSource.setPresent();//sysj\controller.sysj line: 259, column: 7
+                        currsigs.addElement(armSource);
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      else {
+                        pusherExtend.setPresent();//sysj\controller.sysj line: 252, column: 7
+                        currsigs.addElement(pusherExtend);
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                    
+                    case 3 : 
+                      if(armAtSource.getprestatus()){//sysj\controller.sysj line: 258, column: 12
+                        S30787=4;
+                        thread38402(tdone,ends);
+                        thread38403(tdone,ends);
+                        int biggest38404 = 0;
+                        if(ends[20]>=biggest38404){
+                          biggest38404=ends[20];
+                        }
+                        if(ends[21]>=biggest38404){
+                          biggest38404=ends[21];
+                        }
+                        if(biggest38404 == 1){
+>>>>>>> Stashed changes
+                          active[19]=1;
+                          ends[19]=1;
+                          break RUN;
+                        }
+<<<<<<< Updated upstream
                       
                       case 1 : 
                         if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 231, column: 5
@@ -393,17 +1058,177 @@ public class Caploader extends ClockDomain{
                           ends[19]=2;
                           ;//sysj\controller.sysj line: 231, column: 5
                           S30743=2;
+=======
+                      }
+                      else {
+                        armSource.setPresent();//sysj\controller.sysj line: 259, column: 7
+                        currsigs.addElement(armSource);
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                    
+                    case 4 : 
+                      thread38405(tdone,ends);
+                      thread38406(tdone,ends);
+                      int biggest38407 = 0;
+                      if(ends[20]>=biggest38407){
+                        biggest38407=ends[20];
+                      }
+                      if(ends[21]>=biggest38407){
+                        biggest38407=ends[21];
+                      }
+                      if(biggest38407 == 1){
+                        active[19]=1;
+                        ends[19]=1;
+                        break RUN;
+                      }
+                      //FINXME code
+                      if(biggest38407 == 0){
+                        S30787=5;
+                        S30847=0;
+                        if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 275, column: 6
+                          capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                          S30847=1;
+>>>>>>> Stashed changes
                           active[19]=1;
                           ends[19]=1;
                           break RUN;
                         }
                         else {
+<<<<<<< Updated upstream
                           active[19]=1;
                           ends[19]=1;
                           break RUN;
                         }
                       
                     }
+=======
+                          S30842=0;
+                          if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                            capLoaderStatus_o.setVal("done");//sysj\controller.sysj line: 275, column: 6
+                            S30842=1;
+                            if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                              capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                              ends[19]=2;
+                              ;//sysj\controller.sysj line: 275, column: 6
+                              S30743=2;
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                            else {
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          }
+                          else {
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                        }
+                      }
+                    
+                    case 5 : 
+                      switch(S30847){
+                        case 0 : 
+                          if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 275, column: 6
+                            capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                            S30847=1;
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                          else {
+                            switch(S30842){
+                              case 0 : 
+                                if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                                  capLoaderStatus_o.setVal("done");//sysj\controller.sysj line: 275, column: 6
+                                  S30842=1;
+                                  if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                                    capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                                    ends[19]=2;
+                                    ;//sysj\controller.sysj line: 275, column: 6
+                                    S30743=2;
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                  else {
+                                    active[19]=1;
+                                    ends[19]=1;
+                                    break RUN;
+                                  }
+                                }
+                                else {
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              
+                              case 1 : 
+                                if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                                  capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                                  ends[19]=2;
+                                  ;//sysj\controller.sysj line: 275, column: 6
+                                  S30743=2;
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              
+                            }
+                          }
+                          break;
+                        
+                        case 1 : 
+                          S30847=1;
+                          S30847=0;
+                          if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 275, column: 6
+                            capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                            S30847=1;
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                          else {
+                            S30842=0;
+                            if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                              capLoaderStatus_o.setVal("done");//sysj\controller.sysj line: 275, column: 6
+                              S30842=1;
+                              if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 275, column: 6
+                                capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 275, column: 6
+                                ends[19]=2;
+                                ;//sysj\controller.sysj line: 275, column: 6
+                                S30743=2;
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                              else {
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
+                          }
+                        
+                      }
+                      break;
+                    
+>>>>>>> Stashed changes
                   }
                   break;
                 
@@ -470,6 +1295,7 @@ public class Caploader extends ClockDomain{
                     request_thread_19 = (capLoaderReq_in.getVal() == null ? null : ((Boolean)capLoaderReq_in.getVal()));//sysj\controller.sysj line: 229, column: 4
                     S30743=1;
                     if(request_thread_19){//sysj\controller.sysj line: 230, column: 4
+<<<<<<< Updated upstream
                       S30750=0;
                       if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 231, column: 5
                         capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 231, column: 5
@@ -488,9 +1314,57 @@ public class Caploader extends ClockDomain{
                             ends[19]=2;
                             ;//sysj\controller.sysj line: 231, column: 5
                             S30743=2;
-                            active[19]=1;
-                            ends[19]=1;
-                            break RUN;
+=======
+                      S31362=0;
+                      if(!bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 233, column: 14
+                        S30750=0;
+                        if(!capLoaderStatus_o.isPartnerPresent() || capLoaderStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 234, column: 6
+                          capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                          S30750=1;
+                          active[19]=1;
+                          ends[19]=1;
+                          break RUN;
+                        }
+                        else {
+                          S30745=0;
+                          if(capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                            capLoaderStatus_o.setVal("idle");//sysj\controller.sysj line: 234, column: 6
+                            S30745=1;
+                            if(!capLoaderStatus_o.isACK()){//sysj\controller.sysj line: 234, column: 6
+                              capLoaderStatus_o.setREQ(false);//sysj\controller.sysj line: 234, column: 6
+                              ends[19]=2;
+                              ;//sysj\controller.sysj line: 234, column: 6
+                              S31362=1;
+                              if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                                System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                                S30787=0;
+                                if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                                  System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                                  magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                                  currsigs.addElement(magReq);
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                                else {
+                                  S30787=1;
+                                  active[19]=1;
+                                  ends[19]=1;
+                                  break RUN;
+                                }
+                              }
+                              else {
+                                S30743=2;
+                                active[19]=1;
+                                ends[19]=1;
+                                break RUN;
+                              }
+                            }
+                            else {
+                              active[19]=1;
+                              ends[19]=1;
+                              break RUN;
+                            }
                           }
                           else {
                             active[19]=1;
@@ -498,7 +1372,36 @@ public class Caploader extends ClockDomain{
                             break RUN;
                           }
                         }
+                      }
+                      else {
+                        S31362=1;
+                        if(bottleAtPos3.getprestatus()){//sysj\controller.sysj line: 238, column: 14
+                          System.out.println("Caploader Controller - bottle is at pos 3");//sysj\controller.sysj line: 239, column: 6
+                          S30787=0;
+                          if(magEmpty.getprestatus()){//sysj\controller.sysj line: 243, column: 14
+                            System.out.println("Mag empty");//sysj\controller.sysj line: 244, column: 7
+                            magReq.setPresent();//sysj\controller.sysj line: 246, column: 8
+                            currsigs.addElement(magReq);
+>>>>>>> Stashed changes
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                          else {
+<<<<<<< Updated upstream
+=======
+                            S30787=1;
+>>>>>>> Stashed changes
+                            active[19]=1;
+                            ends[19]=1;
+                            break RUN;
+                          }
+                        }
                         else {
+<<<<<<< Updated upstream
+=======
+                          S30743=2;
+>>>>>>> Stashed changes
                           active[19]=1;
                           ends[19]=1;
                           break RUN;
@@ -532,9 +1435,15 @@ public class Caploader extends ClockDomain{
   }
 
   public void init(){
+<<<<<<< Updated upstream
     char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+=======
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+>>>>>>> Stashed changes
     paused = paused1;
     active = active1;
     suspended = suspended1;

@@ -23,7 +23,7 @@ Conveyor(
 			}	
 			
 			// abort when bottle is at position 1, otherwise turn on motor
-			present(!bottleAtPos1 && !bottleAtPos5){
+			present(!bottleAtPos1 && !bottleAtPos5 && !bottleLeftPos5){
 				System.out.println("ConveyorController: No bottle at pos 1 or pos 5."); 
 				abort(bottleAtPos1) {
 					System.out.println("ConveyorController: Motor is on"); 
@@ -228,52 +228,52 @@ Caploader(
 			receive capLoaderReq; // BLOCKED - Hangs here coz there is no loader request at the beginning
 			Boolean request = #capLoaderReq;
 			if(request) {
-				send capLoaderStatus("done");
+				//send capLoaderStatus("done");
 
-//				present (!bottleAtPos3) {
-//					send capLoaderStatus("idle");
-//					
-//				}
-//				
-//				present (bottleAtPos3){
-//					System.out.println("Caploader Controller - bottle is at pos 3");
-//					
-//					//Check if magazine empty
-//					
-//					present(magEmpty) {
-//						abort(!magEmpty){
-//							sustain magReq;
-//						}
-//					}
-//
-//					//Pusher extend
-//					present(pusherRetracted) { // every push tick
-//						abort(pusherExtended) { //plant emits when its at X
-//							sustain pusherExtend; // otherwise sustain
-//						}
-//					}
-//					pause;
-//					
-//					//Move arm to object to pickup
-//					abort(armAtSource) {
-//						sustain armSource;
-//					}
-//				
-//					{
-//						abort(vacOff) {
-//							sustain vacOn;
-//						}	
-//					}
-//					||
-//					{
-//						await(WPgripped);
-//						abort (armAtDest) {
-//							sustain armDest;
-//						}
-//						emit vacOff;
-//					}
-//					send capLoaderStatus("done");
-//				}
+				present (!bottleAtPos3) {
+					send capLoaderStatus("idle");
+					
+				}
+				
+				present (bottleAtPos3){
+					System.out.println("Caploader Controller - bottle is at pos 3");
+					
+					//Check if magazine empty
+					
+					present(magEmpty) {
+						System.out.println("Mag empty");
+						abort(!magEmpty){
+							sustain magReq;
+						}
+					}
+					//Pusher extend
+					await(pusherRetracted);
+					abort(pusherExtended) { 
+						sustain pusherExtend; 
+					}
+					
+					System.out.println("pusher ok");
+					
+					//Move arm to object to pickup
+					abort(armAtSource) {
+						sustain armSource;
+					}
+				
+					{
+						abort(vacOff) {
+							sustain vacOn;
+						}	
+					}
+					||
+					{
+						await(WPgripped);
+						abort (armAtDest) {
+							sustain armDest;
+						}
+						emit vacOff;
+					}
+					send capLoaderStatus("done");
+				}
 			}
 			pause;
 	}
