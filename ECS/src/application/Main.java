@@ -5,11 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
 import com.systemj.netapi.SimpleClient;
 import com.systemj.netapi.SimpleServer;
 
 public class Main extends Application{
-
+	static ecsUI controller;
 
     
 	public static void main(String[] args){
@@ -21,7 +24,7 @@ public class Main extends Application{
     	try {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("./ECS.fxml"));
         Parent root = loader.load();
-        ecsUI controller = loader.getController();
+        controller = loader.getController();
         
         primaryStage.setTitle("ECS Window");
         primaryStage.setScene(new Scene(root,850,520));
@@ -38,9 +41,8 @@ public class Main extends Application{
         
         // adds light
         //zone1circle
-//        humanIndicator.addConsumer("ecsUI", "zone1Light", (status, value) -> updateLight("zone1circle",controller,status, value));
-//        humanIndicator.addConsumer("ecsUI", "zone2Light", (status, value) -> updateLight("zone2circle",controller, value));
-        humanIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight("zone3circle",controller,status,value));
+        humanIndicator.addConsumer("ecsUI", "zone1Light", (status, value) -> updateLight(status,value,"zone1circle",controller));
+        humanIndicator.addConsumer("ecsUI", "zone3Light", (status,value) -> updateLight(status,value,"zone3circle",controller));
 //        
 //        tempIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight("zone1circle", status));
 //        humidIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight(zone3circle.EMERGENCYOFFUI, status));
@@ -56,18 +58,21 @@ public class Main extends Application{
     	}
     }
     
-    public static void updateLight(String zone,ecsUI controller,Boolean Status,Object value) { 
-    	//System.out.println("this is" + Status.toString() + value.toString());
-
-    	String booleanString = Status ? "true" : "false";
-    	System.out.println(booleanString);
-    	if (true) {
-    		System.out.println("on");
-    		controller.setZoneCircle(zone,0); // 0 means red
-    		
-    	}else {
-    		System.out.println("off");
-    		controller.setZoneCircle(zone,1); //1 means green
+    public static void updateLight(Boolean Status,Object value,String zone,ecsUI controller) { 
+    	System.out.println(Status);
+    	System.out.println(value);
+    	
+    	if(value!= null) {
+	    	String text = (String) value;
+	    	if (text.equals("detected")) {
+	    		System.out.println("on");
+	    		controller.setZoneCircle(zone,0); // 0 means red
+		  	}else if(text.equals("notdetected")) {
+	   			System.out.println("off");
+	    		controller.setZoneCircle(zone,1); //1 means green
+		   	}
+	    //	sendReceivedStatusSignal();
+	    	System.out.println("end");
     	}
     }
     
@@ -78,6 +83,17 @@ public class Main extends Application{
 //    public static void updateHumid(String zone,ecsUI controller,Boolean status) {   	
 //    }
     
+    public static void sendReceivedStatusSignal() {
+        try {
+            SimpleClient s1 = new SimpleClient("127.0.0.1", 40000, "HumanPresenceCD", "receiveSignal");
+            s1.sustain(1000); // Emitting an order for 1 seconds
+            System.out.println("emitted received order status to orch");
+//            s2.close(); // close when necessary
+            
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     
     

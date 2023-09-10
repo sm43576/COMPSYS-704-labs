@@ -20,13 +20,13 @@
          <font>
             <Font size="32.0" />
          </font></Label>
-      <Circle id="zone1circle" fx:id="zone1circle" fill="DODGERBLUE" layoutX="117.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone2circle" fx:id="zone2circle" fill="DODGERBLUE" layoutX="329.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone3circle" fx:id="zone3circle" fill="DODGERBLUE" layoutX="533.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone7circle" fx:id="zone7circle" fill="DODGERBLUE" layoutX="741.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone4circle" fx:id="zone4circle" fill="DODGERBLUE" layoutX="148.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone5circle" fx:id="zone5circle" fill="DODGERBLUE" layoutX="431.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
-      <Circle id="zone6circle" fx:id="zone6circle" fill="DODGERBLUE" layoutX="717.0" layoutY="329.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: lightgreen;" />
+      <Circle id="zone1circle" fx:id="zone1circle" fill="DODGERBLUE" layoutX="123.0" layoutY="32.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone2circle" fx:id="zone2circle" fill="DODGERBLUE" layoutX="335.0" layoutY="32.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone3circle" fx:id="zone3circle" fill="DODGERBLUE" layoutX="539.0" layoutY="32.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone7circle" fx:id="zone7circle" fill="DODGERBLUE" layoutX="747.0" layoutY="32.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone4circle" fx:id="zone4circle" fill="DODGERBLUE" layoutX="141.0" layoutY="329.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone5circle" fx:id="zone5circle" fill="DODGERBLUE" layoutX="431.0" layoutY="329.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
+      <Circle id="zone6circle" fx:id="zone6circle" fill="DODGERBLUE" layoutX="723.0" layoutY="329.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: red;" />
       <ProgressIndicator id="humid6" fx:id="humid6" layoutX="747.0" layoutY="425.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
       <ProgressIndicator id="humid7" fx:id="humid7" layoutX="747.0" layoutY="171.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />
       <ProgressIndicator id="humid5" fx:id="humid5" layoutX="465.0" layoutY="418.0" prefHeight="76.0" prefWidth="59.0" progress="0.0" style="-fx-border-color: black;" />

@@ -40,7 +40,7 @@ public class ecsUI extends Main {
 	        	System.out.println("match");
 	            if (val == 1) {
 	                circle.setFill(Color.RED);
-	            } else {
+	            } else if(val == 0){
 	                circle.setFill(Color.LIGHTGREEN);
 	            }
 	             break; // Break out of the loop once the circle is found and updated
