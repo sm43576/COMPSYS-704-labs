@@ -50,17 +50,10 @@ public class Capper extends ClockDomain{
   private int S22552 = 1;
   private int S22547 = 1;
   
-<<<<<<< Updated upstream
-  private int[] ends = new int[20];
-  private int[] tdone = new int[20];
-  
-  public void thread31236(int [] tdone, int [] ends){
-=======
   private int[] ends = new int[22];
   private int[] tdone = new int[22];
   
   public void thread38400(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -68,43 +61,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31234(int [] tdone, int [] ends){
-=======
   public void thread38398(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31233(int [] tdone, int [] ends){
-=======
   public void thread38397(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31232(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31233(tdone,ends);
-    thread31234(tdone,ends);
-    int biggest31235 = 0;
-    if(ends[16]>=biggest31235){
-      biggest31235=ends[16];
-    }
-    if(ends[17]>=biggest31235){
-      biggest31235=ends[17];
-    }
-    if(biggest31235 == 1){
-=======
   public void thread38396(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -118,18 +88,13 @@ public class Capper extends ClockDomain{
       biggest38399=ends[17];
     }
     if(biggest38399 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31231(int [] tdone, int [] ends){
-=======
   public void thread38395(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -138,11 +103,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31230(int [] tdone, int [] ends){
-=======
   public void thread38394(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -151,11 +112,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31228(int [] tdone, int [] ends){
-=======
   public void thread38392(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -163,43 +120,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31226(int [] tdone, int [] ends){
-=======
   public void thread38390(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31225(int [] tdone, int [] ends){
-=======
   public void thread38389(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31224(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31225(tdone,ends);
-    thread31226(tdone,ends);
-    int biggest31227 = 0;
-    if(ends[16]>=biggest31227){
-      biggest31227=ends[16];
-    }
-    if(ends[17]>=biggest31227){
-      biggest31227=ends[17];
-    }
-    if(biggest31227 == 1){
-=======
   public void thread38388(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -213,18 +147,13 @@ public class Capper extends ClockDomain{
       biggest38391=ends[17];
     }
     if(biggest38391 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31223(int [] tdone, int [] ends){
-=======
   public void thread38387(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -233,11 +162,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31222(int [] tdone, int [] ends){
-=======
   public void thread38386(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -246,11 +171,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31220(int [] tdone, int [] ends){
-=======
   public void thread38384(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22503){
       case 0 : 
         active[18]=0;
@@ -306,11 +227,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31218(int [] tdone, int [] ends){
-=======
   public void thread38382(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22480){
       case 0 : 
         active[17]=0;
@@ -335,11 +252,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31217(int [] tdone, int [] ends){
-=======
   public void thread38381(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22477){
       case 0 : 
         active[16]=0;
@@ -364,11 +277,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31216(int [] tdone, int [] ends){
-=======
   public void thread38380(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22490){
       case 0 : 
         active[15]=0;
@@ -379,18 +288,6 @@ public class Capper extends ClockDomain{
       case 1 : 
         switch(S22489){
           case 0 : 
-<<<<<<< Updated upstream
-            thread31217(tdone,ends);
-            thread31218(tdone,ends);
-            int biggest31219 = 0;
-            if(ends[16]>=biggest31219){
-              biggest31219=ends[16];
-            }
-            if(ends[17]>=biggest31219){
-              biggest31219=ends[17];
-            }
-            if(biggest31219 == 1){
-=======
             thread38381(tdone,ends);
             thread38382(tdone,ends);
             int biggest38383 = 0;
@@ -401,17 +298,12 @@ public class Capper extends ClockDomain{
               biggest38383=ends[17];
             }
             if(biggest38383 == 1){
->>>>>>> Stashed changes
               active[15]=1;
               ends[15]=1;
               tdone[15]=1;
             }
             //FINXME code
-<<<<<<< Updated upstream
-            if(biggest31219 == 0){
-=======
             if(biggest38383 == 0){
->>>>>>> Stashed changes
               S22489=1;
               capGripperPos5Extend.setPresent();//sysj\controller.sysj line: 191, column: 7
               currsigs.addElement(capGripperPos5Extend);
@@ -443,11 +335,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31215(int [] tdone, int [] ends){
-=======
   public void thread38379(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22474){
       case 0 : 
         active[14]=0;
@@ -474,11 +362,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31214(int [] tdone, int [] ends){
-=======
   public void thread38378(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         switch(S22468){
       case 0 : 
         active[13]=0;
@@ -505,11 +389,7 @@ public class Capper extends ClockDomain{
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31212(int [] tdone, int [] ends){
-=======
   public void thread38376(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -517,43 +397,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31210(int [] tdone, int [] ends){
-=======
   public void thread38374(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31209(int [] tdone, int [] ends){
-=======
   public void thread38373(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31208(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31209(tdone,ends);
-    thread31210(tdone,ends);
-    int biggest31211 = 0;
-    if(ends[16]>=biggest31211){
-      biggest31211=ends[16];
-    }
-    if(ends[17]>=biggest31211){
-      biggest31211=ends[17];
-    }
-    if(biggest31211 == 1){
-=======
   public void thread38372(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -567,18 +424,13 @@ public class Capper extends ClockDomain{
       biggest38375=ends[17];
     }
     if(biggest38375 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31207(int [] tdone, int [] ends){
-=======
   public void thread38371(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -587,11 +439,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31206(int [] tdone, int [] ends){
-=======
   public void thread38370(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -600,11 +448,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31204(int [] tdone, int [] ends){
-=======
   public void thread38368(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -612,43 +456,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31202(int [] tdone, int [] ends){
-=======
   public void thread38366(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31201(int [] tdone, int [] ends){
-=======
   public void thread38365(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31200(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31201(tdone,ends);
-    thread31202(tdone,ends);
-    int biggest31203 = 0;
-    if(ends[16]>=biggest31203){
-      biggest31203=ends[16];
-    }
-    if(ends[17]>=biggest31203){
-      biggest31203=ends[17];
-    }
-    if(biggest31203 == 1){
-=======
   public void thread38364(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -662,18 +483,13 @@ public class Capper extends ClockDomain{
       biggest38367=ends[17];
     }
     if(biggest38367 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31199(int [] tdone, int [] ends){
-=======
   public void thread38363(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -682,11 +498,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31198(int [] tdone, int [] ends){
-=======
   public void thread38362(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -695,11 +507,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31196(int [] tdone, int [] ends){
-=======
   public void thread38360(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -707,43 +515,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31194(int [] tdone, int [] ends){
-=======
   public void thread38358(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31193(int [] tdone, int [] ends){
-=======
   public void thread38357(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31192(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31193(tdone,ends);
-    thread31194(tdone,ends);
-    int biggest31195 = 0;
-    if(ends[16]>=biggest31195){
-      biggest31195=ends[16];
-    }
-    if(ends[17]>=biggest31195){
-      biggest31195=ends[17];
-    }
-    if(biggest31195 == 1){
-=======
   public void thread38356(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -757,18 +542,13 @@ public class Capper extends ClockDomain{
       biggest38359=ends[17];
     }
     if(biggest38359 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31191(int [] tdone, int [] ends){
-=======
   public void thread38355(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -777,11 +557,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31190(int [] tdone, int [] ends){
-=======
   public void thread38354(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -790,11 +566,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31188(int [] tdone, int [] ends){
-=======
   public void thread38352(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -802,43 +574,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31186(int [] tdone, int [] ends){
-=======
   public void thread38350(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31185(int [] tdone, int [] ends){
-=======
   public void thread38349(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31184(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31185(tdone,ends);
-    thread31186(tdone,ends);
-    int biggest31187 = 0;
-    if(ends[16]>=biggest31187){
-      biggest31187=ends[16];
-    }
-    if(ends[17]>=biggest31187){
-      biggest31187=ends[17];
-    }
-    if(biggest31187 == 1){
-=======
   public void thread38348(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -852,18 +601,13 @@ public class Capper extends ClockDomain{
       biggest38351=ends[17];
     }
     if(biggest38351 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31183(int [] tdone, int [] ends){
-=======
   public void thread38347(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -872,11 +616,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31182(int [] tdone, int [] ends){
-=======
   public void thread38346(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -885,11 +625,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31180(int [] tdone, int [] ends){
-=======
   public void thread38344(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -897,43 +633,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31178(int [] tdone, int [] ends){
-=======
   public void thread38342(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31177(int [] tdone, int [] ends){
-=======
   public void thread38341(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31176(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31177(tdone,ends);
-    thread31178(tdone,ends);
-    int biggest31179 = 0;
-    if(ends[16]>=biggest31179){
-      biggest31179=ends[16];
-    }
-    if(ends[17]>=biggest31179){
-      biggest31179=ends[17];
-    }
-    if(biggest31179 == 1){
-=======
   public void thread38340(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -947,18 +660,13 @@ public class Capper extends ClockDomain{
       biggest38343=ends[17];
     }
     if(biggest38343 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31175(int [] tdone, int [] ends){
-=======
   public void thread38339(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -967,11 +675,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31174(int [] tdone, int [] ends){
-=======
   public void thread38338(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -980,11 +684,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31172(int [] tdone, int [] ends){
-=======
   public void thread38336(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -992,43 +692,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31170(int [] tdone, int [] ends){
-=======
   public void thread38334(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31169(int [] tdone, int [] ends){
-=======
   public void thread38333(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31168(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31169(tdone,ends);
-    thread31170(tdone,ends);
-    int biggest31171 = 0;
-    if(ends[16]>=biggest31171){
-      biggest31171=ends[16];
-    }
-    if(ends[17]>=biggest31171){
-      biggest31171=ends[17];
-    }
-    if(biggest31171 == 1){
-=======
   public void thread38332(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1042,18 +719,13 @@ public class Capper extends ClockDomain{
       biggest38335=ends[17];
     }
     if(biggest38335 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31167(int [] tdone, int [] ends){
-=======
   public void thread38331(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1062,11 +734,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31166(int [] tdone, int [] ends){
-=======
   public void thread38330(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1075,11 +743,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31164(int [] tdone, int [] ends){
-=======
   public void thread38328(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -1087,43 +751,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31162(int [] tdone, int [] ends){
-=======
   public void thread38326(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31161(int [] tdone, int [] ends){
-=======
   public void thread38325(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31160(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31161(tdone,ends);
-    thread31162(tdone,ends);
-    int biggest31163 = 0;
-    if(ends[16]>=biggest31163){
-      biggest31163=ends[16];
-    }
-    if(ends[17]>=biggest31163){
-      biggest31163=ends[17];
-    }
-    if(biggest31163 == 1){
-=======
   public void thread38324(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1137,18 +778,13 @@ public class Capper extends ClockDomain{
       biggest38327=ends[17];
     }
     if(biggest38327 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31159(int [] tdone, int [] ends){
-=======
   public void thread38323(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1157,11 +793,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31158(int [] tdone, int [] ends){
-=======
   public void thread38322(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1170,11 +802,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31156(int [] tdone, int [] ends){
-=======
   public void thread38320(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -1182,43 +810,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31154(int [] tdone, int [] ends){
-=======
   public void thread38318(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31153(int [] tdone, int [] ends){
-=======
   public void thread38317(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31152(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31153(tdone,ends);
-    thread31154(tdone,ends);
-    int biggest31155 = 0;
-    if(ends[16]>=biggest31155){
-      biggest31155=ends[16];
-    }
-    if(ends[17]>=biggest31155){
-      biggest31155=ends[17];
-    }
-    if(biggest31155 == 1){
-=======
   public void thread38316(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1232,18 +837,13 @@ public class Capper extends ClockDomain{
       biggest38319=ends[17];
     }
     if(biggest38319 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31151(int [] tdone, int [] ends){
-=======
   public void thread38315(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1252,11 +852,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31150(int [] tdone, int [] ends){
-=======
   public void thread38314(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1265,11 +861,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31148(int [] tdone, int [] ends){
-=======
   public void thread38312(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -1277,43 +869,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31146(int [] tdone, int [] ends){
-=======
   public void thread38310(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31145(int [] tdone, int [] ends){
-=======
   public void thread38309(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31144(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31145(tdone,ends);
-    thread31146(tdone,ends);
-    int biggest31147 = 0;
-    if(ends[16]>=biggest31147){
-      biggest31147=ends[16];
-    }
-    if(ends[17]>=biggest31147){
-      biggest31147=ends[17];
-    }
-    if(biggest31147 == 1){
-=======
   public void thread38308(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1327,18 +896,13 @@ public class Capper extends ClockDomain{
       biggest38311=ends[17];
     }
     if(biggest38311 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31143(int [] tdone, int [] ends){
-=======
   public void thread38307(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1347,11 +911,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31142(int [] tdone, int [] ends){
-=======
   public void thread38306(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1360,11 +920,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31140(int [] tdone, int [] ends){
-=======
   public void thread38304(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -1372,43 +928,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31138(int [] tdone, int [] ends){
-=======
   public void thread38302(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31137(int [] tdone, int [] ends){
-=======
   public void thread38301(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31136(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31137(tdone,ends);
-    thread31138(tdone,ends);
-    int biggest31139 = 0;
-    if(ends[16]>=biggest31139){
-      biggest31139=ends[16];
-    }
-    if(ends[17]>=biggest31139){
-      biggest31139=ends[17];
-    }
-    if(biggest31139 == 1){
-=======
   public void thread38300(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1422,18 +955,13 @@ public class Capper extends ClockDomain{
       biggest38303=ends[17];
     }
     if(biggest38303 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31135(int [] tdone, int [] ends){
-=======
   public void thread38299(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1442,11 +970,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31134(int [] tdone, int [] ends){
-=======
   public void thread38298(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1455,11 +979,7 @@ public class Capper extends ClockDomain{
     tdone[13]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31132(int [] tdone, int [] ends){
-=======
   public void thread38296(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22503=1;
     S22500=0;
     active[18]=1;
@@ -1467,43 +987,20 @@ public class Capper extends ClockDomain{
     tdone[18]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31130(int [] tdone, int [] ends){
-=======
   public void thread38294(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22480=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31129(int [] tdone, int [] ends){
-=======
   public void thread38293(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22477=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31128(int [] tdone, int [] ends){
-        S22490=1;
-    S22489=0;
-    thread31129(tdone,ends);
-    thread31130(tdone,ends);
-    int biggest31131 = 0;
-    if(ends[16]>=biggest31131){
-      biggest31131=ends[16];
-    }
-    if(ends[17]>=biggest31131){
-      biggest31131=ends[17];
-    }
-    if(biggest31131 == 1){
-=======
   public void thread38292(int [] tdone, int [] ends){
         S22490=1;
     S22489=0;
@@ -1517,18 +1014,13 @@ public class Capper extends ClockDomain{
       biggest38295=ends[17];
     }
     if(biggest38295 == 1){
->>>>>>> Stashed changes
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
     }
   }
 
-<<<<<<< Updated upstream
-  public void thread31127(int [] tdone, int [] ends){
-=======
   public void thread38291(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22474=1;
     cylPos5ZAxisExtend.setPresent();//sysj\controller.sysj line: 183, column: 7
     currsigs.addElement(cylPos5ZAxisExtend);
@@ -1537,11 +1029,7 @@ public class Capper extends ClockDomain{
     tdone[14]=1;
   }
 
-<<<<<<< Updated upstream
-  public void thread31126(int [] tdone, int [] ends){
-=======
   public void thread38290(int [] tdone, int [] ends){
->>>>>>> Stashed changes
         S22468=1;
     cylClampBottleExtend.setPresent();//sysj\controller.sysj line: 177, column: 7
     currsigs.addElement(cylClampBottleExtend);
@@ -1614,26 +1102,6 @@ public class Capper extends ClockDomain{
                           if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                             System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                             S22545=0;
-<<<<<<< Updated upstream
-                            thread31126(tdone,ends);
-                            thread31127(tdone,ends);
-                            thread31128(tdone,ends);
-                            thread31132(tdone,ends);
-                            int biggest31133 = 0;
-                            if(ends[13]>=biggest31133){
-                              biggest31133=ends[13];
-                            }
-                            if(ends[14]>=biggest31133){
-                              biggest31133=ends[14];
-                            }
-                            if(ends[15]>=biggest31133){
-                              biggest31133=ends[15];
-                            }
-                            if(ends[18]>=biggest31133){
-                              biggest31133=ends[18];
-                            }
-                            if(biggest31133 == 1){
-=======
                             thread38290(tdone,ends);
                             thread38291(tdone,ends);
                             thread38292(tdone,ends);
@@ -1652,7 +1120,6 @@ public class Capper extends ClockDomain{
                               biggest38297=ends[18];
                             }
                             if(biggest38297 == 1){
->>>>>>> Stashed changes
                               active[12]=1;
                               ends[12]=1;
                               break RUN;
@@ -1683,26 +1150,6 @@ public class Capper extends ClockDomain{
                     if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                       System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                       S22545=0;
-<<<<<<< Updated upstream
-                      thread31134(tdone,ends);
-                      thread31135(tdone,ends);
-                      thread31136(tdone,ends);
-                      thread31140(tdone,ends);
-                      int biggest31141 = 0;
-                      if(ends[13]>=biggest31141){
-                        biggest31141=ends[13];
-                      }
-                      if(ends[14]>=biggest31141){
-                        biggest31141=ends[14];
-                      }
-                      if(ends[15]>=biggest31141){
-                        biggest31141=ends[15];
-                      }
-                      if(ends[18]>=biggest31141){
-                        biggest31141=ends[18];
-                      }
-                      if(biggest31141 == 1){
-=======
                       thread38298(tdone,ends);
                       thread38299(tdone,ends);
                       thread38300(tdone,ends);
@@ -1721,7 +1168,6 @@ public class Capper extends ClockDomain{
                         biggest38305=ends[18];
                       }
                       if(biggest38305 == 1){
->>>>>>> Stashed changes
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
@@ -1808,26 +1254,6 @@ public class Capper extends ClockDomain{
                                       if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                         System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                         S22545=0;
-<<<<<<< Updated upstream
-                                        thread31142(tdone,ends);
-                                        thread31143(tdone,ends);
-                                        thread31144(tdone,ends);
-                                        thread31148(tdone,ends);
-                                        int biggest31149 = 0;
-                                        if(ends[13]>=biggest31149){
-                                          biggest31149=ends[13];
-                                        }
-                                        if(ends[14]>=biggest31149){
-                                          biggest31149=ends[14];
-                                        }
-                                        if(ends[15]>=biggest31149){
-                                          biggest31149=ends[15];
-                                        }
-                                        if(ends[18]>=biggest31149){
-                                          biggest31149=ends[18];
-                                        }
-                                        if(biggest31149 == 1){
-=======
                                         thread38306(tdone,ends);
                                         thread38307(tdone,ends);
                                         thread38308(tdone,ends);
@@ -1846,7 +1272,6 @@ public class Capper extends ClockDomain{
                                           biggest38313=ends[18];
                                         }
                                         if(biggest38313 == 1){
->>>>>>> Stashed changes
                                           active[12]=1;
                                           ends[12]=1;
                                           break RUN;
@@ -1877,26 +1302,6 @@ public class Capper extends ClockDomain{
                                 if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                   System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                   S22545=0;
-<<<<<<< Updated upstream
-                                  thread31150(tdone,ends);
-                                  thread31151(tdone,ends);
-                                  thread31152(tdone,ends);
-                                  thread31156(tdone,ends);
-                                  int biggest31157 = 0;
-                                  if(ends[13]>=biggest31157){
-                                    biggest31157=ends[13];
-                                  }
-                                  if(ends[14]>=biggest31157){
-                                    biggest31157=ends[14];
-                                  }
-                                  if(ends[15]>=biggest31157){
-                                    biggest31157=ends[15];
-                                  }
-                                  if(ends[18]>=biggest31157){
-                                    biggest31157=ends[18];
-                                  }
-                                  if(biggest31157 == 1){
-=======
                                   thread38314(tdone,ends);
                                   thread38315(tdone,ends);
                                   thread38316(tdone,ends);
@@ -1915,7 +1320,6 @@ public class Capper extends ClockDomain{
                                     biggest38321=ends[18];
                                   }
                                   if(biggest38321 == 1){
->>>>>>> Stashed changes
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
@@ -1980,26 +1384,6 @@ public class Capper extends ClockDomain{
                                     if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                       System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                       S22545=0;
-<<<<<<< Updated upstream
-                                      thread31158(tdone,ends);
-                                      thread31159(tdone,ends);
-                                      thread31160(tdone,ends);
-                                      thread31164(tdone,ends);
-                                      int biggest31165 = 0;
-                                      if(ends[13]>=biggest31165){
-                                        biggest31165=ends[13];
-                                      }
-                                      if(ends[14]>=biggest31165){
-                                        biggest31165=ends[14];
-                                      }
-                                      if(ends[15]>=biggest31165){
-                                        biggest31165=ends[15];
-                                      }
-                                      if(ends[18]>=biggest31165){
-                                        biggest31165=ends[18];
-                                      }
-                                      if(biggest31165 == 1){
-=======
                                       thread38322(tdone,ends);
                                       thread38323(tdone,ends);
                                       thread38324(tdone,ends);
@@ -2018,7 +1402,6 @@ public class Capper extends ClockDomain{
                                         biggest38329=ends[18];
                                       }
                                       if(biggest38329 == 1){
->>>>>>> Stashed changes
                                         active[12]=1;
                                         ends[12]=1;
                                         break RUN;
@@ -2049,26 +1432,6 @@ public class Capper extends ClockDomain{
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                 S22545=0;
-<<<<<<< Updated upstream
-                                thread31166(tdone,ends);
-                                thread31167(tdone,ends);
-                                thread31168(tdone,ends);
-                                thread31172(tdone,ends);
-                                int biggest31173 = 0;
-                                if(ends[13]>=biggest31173){
-                                  biggest31173=ends[13];
-                                }
-                                if(ends[14]>=biggest31173){
-                                  biggest31173=ends[14];
-                                }
-                                if(ends[15]>=biggest31173){
-                                  biggest31173=ends[15];
-                                }
-                                if(ends[18]>=biggest31173){
-                                  biggest31173=ends[18];
-                                }
-                                if(biggest31173 == 1){
-=======
                                 thread38330(tdone,ends);
                                 thread38331(tdone,ends);
                                 thread38332(tdone,ends);
@@ -2087,7 +1450,6 @@ public class Capper extends ClockDomain{
                                   biggest38337=ends[18];
                                 }
                                 if(biggest38337 == 1){
->>>>>>> Stashed changes
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -2164,26 +1526,6 @@ public class Capper extends ClockDomain{
                                   if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                     System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                     S22545=0;
-<<<<<<< Updated upstream
-                                    thread31174(tdone,ends);
-                                    thread31175(tdone,ends);
-                                    thread31176(tdone,ends);
-                                    thread31180(tdone,ends);
-                                    int biggest31181 = 0;
-                                    if(ends[13]>=biggest31181){
-                                      biggest31181=ends[13];
-                                    }
-                                    if(ends[14]>=biggest31181){
-                                      biggest31181=ends[14];
-                                    }
-                                    if(ends[15]>=biggest31181){
-                                      biggest31181=ends[15];
-                                    }
-                                    if(ends[18]>=biggest31181){
-                                      biggest31181=ends[18];
-                                    }
-                                    if(biggest31181 == 1){
-=======
                                     thread38338(tdone,ends);
                                     thread38339(tdone,ends);
                                     thread38340(tdone,ends);
@@ -2202,7 +1544,6 @@ public class Capper extends ClockDomain{
                                       biggest38345=ends[18];
                                     }
                                     if(biggest38345 == 1){
->>>>>>> Stashed changes
                                       active[12]=1;
                                       ends[12]=1;
                                       break RUN;
@@ -2233,26 +1574,6 @@ public class Capper extends ClockDomain{
                             if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                               System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                               S22545=0;
-<<<<<<< Updated upstream
-                              thread31182(tdone,ends);
-                              thread31183(tdone,ends);
-                              thread31184(tdone,ends);
-                              thread31188(tdone,ends);
-                              int biggest31189 = 0;
-                              if(ends[13]>=biggest31189){
-                                biggest31189=ends[13];
-                              }
-                              if(ends[14]>=biggest31189){
-                                biggest31189=ends[14];
-                              }
-                              if(ends[15]>=biggest31189){
-                                biggest31189=ends[15];
-                              }
-                              if(ends[18]>=biggest31189){
-                                biggest31189=ends[18];
-                              }
-                              if(biggest31189 == 1){
-=======
                               thread38346(tdone,ends);
                               thread38347(tdone,ends);
                               thread38348(tdone,ends);
@@ -2271,7 +1592,6 @@ public class Capper extends ClockDomain{
                                 biggest38353=ends[18];
                               }
                               if(biggest38353 == 1){
->>>>>>> Stashed changes
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -2334,26 +1654,6 @@ public class Capper extends ClockDomain{
                                 if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                   System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                   S22545=0;
-<<<<<<< Updated upstream
-                                  thread31190(tdone,ends);
-                                  thread31191(tdone,ends);
-                                  thread31192(tdone,ends);
-                                  thread31196(tdone,ends);
-                                  int biggest31197 = 0;
-                                  if(ends[13]>=biggest31197){
-                                    biggest31197=ends[13];
-                                  }
-                                  if(ends[14]>=biggest31197){
-                                    biggest31197=ends[14];
-                                  }
-                                  if(ends[15]>=biggest31197){
-                                    biggest31197=ends[15];
-                                  }
-                                  if(ends[18]>=biggest31197){
-                                    biggest31197=ends[18];
-                                  }
-                                  if(biggest31197 == 1){
-=======
                                   thread38354(tdone,ends);
                                   thread38355(tdone,ends);
                                   thread38356(tdone,ends);
@@ -2372,7 +1672,6 @@ public class Capper extends ClockDomain{
                                     biggest38361=ends[18];
                                   }
                                   if(biggest38361 == 1){
->>>>>>> Stashed changes
                                     active[12]=1;
                                     ends[12]=1;
                                     break RUN;
@@ -2406,26 +1705,6 @@ public class Capper extends ClockDomain{
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                 S22545=0;
-<<<<<<< Updated upstream
-                                thread31198(tdone,ends);
-                                thread31199(tdone,ends);
-                                thread31200(tdone,ends);
-                                thread31204(tdone,ends);
-                                int biggest31205 = 0;
-                                if(ends[13]>=biggest31205){
-                                  biggest31205=ends[13];
-                                }
-                                if(ends[14]>=biggest31205){
-                                  biggest31205=ends[14];
-                                }
-                                if(ends[15]>=biggest31205){
-                                  biggest31205=ends[15];
-                                }
-                                if(ends[18]>=biggest31205){
-                                  biggest31205=ends[18];
-                                }
-                                if(biggest31205 == 1){
-=======
                                 thread38362(tdone,ends);
                                 thread38363(tdone,ends);
                                 thread38364(tdone,ends);
@@ -2444,7 +1723,6 @@ public class Capper extends ClockDomain{
                                   biggest38369=ends[18];
                                 }
                                 if(biggest38369 == 1){
->>>>>>> Stashed changes
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -2490,26 +1768,6 @@ public class Capper extends ClockDomain{
                             if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                               System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                               S22545=0;
-<<<<<<< Updated upstream
-                              thread31206(tdone,ends);
-                              thread31207(tdone,ends);
-                              thread31208(tdone,ends);
-                              thread31212(tdone,ends);
-                              int biggest31213 = 0;
-                              if(ends[13]>=biggest31213){
-                                biggest31213=ends[13];
-                              }
-                              if(ends[14]>=biggest31213){
-                                biggest31213=ends[14];
-                              }
-                              if(ends[15]>=biggest31213){
-                                biggest31213=ends[15];
-                              }
-                              if(ends[18]>=biggest31213){
-                                biggest31213=ends[18];
-                              }
-                              if(biggest31213 == 1){
-=======
                               thread38370(tdone,ends);
                               thread38371(tdone,ends);
                               thread38372(tdone,ends);
@@ -2528,7 +1786,6 @@ public class Capper extends ClockDomain{
                                 biggest38377=ends[18];
                               }
                               if(biggest38377 == 1){
->>>>>>> Stashed changes
                                 active[12]=1;
                                 ends[12]=1;
                                 break RUN;
@@ -2560,26 +1817,6 @@ public class Capper extends ClockDomain{
                 case 1 : 
                   switch(S22545){
                     case 0 : 
-<<<<<<< Updated upstream
-                      thread31214(tdone,ends);
-                      thread31215(tdone,ends);
-                      thread31216(tdone,ends);
-                      thread31220(tdone,ends);
-                      int biggest31221 = 0;
-                      if(ends[13]>=biggest31221){
-                        biggest31221=ends[13];
-                      }
-                      if(ends[14]>=biggest31221){
-                        biggest31221=ends[14];
-                      }
-                      if(ends[15]>=biggest31221){
-                        biggest31221=ends[15];
-                      }
-                      if(ends[18]>=biggest31221){
-                        biggest31221=ends[18];
-                      }
-                      if(biggest31221 == 1){
-=======
                       thread38378(tdone,ends);
                       thread38379(tdone,ends);
                       thread38380(tdone,ends);
@@ -2598,17 +1835,12 @@ public class Capper extends ClockDomain{
                         biggest38385=ends[18];
                       }
                       if(biggest38385 == 1){
->>>>>>> Stashed changes
                         active[12]=1;
                         ends[12]=1;
                         break RUN;
                       }
                       //FINXME code
-<<<<<<< Updated upstream
-                      if(biggest31221 == 0){
-=======
                       if(biggest38385 == 0){
->>>>>>> Stashed changes
                         S22545=1;
                         S22552=0;
                         if(!capperStatus_o.isPartnerPresent() || capperStatus_o.isPartnerPreempted()){//sysj\controller.sysj line: 210, column: 5
@@ -2796,26 +2028,6 @@ public class Capper extends ClockDomain{
                               if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                                 System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                                 S22545=0;
-<<<<<<< Updated upstream
-                                thread31222(tdone,ends);
-                                thread31223(tdone,ends);
-                                thread31224(tdone,ends);
-                                thread31228(tdone,ends);
-                                int biggest31229 = 0;
-                                if(ends[13]>=biggest31229){
-                                  biggest31229=ends[13];
-                                }
-                                if(ends[14]>=biggest31229){
-                                  biggest31229=ends[14];
-                                }
-                                if(ends[15]>=biggest31229){
-                                  biggest31229=ends[15];
-                                }
-                                if(ends[18]>=biggest31229){
-                                  biggest31229=ends[18];
-                                }
-                                if(biggest31229 == 1){
-=======
                                 thread38386(tdone,ends);
                                 thread38387(tdone,ends);
                                 thread38388(tdone,ends);
@@ -2834,7 +2046,6 @@ public class Capper extends ClockDomain{
                                   biggest38393=ends[18];
                                 }
                                 if(biggest38393 == 1){
->>>>>>> Stashed changes
                                   active[12]=1;
                                   ends[12]=1;
                                   break RUN;
@@ -2865,26 +2076,6 @@ public class Capper extends ClockDomain{
                         if(bottleAtPos4.getprestatus()){//sysj\controller.sysj line: 173, column: 12
                           System.out.println("CapperController: Capper doing work...");//sysj\controller.sysj line: 174, column: 5
                           S22545=0;
-<<<<<<< Updated upstream
-                          thread31230(tdone,ends);
-                          thread31231(tdone,ends);
-                          thread31232(tdone,ends);
-                          thread31236(tdone,ends);
-                          int biggest31237 = 0;
-                          if(ends[13]>=biggest31237){
-                            biggest31237=ends[13];
-                          }
-                          if(ends[14]>=biggest31237){
-                            biggest31237=ends[14];
-                          }
-                          if(ends[15]>=biggest31237){
-                            biggest31237=ends[15];
-                          }
-                          if(ends[18]>=biggest31237){
-                            biggest31237=ends[18];
-                          }
-                          if(biggest31237 == 1){
-=======
                           thread38394(tdone,ends);
                           thread38395(tdone,ends);
                           thread38396(tdone,ends);
@@ -2903,7 +2094,6 @@ public class Capper extends ClockDomain{
                             biggest38401=ends[18];
                           }
                           if(biggest38401 == 1){
->>>>>>> Stashed changes
                             active[12]=1;
                             ends[12]=1;
                             break RUN;
@@ -2944,15 +2134,9 @@ public class Capper extends ClockDomain{
   }
 
   public void init(){
-<<<<<<< Updated upstream
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-=======
     char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
->>>>>>> Stashed changes
     paused = paused1;
     active = active1;
     suspended = suspended1;
