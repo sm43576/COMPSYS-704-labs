@@ -18,28 +18,28 @@ public class InfraredSensor extends ClockDomain{
   public output_Channel zone5P_o = new output_Channel();
   public output_Channel zone6P_o = new output_Channel();
   public output_Channel zone7P_o = new output_Channel();
-  private long __start_thread_10;//sysj/controller.sysj line: 65, column: 5
-  private long __start_thread_11;//sysj/controller.sysj line: 77, column: 5
-  private int S1987 = 1;
-  private int S1148 = 1;
-  private int S334 = 1;
-  private int S318 = 1;
-  private int S313 = 1;
-  private int S336 = 1;
-  private int S369 = 1;
-  private int S364 = 1;
-  private int S1985 = 1;
-  private int S1171 = 1;
-  private int S1155 = 1;
-  private int S1150 = 1;
-  private int S1206 = 1;
-  private int S1201 = 1;
+  private long __start_thread_10;//sysj\controller.sysj line: 140, column: 5
+  private long __start_thread_11;//sysj\controller.sysj line: 152, column: 5
+  private int S2342 = 1;
+  private int S1503 = 1;
+  private int S689 = 1;
+  private int S673 = 1;
+  private int S668 = 1;
+  private int S691 = 1;
+  private int S724 = 1;
+  private int S719 = 1;
+  private int S2340 = 1;
+  private int S1526 = 1;
+  private int S1510 = 1;
+  private int S1505 = 1;
+  private int S1561 = 1;
+  private int S1556 = 1;
   
-  private int[] ends = new int[12];
-  private int[] tdone = new int[12];
+  private int[] ends = new int[13];
+  private int[] tdone = new int[13];
   
-  public void thread2009(int [] tdone, int [] ends){
-        switch(S1985){
+  public void thread2396(int [] tdone, int [] ends){
+        switch(S2340){
       case 0 : 
         active[11]=0;
         ends[11]=0;
@@ -47,28 +47,28 @@ public class InfraredSensor extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S1171){
+        switch(S1526){
           case 0 : 
-            switch(S1155){
+            switch(S1510){
               case 0 : 
-                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 78, column: 5
-                  zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
-                  S1155=1;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                  S1510=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  switch(S1150){
+                  switch(S1505){
                     case 0 : 
-                      if(zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                        zone3P_o.setVal(true);//sysj/controller.sysj line: 78, column: 5
-                        S1150=1;
-                        if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                          zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+                      if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                        zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                        S1505=1;
+                        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                          zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
                           ends[11]=2;
-                          ;//sysj/controller.sysj line: 78, column: 5
-                          S1171=1;
+                          ;//sysj\controller.sysj line: 153, column: 5
+                          S1526=1;
                           active[11]=1;
                           ends[11]=1;
                           tdone[11]=1;
@@ -87,11 +87,11 @@ public class InfraredSensor extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                        zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+                      if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                        zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
                         ends[11]=2;
-                        ;//sysj/controller.sysj line: 78, column: 5
-                        S1171=1;
+                        ;//sysj\controller.sysj line: 153, column: 5
+                        S1526=1;
                         active[11]=1;
                         ends[11]=1;
                         tdone[11]=1;
@@ -108,25 +108,25 @@ public class InfraredSensor extends ClockDomain{
                 break;
               
               case 1 : 
-                S1155=1;
-                S1155=0;
-                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 78, column: 5
-                  zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
-                  S1155=1;
+                S1510=1;
+                S1510=0;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                  S1510=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  S1150=0;
-                  if(zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                    zone3P_o.setVal(true);//sysj/controller.sysj line: 78, column: 5
-                    S1150=1;
-                    if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                      zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+                  S1505=0;
+                  if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                    S1505=1;
+                    if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                      zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
                       ends[11]=2;
-                      ;//sysj/controller.sysj line: 78, column: 5
-                      S1171=1;
+                      ;//sysj\controller.sysj line: 153, column: 5
+                      S1526=1;
                       active[11]=1;
                       ends[11]=1;
                       tdone[11]=1;
@@ -149,32 +149,32 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 1 : 
-            S1171=1;
-            S1171=2;
-            __start_thread_11 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 77, column: 5
-            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj/controller.sysj line: 77, column: 5
+            S1526=1;
+            S1526=2;
+            __start_thread_11 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 152, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
               ends[11]=2;
-              ;//sysj/controller.sysj line: 77, column: 5
-              System.out.println("sent");//sysj/controller.sysj line: 81, column: 5
-              S1171=3;
-              S1206=0;
-              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 83, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
-                S1206=1;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 156, column: 5
+              S1526=3;
+              S1561=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                S1561=1;
                 active[11]=1;
                 ends[11]=1;
                 tdone[11]=1;
               }
               else {
-                S1201=0;
-                if(zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                  zone3P_o.setVal(false);//sysj/controller.sysj line: 83, column: 5
-                  S1201=1;
-                  if(!zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
+                S1556=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                  S1556=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
                     ends[11]=2;
-                    ;//sysj/controller.sysj line: 83, column: 5
-                    S1171=4;
+                    ;//sysj\controller.sysj line: 158, column: 5
+                    S1526=4;
                     active[11]=1;
                     ends[11]=1;
                     tdone[11]=1;
@@ -200,29 +200,29 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 2 : 
-            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj/controller.sysj line: 77, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
               ends[11]=2;
-              ;//sysj/controller.sysj line: 77, column: 5
-              System.out.println("sent");//sysj/controller.sysj line: 81, column: 5
-              S1171=3;
-              S1206=0;
-              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 83, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
-                S1206=1;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 156, column: 5
+              S1526=3;
+              S1561=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                S1561=1;
                 active[11]=1;
                 ends[11]=1;
                 tdone[11]=1;
               }
               else {
-                S1201=0;
-                if(zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                  zone3P_o.setVal(false);//sysj/controller.sysj line: 83, column: 5
-                  S1201=1;
-                  if(!zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
+                S1556=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                  S1556=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
                     ends[11]=2;
-                    ;//sysj/controller.sysj line: 83, column: 5
-                    S1171=4;
+                    ;//sysj\controller.sysj line: 158, column: 5
+                    S1526=4;
                     active[11]=1;
                     ends[11]=1;
                     tdone[11]=1;
@@ -248,26 +248,26 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 3 : 
-            switch(S1206){
+            switch(S1561){
               case 0 : 
-                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 83, column: 5
-                  zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
-                  S1206=1;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                  S1561=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  switch(S1201){
+                  switch(S1556){
                     case 0 : 
-                      if(zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                        zone3P_o.setVal(false);//sysj/controller.sysj line: 83, column: 5
-                        S1201=1;
-                        if(!zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                          zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
+                      if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                        zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                        S1556=1;
+                        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                          zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
                           ends[11]=2;
-                          ;//sysj/controller.sysj line: 83, column: 5
-                          S1171=4;
+                          ;//sysj\controller.sysj line: 158, column: 5
+                          S1526=4;
                           active[11]=1;
                           ends[11]=1;
                           tdone[11]=1;
@@ -286,11 +286,11 @@ public class InfraredSensor extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                        zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
+                      if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                        zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
                         ends[11]=2;
-                        ;//sysj/controller.sysj line: 83, column: 5
-                        S1171=4;
+                        ;//sysj\controller.sysj line: 158, column: 5
+                        S1526=4;
                         active[11]=1;
                         ends[11]=1;
                         tdone[11]=1;
@@ -307,25 +307,25 @@ public class InfraredSensor extends ClockDomain{
                 break;
               
               case 1 : 
-                S1206=1;
-                S1206=0;
-                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 83, column: 5
-                  zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
-                  S1206=1;
+                S1561=1;
+                S1561=0;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                  S1561=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  S1201=0;
-                  if(zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                    zone3P_o.setVal(false);//sysj/controller.sysj line: 83, column: 5
-                    S1201=1;
-                    if(!zone3P_o.isACK()){//sysj/controller.sysj line: 83, column: 5
-                      zone3P_o.setREQ(false);//sysj/controller.sysj line: 83, column: 5
+                  S1556=0;
+                  if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                    S1556=1;
+                    if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                      zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
                       ends[11]=2;
-                      ;//sysj/controller.sysj line: 83, column: 5
-                      S1171=4;
+                      ;//sysj\controller.sysj line: 158, column: 5
+                      S1526=4;
                       active[11]=1;
                       ends[11]=1;
                       tdone[11]=1;
@@ -348,32 +348,32 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 4 : 
-            S1171=4;
-            S1171=5;
-            __start_thread_11 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 77, column: 5
-            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj/controller.sysj line: 77, column: 5
+            S1526=4;
+            S1526=5;
+            __start_thread_11 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 152, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
               ends[11]=2;
-              ;//sysj/controller.sysj line: 77, column: 5
-              System.out.println("unsent");//sysj/controller.sysj line: 86, column: 5
-              S1171=0;
-              S1155=0;
-              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 78, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
-                S1155=1;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 161, column: 5
+              S1526=0;
+              S1510=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                S1510=1;
                 active[11]=1;
                 ends[11]=1;
                 tdone[11]=1;
               }
               else {
-                S1150=0;
-                if(zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                  zone3P_o.setVal(true);//sysj/controller.sysj line: 78, column: 5
-                  S1150=1;
-                  if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+                S1505=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                  S1505=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
                     ends[11]=2;
-                    ;//sysj/controller.sysj line: 78, column: 5
-                    S1171=1;
+                    ;//sysj\controller.sysj line: 153, column: 5
+                    S1526=1;
                     active[11]=1;
                     ends[11]=1;
                     tdone[11]=1;
@@ -399,29 +399,29 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 5 : 
-            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj/controller.sysj line: 77, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
               ends[11]=2;
-              ;//sysj/controller.sysj line: 77, column: 5
-              System.out.println("unsent");//sysj/controller.sysj line: 86, column: 5
-              S1171=0;
-              S1155=0;
-              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 78, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
-                S1155=1;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 161, column: 5
+              S1526=0;
+              S1510=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                S1510=1;
                 active[11]=1;
                 ends[11]=1;
                 tdone[11]=1;
               }
               else {
-                S1150=0;
-                if(zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                  zone3P_o.setVal(true);//sysj/controller.sysj line: 78, column: 5
-                  S1150=1;
-                  if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+                S1505=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                  S1505=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
                     ends[11]=2;
-                    ;//sysj/controller.sysj line: 78, column: 5
-                    S1171=1;
+                    ;//sysj\controller.sysj line: 153, column: 5
+                    S1526=1;
                     active[11]=1;
                     ends[11]=1;
                     tdone[11]=1;
@@ -452,8 +452,8 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2008(int [] tdone, int [] ends){
-        switch(S1148){
+  public void thread2395(int [] tdone, int [] ends){
+        switch(S1503){
       case 0 : 
         active[10]=0;
         ends[10]=0;
@@ -461,28 +461,28 @@ public class InfraredSensor extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S334){
+        switch(S689){
           case 0 : 
-            switch(S318){
+            switch(S673){
               case 0 : 
-                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 66, column: 5
-                  zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
-                  S318=1;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                  S673=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  switch(S313){
+                  switch(S668){
                     case 0 : 
-                      if(zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                        zone1P_o.setVal(true);//sysj/controller.sysj line: 66, column: 5
-                        S313=1;
-                        if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                          zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+                      if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                        zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                        S668=1;
+                        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                          zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
                           ends[10]=2;
-                          ;//sysj/controller.sysj line: 66, column: 5
-                          S334=1;
+                          ;//sysj\controller.sysj line: 141, column: 5
+                          S689=1;
                           active[10]=1;
                           ends[10]=1;
                           tdone[10]=1;
@@ -501,11 +501,11 @@ public class InfraredSensor extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                        zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
                         ends[10]=2;
-                        ;//sysj/controller.sysj line: 66, column: 5
-                        S334=1;
+                        ;//sysj\controller.sysj line: 141, column: 5
+                        S689=1;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
@@ -522,25 +522,25 @@ public class InfraredSensor extends ClockDomain{
                 break;
               
               case 1 : 
-                S318=1;
-                S318=0;
-                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 66, column: 5
-                  zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
-                  S318=1;
+                S673=1;
+                S673=0;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                  S673=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  S313=0;
-                  if(zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                    zone1P_o.setVal(true);//sysj/controller.sysj line: 66, column: 5
-                    S313=1;
-                    if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                      zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+                  S668=0;
+                  if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                    S668=1;
+                    if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                      zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
                       ends[10]=2;
-                      ;//sysj/controller.sysj line: 66, column: 5
-                      S334=1;
+                      ;//sysj\controller.sysj line: 141, column: 5
+                      S689=1;
                       active[10]=1;
                       ends[10]=1;
                       tdone[10]=1;
@@ -563,33 +563,33 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 1 : 
-            S334=1;
-            S334=2;
-            __start_thread_10 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 65, column: 5
-            S336=0;
-            if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj/controller.sysj line: 65, column: 5
+            S689=1;
+            S689=2;
+            __start_thread_10 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 140, column: 5
+            S691=0;
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
               ends[10]=2;
-              ;//sysj/controller.sysj line: 65, column: 5
-              System.out.println("sent");//sysj/controller.sysj line: 69, column: 5
-              S334=3;
-              S369=0;
-              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 71, column: 5
-                zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
-                S369=1;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+              S689=3;
+              S724=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                S724=1;
                 active[10]=1;
                 ends[10]=1;
                 tdone[10]=1;
               }
               else {
-                S364=0;
-                if(zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                  zone1P_o.setVal(false);//sysj/controller.sysj line: 71, column: 5
-                  S364=1;
-                  if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                    zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                S719=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                  S719=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                     ends[10]=2;
-                    ;//sysj/controller.sysj line: 71, column: 5
-                    S334=4;
+                    ;//sysj\controller.sysj line: 146, column: 5
+                    S689=4;
                     active[10]=1;
                     ends[10]=1;
                     tdone[10]=1;
@@ -608,7 +608,7 @@ public class InfraredSensor extends ClockDomain{
               }
             }
             else {
-              S336=1;
+              S691=1;
               active[10]=1;
               ends[10]=1;
               tdone[10]=1;
@@ -616,32 +616,32 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S336){
+            switch(S691){
               case 0 : 
-                S336=0;
-                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj/controller.sysj line: 65, column: 5
+                S691=0;
+                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
                   ends[10]=2;
-                  ;//sysj/controller.sysj line: 65, column: 5
-                  System.out.println("sent");//sysj/controller.sysj line: 69, column: 5
-                  S334=3;
-                  S369=0;
-                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 71, column: 5
-                    zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
-                    S369=1;
+                  ;//sysj\controller.sysj line: 140, column: 5
+                  System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+                  S689=3;
+                  S724=0;
+                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                    S724=1;
                     active[10]=1;
                     ends[10]=1;
                     tdone[10]=1;
                   }
                   else {
-                    S364=0;
-                    if(zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                      zone1P_o.setVal(false);//sysj/controller.sysj line: 71, column: 5
-                      S364=1;
-                      if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                        zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                    S719=0;
+                    if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                      S719=1;
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                         ends[10]=2;
-                        ;//sysj/controller.sysj line: 71, column: 5
-                        S334=4;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
@@ -660,7 +660,7 @@ public class InfraredSensor extends ClockDomain{
                   }
                 }
                 else {
-                  S336=1;
+                  S691=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
@@ -668,31 +668,31 @@ public class InfraredSensor extends ClockDomain{
                 break;
               
               case 1 : 
-                S336=1;
-                S336=0;
-                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj/controller.sysj line: 65, column: 5
+                S691=1;
+                S691=0;
+                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
                   ends[10]=2;
-                  ;//sysj/controller.sysj line: 65, column: 5
-                  System.out.println("sent");//sysj/controller.sysj line: 69, column: 5
-                  S334=3;
-                  S369=0;
-                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 71, column: 5
-                    zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
-                    S369=1;
+                  ;//sysj\controller.sysj line: 140, column: 5
+                  System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+                  S689=3;
+                  S724=0;
+                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                    S724=1;
                     active[10]=1;
                     ends[10]=1;
                     tdone[10]=1;
                   }
                   else {
-                    S364=0;
-                    if(zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                      zone1P_o.setVal(false);//sysj/controller.sysj line: 71, column: 5
-                      S364=1;
-                      if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                        zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                    S719=0;
+                    if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                      S719=1;
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                         ends[10]=2;
-                        ;//sysj/controller.sysj line: 71, column: 5
-                        S334=4;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
@@ -711,7 +711,7 @@ public class InfraredSensor extends ClockDomain{
                   }
                 }
                 else {
-                  S336=1;
+                  S691=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
@@ -722,26 +722,26 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 3 : 
-            switch(S369){
+            switch(S724){
               case 0 : 
-                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 71, column: 5
-                  zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
-                  S369=1;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                  S724=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  switch(S364){
+                  switch(S719){
                     case 0 : 
-                      if(zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                        zone1P_o.setVal(false);//sysj/controller.sysj line: 71, column: 5
-                        S364=1;
-                        if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                          zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                      if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                        S719=1;
+                        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                          zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                           ends[10]=2;
-                          ;//sysj/controller.sysj line: 71, column: 5
-                          S334=4;
+                          ;//sysj\controller.sysj line: 146, column: 5
+                          S689=4;
                           active[10]=1;
                           ends[10]=1;
                           tdone[10]=1;
@@ -760,11 +760,11 @@ public class InfraredSensor extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                        zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                         ends[10]=2;
-                        ;//sysj/controller.sysj line: 71, column: 5
-                        S334=4;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
@@ -781,25 +781,25 @@ public class InfraredSensor extends ClockDomain{
                 break;
               
               case 1 : 
-                S369=1;
-                S369=0;
-                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 71, column: 5
-                  zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
-                  S369=1;
+                S724=1;
+                S724=0;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                  S724=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  S364=0;
-                  if(zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                    zone1P_o.setVal(false);//sysj/controller.sysj line: 71, column: 5
-                    S364=1;
-                    if(!zone1P_o.isACK()){//sysj/controller.sysj line: 71, column: 5
-                      zone1P_o.setREQ(false);//sysj/controller.sysj line: 71, column: 5
+                  S719=0;
+                  if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                    S719=1;
+                    if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
                       ends[10]=2;
-                      ;//sysj/controller.sysj line: 71, column: 5
-                      S334=4;
+                      ;//sysj\controller.sysj line: 146, column: 5
+                      S689=4;
                       active[10]=1;
                       ends[10]=1;
                       tdone[10]=1;
@@ -822,32 +822,32 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 4 : 
-            S334=4;
-            S334=5;
-            __start_thread_10 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 65, column: 5
-            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj/controller.sysj line: 65, column: 5
+            S689=4;
+            S689=5;
+            __start_thread_10 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 140, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj\controller.sysj line: 140, column: 5
               ends[10]=2;
-              ;//sysj/controller.sysj line: 65, column: 5
-              System.out.println("unsent");//sysj/controller.sysj line: 74, column: 5
-              S334=0;
-              S318=0;
-              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 66, column: 5
-                zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
-                S318=1;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 149, column: 5
+              S689=0;
+              S673=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                S673=1;
                 active[10]=1;
                 ends[10]=1;
                 tdone[10]=1;
               }
               else {
-                S313=0;
-                if(zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                  zone1P_o.setVal(true);//sysj/controller.sysj line: 66, column: 5
-                  S313=1;
-                  if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                    zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+                S668=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                  S668=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
                     ends[10]=2;
-                    ;//sysj/controller.sysj line: 66, column: 5
-                    S334=1;
+                    ;//sysj\controller.sysj line: 141, column: 5
+                    S689=1;
                     active[10]=1;
                     ends[10]=1;
                     tdone[10]=1;
@@ -873,29 +873,29 @@ public class InfraredSensor extends ClockDomain{
             break;
           
           case 5 : 
-            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj/controller.sysj line: 65, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj\controller.sysj line: 140, column: 5
               ends[10]=2;
-              ;//sysj/controller.sysj line: 65, column: 5
-              System.out.println("unsent");//sysj/controller.sysj line: 74, column: 5
-              S334=0;
-              S318=0;
-              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 66, column: 5
-                zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
-                S318=1;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 149, column: 5
+              S689=0;
+              S673=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                S673=1;
                 active[10]=1;
                 ends[10]=1;
                 tdone[10]=1;
               }
               else {
-                S313=0;
-                if(zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                  zone1P_o.setVal(true);//sysj/controller.sysj line: 66, column: 5
-                  S313=1;
-                  if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-                    zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+                S668=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                  S668=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
                     ends[10]=2;
-                    ;//sysj/controller.sysj line: 66, column: 5
-                    S334=1;
+                    ;//sysj\controller.sysj line: 141, column: 5
+                    S689=1;
                     active[10]=1;
                     ends[10]=1;
                     tdone[10]=1;
@@ -926,27 +926,27 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2006(int [] tdone, int [] ends){
-        S1985=1;
-    S1171=0;
-    S1155=0;
-    if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 78, column: 5
-      zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
-      S1155=1;
+  public void thread2393(int [] tdone, int [] ends){
+        S2340=1;
+    S1526=0;
+    S1510=0;
+    if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+      zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+      S1510=1;
       active[11]=1;
       ends[11]=1;
       tdone[11]=1;
     }
     else {
-      S1150=0;
-      if(zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-        zone3P_o.setVal(true);//sysj/controller.sysj line: 78, column: 5
-        S1150=1;
-        if(!zone3P_o.isACK()){//sysj/controller.sysj line: 78, column: 5
-          zone3P_o.setREQ(false);//sysj/controller.sysj line: 78, column: 5
+      S1505=0;
+      if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+        zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+        S1505=1;
+        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+          zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
           ends[11]=2;
-          ;//sysj/controller.sysj line: 78, column: 5
-          S1171=1;
+          ;//sysj\controller.sysj line: 153, column: 5
+          S1526=1;
           active[11]=1;
           ends[11]=1;
           tdone[11]=1;
@@ -965,27 +965,27 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2005(int [] tdone, int [] ends){
-        S1148=1;
-    S334=0;
-    S318=0;
-    if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj/controller.sysj line: 66, column: 5
-      zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
-      S318=1;
+  public void thread2392(int [] tdone, int [] ends){
+        S1503=1;
+    S689=0;
+    S673=0;
+    if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+      zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+      S673=1;
       active[10]=1;
       ends[10]=1;
       tdone[10]=1;
     }
     else {
-      S313=0;
-      if(zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-        zone1P_o.setVal(true);//sysj/controller.sysj line: 66, column: 5
-        S313=1;
-        if(!zone1P_o.isACK()){//sysj/controller.sysj line: 66, column: 5
-          zone1P_o.setREQ(false);//sysj/controller.sysj line: 66, column: 5
+      S668=0;
+      if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+        zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+        S668=1;
+        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+          zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
           ends[10]=2;
-          ;//sysj/controller.sysj line: 66, column: 5
-          S334=1;
+          ;//sysj\controller.sysj line: 141, column: 5
+          S689=1;
           active[10]=1;
           ends[10]=1;
           tdone[10]=1;
@@ -1011,50 +1011,50 @@ public class InfraredSensor extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1987){
+      switch(S2342){
         case 0 : 
-          S1987=0;
+          S2342=0;
           break RUN;
         
         case 1 : 
-          S1987=2;
-          S1987=2;
-          thread2005(tdone,ends);
-          thread2006(tdone,ends);
-          int biggest2007 = 0;
-          if(ends[10]>=biggest2007){
-            biggest2007=ends[10];
+          S2342=2;
+          S2342=2;
+          thread2392(tdone,ends);
+          thread2393(tdone,ends);
+          int biggest2394 = 0;
+          if(ends[10]>=biggest2394){
+            biggest2394=ends[10];
           }
-          if(ends[11]>=biggest2007){
-            biggest2007=ends[11];
+          if(ends[11]>=biggest2394){
+            biggest2394=ends[11];
           }
-          if(biggest2007 == 1){
+          if(biggest2394 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2008(tdone,ends);
-          thread2009(tdone,ends);
-          int biggest2010 = 0;
-          if(ends[10]>=biggest2010){
-            biggest2010=ends[10];
+          thread2395(tdone,ends);
+          thread2396(tdone,ends);
+          int biggest2397 = 0;
+          if(ends[10]>=biggest2397){
+            biggest2397=ends[10];
           }
-          if(ends[11]>=biggest2010){
-            biggest2010=ends[11];
+          if(ends[11]>=biggest2397){
+            biggest2397=ends[11];
           }
-          if(biggest2010 == 1){
+          if(biggest2397 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2010 == 0){
-            S1987=0;
+          if(biggest2397 == 0){
+            S2342=0;
             active[9]=0;
             ends[9]=0;
-            S1987=0;
+            S2342=0;
             break RUN;
           }
         
@@ -1063,9 +1063,9 @@ public class InfraredSensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
