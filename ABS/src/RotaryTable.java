@@ -27,8 +27,13 @@ public class RotaryTable extends ClockDomain{
   private int S4497 = 1;
   private int S4492 = 1;
   
+<<<<<<< Updated upstream
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
+=======
+  private int[] ends = new int[22];
+  private int[] tdone = new int[22];
+>>>>>>> Stashed changes
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -434,9 +439,15 @@ public class RotaryTable extends ClockDomain{
   }
 
   public void init(){
+<<<<<<< Updated upstream
     char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+=======
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+>>>>>>> Stashed changes
     paused = paused1;
     active = active1;
     suspended = suspended1;

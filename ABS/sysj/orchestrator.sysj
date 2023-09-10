@@ -11,32 +11,6 @@ Orchestrator(
 	signal recConveyorStatus, recCapperStatus, recCapLoaderStatus, recFillerStatus, recRotaryStatus;
 	signal getNextBottle;
 	{
-		
-		int quantity = 10;
-		int bottlePlaced = 0; 
-		
-		
-		while(true) {
-			// insert present(order) here
-			bottlePlaced = quantity;
-			while(bottlePlaced >= 0) {
-				System.out.println("Orch: Sending conveyor request");
-				emit sigConveyorReq(true);
-				await(recConveyorStatus);
-				System.out.println("Orch: Received conveyor status");
-				bottlePlaced--;
-				await(getNextBottle);
-				System.out.println("Orch: Number of bottles left to do: " + bottlePlaced);
-				pause;
-			}
-			
-			System.out.println("Done order");
-			halt;
-			pause;
-		}
-	}
-	||
-	{
 		while(true) {
 			await(sigConveyorReq); //Internal signal to send conveyor request
 			send conveyorReq(true); //Send actual request
@@ -103,31 +77,70 @@ Orchestrator(
 		liquidPercent.add(20);
 		liquidPercent.add(60);
 		
+		int quantity = 10;
+		int count = 0;
+		int eject = 0;
+		count = quantity;
+		//Accept order here.
 		while(true) {
-			//Startup procedure.
-			await(recConveyorStatus); //Await for first bottle to be delivered to position 1.
+			
+			System.out.println("Orch: Loading first bottle...");
+			emit sigConveyorReq(true);
+			await(recConveyorStatus);
+			System.out.println("Orch: First bottle loaded.");
 			emit sigRotaryReq; //Turn rotary table.
 			await(recRotaryStatus);
 			
-			while(true) {
+			while(count >= 0) {
 				
-				System.out.println("Orch: New bottle. Preparing to send requests..");
+				if (count == 0) {
+					System.out.println("Orch: Last bottle. Preparing to send requests..");
+				} else {
+					System.out.println("Orch: Bottle count " + count + ". Preparing to send requests..");
+				}
 				emit sigFillerReq(liquidPercent);
 				emit sigCapLoaderReq;
 				emit sigCapperReq;
 				{await(recFillerStatus);} || {await(recCapLoaderStatus);} || {await(recCapperStatus);}
 				System.out.println("Orch: All done!");
 				
-				//Send request to get new bottle on conveyor.
-				emit getNextBottle;
-				await(recConveyorStatus); //Await for that to finish.
-				//Completed all tasks, send request to rotary.
-				emit sigRotaryReq;
-				await(recRotaryStatus);
-				
+				count--; //Decrease bottle count;
+
+				if (count >= 0) {
+					//Get next bottle
+					System.out.println("Orch: Loading next bottle...");
+					emit sigConveyorReq(true);
+					await(recConveyorStatus);
+					System.out.println("Orch: Loaded new bottle.");
+										
+					//Completed all tasks, send request to rotary.
+					emit sigRotaryReq;
+					await(recRotaryStatus);
+				}
 				
 				pause;
 			}
+			
+			System.out.println("Ejecting all bottles");
+			
+			if (quantity >= 5) {
+				eject = 5;
+			} else {
+				eject = quantity;
+			}
+			
+			//Eject all bottles.
+			while (eject >= 0) {
+				emit sigRotaryReq;
+				await(recRotaryStatus);
+				emit sigConveyorReq;
+				await(recConveyorStatus);
+				eject--;
+			}
+			
+			
+			System.out.println("Orch: Order complete.");
+			halt;
 			pause;
 		}
 			
