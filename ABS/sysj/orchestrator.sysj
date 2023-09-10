@@ -65,9 +65,10 @@ Orchestrator(
 				}
 				
 				// Get next order in queue when order is finished
-				present(orderIsDone){
-					present(currentOrder){
-						Order tempOrder = #currentOrder;
+				
+				present(currentOrder){
+					Order tempOrder = #currentOrder;
+					present(orderIsDone){
 						// change order status to done and send it back to POS
 						tempOrder.setOrderStatus("Done");
 						abort(recOrderStatus){
@@ -263,9 +264,8 @@ Orchestrator(
 				eject--;
 			}
 			
-			
+			emit orderIsDone;
 			System.out.println("Orch: Order complete.");
-			halt;
 			pause;
 		}
 			
