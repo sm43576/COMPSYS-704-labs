@@ -114,7 +114,7 @@ Orchestrator(
 	}
 		||
 		{
-			// POS: Sustain initABS on first start up so we know to take in the first order as soon as we get it
+			// POS: Sustain initABS on first start up (or nothing in the queue)so we know to take in the first order as soon as we get it
 			while(true) {
 				abort(currentOrder){
 					sustain initABS;
