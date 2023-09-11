@@ -200,16 +200,40 @@ TemperatureSensor(
 }
 	
 
-//HumiditySensor(
-//		input signal bottleAtPos1, bottleAtPos5;
-//		output signal motConveyorOnOff;
-//		)
-//->{
-//
-//	while(true) {
-//		}
-//}
-	
+Humidity(
+
+		input Integer signal getHumid4R;
+		output signal getHumid4,airconHumid4;
+		
+		output Integer signal zone4Humid;
+		)
+->{
+	//Zone1
+	{
+		while(true){
+			abort(getHumid4R){
+				sustain getHumid4;
+			}
+			pause;
+
+			if(#getHumid4R>60) {
+				emit airconHumid4;
+				
+			} else if (#getHumid4R<40) {
+				emit airconHumid4;
+			}
+		System.out.println(#getHumid4R);
+		emit zone4Humid(#getHumid4R);
+		pause;
+		waitl(5 s);
+	}} ||
+	{
+		while(true) {
+			pause;
+		}
+	}
+
+}
 
 
 
