@@ -49,7 +49,7 @@ public class Main extends Application{
 
 //        //Tests
         //controller.setZoneCircle("zone1circle",1);
-//        controller.setHumidity("humid3", 20);
+        //controller.setHumidity("humid3", 20);
 //        controller.setTemp("temp1",24);
        
         //scene.getStyleSheets().add(getClass().getResource("application.css"));
@@ -77,16 +77,16 @@ public class Main extends Application{
 //    
     public static void updateTemp(Boolean Status,Object value,String zone,ecsUI controller) { 	
     	if(value!= null) {
-    		System.out.println("Set");
+    		System.out.println("Set Temperature");
     		int text = (int) value;
     		controller.setTemp(zone,text);
     	}
     }
     public static void updateHumid(Boolean Status,Object value,String zone,ecsUI controller) {   	
     	if(value!= null) {
-    		System.out.println("Set");
+    		System.out.println("Set Humidity");
     		int text = (int) value;
-    		controller.setTemp(zone,text);
+    		controller.setHumidity(zone,text);
     	}
     }
     

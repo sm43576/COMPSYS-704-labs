@@ -1,18 +1,21 @@
 
-TemperaturePlant(
+Plant(
 		input signal getTemp1,window1;
 		output signal openedWindow1;
 		output Integer signal getTemp1R;
+		
+		input signal getHumid4,airconHumid4;
+		output Integer signal getHumid4R;
+
 	)
 ->
 {
-;
-	{
+	{ //Temperature///////
 		int zone1Temp = 32;
 		while(true) {
 			present(getTemp1){
-				sustain getTemp1R(zone1Temp);
 				System.out.println("Sent Temp");
+				sustain getTemp1R(zone1Temp);
 			}
 			pause;
 			
@@ -25,35 +28,21 @@ TemperaturePlant(
 	{
 		while(true) {
 			present(window1){
-				System.out.println("windowOpen");
+				//System.out.println("windowOpen");
 				pause;
 			}
 			pause;
 		}
 	}
 
-}
-
-
-HumidityPlant(
-		output Integer signal getHumid4R;
-		input signal getHumid4,airconHumid4;
-		
-	)
-->
-{
-;
-	{
+	||
+	{	//Humidity/////////
 		int zone4Humid = 28;
 		while(true) {
 			present(getHumid4){
+				//System.out.println("Sent Humidity of Zone4");
 				sustain getHumid4R(zone4Humid);
-				System.out.println("Sent Humidity of Zone4");
 			}
-			pause;
-			
-
-//			System.out.println("trigger");
 			pause;
 		}
 	} ||
@@ -62,12 +51,10 @@ HumidityPlant(
 		while(true) {
 			present(airconHumid4){
 				System.out.println("aircon On");
-				pause;
 			}
 			pause;
 		}
 	}
-
 }
 
 

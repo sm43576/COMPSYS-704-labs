@@ -15,18 +15,18 @@ public class TemperaturePlant extends ClockDomain{
   public Signal window1 = new Signal("window1", Signal.INPUT);
   public Signal openedWindow1 = new Signal("openedWindow1", Signal.OUTPUT);
   public Signal getTemp1R = new Signal("getTemp1R", Signal.OUTPUT);
-  private int zone1Temp_thread_2;//sysj\plant.sysj line: 11, column: 3
-  private int S2879 = 1;
+  private int zone1Temp_thread_2;//sysj\plant.sysj line: 10, column: 3
+  private int S2827 = 1;
   private int S2817 = 1;
   private int S2785 = 1;
-  private int S2828 = 1;
-  private int S2820 = 1;
+  private int S2825 = 1;
+  private int S2819 = 1;
   
   private int[] ends = new int[7];
   private int[] tdone = new int[7];
   
-  public void thread2985(int [] tdone, int [] ends){
-        switch(S2828){
+  public void thread2884(int [] tdone, int [] ends){
+        switch(S2825){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -34,25 +34,24 @@ public class TemperaturePlant extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S2820){
+        switch(S2819){
           case 0 : 
-            S2820=1;
+            S2819=1;
             active[3]=1;
             ends[3]=1;
             tdone[3]=1;
             break;
           
           case 1 : 
-            S2820=1;
-            S2820=0;
-            if(window1.getprestatus()){//sysj\plant.sysj line: 27, column: 12
-              System.out.println("windowOpen");//sysj\plant.sysj line: 28, column: 5
+            S2819=1;
+            S2819=0;
+            if(window1.getprestatus()){//sysj\plant.sysj line: 26, column: 12
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
             }
             else {
-              S2820=1;
+              S2819=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -65,7 +64,7 @@ public class TemperaturePlant extends ClockDomain{
     }
   }
 
-  public void thread2984(int [] tdone, int [] ends){
+  public void thread2883(int [] tdone, int [] ends){
         switch(S2817){
       case 0 : 
         active[2]=0;
@@ -76,9 +75,9 @@ public class TemperaturePlant extends ClockDomain{
       case 1 : 
         switch(S2785){
           case 0 : 
-            getTemp1R.setPresent();//sysj\plant.sysj line: 14, column: 5
+            getTemp1R.setPresent();//sysj\plant.sysj line: 13, column: 5
             currsigs.addElement(getTemp1R);
-            getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 14, column: 5
+            getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 13, column: 5
             active[2]=1;
             ends[2]=1;
             tdone[2]=1;
@@ -95,10 +94,10 @@ public class TemperaturePlant extends ClockDomain{
           case 2 : 
             S2785=2;
             S2785=0;
-            if(getTemp1.getprestatus()){//sysj\plant.sysj line: 13, column: 12
-              getTemp1R.setPresent();//sysj\plant.sysj line: 14, column: 5
+            if(getTemp1.getprestatus()){//sysj\plant.sysj line: 12, column: 12
+              getTemp1R.setPresent();//sysj\plant.sysj line: 13, column: 5
               currsigs.addElement(getTemp1R);
-              getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 14, column: 5
+              getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 13, column: 5
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -117,31 +116,30 @@ public class TemperaturePlant extends ClockDomain{
     }
   }
 
-  public void thread2982(int [] tdone, int [] ends){
-        S2828=1;
-    S2820=0;
-    if(window1.getprestatus()){//sysj\plant.sysj line: 27, column: 12
-      System.out.println("windowOpen");//sysj\plant.sysj line: 28, column: 5
+  public void thread2881(int [] tdone, int [] ends){
+        S2825=1;
+    S2819=0;
+    if(window1.getprestatus()){//sysj\plant.sysj line: 26, column: 12
       active[3]=1;
       ends[3]=1;
       tdone[3]=1;
     }
     else {
-      S2820=1;
+      S2819=1;
       active[3]=1;
       ends[3]=1;
       tdone[3]=1;
     }
   }
 
-  public void thread2981(int [] tdone, int [] ends){
+  public void thread2880(int [] tdone, int [] ends){
         S2817=1;
-    zone1Temp_thread_2 = 32;//sysj\plant.sysj line: 11, column: 3
+    zone1Temp_thread_2 = 32;//sysj\plant.sysj line: 10, column: 3
     S2785=0;
-    if(getTemp1.getprestatus()){//sysj\plant.sysj line: 13, column: 12
-      getTemp1R.setPresent();//sysj\plant.sysj line: 14, column: 5
+    if(getTemp1.getprestatus()){//sysj\plant.sysj line: 12, column: 12
+      getTemp1R.setPresent();//sysj\plant.sysj line: 13, column: 5
       currsigs.addElement(getTemp1R);
-      getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 14, column: 5
+      getTemp1R.setValue(zone1Temp_thread_2);//sysj\plant.sysj line: 13, column: 5
       active[2]=1;
       ends[2]=1;
       tdone[2]=1;
@@ -161,51 +159,50 @@ public class TemperaturePlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2879){
+      switch(S2827){
         case 0 : 
-          S2879=0;
+          S2827=0;
           break RUN;
         
         case 1 : 
-          S2879=2;
-          S2879=2;
-          ;//sysj\plant.sysj line: 9, column: 1
-          thread2981(tdone,ends);
-          thread2982(tdone,ends);
-          int biggest2983 = 0;
-          if(ends[2]>=biggest2983){
-            biggest2983=ends[2];
+          S2827=2;
+          S2827=2;
+          thread2880(tdone,ends);
+          thread2881(tdone,ends);
+          int biggest2882 = 0;
+          if(ends[2]>=biggest2882){
+            biggest2882=ends[2];
           }
-          if(ends[3]>=biggest2983){
-            biggest2983=ends[3];
+          if(ends[3]>=biggest2882){
+            biggest2882=ends[3];
           }
-          if(biggest2983 == 1){
+          if(biggest2882 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2984(tdone,ends);
-          thread2985(tdone,ends);
-          int biggest2986 = 0;
-          if(ends[2]>=biggest2986){
-            biggest2986=ends[2];
+          thread2883(tdone,ends);
+          thread2884(tdone,ends);
+          int biggest2885 = 0;
+          if(ends[2]>=biggest2885){
+            biggest2885=ends[2];
           }
-          if(ends[3]>=biggest2986){
-            biggest2986=ends[3];
+          if(ends[3]>=biggest2885){
+            biggest2885=ends[3];
           }
-          if(biggest2986 == 1){
+          if(biggest2885 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2986 == 0){
-            S2879=0;
+          if(biggest2885 == 0){
+            S2827=0;
             active[1]=0;
             ends[1]=0;
-            S2879=0;
+            S2827=0;
             break RUN;
           }
         

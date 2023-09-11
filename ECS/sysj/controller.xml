@@ -33,17 +33,17 @@
 	
 		<ClockDomain Name="TemperatureSensorCD" Class="TemperatureSensor">
 			<iSignal Name="getTemp1R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="getTemp1" To="TemperaturePlantCD.getTemp1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="window1" To="TemperaturePlantCD.window1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getTemp1" To="PlantCD.getTemp1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="window1" To="PlantCD.window1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="zone1Temp" To="ecsUI.zone1Temp" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
 		</ClockDomain>
 		
 		
 		<ClockDomain Name="HumiditySensorCD" Class="HumiditySensor">
 			<iSignal Name="getHumid4R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="getHumid4" To="HumidityPlantCD.getHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="airconHumid4" To="HumidityPlantCD.airconHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="zone4Humid" To="ecsUI.zone4Humid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
+			<oSignal Name="getHumid4" To="PlantCD.getHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="airconHumid4" To="PlantCD.airconHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="zone4Humid" To="ecsUI.zone4Humid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20012" />
 		</ClockDomain>
 		</SubSystem>
 </System>

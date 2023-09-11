@@ -38,7 +38,7 @@ public class InfraredSensor extends ClockDomain{
   private int[] ends = new int[18];
   private int[] tdone = new int[18];
   
-  public void thread2766(int [] tdone, int [] ends){
+  public void thread2746(int [] tdone, int [] ends){
         switch(S2340){
       case 0 : 
         active[11]=0;
@@ -452,7 +452,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2765(int [] tdone, int [] ends){
+  public void thread2745(int [] tdone, int [] ends){
         switch(S1503){
       case 0 : 
         active[10]=0;
@@ -926,7 +926,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2763(int [] tdone, int [] ends){
+  public void thread2743(int [] tdone, int [] ends){
         S2340=1;
     S1526=0;
     S1510=0;
@@ -965,7 +965,7 @@ public class InfraredSensor extends ClockDomain{
     }
   }
 
-  public void thread2762(int [] tdone, int [] ends){
+  public void thread2742(int [] tdone, int [] ends){
         S1503=1;
     S689=0;
     S673=0;
@@ -1019,38 +1019,38 @@ public class InfraredSensor extends ClockDomain{
         case 1 : 
           S2342=2;
           S2342=2;
-          thread2762(tdone,ends);
-          thread2763(tdone,ends);
-          int biggest2764 = 0;
-          if(ends[10]>=biggest2764){
-            biggest2764=ends[10];
+          thread2742(tdone,ends);
+          thread2743(tdone,ends);
+          int biggest2744 = 0;
+          if(ends[10]>=biggest2744){
+            biggest2744=ends[10];
           }
-          if(ends[11]>=biggest2764){
-            biggest2764=ends[11];
+          if(ends[11]>=biggest2744){
+            biggest2744=ends[11];
           }
-          if(biggest2764 == 1){
+          if(biggest2744 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2765(tdone,ends);
-          thread2766(tdone,ends);
-          int biggest2767 = 0;
-          if(ends[10]>=biggest2767){
-            biggest2767=ends[10];
+          thread2745(tdone,ends);
+          thread2746(tdone,ends);
+          int biggest2747 = 0;
+          if(ends[10]>=biggest2747){
+            biggest2747=ends[10];
           }
-          if(ends[11]>=biggest2767){
-            biggest2767=ends[11];
+          if(ends[11]>=biggest2747){
+            biggest2747=ends[11];
           }
-          if(biggest2767 == 1){
+          if(biggest2747 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2767 == 0){
+          if(biggest2747 == 0){
             S2342=0;
             active[9]=0;
             ends[9]=0;

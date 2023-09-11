@@ -213,18 +213,18 @@ HumiditySensor(
 	{
 		while(true){
 			abort(getHumid4R){
-				System.out.println("get humid");
+			//	System.out.println("get humid");
 				sustain getHumid4;
 			}
-			pause;
-		System.out.println(#getHumid4R);
+			
+			
 			if(#getHumid4R>60) {
 				emit airconHumid4;
 				
 			} else if (#getHumid4R<40) {
 				emit airconHumid4;
 			}
-		
+		System.out.println(#getHumid4R);
 		emit zone4Humid(#getHumid4R);
 		pause;
 		waitl(5 s);
