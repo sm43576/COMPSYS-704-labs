@@ -84,7 +84,7 @@ public class Controller {
         	
         	RotateTransition rotate = new RotateTransition();
         	rotate.setNode(carousel);
-        	rotate.setDuration(Duration.millis(1000));
+        	rotate.setDuration(Duration.millis(100));
         	//rotate.setCycleCount(TranslateTransition.INDEFINITE);
         	carousel.setRotate(carouselAngle);
         	rotate.setByAngle(60);

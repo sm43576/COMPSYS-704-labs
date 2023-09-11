@@ -16,20 +16,17 @@ Plant(
 		
 		// Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend; //to plant
-		input Integer signal selectCanister,receivedPercentage;
-		output signal dosUnitEvac,dosUnitFilled;  // from plant
-		output Integer signal selectedCanister; // from PLANT
+		input Integer signal selectCanister, selectPercentage;
+		output signal dosUnitEvac, valveInjectorActive;  // from plant
+		output Integer signal selectedCanister, selectedPercentage,dosUnitFilled; // from PLANT
 		
-		//input
-		//output
 		
 		///////////////////////////////////////////////////////////////////
 		
 		// CapLoader
 		
-		input signal pusherExtend,vacOn,armSource,armDest;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		input signal pusherExtend,vacOn,armSource,armDest,magReq;
+		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,magEmpty;
 		/////////////////////////////////////////////////////////////////////	
 		
 		
@@ -118,41 +115,60 @@ Plant(
 	||
 	
 	//Filler /////////////////////////////////////////////////////////////////////
-	{// Selects canister
-		await(selectCanister); 
-		int canister = #selectCanister;
-		System.out.println("canister number received");
-		emit selectedCanister(canister);
-		
-	}
-	||
-	
-	{//Fill Valve
-		await(receivedPercentage);
-		System.out.println("received");
-		int received =(int)#receivedPercentage;
-		System.out.println("filled");
-		
-		/////////////////
-		await(valveInletOnOff);
-		emit dosUnitFilled;
-		
-	}
-	||
-	
-	
-	{// Retract/extend Arm
-		abort(dosUnitValveRetract){//  when actuator brings to top
-			sustain dosUnitEvac; //emit canister at bottom
+	{
+		int signal canister;
+		int signal percent;
+		{ //Filler canister selection.
+			while(true) {
+				//Select canister
+				await(selectCanister); 
+				emit canister(#selectCanister); //Record selected canister
+				emit selectedCanister(#selectCanister); //Send back ok.
+				pause;
+			}
 		}
-		System.out.println("Canister at top");
-		
-		await(dosUnitValveExtend);// wait to be brought down to -
-		System.out.println("Canister at bottom");
-		pause;
-		
-	}// LOGIC HERE
+		||
+		{ //Filler percentage selection.
+			while(true) {
+				//Select percentage.
+				await(selectPercentage);
+				emit percent(#selectPercentage); //Record selected percentage
+				emit selectedPercentage(#selectPercentage); //Send back ok.
+				pause;
+			}
+		}
+		||
+		{ //Filler Injector
+			while(true) {
+				present(valveInjectorOnOff){
+					abort(!valveInjectorOnOff){
+						sustain valveInjectorActive;
+					}
+				}
+				pause;
+			}
+		}
+		||
+		{ //Pressure canister.
+			while(true) {
+				
+				present(dosUnitValveExtend && !dosUnitValveRetract){
+					abort (dosUnitValveRetract){
+						sustain dosUnitEvac; 
+					}
+				}
+				present(dosUnitValveRetract && !dosUnitValveExtend) {
+					System.out.println("FillerPlant: Filling with canister " + #canister + " Percent: " + #percent);
+					abort (dosUnitValveExtend) {
+						sustain dosUnitFilled; 
+					}
+				}
+				pause;
+				
+			}
+		}
 
+	}
 	/////////////////////////////////////////////////////////////////
 
 	||
@@ -160,12 +176,17 @@ Plant(
 //Cap Loader////////////////////////////////////////////	
 	{// Arm
 		while(true){
-			abort(armSource){
-				sustain armAtDest;
+			present(armSource && !armDest){
+				abort (armDest){
+					sustain armAtSource; 
+				}
 			}
-			abort(armDest){
-				sustain armAtSource;
+			present(armDest && !armSource) {
+				abort (armSource) {
+					sustain armAtDest;
+				}
 			}
+			pause;
 		}
 	}
 	||
@@ -174,23 +195,19 @@ Plant(
 			abort(pusherExtend){
 				sustain pusherRetracted;
 			}
+			System.out.println("Aborted");
 			abort(!pusherExtend){
 				sustain pusherExtended;
 			}
+			pause;
 		}
 	}
 	||
 	{// Vacuum
 		while(true){
 			present(vacOn && armAtSource){
-				if((Integer)#capPos == 1){
-					emit capPos(0);
-					abort(!vacOn){
-						sustain WPgripped; 
-					}
-					present(armAtSource){
-						emit capPos(1);
-					}
+				abort(magEmpty || !vacOn) {
+					sustain WPgripped;
 				}
 			}
 			pause;
@@ -198,41 +215,33 @@ Plant(
 	}
 	||
 	{
-		/*
-		 * Cap positions
-		 * 0 = at Mag
-		 * 1 = at pick-up
-		 */
 		while(true){
-			// At mag
-			abort(empty){
+			abort(magEmpty){
 				while(true){
 						await(pusherRetracted);
 						await(pusherExtended);
-						// At pick-up
-						emit capPos(1);
 						await(pusherRetracted);
 						emit capDec;
+						pause;
 				}
 			}
-			await(refill);
+			await(magReq);
+			pause;
 		}
 	}
 	||
 	{
 		int capcount = 5;
 		while(true){
+			//System.out.println("CAPCOUNT" + capcount);
 			present(capDec){
 				if(capcount > 0)
 					capcount--;
 			}
-			present(refill){
+			present(magReq){
 				capcount = 5;
 			}
-//			present(pusherRetracted){
-				if(capcount == 0)
-					emit empty;
-//			}
+			if(capcount == 0) emit magEmpty;
 			pause;
 		}
 	}
@@ -305,6 +314,7 @@ Plant(
 	{
 		while(true) {
 			present(rotaryTableTrigger){
+				
 				// Turn the table 60 degrees and move the bottles along by one somehow
 				//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
 				System.out.println("table triggered now moving");
@@ -314,32 +324,29 @@ Plant(
 					System.out.println("moving bottle at pos 4 to pos 5");
 					emit moveToPos5;
 				}
-				pause;
 				
 				// if there is a bottle at pos 3 move to pos 4
 				present(bottleAtPos3){
 					System.out.println("moving bottle at pos 3 to pos 4");
 					emit moveToPos4;
 				}
-				pause;
 				// if there is a obttle at pos 2 move to pos 3
 				
 				present(bottleAtPos2){
 					System.out.println("moving bottle at pos 2 to pos 3");
 					emit moveToPos3;
 				}
-				pause;
 				// if there is a bottle at pos 1 move to pos 2.
 				present(bottleAtPos1){
 					System.out.println("moving bottle at pos 1 to pos 2");
 					emit moveToPos2;
 				}
-				pause;
 				// emit table aligned with sensor
 				System.out.println("Table has been aligned");
-				emit tableAlignedWithSensor;
-				pause;
 				
+				abort(!rotaryTableTrigger) {
+					sustain tableAlignedWithSensor;
+				}				
 			}
 				
 			pause;
@@ -365,26 +372,4 @@ Plant(
 	||
 	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
 
-/////////////////////////////////////////////////////////////////////
-	
-	
-	
-//	||
-//	{//Emit Signals - GOing to UI
-//		{while(true) {present(motConveyorOnOff){emit motConveyorOnOffE;} pause;}}
-//		||
-//		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
-//		||
-//		{while(true) {present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
-//		
-////		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
-////		||
-////		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
-////		||
-////		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
-////		||
-////		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
-////		||
-////		{while(true){present(empty){emit emptyE;} pause;}}
-//	}
 }

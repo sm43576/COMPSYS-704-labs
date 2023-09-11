@@ -1,162 +1,288 @@
 import java.util.ArrayList;
 Orchestrator(
 		input String channel conveyorStatus, capperStatus, capLoaderStatus, fillerStatus, rotaryStatus;
-		output Boolean channel conveyorReq, allOperationsFinished, fillerReq, capperReq, capLoaderReq;
-		input Order channel order;
-		output Order channel doneOrder;
+		output Boolean channel conveyorReq, rotaryReq, fillerReq, capperReq, capLoaderReq;
 		
-		output ArrayList channel percentLiquid;
-		
+		// --- TO and FROM POS ---
+		input signal recOrderStatus;
+		input Order signal order;
+		output Order signal orderStatus;
 		)
 ->{
-	// TODO: Temp delete later
-	
-//	int quantity = 5;
-//	int bottlePlaced = 0;
+	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
+	ArrayList signal sigFillerReq;
+	signal recConveyorStatus, recCapperStatus, recCapLoaderStatus, recFillerStatus, recRotaryStatus;
 	signal getNextBottle;
-	// final
-	{// Conveyor Orchestator logic
-		// Assumption - only one order at a time.
-		int quantity = 5;
-		int bottlePlaced = 0; 
-		
-		// present X
-		
+	
+	// --- POS ---
+	signal startOrder;
+	signal orderIsDone;
+	signal initABS;
+	signal foundCurrentOrder;
+	Order signal currentOrder;
+	signal recOrderIsDone;
+	{ 	
+		// TODO changed to internal valued signal
+		ArrayList fifoQueue = new ArrayList();
+		// --------------- POS logic  ---------------
 		while(true) {
-			// insert present(order) here
-			bottlePlaced = quantity;
-			while(bottlePlaced >= 0) {
-				System.out.println("sending conveyor req?");
-				send conveyorReq(true);
-				bottlePlaced--;
-				System.out.println("Number of bottles left to do: " + bottlePlaced);
-				await(getNextBottle);
+					
+			{ // --- POS checking for new orders and adding it to queue --- 
+//						System.out.println("awaiting order");
+				present(order){ // TODO: bruh moment
+				System.out.println("got order!");
+				Order newOrder = #order;
+				System.out.println(newOrder.getQuantity());
+				// Add order to the queue (FIFO)
+				fifoQueue.add(newOrder);
+				
+				// set current order to the first item in queue at start
+				present(initABS){
+					System.out.println("start of ABS get first item");
+					Order tempOrder = (Order)fifoQueue.get(0);
+					
+					
+					fifoQueue.remove(0);
+					System.out.println(newOrder.getCustomerID());
+					
+					// set flag to start orders
+					abort(foundCurrentOrder){
+						emit currentOrder(tempOrder);
+						emit startOrder;
+					}
+					
+					
+					// Change order status to "Started" and send it back to POS
+					tempOrder.setOrderStatus("Started");
+					System.out.println("emitting orderstatus: started");
+					
+					abort(recOrderStatus){
+						sustain orderStatus(tempOrder);
+					}
+					
+					System.out.println("orch received: recOrderStatus");
+					
+				}
+				}
+				
+				
+				// Get next order in queue when order is finished
+				
+				present(orderIsDone){
+					System.out.println("entered order is done");
+					present(currentOrder){
+						System.out.println("entered current order present");
+						abort(recOrderStatus){
+							{
+								Order tempOrder = #currentOrder;
+								// change order status to done and send it back to POS
+								System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");
+								tempOrder.setOrderStatus("Done");
+								sustain orderStatus(tempOrder);
+							} 
+							|| {sustain recOrderIsDone;}
+						}
+						
+						// Get next order
+						System.out.println("initialising next order...");
+						if(!fifoQueue.isEmpty()) {
+							Order nextOrder = (Order)fifoQueue.get(0);
+							fifoQueue.remove(0);
+							
+							// set flag to start orders
+							abort(foundCurrentOrder){
+								emit currentOrder(nextOrder);
+								emit startOrder;
+							}
+							
+							// Change order status to "Started" and send it back to POS for next order
+							nextOrder.setOrderStatus("Started");
+							System.out.println("emitting next orderstatus: started");
+							abort(recOrderStatus){
+								sustain orderStatus(nextOrder);
+							}
+							
+						}
+						
+					}
+				}
+	
+			}
+			pause;
+		}
+					
+	}
+		||
+		{
+			// POS: Sustain initABS on first start up (or nothing in the queue)so we know to take in the first order as soon as we get it
+			while(true) {
+				abort(currentOrder){
+					sustain initABS;
+				}
+				pause;
+			}
+		}
+		
+		||
+		{
+			// To sustain currentOrder so other reactions can access it throughout entire process wihtout waiting for a new order
+			while(true) {
+				present(startOrder){
+					present(currentOrder){
+						// Sustain  current order until the order is done
+						abort(recOrderIsDone){
+							{Order myOrder = #currentOrder;
+							sustain currentOrder(myOrder);}
+							||
+							{sustain foundCurrentOrder;}
+						}
+					}
+					
+				}
+				pause;
+			}
+		}
+		// --------------- POS logic end  ---------------
+	||
+	{
+		while(true) {
+			await(sigConveyorReq); //Internal signal to send conveyor request
+			send conveyorReq(true); //Send actual request
+			receive conveyorStatus; //Receive actual response.
+			String res = (String) #conveyorStatus; //Retrieve string from actual response.
+			emit recConveyorStatus(res); //Emit internal signal that request has been received.
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigCapperReq);  
+			System.out.println("Orch: Sending capper request");
+			send capperReq(true); 
+			receive capperStatus; 
+			System.out.println("Orch: Received capper status");
+			String res = (String) #capperStatus; 
+			emit recCapperStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigCapLoaderReq);
+			System.out.println("Orch: Sending cap loader request");
+			send capLoaderReq(true); 
+			receive capLoaderStatus; 
+			System.out.println("Orch: Received cap loader status");
+
+			String res = (String) #capLoaderStatus; 
+			emit recCapLoaderStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigFillerReq);
+			System.out.println("Orch: Sending filler request");
+			ArrayList req = (ArrayList) #sigFillerReq;
+			send fillerReq(req); 
+			receive fillerStatus;
+			System.out.println("Orch: Received filler status");
+			String res = (String) #fillerStatus; 
+			emit recFillerStatus(res); 
+		}
+	}
+	||
+	{
+		while(true) {
+			await(sigRotaryReq);
+			System.out.println("Orch: Sending rotary request");
+			send rotaryReq(true);
+			receive rotaryStatus; 
+			System.out.println("Orch: Received rotary status");
+			String res = (String) #rotaryStatus; 
+			emit recRotaryStatus(res); 
+		}
+	}
+	||
+	{
+
+		int quantity = 0;
+		int count = 0;
+		int eject = 0;
+		ArrayList liquidPercent;
+		//Accept order here.
+		while(true) {
+			//Accept order here.
+			await(currentOrder);
+			Order order = #currentOrder;
+			quantity = order.getQuantity();
+			count = quantity;
+			liquidPercent = order.getLiquidPercentageArray();
+			
+			System.out.println("Orch: Loading first bottle...");
+			emit sigConveyorReq(true);
+			await(recConveyorStatus);
+			System.out.println("Orch: First bottle loaded.");
+			emit sigRotaryReq; //Turn rotary table.
+			await(recRotaryStatus);
+			
+			while(count >= 0) {
+				
+				if (count == 0) {
+					System.out.println("Orch: Last bottle. Preparing to send requests..");
+				} else {
+					System.out.println("Orch: Bottle count " + count + ". Preparing to send requests..");
+				}
+				emit sigFillerReq(liquidPercent);
+				emit sigCapLoaderReq;
+				emit sigCapperReq;
+				{await(recFillerStatus);} || {await(recCapLoaderStatus);} || {await(recCapperStatus);}
+				System.out.println("Orch: All done!");
+			
+				count--; //Decrease bottle count;
+
+				if (count >= 0) {
+					//Get next bottle
+					System.out.println("Orch: Loading next bottle...");
+					emit sigConveyorReq(true);
+					await(recConveyorStatus);
+					System.out.println("Orch: Loaded new bottle.");
+										
+					//Completed all tasks, send request to rotary.
+					emit sigRotaryReq;
+					await(recRotaryStatus);
+				}
 				
 				pause;
 			}
-			
-			System.out.println("Done order");
-			halt;
-			//TODO: send doneOrder signal
-//			send doneOrder(order)
-			pause;
-		}
-	}
-	||
-	{// Requesting work to filler, capper and caploader
-		ArrayList liquidPercent = new ArrayList();
-		liquidPercent.add(10);
-		liquidPercent.add(10);
-		liquidPercent.add(20);
-		liquidPercent.add(60);
-		while(true) {
-			receive rotaryStatus;
-			String rotaryStat = #rotaryStatus;
-			
-			// wait for rotary status to be done
-			if(rotaryStat == "done") {
-				System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");
-				send fillerReq(true);
-				send percentLiquid(liquidPercent);
-				send capLoaderReq(true);
-				send capperReq(true);
-				emit getNextBottle;
-			}
-			else {
-				send fillerReq(false);
-				send capLoaderReq(false);
-				send capperReq(false);
-			}
-			pause;
-		}
 		
-	}
-	||
-	{
-		while(true) {
-			receive conveyorStatus; 
-			String conveyValue= #conveyorStatus;
-			if (conveyValue == "busy") {
-				System.out.println("Orch received - convey busy");
-				Status.conveyStat = true;
-			}
-			else {
-				System.out.println("Orch received - convey done");
-				Status.conveyStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{
-		//Check filler
-		while(true) {
-			receive fillerStatus; 
-			String fillerValue= #fillerStatus;
-			if (fillerValue == "busy") {
-				System.out.println("Orch received - filler busy");
-				Status.fillerStat = true;
-			}
-			else {
-				System.out.println("Orch received - filler done");
-				Status.fillerStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{	
-		while(true) {
-			receive capperStatus; 
-			String capperValue= #capperStatus;
-			if (capperValue == "busy") {
-				System.out.println("Orch received - capper busy");
-				Status.capperStat = true;
-			}
-			else {
-				System.out.println("Orch received - capper done");
-				Status.capperStat = false;
+			System.out.println("Ejecting all bottles");
+			
+			if (quantity >= 5) {
+				eject = 5;
+			} else {
+				eject = quantity;
 			}
 			
+			//Eject all bottles.
+			while (eject >= 0) {
+				emit sigRotaryReq;
+				await(recRotaryStatus);
+				emit sigConveyorReq;
+				await(recConveyorStatus);
+				eject--;
+			}
+			System.out.println("Orch: Order complete.");
+			abort(recOrderIsDone){
+				sustain orderIsDone;
+			}
+			System.out.println("end finally");
 			pause;
 		}
-	}
-	||
-	{	while(true) {
-			receive capLoaderStatus; 
-			String capLoaderValue= #capLoaderStatus;
-			if (capLoaderValue == "busy") {
-				System.out.println("Orch received - loader busy");
-				Status.capLoaderStat = true;
-			}
-			else {
-				System.out.println("Orch received - loader done");
-				Status.capLoaderStat = false; //idle and done are the same
-			}
-			pause;
-		}
-	}
-	||
-	{ // Rotary Orchestrator logic
-		// GOal is to get all the status and emit done if all are done.			
-		// wait until everything else is done or idle
-		// False = done, true = busy
-		while(true) {
-			if((Status.conveyStat==false) && 
-				(Status.fillerStat==false) &&
-				(Status.capperStat==false) &&
-				(Status.capLoaderStat==false)){
-				System.out.println("Orch sending rotary req");
-				Status.conveyStat = true;
-				send allOperationsFinished(true);
-				
-			}else {
-				send allOperationsFinished(false);
-			}
-			pause;
-		}//while true
+			
 	}
 }
+
 
 
 

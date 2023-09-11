@@ -7,13 +7,11 @@
 			
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
-			<oChannel Name="allOperationsFinished" To="RotaryTableCD.allOperationsFinished" />
+			<oChannel Name="rotaryReq" To="RotaryTableCD.rotaryReq" />
 			
 			<!-- Filler Channels-->
 			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
-			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />
-			<oChannel Name="percentLiquid" To="LiquidFillerCD.percentLiquid"/>
-			
+			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />			
 			<!-- Capper Channels-->
 			<iChannel Name="capperStatus" From="CapperCD.capperStatus" />
 			<oChannel Name="capperReq" To="CapperCD.capperReq" />
@@ -22,6 +20,10 @@
 			<iChannel Name="capLoaderStatus" From="CaploaderCD.capLoaderStatus" />
 			<oChannel Name="capLoaderReq" To="CaploaderCD.capLoaderReq" />
 			
+			<!-- POS Signals-->
+			<iSignal Name="order" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
+			<iSignal Name="recOrderStatus" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
+			<oSignal Name="orderStatus" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="40001"/>
 						
 		</ClockDomain>
 		
@@ -40,7 +42,6 @@
 		
 		<ClockDomain Name="LiquidFillerCD" Class="LiquidFiller">		
 			<iChannel Name="fillerReq" From="OrchestratorCD.fillerReq" />
-			<iChannel Name="percentLiquid" From="OrchestratorCD.percentLiquid" />
 			<oChannel Name="fillerStatus" To="OrchestratorCD.fillerStatus" />
 						
 						
@@ -48,13 +49,17 @@
 			<iSignal Name="dosUnitEvac" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="dosUnitFilled" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="selectedCanister" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="selectedPercentage" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="valveInjectorActive" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+
 
 			<oSignal Name="valveInjectorOnOff" To="PlantCD.valveInjectorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveInletOnOff" To="PlantCD.valveInletOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="dosUnitValveRetract" To="PlantCD.dosUnitValveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="dosUnitValveExtend" To="PlantCD.dosUnitValveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="selectCanister" To="PlantCD.selectCanister" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="receivedPercentage" To="PlantCD.receivedPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="selectPercentage" To="PlantCD.selectPercentage" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			
 		</ClockDomain>
 		
@@ -65,7 +70,7 @@
 			<iSignal Name="capOnBottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			
-			<iChannel Name="allOperationsFinished" From="OrchestratorCD.rotaryReq" />
+			<iChannel Name="rotaryReq" From="OrchestratorCD.rotaryReq" />
 			<oChannel Name="rotaryStatus" To="OrchestratorCD.rotaryStatus" />
 
 		</ClockDomain>
@@ -77,19 +82,15 @@
 			<iSignal Name="WPgripped"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armAtSource"     Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="armAtDest"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="request"         Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="magEmpty"         Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 
 			<oSignal Name="pusherExtend" To="PlantCD.pusherExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="vacOn"        To="PlantCD.vacOn"        Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="armSource"    To="PlantCD.armSource"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="armDest"      To="PlantCD.armDest"      Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="magReq"      To="PlantCD.magReq"      Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 
-			<iSignal Name="mode"          Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="pusherExtendM" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="vacOnM"        Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="armSourceM"    Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="armDestM"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-		
+
 			<iChannel Name="capLoaderReq" From="OrchestratorCD.capLoaderReq" />
 			<oChannel Name="capLoaderStatus" To="OrchestratorCD.capLoaderStatus" />
 		</ClockDomain>

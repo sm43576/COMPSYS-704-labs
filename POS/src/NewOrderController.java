@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import com.systemj.netapi.SimpleClient;
 
 public class NewOrderController {
 
@@ -33,7 +35,7 @@ public class NewOrderController {
     private Boolean totalIsCorrect = false;
     private int total = 0;
     private int quantity = 0;
-    private List<Integer> liquidPercent =  new ArrayList<>();
+    private ArrayList<Integer> liquidPercent =  new ArrayList<>();
     private HomeController homeController;
     
     @FXML
@@ -198,10 +200,9 @@ public class NewOrderController {
     	if (homeController != null) {
             homeController.updateOrderHistoryTable();
         }
-    	System.out.println("eh??");
-    	int[] array = order.getLiquidPercentageArray();
-    	System.out.println(Arrays.toString(array));
-    	// sendOrderToOrchestrator(order);
+    	
+    	// Send to SysJ
+    	this.sendOrderToOrchestrator(order);
     	Stage stage = (Stage) submit_btn.getScene().getWindow();
    	 	stage.close();
     	
@@ -210,6 +211,16 @@ public class NewOrderController {
     
     public void sendOrderToOrchestrator(Order order) {
     	//TODO sockets here
+		try {
+			SimpleClient s = new SimpleClient("127.0.0.1", 40000, "OrchestratorCD", "order");
+			System.out.println("init simple client");
+    		s.emit(order, 10); // Emitting an order for 10 ms
+    		System.out.println("emitted order to orch");
+//    		s.close(); // close when necessary
+    		
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
     	
     }
 

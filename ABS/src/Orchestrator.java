@@ -12,84 +12,2704 @@ public class Orchestrator extends ClockDomain{
   private char [] active;
   private char [] paused;
   private char [] suspended;
+  public Signal recOrderStatus = new Signal("recOrderStatus", Signal.INPUT);
+  public Signal order = new Signal("order", Signal.INPUT);
+  public Signal orderStatus = new Signal("orderStatus", Signal.OUTPUT);
   public input_Channel conveyorStatus_in = new input_Channel();
   public input_Channel capperStatus_in = new input_Channel();
   public input_Channel capLoaderStatus_in = new input_Channel();
   public input_Channel fillerStatus_in = new input_Channel();
   public input_Channel rotaryStatus_in = new input_Channel();
-  public input_Channel order_in = new input_Channel();
   public output_Channel conveyorReq_o = new output_Channel();
-  public output_Channel allOperationsFinished_o = new output_Channel();
+  public output_Channel rotaryReq_o = new output_Channel();
   public output_Channel fillerReq_o = new output_Channel();
   public output_Channel capperReq_o = new output_Channel();
   public output_Channel capLoaderReq_o = new output_Channel();
-  public output_Channel doneOrder_o = new output_Channel();
-  public output_Channel percentLiquid_o = new output_Channel();
+  private Signal sigConveyorReq_1;
+  private Signal sigCapperReq_1;
+  private Signal sigCapLoaderReq_1;
+  private Signal sigRotaryReq_1;
+  private Signal sigFillerReq_1;
+  private Signal recConveyorStatus_1;
+  private Signal recCapperStatus_1;
+  private Signal recCapLoaderStatus_1;
+  private Signal recFillerStatus_1;
+  private Signal recRotaryStatus_1;
   private Signal getNextBottle_1;
-  private int quantity_thread_2;//sysj\orchestrator.sysj line: 20, column: 3
-  private int bottlePlaced_thread_2;//sysj\orchestrator.sysj line: 21, column: 3
-  private ArrayList liquidPercent_thread_3;//sysj\orchestrator.sysj line: 47, column: 3
-  private String rotaryStat_thread_3;//sysj\orchestrator.sysj line: 54, column: 4
-  private String conveyValue_thread_4;//sysj\orchestrator.sysj line: 78, column: 4
-  private String fillerValue_thread_5;//sysj\orchestrator.sysj line: 95, column: 4
-  private String capperValue_thread_6;//sysj\orchestrator.sysj line: 111, column: 4
-  private String capLoaderValue_thread_7;//sysj\orchestrator.sysj line: 127, column: 4
-  private int S136808 = 1;
-  private int S119733 = 1;
-  private int S118217 = 1;
-  private int S117959 = 1;
-  private int S117921 = 1;
-  private int S117916 = 1;
-  private int S136313 = 1;
-  private int S119757 = 1;
-  private int S119741 = 1;
-  private int S119736 = 1;
-  private int S120442 = 1;
-  private int S119802 = 1;
-  private int S119764 = 1;
-  private int S119759 = 1;
-  private int S119809 = 1;
-  private int S119804 = 1;
-  private int S119897 = 1;
-  private int S119892 = 1;
-  private int S120029 = 1;
-  private int S120024 = 1;
-  private int S120309 = 1;
-  private int S120205 = 1;
-  private int S120200 = 1;
-  private int S120227 = 1;
-  private int S120222 = 1;
-  private int S120316 = 1;
-  private int S120311 = 1;
-  private int S136384 = 1;
-  private int S136336 = 1;
-  private int S136320 = 1;
-  private int S136315 = 1;
-  private int S136455 = 1;
-  private int S136407 = 1;
-  private int S136391 = 1;
-  private int S136386 = 1;
-  private int S136526 = 1;
-  private int S136478 = 1;
-  private int S136462 = 1;
-  private int S136457 = 1;
-  private int S136597 = 1;
-  private int S136549 = 1;
-  private int S136533 = 1;
-  private int S136528 = 1;
-  private int S136806 = 1;
-  private int S136666 = 1;
-  private int S136665 = 1;
-  private int S136605 = 1;
-  private int S136600 = 1;
-  private int S136649 = 1;
-  private int S136644 = 1;
+  private Signal startOrder_1;
+  private Signal orderIsDone_1;
+  private Signal initABS_1;
+  private Signal foundCurrentOrder_1;
+  private Signal currentOrder_1;
+  private Signal recOrderIsDone_1;
+  private ArrayList fifoQueue_thread_2;//sysj\orchestrator.sysj line: 26, column: 3
+  private int quantity_thread_14;//sysj\orchestrator.sysj line: 209, column: 3
+  private int count_thread_14;//sysj\orchestrator.sysj line: 210, column: 3
+  private int eject_thread_14;//sysj\orchestrator.sysj line: 211, column: 3
+  private ArrayList liquidPercent_thread_14;//sysj\orchestrator.sysj line: 212, column: 3
+  private Order nextOrder_thread_2;//sysj\orchestrator.sysj line: 89, column: 8
+  private Order newOrder_thread_2;//sysj\orchestrator.sysj line: 34, column: 5
+  private Order tempOrder_thread_2;//sysj\orchestrator.sysj line: 42, column: 6
+  private Order tempOrder_thread_3;//sysj\orchestrator.sysj line: 77, column: 9
+  private Order myOrder_thread_7;//sysj\orchestrator.sysj line: 134, column: 9
+  private String res_thread_9;//sysj\orchestrator.sysj line: 152, column: 4
+  private String res_thread_10;//sysj\orchestrator.sysj line: 164, column: 4
+  private String res_thread_11;//sysj\orchestrator.sysj line: 177, column: 4
+  private ArrayList req_thread_12;//sysj\orchestrator.sysj line: 186, column: 4
+  private String res_thread_12;//sysj\orchestrator.sysj line: 190, column: 4
+  private String res_thread_13;//sysj\orchestrator.sysj line: 202, column: 4
+  private Order order_thread_14;//sysj\orchestrator.sysj line: 217, column: 4
+  private int S49776 = 1;
+  private int S43364 = 1;
+  private int S39247 = 1;
+  private int S38499 = 1;
+  private int S38478 = 1;
+  private int S38483 = 1;
+  private int S43381 = 1;
+  private int S43369 = 1;
+  private int S43434 = 1;
+  private int S43398 = 1;
+  private int S43389 = 1;
+  private int S43394 = 1;
+  private int S44374 = 1;
+  private int S43480 = 1;
+  private int S43442 = 1;
+  private int S43437 = 1;
+  private int S43487 = 1;
+  private int S43482 = 1;
+  private int S45314 = 1;
+  private int S44376 = 1;
+  private int S44383 = 1;
+  private int S44378 = 1;
+  private int S44427 = 1;
+  private int S44422 = 1;
+  private int S46254 = 1;
+  private int S45316 = 1;
+  private int S45323 = 1;
+  private int S45318 = 1;
+  private int S45367 = 1;
+  private int S45362 = 1;
+  private int S47194 = 1;
+  private int S46256 = 1;
+  private int S46263 = 1;
+  private int S46258 = 1;
+  private int S46307 = 1;
+  private int S46302 = 1;
+  private int S48134 = 1;
+  private int S47196 = 1;
+  private int S47203 = 1;
+  private int S47198 = 1;
+  private int S47247 = 1;
+  private int S47242 = 1;
+  private int S49774 = 1;
+  private int S48137 = 1;
+  private int S48142 = 1;
+  private int S48145 = 1;
+  private int S48148 = 1;
+  private int S48151 = 1;
+  private int S48161 = 1;
+  private int S48338 = 1;
   
-  private int[] ends = new int[9];
-  private int[] tdone = new int[9];
+  private int[] ends = new int[18];
+  private int[] tdone = new int[18];
   
-  public void thread136824(int [] tdone, int [] ends){
-        switch(S136806){
+  public void thread49834(int [] tdone, int [] ends){
+        S48151=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread49833(int [] tdone, int [] ends){
+        S48148=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread49832(int [] tdone, int [] ends){
+        S48145=1;
+    active[15]=1;
+    ends[15]=1;
+    tdone[15]=1;
+  }
+
+  public void thread49830(int [] tdone, int [] ends){
+        switch(S48151){
+      case 0 : 
+        active[17]=0;
+        ends[17]=0;
+        tdone[17]=1;
+        break;
+      
+      case 1 : 
+        if(recCapperStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 239, column: 73
+          S48151=0;
+          active[17]=0;
+          ends[17]=0;
+          tdone[17]=1;
+        }
+        else {
+          active[17]=1;
+          ends[17]=1;
+          tdone[17]=1;
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49829(int [] tdone, int [] ends){
+        switch(S48148){
+      case 0 : 
+        active[16]=0;
+        ends[16]=0;
+        tdone[16]=1;
+        break;
+      
+      case 1 : 
+        if(recCapLoaderStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 239, column: 41
+          S48148=0;
+          active[16]=0;
+          ends[16]=0;
+          tdone[16]=1;
+        }
+        else {
+          active[16]=1;
+          ends[16]=1;
+          tdone[16]=1;
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49828(int [] tdone, int [] ends){
+        switch(S48145){
+      case 0 : 
+        active[15]=0;
+        ends[15]=0;
+        tdone[15]=1;
+        break;
+      
+      case 1 : 
+        if(recFillerStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 239, column: 12
+          S48145=0;
+          active[15]=0;
+          ends[15]=0;
+          tdone[15]=1;
+        }
+        else {
+          active[15]=1;
+          ends[15]=1;
+          tdone[15]=1;
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49826(int [] tdone, int [] ends){
+        S48151=1;
+    active[17]=1;
+    ends[17]=1;
+    tdone[17]=1;
+  }
+
+  public void thread49825(int [] tdone, int [] ends){
+        S48148=1;
+    active[16]=1;
+    ends[16]=1;
+    tdone[16]=1;
+  }
+
+  public void thread49824(int [] tdone, int [] ends){
+        S48145=1;
+    active[15]=1;
+    ends[15]=1;
+    tdone[15]=1;
+  }
+
+  public void thread49823(int [] tdone, int [] ends){
+        switch(S49774){
+      case 0 : 
+        active[14]=0;
+        ends[14]=0;
+        tdone[14]=1;
+        break;
+      
+      case 1 : 
+        switch(S48137){
+          case 0 : 
+            if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 216, column: 10
+              order_thread_14 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 217, column: 4
+              quantity_thread_14 = order_thread_14.getQuantity();//sysj\orchestrator.sysj line: 218, column: 4
+              count_thread_14 = quantity_thread_14;//sysj\orchestrator.sysj line: 219, column: 4
+              liquidPercent_thread_14 = order_thread_14.getLiquidPercentageArray();//sysj\orchestrator.sysj line: 220, column: 4
+              System.out.println("Orch: Loading first bottle...");//sysj\orchestrator.sysj line: 222, column: 4
+              sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 223, column: 4
+              currsigs.addElement(sigConveyorReq_1);
+              sigConveyorReq_1.setValue(true);//sysj\orchestrator.sysj line: 223, column: 4
+              S48137=1;
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            else {
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            break;
+          
+          case 1 : 
+            if(recConveyorStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 224, column: 10
+              System.out.println("Orch: First bottle loaded.");//sysj\orchestrator.sysj line: 225, column: 4
+              sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 226, column: 4
+              currsigs.addElement(sigRotaryReq_1);
+              S48137=2;
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            else {
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            break;
+          
+          case 2 : 
+            if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 227, column: 10
+              S48137=3;
+              if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 229, column: 10
+                if(count_thread_14 == 0) {//sysj\orchestrator.sysj line: 231, column: 21
+                  System.out.println("Orch: Last bottle. Preparing to send requests..");//sysj\orchestrator.sysj line: 232, column: 6
+                }
+                else {//sysj\orchestrator.sysj line: 233, column: 12
+                  System.out.println("Orch: Bottle count " + count_thread_14 + ". Preparing to send requests..");//sysj\orchestrator.sysj line: 234, column: 6
+                }
+                sigFillerReq_1.setPresent();//sysj\orchestrator.sysj line: 236, column: 5
+                currsigs.addElement(sigFillerReq_1);
+                sigFillerReq_1.setValue(liquidPercent_thread_14);//sysj\orchestrator.sysj line: 236, column: 5
+                sigCapLoaderReq_1.setPresent();//sysj\orchestrator.sysj line: 237, column: 5
+                currsigs.addElement(sigCapLoaderReq_1);
+                sigCapperReq_1.setPresent();//sysj\orchestrator.sysj line: 238, column: 5
+                currsigs.addElement(sigCapperReq_1);
+                S48142=0;
+                thread49824(tdone,ends);
+                thread49825(tdone,ends);
+                thread49826(tdone,ends);
+                int biggest49827 = 0;
+                if(ends[15]>=biggest49827){
+                  biggest49827=ends[15];
+                }
+                if(ends[16]>=biggest49827){
+                  biggest49827=ends[16];
+                }
+                if(ends[17]>=biggest49827){
+                  biggest49827=ends[17];
+                }
+                if(biggest49827 == 1){
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+              }
+              else {
+                ends[14]=2;
+                ;//sysj\orchestrator.sysj line: 229, column: 4
+                System.out.println("Ejecting all bottles");//sysj\orchestrator.sysj line: 259, column: 4
+                if(quantity_thread_14 >= 5) {//sysj\orchestrator.sysj line: 261, column: 23
+                  eject_thread_14 = 5;//sysj\orchestrator.sysj line: 262, column: 5
+                }
+                else {//sysj\orchestrator.sysj line: 263, column: 11
+                  eject_thread_14 = quantity_thread_14;//sysj\orchestrator.sysj line: 264, column: 5
+                }
+                S48137=4;
+                if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 268, column: 11
+                  sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 269, column: 5
+                  currsigs.addElement(sigRotaryReq_1);
+                  S48338=0;
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+                else {
+                  ends[14]=2;
+                  ;//sysj\orchestrator.sysj line: 268, column: 4
+                  System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 275, column: 4
+                  S48137=5;
+                  orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 277, column: 5
+                  currsigs.addElement(orderIsDone_1);
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+              }
+            }
+            else {
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            break;
+          
+          case 3 : 
+            switch(S48142){
+              case 0 : 
+                thread49828(tdone,ends);
+                thread49829(tdone,ends);
+                thread49830(tdone,ends);
+                int biggest49831 = 0;
+                if(ends[15]>=biggest49831){
+                  biggest49831=ends[15];
+                }
+                if(ends[16]>=biggest49831){
+                  biggest49831=ends[16];
+                }
+                if(ends[17]>=biggest49831){
+                  biggest49831=ends[17];
+                }
+                if(biggest49831 == 1){
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+                //FINXME code
+                if(biggest49831 == 0){
+                  System.out.println("Orch: All done!");//sysj\orchestrator.sysj line: 240, column: 5
+                  count_thread_14 = count_thread_14 - 1;//sysj\orchestrator.sysj line: 242, column: 5
+                  S48142=1;
+                  if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 244, column: 9
+                    System.out.println("Orch: Loading next bottle...");//sysj\orchestrator.sysj line: 246, column: 6
+                    sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 247, column: 6
+                    currsigs.addElement(sigConveyorReq_1);
+                    sigConveyorReq_1.setValue(true);//sysj\orchestrator.sysj line: 247, column: 6
+                    S48161=0;
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                  else {
+                    S48142=2;
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                }
+                break;
+              
+              case 1 : 
+                switch(S48161){
+                  case 0 : 
+                    if(recConveyorStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 248, column: 12
+                      System.out.println("Orch: Loaded new bottle.");//sysj\orchestrator.sysj line: 249, column: 6
+                      sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 252, column: 6
+                      currsigs.addElement(sigRotaryReq_1);
+                      S48161=1;
+                      active[14]=1;
+                      ends[14]=1;
+                      tdone[14]=1;
+                    }
+                    else {
+                      active[14]=1;
+                      ends[14]=1;
+                      tdone[14]=1;
+                    }
+                    break;
+                  
+                  case 1 : 
+                    if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 253, column: 12
+                      S48142=2;
+                      active[14]=1;
+                      ends[14]=1;
+                      tdone[14]=1;
+                    }
+                    else {
+                      active[14]=1;
+                      ends[14]=1;
+                      tdone[14]=1;
+                    }
+                    break;
+                  
+                }
+                break;
+              
+              case 2 : 
+                S48142=2;
+                if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 229, column: 10
+                  if(count_thread_14 == 0) {//sysj\orchestrator.sysj line: 231, column: 21
+                    System.out.println("Orch: Last bottle. Preparing to send requests..");//sysj\orchestrator.sysj line: 232, column: 6
+                  }
+                  else {//sysj\orchestrator.sysj line: 233, column: 12
+                    System.out.println("Orch: Bottle count " + count_thread_14 + ". Preparing to send requests..");//sysj\orchestrator.sysj line: 234, column: 6
+                  }
+                  sigFillerReq_1.setPresent();//sysj\orchestrator.sysj line: 236, column: 5
+                  currsigs.addElement(sigFillerReq_1);
+                  sigFillerReq_1.setValue(liquidPercent_thread_14);//sysj\orchestrator.sysj line: 236, column: 5
+                  sigCapLoaderReq_1.setPresent();//sysj\orchestrator.sysj line: 237, column: 5
+                  currsigs.addElement(sigCapLoaderReq_1);
+                  sigCapperReq_1.setPresent();//sysj\orchestrator.sysj line: 238, column: 5
+                  currsigs.addElement(sigCapperReq_1);
+                  S48142=0;
+                  thread49832(tdone,ends);
+                  thread49833(tdone,ends);
+                  thread49834(tdone,ends);
+                  int biggest49835 = 0;
+                  if(ends[15]>=biggest49835){
+                    biggest49835=ends[15];
+                  }
+                  if(ends[16]>=biggest49835){
+                    biggest49835=ends[16];
+                  }
+                  if(ends[17]>=biggest49835){
+                    biggest49835=ends[17];
+                  }
+                  if(biggest49835 == 1){
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                }
+                else {
+                  ends[14]=2;
+                  ;//sysj\orchestrator.sysj line: 229, column: 4
+                  System.out.println("Ejecting all bottles");//sysj\orchestrator.sysj line: 259, column: 4
+                  if(quantity_thread_14 >= 5) {//sysj\orchestrator.sysj line: 261, column: 23
+                    eject_thread_14 = 5;//sysj\orchestrator.sysj line: 262, column: 5
+                  }
+                  else {//sysj\orchestrator.sysj line: 263, column: 11
+                    eject_thread_14 = quantity_thread_14;//sysj\orchestrator.sysj line: 264, column: 5
+                  }
+                  S48137=4;
+                  if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 268, column: 11
+                    sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 269, column: 5
+                    currsigs.addElement(sigRotaryReq_1);
+                    S48338=0;
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                  else {
+                    ends[14]=2;
+                    ;//sysj\orchestrator.sysj line: 268, column: 4
+                    System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 275, column: 4
+                    S48137=5;
+                    orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 277, column: 5
+                    currsigs.addElement(orderIsDone_1);
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 4 : 
+            switch(S48338){
+              case 0 : 
+                if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 270, column: 11
+                  sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 271, column: 5
+                  currsigs.addElement(sigConveyorReq_1);
+                  S48338=1;
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+                else {
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+                break;
+              
+              case 1 : 
+                if(recConveyorStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 272, column: 11
+                  eject_thread_14 = eject_thread_14 - 1;//sysj\orchestrator.sysj line: 273, column: 5
+                  if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 268, column: 11
+                    sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 269, column: 5
+                    currsigs.addElement(sigRotaryReq_1);
+                    S48338=0;
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                  else {
+                    ends[14]=2;
+                    ;//sysj\orchestrator.sysj line: 268, column: 4
+                    System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 275, column: 4
+                    S48137=5;
+                    orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 277, column: 5
+                    currsigs.addElement(orderIsDone_1);
+                    active[14]=1;
+                    ends[14]=1;
+                    tdone[14]=1;
+                  }
+                }
+                else {
+                  active[14]=1;
+                  ends[14]=1;
+                  tdone[14]=1;
+                }
+                break;
+              
+            }
+            break;
+          
+          case 5 : 
+            if(recOrderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 276, column: 10
+              System.out.println("end finally");//sysj\orchestrator.sysj line: 279, column: 4
+              S48137=6;
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            else {
+              orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 277, column: 5
+              currsigs.addElement(orderIsDone_1);
+              active[14]=1;
+              ends[14]=1;
+              tdone[14]=1;
+            }
+            break;
+          
+          case 6 : 
+            S48137=6;
+            S48137=0;
+            active[14]=1;
+            ends[14]=1;
+            tdone[14]=1;
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49822(int [] tdone, int [] ends){
+        switch(S48134){
+      case 0 : 
+        active[13]=0;
+        ends[13]=0;
+        tdone[13]=1;
+        break;
+      
+      case 1 : 
+        switch(S47196){
+          case 0 : 
+            if(sigRotaryReq_1.getprestatus()){//sysj\orchestrator.sysj line: 197, column: 10
+              System.out.println("Orch: Sending rotary request");//sysj\orchestrator.sysj line: 198, column: 4
+              S47196=1;
+              S47203=0;
+              if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
+                rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                S47203=1;
+                active[13]=1;
+                ends[13]=1;
+                tdone[13]=1;
+              }
+              else {
+                S47198=0;
+                if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                  rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 199, column: 4
+                  S47198=1;
+                  if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                    rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                    ends[13]=2;
+                    ;//sysj\orchestrator.sysj line: 199, column: 4
+                    S47196=2;
+                    S47247=0;
+                    if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                      rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                      S47247=1;
+                      active[13]=1;
+                      ends[13]=1;
+                      tdone[13]=1;
+                    }
+                    else {
+                      S47242=0;
+                      if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                        rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                        S47242=1;
+                        if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                          rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                          ends[13]=2;
+                          ;//sysj\orchestrator.sysj line: 200, column: 4
+                          System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                          res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                          recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                          currsigs.addElement(recRotaryStatus_1);
+                          recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                          S47196=0;
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                        else {
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                      }
+                      else {
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                    }
+                  }
+                  else {
+                    active[13]=1;
+                    ends[13]=1;
+                    tdone[13]=1;
+                  }
+                }
+                else {
+                  active[13]=1;
+                  ends[13]=1;
+                  tdone[13]=1;
+                }
+              }
+            }
+            else {
+              active[13]=1;
+              ends[13]=1;
+              tdone[13]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S47203){
+              case 0 : 
+                if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
+                  rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                  S47203=1;
+                  active[13]=1;
+                  ends[13]=1;
+                  tdone[13]=1;
+                }
+                else {
+                  switch(S47198){
+                    case 0 : 
+                      if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                        rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 199, column: 4
+                        S47198=1;
+                        if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                          rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                          ends[13]=2;
+                          ;//sysj\orchestrator.sysj line: 199, column: 4
+                          S47196=2;
+                          S47247=0;
+                          if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                            rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                            S47247=1;
+                            active[13]=1;
+                            ends[13]=1;
+                            tdone[13]=1;
+                          }
+                          else {
+                            S47242=0;
+                            if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                              rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                              S47242=1;
+                              if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                                rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                                ends[13]=2;
+                                ;//sysj\orchestrator.sysj line: 200, column: 4
+                                System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                                res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                                recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                                currsigs.addElement(recRotaryStatus_1);
+                                recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                                S47196=0;
+                                active[13]=1;
+                                ends[13]=1;
+                                tdone[13]=1;
+                              }
+                              else {
+                                active[13]=1;
+                                ends[13]=1;
+                                tdone[13]=1;
+                              }
+                            }
+                            else {
+                              active[13]=1;
+                              ends[13]=1;
+                              tdone[13]=1;
+                            }
+                          }
+                        }
+                        else {
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                      }
+                      else {
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                        rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                        ends[13]=2;
+                        ;//sysj\orchestrator.sysj line: 199, column: 4
+                        S47196=2;
+                        S47247=0;
+                        if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                          rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                          S47247=1;
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                        else {
+                          S47242=0;
+                          if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                            rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                            S47242=1;
+                            if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                              rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                              ends[13]=2;
+                              ;//sysj\orchestrator.sysj line: 200, column: 4
+                              System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                              res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                              recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                              currsigs.addElement(recRotaryStatus_1);
+                              recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                              S47196=0;
+                              active[13]=1;
+                              ends[13]=1;
+                              tdone[13]=1;
+                            }
+                            else {
+                              active[13]=1;
+                              ends[13]=1;
+                              tdone[13]=1;
+                            }
+                          }
+                          else {
+                            active[13]=1;
+                            ends[13]=1;
+                            tdone[13]=1;
+                          }
+                        }
+                      }
+                      else {
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S47203=1;
+                S47203=0;
+                if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
+                  rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                  S47203=1;
+                  active[13]=1;
+                  ends[13]=1;
+                  tdone[13]=1;
+                }
+                else {
+                  S47198=0;
+                  if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                    rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 199, column: 4
+                    S47198=1;
+                    if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 199, column: 4
+                      rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 199, column: 4
+                      ends[13]=2;
+                      ;//sysj\orchestrator.sysj line: 199, column: 4
+                      S47196=2;
+                      S47247=0;
+                      if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                        rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                        S47247=1;
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      else {
+                        S47242=0;
+                        if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                          rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                          S47242=1;
+                          if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                            rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                            ends[13]=2;
+                            ;//sysj\orchestrator.sysj line: 200, column: 4
+                            System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                            res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                            recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                            currsigs.addElement(recRotaryStatus_1);
+                            recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                            S47196=0;
+                            active[13]=1;
+                            ends[13]=1;
+                            tdone[13]=1;
+                          }
+                          else {
+                            active[13]=1;
+                            ends[13]=1;
+                            tdone[13]=1;
+                          }
+                        }
+                        else {
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                      }
+                    }
+                    else {
+                      active[13]=1;
+                      ends[13]=1;
+                      tdone[13]=1;
+                    }
+                  }
+                  else {
+                    active[13]=1;
+                    ends[13]=1;
+                    tdone[13]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 2 : 
+            switch(S47247){
+              case 0 : 
+                if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                  rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                  S47247=1;
+                  active[13]=1;
+                  ends[13]=1;
+                  tdone[13]=1;
+                }
+                else {
+                  switch(S47242){
+                    case 0 : 
+                      if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                        rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                        S47242=1;
+                        if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                          rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                          ends[13]=2;
+                          ;//sysj\orchestrator.sysj line: 200, column: 4
+                          System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                          res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                          recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                          currsigs.addElement(recRotaryStatus_1);
+                          recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                          S47196=0;
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                        else {
+                          active[13]=1;
+                          ends[13]=1;
+                          tdone[13]=1;
+                        }
+                      }
+                      else {
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                        rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                        ends[13]=2;
+                        ;//sysj\orchestrator.sysj line: 200, column: 4
+                        System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                        res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                        recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                        currsigs.addElement(recRotaryStatus_1);
+                        recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                        S47196=0;
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      else {
+                        active[13]=1;
+                        ends[13]=1;
+                        tdone[13]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S47247=1;
+                S47247=0;
+                if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 200, column: 4
+                  rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                  S47247=1;
+                  active[13]=1;
+                  ends[13]=1;
+                  tdone[13]=1;
+                }
+                else {
+                  S47242=0;
+                  if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                    rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 200, column: 4
+                    S47242=1;
+                    if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 200, column: 4
+                      rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 200, column: 4
+                      ends[13]=2;
+                      ;//sysj\orchestrator.sysj line: 200, column: 4
+                      System.out.println("Orch: Received rotary status");//sysj\orchestrator.sysj line: 201, column: 4
+                      res_thread_13 = (String)(rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
+                      recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                      currsigs.addElement(recRotaryStatus_1);
+                      recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 203, column: 4
+                      S47196=0;
+                      active[13]=1;
+                      ends[13]=1;
+                      tdone[13]=1;
+                    }
+                    else {
+                      active[13]=1;
+                      ends[13]=1;
+                      tdone[13]=1;
+                    }
+                  }
+                  else {
+                    active[13]=1;
+                    ends[13]=1;
+                    tdone[13]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49821(int [] tdone, int [] ends){
+        switch(S47194){
+      case 0 : 
+        active[12]=0;
+        ends[12]=0;
+        tdone[12]=1;
+        break;
+      
+      case 1 : 
+        switch(S46256){
+          case 0 : 
+            if(sigFillerReq_1.getprestatus()){//sysj\orchestrator.sysj line: 184, column: 10
+              System.out.println("Orch: Sending filler request");//sysj\orchestrator.sysj line: 185, column: 4
+              req_thread_12 = (ArrayList)(sigFillerReq_1.getpreval() == null ? null : ((ArrayList)sigFillerReq_1.getpreval()));//sysj\orchestrator.sysj line: 186, column: 4
+              S46256=1;
+              S46263=0;
+              if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 187, column: 4
+                fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                S46263=1;
+                active[12]=1;
+                ends[12]=1;
+                tdone[12]=1;
+              }
+              else {
+                S46258=0;
+                if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                  fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 187, column: 4
+                  S46258=1;
+                  if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                    fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                    ends[12]=2;
+                    ;//sysj\orchestrator.sysj line: 187, column: 4
+                    S46256=2;
+                    S46307=0;
+                    if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                      fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                      S46307=1;
+                      active[12]=1;
+                      ends[12]=1;
+                      tdone[12]=1;
+                    }
+                    else {
+                      S46302=0;
+                      if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                        fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                        S46302=1;
+                        if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                          fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                          ends[12]=2;
+                          ;//sysj\orchestrator.sysj line: 188, column: 4
+                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                          currsigs.addElement(recFillerStatus_1);
+                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                          S46256=0;
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                        else {
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                      }
+                      else {
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                    }
+                  }
+                  else {
+                    active[12]=1;
+                    ends[12]=1;
+                    tdone[12]=1;
+                  }
+                }
+                else {
+                  active[12]=1;
+                  ends[12]=1;
+                  tdone[12]=1;
+                }
+              }
+            }
+            else {
+              active[12]=1;
+              ends[12]=1;
+              tdone[12]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S46263){
+              case 0 : 
+                if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 187, column: 4
+                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                  S46263=1;
+                  active[12]=1;
+                  ends[12]=1;
+                  tdone[12]=1;
+                }
+                else {
+                  switch(S46258){
+                    case 0 : 
+                      if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                        fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 187, column: 4
+                        S46258=1;
+                        if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                          ends[12]=2;
+                          ;//sysj\orchestrator.sysj line: 187, column: 4
+                          S46256=2;
+                          S46307=0;
+                          if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                            fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                            S46307=1;
+                            active[12]=1;
+                            ends[12]=1;
+                            tdone[12]=1;
+                          }
+                          else {
+                            S46302=0;
+                            if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                              fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                              S46302=1;
+                              if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                                fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                                ends[12]=2;
+                                ;//sysj\orchestrator.sysj line: 188, column: 4
+                                System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                                res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                                recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                                currsigs.addElement(recFillerStatus_1);
+                                recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                                S46256=0;
+                                active[12]=1;
+                                ends[12]=1;
+                                tdone[12]=1;
+                              }
+                              else {
+                                active[12]=1;
+                                ends[12]=1;
+                                tdone[12]=1;
+                              }
+                            }
+                            else {
+                              active[12]=1;
+                              ends[12]=1;
+                              tdone[12]=1;
+                            }
+                          }
+                        }
+                        else {
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                      }
+                      else {
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                        fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                        ends[12]=2;
+                        ;//sysj\orchestrator.sysj line: 187, column: 4
+                        S46256=2;
+                        S46307=0;
+                        if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                          fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                          S46307=1;
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                        else {
+                          S46302=0;
+                          if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                            fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                            S46302=1;
+                            if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                              fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                              ends[12]=2;
+                              ;//sysj\orchestrator.sysj line: 188, column: 4
+                              System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                              res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                              recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                              currsigs.addElement(recFillerStatus_1);
+                              recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                              S46256=0;
+                              active[12]=1;
+                              ends[12]=1;
+                              tdone[12]=1;
+                            }
+                            else {
+                              active[12]=1;
+                              ends[12]=1;
+                              tdone[12]=1;
+                            }
+                          }
+                          else {
+                            active[12]=1;
+                            ends[12]=1;
+                            tdone[12]=1;
+                          }
+                        }
+                      }
+                      else {
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S46263=1;
+                S46263=0;
+                if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 187, column: 4
+                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                  S46263=1;
+                  active[12]=1;
+                  ends[12]=1;
+                  tdone[12]=1;
+                }
+                else {
+                  S46258=0;
+                  if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                    fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 187, column: 4
+                    S46258=1;
+                    if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 187, column: 4
+                      fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 187, column: 4
+                      ends[12]=2;
+                      ;//sysj\orchestrator.sysj line: 187, column: 4
+                      S46256=2;
+                      S46307=0;
+                      if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                        fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                        S46307=1;
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      else {
+                        S46302=0;
+                        if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                          fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                          S46302=1;
+                          if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                            fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                            ends[12]=2;
+                            ;//sysj\orchestrator.sysj line: 188, column: 4
+                            System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                            res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                            recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                            currsigs.addElement(recFillerStatus_1);
+                            recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                            S46256=0;
+                            active[12]=1;
+                            ends[12]=1;
+                            tdone[12]=1;
+                          }
+                          else {
+                            active[12]=1;
+                            ends[12]=1;
+                            tdone[12]=1;
+                          }
+                        }
+                        else {
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                      }
+                    }
+                    else {
+                      active[12]=1;
+                      ends[12]=1;
+                      tdone[12]=1;
+                    }
+                  }
+                  else {
+                    active[12]=1;
+                    ends[12]=1;
+                    tdone[12]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 2 : 
+            switch(S46307){
+              case 0 : 
+                if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                  fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                  S46307=1;
+                  active[12]=1;
+                  ends[12]=1;
+                  tdone[12]=1;
+                }
+                else {
+                  switch(S46302){
+                    case 0 : 
+                      if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                        fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                        S46302=1;
+                        if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                          fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                          ends[12]=2;
+                          ;//sysj\orchestrator.sysj line: 188, column: 4
+                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                          currsigs.addElement(recFillerStatus_1);
+                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                          S46256=0;
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                        else {
+                          active[12]=1;
+                          ends[12]=1;
+                          tdone[12]=1;
+                        }
+                      }
+                      else {
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                        fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                        ends[12]=2;
+                        ;//sysj\orchestrator.sysj line: 188, column: 4
+                        System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                        res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                        recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                        currsigs.addElement(recFillerStatus_1);
+                        recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                        S46256=0;
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      else {
+                        active[12]=1;
+                        ends[12]=1;
+                        tdone[12]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S46307=1;
+                S46307=0;
+                if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 188, column: 4
+                  fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                  S46307=1;
+                  active[12]=1;
+                  ends[12]=1;
+                  tdone[12]=1;
+                }
+                else {
+                  S46302=0;
+                  if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                    fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 188, column: 4
+                    S46302=1;
+                    if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 188, column: 4
+                      fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 188, column: 4
+                      ends[12]=2;
+                      ;//sysj\orchestrator.sysj line: 188, column: 4
+                      System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 189, column: 4
+                      res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 190, column: 4
+                      recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 191, column: 4
+                      currsigs.addElement(recFillerStatus_1);
+                      recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 191, column: 4
+                      S46256=0;
+                      active[12]=1;
+                      ends[12]=1;
+                      tdone[12]=1;
+                    }
+                    else {
+                      active[12]=1;
+                      ends[12]=1;
+                      tdone[12]=1;
+                    }
+                  }
+                  else {
+                    active[12]=1;
+                    ends[12]=1;
+                    tdone[12]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49820(int [] tdone, int [] ends){
+        switch(S46254){
+      case 0 : 
+        active[11]=0;
+        ends[11]=0;
+        tdone[11]=1;
+        break;
+      
+      case 1 : 
+        switch(S45316){
+          case 0 : 
+            if(sigCapLoaderReq_1.getprestatus()){//sysj\orchestrator.sysj line: 171, column: 10
+              System.out.println("Orch: Sending cap loader request");//sysj\orchestrator.sysj line: 172, column: 4
+              S45316=1;
+              S45323=0;
+              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 173, column: 4
+                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                S45323=1;
+                active[11]=1;
+                ends[11]=1;
+                tdone[11]=1;
+              }
+              else {
+                S45318=0;
+                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                  capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 173, column: 4
+                  S45318=1;
+                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                    ends[11]=2;
+                    ;//sysj\orchestrator.sysj line: 173, column: 4
+                    S45316=2;
+                    S45367=0;
+                    if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                      S45367=1;
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                    else {
+                      S45362=0;
+                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                        S45362=1;
+                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                          ends[11]=2;
+                          ;//sysj\orchestrator.sysj line: 174, column: 4
+                          System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                          currsigs.addElement(recCapLoaderStatus_1);
+                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                          S45316=0;
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                    }
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                else {
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+              }
+            }
+            else {
+              active[11]=1;
+              ends[11]=1;
+              tdone[11]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S45323){
+              case 0 : 
+                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 173, column: 4
+                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                  S45323=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  switch(S45318){
+                    case 0 : 
+                      if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                        capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 173, column: 4
+                        S45318=1;
+                        if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                          ends[11]=2;
+                          ;//sysj\orchestrator.sysj line: 173, column: 4
+                          S45316=2;
+                          S45367=0;
+                          if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                            S45367=1;
+                            active[11]=1;
+                            ends[11]=1;
+                            tdone[11]=1;
+                          }
+                          else {
+                            S45362=0;
+                            if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                              capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                              S45362=1;
+                              if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                                capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                                ends[11]=2;
+                                ;//sysj\orchestrator.sysj line: 174, column: 4
+                                System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                                res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                                recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                                currsigs.addElement(recCapLoaderStatus_1);
+                                recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                                S45316=0;
+                                active[11]=1;
+                                ends[11]=1;
+                                tdone[11]=1;
+                              }
+                              else {
+                                active[11]=1;
+                                ends[11]=1;
+                                tdone[11]=1;
+                              }
+                            }
+                            else {
+                              active[11]=1;
+                              ends[11]=1;
+                              tdone[11]=1;
+                            }
+                          }
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                        ends[11]=2;
+                        ;//sysj\orchestrator.sysj line: 173, column: 4
+                        S45316=2;
+                        S45367=0;
+                        if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                          S45367=1;
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                        else {
+                          S45362=0;
+                          if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                            capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                            S45362=1;
+                            if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                              capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                              ends[11]=2;
+                              ;//sysj\orchestrator.sysj line: 174, column: 4
+                              System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                              res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                              recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                              currsigs.addElement(recCapLoaderStatus_1);
+                              recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                              S45316=0;
+                              active[11]=1;
+                              ends[11]=1;
+                              tdone[11]=1;
+                            }
+                            else {
+                              active[11]=1;
+                              ends[11]=1;
+                              tdone[11]=1;
+                            }
+                          }
+                          else {
+                            active[11]=1;
+                            ends[11]=1;
+                            tdone[11]=1;
+                          }
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S45323=1;
+                S45323=0;
+                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 173, column: 4
+                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                  S45323=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  S45318=0;
+                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                    capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 173, column: 4
+                    S45318=1;
+                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 173, column: 4
+                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 173, column: 4
+                      ends[11]=2;
+                      ;//sysj\orchestrator.sysj line: 173, column: 4
+                      S45316=2;
+                      S45367=0;
+                      if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                        S45367=1;
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      else {
+                        S45362=0;
+                        if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                          capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                          S45362=1;
+                          if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                            ends[11]=2;
+                            ;//sysj\orchestrator.sysj line: 174, column: 4
+                            System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                            res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                            recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                            currsigs.addElement(recCapLoaderStatus_1);
+                            recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                            S45316=0;
+                            active[11]=1;
+                            ends[11]=1;
+                            tdone[11]=1;
+                          }
+                          else {
+                            active[11]=1;
+                            ends[11]=1;
+                            tdone[11]=1;
+                          }
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                    }
+                    else {
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 2 : 
+            switch(S45367){
+              case 0 : 
+                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                  S45367=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  switch(S45362){
+                    case 0 : 
+                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                        S45362=1;
+                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                          ends[11]=2;
+                          ;//sysj\orchestrator.sysj line: 174, column: 4
+                          System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                          currsigs.addElement(recCapLoaderStatus_1);
+                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                          S45316=0;
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                        ends[11]=2;
+                        ;//sysj\orchestrator.sysj line: 174, column: 4
+                        System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                        res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                        recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                        currsigs.addElement(recCapLoaderStatus_1);
+                        recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                        S45316=0;
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S45367=1;
+                S45367=0;
+                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 174, column: 4
+                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                  S45367=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  S45362=0;
+                  if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                    capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 174, column: 4
+                    S45362=1;
+                    if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 174, column: 4
+                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 174, column: 4
+                      ends[11]=2;
+                      ;//sysj\orchestrator.sysj line: 174, column: 4
+                      System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 175, column: 4
+                      res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 177, column: 4
+                      recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 178, column: 4
+                      currsigs.addElement(recCapLoaderStatus_1);
+                      recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 178, column: 4
+                      S45316=0;
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                    else {
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49819(int [] tdone, int [] ends){
+        switch(S45314){
+      case 0 : 
+        active[10]=0;
+        ends[10]=0;
+        tdone[10]=1;
+        break;
+      
+      case 1 : 
+        switch(S44376){
+          case 0 : 
+            if(sigCapperReq_1.getprestatus()){//sysj\orchestrator.sysj line: 159, column: 10
+              System.out.println("Orch: Sending capper request");//sysj\orchestrator.sysj line: 160, column: 4
+              S44376=1;
+              S44383=0;
+              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 161, column: 4
+                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                S44383=1;
+                active[10]=1;
+                ends[10]=1;
+                tdone[10]=1;
+              }
+              else {
+                S44378=0;
+                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 161, column: 4
+                  S44378=1;
+                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                    ends[10]=2;
+                    ;//sysj\orchestrator.sysj line: 161, column: 4
+                    S44376=2;
+                    S44427=0;
+                    if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                      S44427=1;
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                    else {
+                      S44422=0;
+                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                        S44422=1;
+                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                          ends[10]=2;
+                          ;//sysj\orchestrator.sysj line: 162, column: 4
+                          System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                          res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                          recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                          currsigs.addElement(recCapperStatus_1);
+                          recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                          S44376=0;
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                    }
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                else {
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+              }
+            }
+            else {
+              active[10]=1;
+              ends[10]=1;
+              tdone[10]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S44383){
+              case 0 : 
+                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 161, column: 4
+                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                  S44383=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  switch(S44378){
+                    case 0 : 
+                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                        capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 161, column: 4
+                        S44378=1;
+                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                          ends[10]=2;
+                          ;//sysj\orchestrator.sysj line: 161, column: 4
+                          S44376=2;
+                          S44427=0;
+                          if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                            S44427=1;
+                            active[10]=1;
+                            ends[10]=1;
+                            tdone[10]=1;
+                          }
+                          else {
+                            S44422=0;
+                            if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                              capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                              S44422=1;
+                              if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                                capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                                ends[10]=2;
+                                ;//sysj\orchestrator.sysj line: 162, column: 4
+                                System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                                res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                                recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                                currsigs.addElement(recCapperStatus_1);
+                                recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                                S44376=0;
+                                active[10]=1;
+                                ends[10]=1;
+                                tdone[10]=1;
+                              }
+                              else {
+                                active[10]=1;
+                                ends[10]=1;
+                                tdone[10]=1;
+                              }
+                            }
+                            else {
+                              active[10]=1;
+                              ends[10]=1;
+                              tdone[10]=1;
+                            }
+                          }
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                        ends[10]=2;
+                        ;//sysj\orchestrator.sysj line: 161, column: 4
+                        S44376=2;
+                        S44427=0;
+                        if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                          S44427=1;
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                        else {
+                          S44422=0;
+                          if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                            capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                            S44422=1;
+                            if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                              capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                              ends[10]=2;
+                              ;//sysj\orchestrator.sysj line: 162, column: 4
+                              System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                              res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                              recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                              currsigs.addElement(recCapperStatus_1);
+                              recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                              S44376=0;
+                              active[10]=1;
+                              ends[10]=1;
+                              tdone[10]=1;
+                            }
+                            else {
+                              active[10]=1;
+                              ends[10]=1;
+                              tdone[10]=1;
+                            }
+                          }
+                          else {
+                            active[10]=1;
+                            ends[10]=1;
+                            tdone[10]=1;
+                          }
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S44383=1;
+                S44383=0;
+                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 161, column: 4
+                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                  S44383=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  S44378=0;
+                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                    capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 161, column: 4
+                    S44378=1;
+                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 161, column: 4
+                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 161, column: 4
+                      ends[10]=2;
+                      ;//sysj\orchestrator.sysj line: 161, column: 4
+                      S44376=2;
+                      S44427=0;
+                      if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                        S44427=1;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        S44422=0;
+                        if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                          capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                          S44422=1;
+                          if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                            ends[10]=2;
+                            ;//sysj\orchestrator.sysj line: 162, column: 4
+                            System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                            res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                            recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                            currsigs.addElement(recCapperStatus_1);
+                            recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                            S44376=0;
+                            active[10]=1;
+                            ends[10]=1;
+                            tdone[10]=1;
+                          }
+                          else {
+                            active[10]=1;
+                            ends[10]=1;
+                            tdone[10]=1;
+                          }
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 2 : 
+            switch(S44427){
+              case 0 : 
+                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                  S44427=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  switch(S44422){
+                    case 0 : 
+                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                        S44422=1;
+                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                          ends[10]=2;
+                          ;//sysj\orchestrator.sysj line: 162, column: 4
+                          System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                          res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                          recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                          currsigs.addElement(recCapperStatus_1);
+                          recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                          S44376=0;
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                        ends[10]=2;
+                        ;//sysj\orchestrator.sysj line: 162, column: 4
+                        System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                        res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                        recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                        currsigs.addElement(recCapperStatus_1);
+                        recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                        S44376=0;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S44427=1;
+                S44427=0;
+                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 162, column: 4
+                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                  S44427=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  S44422=0;
+                  if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                    capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 162, column: 4
+                    S44422=1;
+                    if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 162, column: 4
+                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 162, column: 4
+                      ends[10]=2;
+                      ;//sysj\orchestrator.sysj line: 162, column: 4
+                      System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 163, column: 4
+                      res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 164, column: 4
+                      recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                      currsigs.addElement(recCapperStatus_1);
+                      recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 165, column: 4
+                      S44376=0;
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49818(int [] tdone, int [] ends){
+        switch(S44374){
+      case 0 : 
+        active[9]=0;
+        ends[9]=0;
+        tdone[9]=1;
+        break;
+      
+      case 1 : 
+        switch(S43480){
+          case 0 : 
+            if(sigConveyorReq_1.getprestatus()){//sysj\orchestrator.sysj line: 149, column: 10
+              S43480=1;
+              S43442=0;
+              if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 150, column: 4
+                conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                S43442=1;
+                active[9]=1;
+                ends[9]=1;
+                tdone[9]=1;
+              }
+              else {
+                S43437=0;
+                if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                  conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 150, column: 4
+                  S43437=1;
+                  if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                    conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                    ends[9]=2;
+                    ;//sysj\orchestrator.sysj line: 150, column: 4
+                    S43480=2;
+                    S43487=0;
+                    if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                      S43487=1;
+                      active[9]=1;
+                      ends[9]=1;
+                      tdone[9]=1;
+                    }
+                    else {
+                      S43482=0;
+                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                        S43482=1;
+                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                          ends[9]=2;
+                          ;//sysj\orchestrator.sysj line: 151, column: 4
+                          res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                          recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                          currsigs.addElement(recConveyorStatus_1);
+                          recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                          S43480=0;
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                        else {
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                      }
+                      else {
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                    }
+                  }
+                  else {
+                    active[9]=1;
+                    ends[9]=1;
+                    tdone[9]=1;
+                  }
+                }
+                else {
+                  active[9]=1;
+                  ends[9]=1;
+                  tdone[9]=1;
+                }
+              }
+            }
+            else {
+              active[9]=1;
+              ends[9]=1;
+              tdone[9]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S43442){
+              case 0 : 
+                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 150, column: 4
+                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                  S43442=1;
+                  active[9]=1;
+                  ends[9]=1;
+                  tdone[9]=1;
+                }
+                else {
+                  switch(S43437){
+                    case 0 : 
+                      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 150, column: 4
+                        S43437=1;
+                        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                          ends[9]=2;
+                          ;//sysj\orchestrator.sysj line: 150, column: 4
+                          S43480=2;
+                          S43487=0;
+                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                            S43487=1;
+                            active[9]=1;
+                            ends[9]=1;
+                            tdone[9]=1;
+                          }
+                          else {
+                            S43482=0;
+                            if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                              conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                              S43482=1;
+                              if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                                conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                                ends[9]=2;
+                                ;//sysj\orchestrator.sysj line: 151, column: 4
+                                res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                                recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                                currsigs.addElement(recConveyorStatus_1);
+                                recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                                S43480=0;
+                                active[9]=1;
+                                ends[9]=1;
+                                tdone[9]=1;
+                              }
+                              else {
+                                active[9]=1;
+                                ends[9]=1;
+                                tdone[9]=1;
+                              }
+                            }
+                            else {
+                              active[9]=1;
+                              ends[9]=1;
+                              tdone[9]=1;
+                            }
+                          }
+                        }
+                        else {
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                      }
+                      else {
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                        ends[9]=2;
+                        ;//sysj\orchestrator.sysj line: 150, column: 4
+                        S43480=2;
+                        S43487=0;
+                        if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                          S43487=1;
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                        else {
+                          S43482=0;
+                          if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                            conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                            S43482=1;
+                            if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                              conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                              ends[9]=2;
+                              ;//sysj\orchestrator.sysj line: 151, column: 4
+                              res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                              recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                              currsigs.addElement(recConveyorStatus_1);
+                              recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                              S43480=0;
+                              active[9]=1;
+                              ends[9]=1;
+                              tdone[9]=1;
+                            }
+                            else {
+                              active[9]=1;
+                              ends[9]=1;
+                              tdone[9]=1;
+                            }
+                          }
+                          else {
+                            active[9]=1;
+                            ends[9]=1;
+                            tdone[9]=1;
+                          }
+                        }
+                      }
+                      else {
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S43442=1;
+                S43442=0;
+                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 150, column: 4
+                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                  S43442=1;
+                  active[9]=1;
+                  ends[9]=1;
+                  tdone[9]=1;
+                }
+                else {
+                  S43437=0;
+                  if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                    conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 150, column: 4
+                    S43437=1;
+                    if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 150, column: 4
+                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 150, column: 4
+                      ends[9]=2;
+                      ;//sysj\orchestrator.sysj line: 150, column: 4
+                      S43480=2;
+                      S43487=0;
+                      if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                        S43487=1;
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      else {
+                        S43482=0;
+                        if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                          conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                          S43482=1;
+                          if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                            ends[9]=2;
+                            ;//sysj\orchestrator.sysj line: 151, column: 4
+                            res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                            recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                            currsigs.addElement(recConveyorStatus_1);
+                            recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                            S43480=0;
+                            active[9]=1;
+                            ends[9]=1;
+                            tdone[9]=1;
+                          }
+                          else {
+                            active[9]=1;
+                            ends[9]=1;
+                            tdone[9]=1;
+                          }
+                        }
+                        else {
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                      }
+                    }
+                    else {
+                      active[9]=1;
+                      ends[9]=1;
+                      tdone[9]=1;
+                    }
+                  }
+                  else {
+                    active[9]=1;
+                    ends[9]=1;
+                    tdone[9]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 2 : 
+            switch(S43487){
+              case 0 : 
+                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                  S43487=1;
+                  active[9]=1;
+                  ends[9]=1;
+                  tdone[9]=1;
+                }
+                else {
+                  switch(S43482){
+                    case 0 : 
+                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                        S43482=1;
+                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                          ends[9]=2;
+                          ;//sysj\orchestrator.sysj line: 151, column: 4
+                          res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                          recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                          currsigs.addElement(recConveyorStatus_1);
+                          recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                          S43480=0;
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                        else {
+                          active[9]=1;
+                          ends[9]=1;
+                          tdone[9]=1;
+                        }
+                      }
+                      else {
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                        ends[9]=2;
+                        ;//sysj\orchestrator.sysj line: 151, column: 4
+                        res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                        recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                        currsigs.addElement(recConveyorStatus_1);
+                        recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                        S43480=0;
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      else {
+                        active[9]=1;
+                        ends[9]=1;
+                        tdone[9]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S43487=1;
+                S43487=0;
+                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 4
+                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                  S43487=1;
+                  active[9]=1;
+                  ends[9]=1;
+                  tdone[9]=1;
+                }
+                else {
+                  S43482=0;
+                  if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                    conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 151, column: 4
+                    S43482=1;
+                    if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 151, column: 4
+                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 151, column: 4
+                      ends[9]=2;
+                      ;//sysj\orchestrator.sysj line: 151, column: 4
+                      res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 152, column: 4
+                      recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                      currsigs.addElement(recConveyorStatus_1);
+                      recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 153, column: 4
+                      S43480=0;
+                      active[9]=1;
+                      ends[9]=1;
+                      tdone[9]=1;
+                    }
+                    else {
+                      active[9]=1;
+                      ends[9]=1;
+                      tdone[9]=1;
+                    }
+                  }
+                  else {
+                    active[9]=1;
+                    ends[9]=1;
+                    tdone[9]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread49816(int [] tdone, int [] ends){
+        S43394=1;
+    foundCurrentOrder_1.setPresent();//sysj\orchestrator.sysj line: 137, column: 9
+    currsigs.addElement(foundCurrentOrder_1);
+    active[8]=1;
+    ends[8]=1;
+    tdone[8]=1;
+  }
+
+  public void thread49815(int [] tdone, int [] ends){
+        S43389=1;
+    myOrder_thread_7 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 134, column: 9
+    currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 135, column: 8
+    currsigs.addElement(currentOrder_1);
+    currentOrder_1.setValue(myOrder_thread_7);//sysj\orchestrator.sysj line: 135, column: 8
+    active[7]=1;
+    ends[7]=1;
+    tdone[7]=1;
+  }
+
+  public void thread49813(int [] tdone, int [] ends){
+        switch(S43394){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -97,301 +2717,18 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S136666){
-          case 0 : 
-            switch(S136665){
-              case 0 : 
-                switch(S136605){
-                  case 0 : 
-                    if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 5
-                      allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                      S136605=1;
-                      active[8]=1;
-                      ends[8]=1;
-                      tdone[8]=1;
-                    }
-                    else {
-                      switch(S136600){
-                        case 0 : 
-                          if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                            allOperationsFinished_o.setVal(true);//sysj\orchestrator.sysj line: 151, column: 5
-                            S136600=1;
-                            if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                              allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                              ends[8]=2;
-                              ;//sysj\orchestrator.sysj line: 151, column: 5
-                              S136666=1;
-                              active[8]=1;
-                              ends[8]=1;
-                              tdone[8]=1;
-                            }
-                            else {
-                              active[8]=1;
-                              ends[8]=1;
-                              tdone[8]=1;
-                            }
-                          }
-                          else {
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          break;
-                        
-                        case 1 : 
-                          if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                            allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                            ends[8]=2;
-                            ;//sysj\orchestrator.sysj line: 151, column: 5
-                            S136666=1;
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          else {
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          break;
-                        
-                      }
-                    }
-                    break;
-                  
-                  case 1 : 
-                    S136605=1;
-                    S136605=0;
-                    if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 5
-                      allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                      S136605=1;
-                      active[8]=1;
-                      ends[8]=1;
-                      tdone[8]=1;
-                    }
-                    else {
-                      S136600=0;
-                      if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                        allOperationsFinished_o.setVal(true);//sysj\orchestrator.sysj line: 151, column: 5
-                        S136600=1;
-                        if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                          allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                          ends[8]=2;
-                          ;//sysj\orchestrator.sysj line: 151, column: 5
-                          S136666=1;
-                          active[8]=1;
-                          ends[8]=1;
-                          tdone[8]=1;
-                        }
-                        else {
-                          active[8]=1;
-                          ends[8]=1;
-                          tdone[8]=1;
-                        }
-                      }
-                      else {
-                        active[8]=1;
-                        ends[8]=1;
-                        tdone[8]=1;
-                      }
-                    }
-                    break;
-                  
-                }
-                break;
-              
-              case 1 : 
-                switch(S136649){
-                  case 0 : 
-                    if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 154, column: 5
-                      allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                      S136649=1;
-                      active[8]=1;
-                      ends[8]=1;
-                      tdone[8]=1;
-                    }
-                    else {
-                      switch(S136644){
-                        case 0 : 
-                          if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                            allOperationsFinished_o.setVal(false);//sysj\orchestrator.sysj line: 154, column: 5
-                            S136644=1;
-                            if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                              allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                              ends[8]=2;
-                              ;//sysj\orchestrator.sysj line: 154, column: 5
-                              S136666=1;
-                              active[8]=1;
-                              ends[8]=1;
-                              tdone[8]=1;
-                            }
-                            else {
-                              active[8]=1;
-                              ends[8]=1;
-                              tdone[8]=1;
-                            }
-                          }
-                          else {
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          break;
-                        
-                        case 1 : 
-                          if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                            allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                            ends[8]=2;
-                            ;//sysj\orchestrator.sysj line: 154, column: 5
-                            S136666=1;
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          else {
-                            active[8]=1;
-                            ends[8]=1;
-                            tdone[8]=1;
-                          }
-                          break;
-                        
-                      }
-                    }
-                    break;
-                  
-                  case 1 : 
-                    S136649=1;
-                    S136649=0;
-                    if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 154, column: 5
-                      allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                      S136649=1;
-                      active[8]=1;
-                      ends[8]=1;
-                      tdone[8]=1;
-                    }
-                    else {
-                      S136644=0;
-                      if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                        allOperationsFinished_o.setVal(false);//sysj\orchestrator.sysj line: 154, column: 5
-                        S136644=1;
-                        if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                          allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                          ends[8]=2;
-                          ;//sysj\orchestrator.sysj line: 154, column: 5
-                          S136666=1;
-                          active[8]=1;
-                          ends[8]=1;
-                          tdone[8]=1;
-                        }
-                        else {
-                          active[8]=1;
-                          ends[8]=1;
-                          tdone[8]=1;
-                        }
-                      }
-                      else {
-                        active[8]=1;
-                        ends[8]=1;
-                        tdone[8]=1;
-                      }
-                    }
-                    break;
-                  
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S136666=1;
-            S136666=0;
-            if((Status.conveyStat == false) && (Status.fillerStat == false) && (Status.capperStat == false) && (Status.capLoaderStat == false)){//sysj\orchestrator.sysj line: 145, column: 7
-              S136665=0;
-              System.out.println("Orch sending rotary req");//sysj\orchestrator.sysj line: 149, column: 5
-              Status.conveyStat = true;//sysj\orchestrator.sysj line: 150, column: 5
-              S136605=0;
-              if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 5
-                allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                S136605=1;
-                active[8]=1;
-                ends[8]=1;
-                tdone[8]=1;
-              }
-              else {
-                S136600=0;
-                if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                  allOperationsFinished_o.setVal(true);//sysj\orchestrator.sysj line: 151, column: 5
-                  S136600=1;
-                  if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-                    allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-                    ends[8]=2;
-                    ;//sysj\orchestrator.sysj line: 151, column: 5
-                    S136666=1;
-                    active[8]=1;
-                    ends[8]=1;
-                    tdone[8]=1;
-                  }
-                  else {
-                    active[8]=1;
-                    ends[8]=1;
-                    tdone[8]=1;
-                  }
-                }
-                else {
-                  active[8]=1;
-                  ends[8]=1;
-                  tdone[8]=1;
-                }
-              }
-            }
-            else {
-              S136665=1;
-              S136649=0;
-              if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 154, column: 5
-                allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                S136649=1;
-                active[8]=1;
-                ends[8]=1;
-                tdone[8]=1;
-              }
-              else {
-                S136644=0;
-                if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                  allOperationsFinished_o.setVal(false);//sysj\orchestrator.sysj line: 154, column: 5
-                  S136644=1;
-                  if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-                    allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-                    ends[8]=2;
-                    ;//sysj\orchestrator.sysj line: 154, column: 5
-                    S136666=1;
-                    active[8]=1;
-                    ends[8]=1;
-                    tdone[8]=1;
-                  }
-                  else {
-                    active[8]=1;
-                    ends[8]=1;
-                    tdone[8]=1;
-                  }
-                }
-                else {
-                  active[8]=1;
-                  ends[8]=1;
-                  tdone[8]=1;
-                }
-              }
-            }
-            break;
-          
-        }
+        foundCurrentOrder_1.setPresent();//sysj\orchestrator.sysj line: 137, column: 9
+        currsigs.addElement(foundCurrentOrder_1);
+        active[8]=1;
+        ends[8]=1;
+        tdone[8]=1;
         break;
       
     }
   }
 
-  public void thread136823(int [] tdone, int [] ends){
-        switch(S136597){
+  public void thread49812(int [] tdone, int [] ends){
+        switch(S43389){
       case 0 : 
         active[7]=0;
         ends[7]=0;
@@ -399,190 +2736,19 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S136549){
-          case 0 : 
-            switch(S136533){
-              case 0 : 
-                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 126, column: 4
-                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                  S136533=1;
-                  active[7]=1;
-                  ends[7]=1;
-                  tdone[7]=1;
-                }
-                else {
-                  switch(S136528){
-                    case 0 : 
-                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 126, column: 4
-                        S136528=1;
-                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                          ends[7]=2;
-                          ;//sysj\orchestrator.sysj line: 126, column: 4
-                          capLoaderValue_thread_7 = (capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 127, column: 4
-                          if(capLoaderValue_thread_7 == "busy") {//sysj\orchestrator.sysj line: 128, column: 34
-                            System.out.println("Orch received - loader busy");//sysj\orchestrator.sysj line: 129, column: 5
-                            Status.capLoaderStat = true;//sysj\orchestrator.sysj line: 130, column: 5
-                          }
-                          else {//sysj\orchestrator.sysj line: 132, column: 9
-                            System.out.println("Orch received - loader done");//sysj\orchestrator.sysj line: 133, column: 5
-                            Status.capLoaderStat = false;//sysj\orchestrator.sysj line: 134, column: 5
-                          }
-                          S136549=1;
-                          active[7]=1;
-                          ends[7]=1;
-                          tdone[7]=1;
-                        }
-                        else {
-                          active[7]=1;
-                          ends[7]=1;
-                          tdone[7]=1;
-                        }
-                      }
-                      else {
-                        active[7]=1;
-                        ends[7]=1;
-                        tdone[7]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                        ends[7]=2;
-                        ;//sysj\orchestrator.sysj line: 126, column: 4
-                        capLoaderValue_thread_7 = (capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 127, column: 4
-                        if(capLoaderValue_thread_7 == "busy") {//sysj\orchestrator.sysj line: 128, column: 34
-                          System.out.println("Orch received - loader busy");//sysj\orchestrator.sysj line: 129, column: 5
-                          Status.capLoaderStat = true;//sysj\orchestrator.sysj line: 130, column: 5
-                        }
-                        else {//sysj\orchestrator.sysj line: 132, column: 9
-                          System.out.println("Orch received - loader done");//sysj\orchestrator.sysj line: 133, column: 5
-                          Status.capLoaderStat = false;//sysj\orchestrator.sysj line: 134, column: 5
-                        }
-                        S136549=1;
-                        active[7]=1;
-                        ends[7]=1;
-                        tdone[7]=1;
-                      }
-                      else {
-                        active[7]=1;
-                        ends[7]=1;
-                        tdone[7]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S136533=1;
-                S136533=0;
-                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 126, column: 4
-                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                  S136533=1;
-                  active[7]=1;
-                  ends[7]=1;
-                  tdone[7]=1;
-                }
-                else {
-                  S136528=0;
-                  if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                    capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 126, column: 4
-                    S136528=1;
-                    if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                      ends[7]=2;
-                      ;//sysj\orchestrator.sysj line: 126, column: 4
-                      capLoaderValue_thread_7 = (capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 127, column: 4
-                      if(capLoaderValue_thread_7 == "busy") {//sysj\orchestrator.sysj line: 128, column: 34
-                        System.out.println("Orch received - loader busy");//sysj\orchestrator.sysj line: 129, column: 5
-                        Status.capLoaderStat = true;//sysj\orchestrator.sysj line: 130, column: 5
-                      }
-                      else {//sysj\orchestrator.sysj line: 132, column: 9
-                        System.out.println("Orch received - loader done");//sysj\orchestrator.sysj line: 133, column: 5
-                        Status.capLoaderStat = false;//sysj\orchestrator.sysj line: 134, column: 5
-                      }
-                      S136549=1;
-                      active[7]=1;
-                      ends[7]=1;
-                      tdone[7]=1;
-                    }
-                    else {
-                      active[7]=1;
-                      ends[7]=1;
-                      tdone[7]=1;
-                    }
-                  }
-                  else {
-                    active[7]=1;
-                    ends[7]=1;
-                    tdone[7]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S136549=1;
-            S136549=0;
-            S136533=0;
-            if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 126, column: 4
-              capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-              S136533=1;
-              active[7]=1;
-              ends[7]=1;
-              tdone[7]=1;
-            }
-            else {
-              S136528=0;
-              if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 126, column: 4
-                S136528=1;
-                if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-                  ends[7]=2;
-                  ;//sysj\orchestrator.sysj line: 126, column: 4
-                  capLoaderValue_thread_7 = (capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 127, column: 4
-                  if(capLoaderValue_thread_7 == "busy") {//sysj\orchestrator.sysj line: 128, column: 34
-                    System.out.println("Orch received - loader busy");//sysj\orchestrator.sysj line: 129, column: 5
-                    Status.capLoaderStat = true;//sysj\orchestrator.sysj line: 130, column: 5
-                  }
-                  else {//sysj\orchestrator.sysj line: 132, column: 9
-                    System.out.println("Orch received - loader done");//sysj\orchestrator.sysj line: 133, column: 5
-                    Status.capLoaderStat = false;//sysj\orchestrator.sysj line: 134, column: 5
-                  }
-                  S136549=1;
-                  active[7]=1;
-                  ends[7]=1;
-                  tdone[7]=1;
-                }
-                else {
-                  active[7]=1;
-                  ends[7]=1;
-                  tdone[7]=1;
-                }
-              }
-              else {
-                active[7]=1;
-                ends[7]=1;
-                tdone[7]=1;
-              }
-            }
-            break;
-          
-        }
+        currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 135, column: 8
+        currsigs.addElement(currentOrder_1);
+        currentOrder_1.setValue(myOrder_thread_7);//sysj\orchestrator.sysj line: 135, column: 8
+        active[7]=1;
+        ends[7]=1;
+        tdone[7]=1;
         break;
       
     }
   }
 
-  public void thread136822(int [] tdone, int [] ends){
-        switch(S136526){
+  public void thread49811(int [] tdone, int [] ends){
+        switch(S43434){
       case 0 : 
         active[6]=0;
         ends[6]=0;
@@ -590,175 +2756,32 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S136478){
+        switch(S43398){
           case 0 : 
-            switch(S136462){
-              case 0 : 
-                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 110, column: 4
-                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                  S136462=1;
-                  active[6]=1;
-                  ends[6]=1;
-                  tdone[6]=1;
-                }
-                else {
-                  switch(S136457){
-                    case 0 : 
-                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 110, column: 4
-                        S136457=1;
-                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                          ends[6]=2;
-                          ;//sysj\orchestrator.sysj line: 110, column: 4
-                          capperValue_thread_6 = (capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 111, column: 4
-                          if(capperValue_thread_6 == "busy") {//sysj\orchestrator.sysj line: 112, column: 31
-                            System.out.println("Orch received - capper busy");//sysj\orchestrator.sysj line: 113, column: 5
-                            Status.capperStat = true;//sysj\orchestrator.sysj line: 114, column: 5
-                          }
-                          else {//sysj\orchestrator.sysj line: 116, column: 9
-                            System.out.println("Orch received - capper done");//sysj\orchestrator.sysj line: 117, column: 5
-                            Status.capperStat = false;//sysj\orchestrator.sysj line: 118, column: 5
-                          }
-                          S136478=1;
-                          active[6]=1;
-                          ends[6]=1;
-                          tdone[6]=1;
-                        }
-                        else {
-                          active[6]=1;
-                          ends[6]=1;
-                          tdone[6]=1;
-                        }
-                      }
-                      else {
-                        active[6]=1;
-                        ends[6]=1;
-                        tdone[6]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                        ends[6]=2;
-                        ;//sysj\orchestrator.sysj line: 110, column: 4
-                        capperValue_thread_6 = (capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 111, column: 4
-                        if(capperValue_thread_6 == "busy") {//sysj\orchestrator.sysj line: 112, column: 31
-                          System.out.println("Orch received - capper busy");//sysj\orchestrator.sysj line: 113, column: 5
-                          Status.capperStat = true;//sysj\orchestrator.sysj line: 114, column: 5
-                        }
-                        else {//sysj\orchestrator.sysj line: 116, column: 9
-                          System.out.println("Orch received - capper done");//sysj\orchestrator.sysj line: 117, column: 5
-                          Status.capperStat = false;//sysj\orchestrator.sysj line: 118, column: 5
-                        }
-                        S136478=1;
-                        active[6]=1;
-                        ends[6]=1;
-                        tdone[6]=1;
-                      }
-                      else {
-                        active[6]=1;
-                        ends[6]=1;
-                        tdone[6]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S136462=1;
-                S136462=0;
-                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 110, column: 4
-                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                  S136462=1;
-                  active[6]=1;
-                  ends[6]=1;
-                  tdone[6]=1;
-                }
-                else {
-                  S136457=0;
-                  if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                    capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 110, column: 4
-                    S136457=1;
-                    if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                      ends[6]=2;
-                      ;//sysj\orchestrator.sysj line: 110, column: 4
-                      capperValue_thread_6 = (capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 111, column: 4
-                      if(capperValue_thread_6 == "busy") {//sysj\orchestrator.sysj line: 112, column: 31
-                        System.out.println("Orch received - capper busy");//sysj\orchestrator.sysj line: 113, column: 5
-                        Status.capperStat = true;//sysj\orchestrator.sysj line: 114, column: 5
-                      }
-                      else {//sysj\orchestrator.sysj line: 116, column: 9
-                        System.out.println("Orch received - capper done");//sysj\orchestrator.sysj line: 117, column: 5
-                        Status.capperStat = false;//sysj\orchestrator.sysj line: 118, column: 5
-                      }
-                      S136478=1;
-                      active[6]=1;
-                      ends[6]=1;
-                      tdone[6]=1;
-                    }
-                    else {
-                      active[6]=1;
-                      ends[6]=1;
-                      tdone[6]=1;
-                    }
-                  }
-                  else {
-                    active[6]=1;
-                    ends[6]=1;
-                    tdone[6]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S136478=1;
-            S136478=0;
-            S136462=0;
-            if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 110, column: 4
-              capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-              S136462=1;
+            if(recOrderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 133, column: 13
+              S43398=1;
               active[6]=1;
               ends[6]=1;
               tdone[6]=1;
             }
             else {
-              S136457=0;
-              if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 110, column: 4
-                S136457=1;
-                if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-                  ends[6]=2;
-                  ;//sysj\orchestrator.sysj line: 110, column: 4
-                  capperValue_thread_6 = (capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 111, column: 4
-                  if(capperValue_thread_6 == "busy") {//sysj\orchestrator.sysj line: 112, column: 31
-                    System.out.println("Orch received - capper busy");//sysj\orchestrator.sysj line: 113, column: 5
-                    Status.capperStat = true;//sysj\orchestrator.sysj line: 114, column: 5
-                  }
-                  else {//sysj\orchestrator.sysj line: 116, column: 9
-                    System.out.println("Orch received - capper done");//sysj\orchestrator.sysj line: 117, column: 5
-                    Status.capperStat = false;//sysj\orchestrator.sysj line: 118, column: 5
-                  }
-                  S136478=1;
-                  active[6]=1;
-                  ends[6]=1;
-                  tdone[6]=1;
-                }
-                else {
-                  active[6]=1;
-                  ends[6]=1;
-                  tdone[6]=1;
-                }
+              thread49812(tdone,ends);
+              thread49813(tdone,ends);
+              int biggest49814 = 0;
+              if(ends[7]>=biggest49814){
+                biggest49814=ends[7];
               }
-              else {
+              if(ends[8]>=biggest49814){
+                biggest49814=ends[8];
+              }
+              if(biggest49814 == 1){
+                active[6]=1;
+                ends[6]=1;
+                tdone[6]=1;
+              }
+              //FINXME code
+              if(biggest49814 == 0){
+                S43398=1;
                 active[6]=1;
                 ends[6]=1;
                 tdone[6]=1;
@@ -766,14 +2789,49 @@ public class Orchestrator extends ClockDomain{
             }
             break;
           
+          case 1 : 
+            S43398=1;
+            S43398=0;
+            if(startOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 130, column: 13
+              if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 131, column: 14
+                thread49815(tdone,ends);
+                thread49816(tdone,ends);
+                int biggest49817 = 0;
+                if(ends[7]>=biggest49817){
+                  biggest49817=ends[7];
+                }
+                if(ends[8]>=biggest49817){
+                  biggest49817=ends[8];
+                }
+                if(biggest49817 == 1){
+                  active[6]=1;
+                  ends[6]=1;
+                  tdone[6]=1;
+                }
+              }
+              else {
+                S43398=1;
+                active[6]=1;
+                ends[6]=1;
+                tdone[6]=1;
+              }
+            }
+            else {
+              S43398=1;
+              active[6]=1;
+              ends[6]=1;
+              tdone[6]=1;
+            }
+            break;
+          
         }
         break;
       
     }
   }
 
-  public void thread136821(int [] tdone, int [] ends){
-        switch(S136455){
+  public void thread49810(int [] tdone, int [] ends){
+        switch(S43381){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -781,180 +2839,31 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S136407){
+        switch(S43369){
           case 0 : 
-            switch(S136391){
-              case 0 : 
-                if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 94, column: 4
-                  fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                  S136391=1;
-                  active[5]=1;
-                  ends[5]=1;
-                  tdone[5]=1;
-                }
-                else {
-                  switch(S136386){
-                    case 0 : 
-                      if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                        fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 94, column: 4
-                        S136386=1;
-                        if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                          fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                          ends[5]=2;
-                          ;//sysj\orchestrator.sysj line: 94, column: 4
-                          fillerValue_thread_5 = (fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 95, column: 4
-                          if(fillerValue_thread_5 == "busy") {//sysj\orchestrator.sysj line: 96, column: 31
-                            System.out.println("Orch received - filler busy");//sysj\orchestrator.sysj line: 97, column: 5
-                            Status.fillerStat = true;//sysj\orchestrator.sysj line: 98, column: 5
-                          }
-                          else {//sysj\orchestrator.sysj line: 100, column: 9
-                            System.out.println("Orch received - filler done");//sysj\orchestrator.sysj line: 101, column: 5
-                            Status.fillerStat = false;//sysj\orchestrator.sysj line: 102, column: 5
-                          }
-                          S136407=1;
-                          active[5]=1;
-                          ends[5]=1;
-                          tdone[5]=1;
-                        }
-                        else {
-                          active[5]=1;
-                          ends[5]=1;
-                          tdone[5]=1;
-                        }
-                      }
-                      else {
-                        active[5]=1;
-                        ends[5]=1;
-                        tdone[5]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                        fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                        ends[5]=2;
-                        ;//sysj\orchestrator.sysj line: 94, column: 4
-                        fillerValue_thread_5 = (fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 95, column: 4
-                        if(fillerValue_thread_5 == "busy") {//sysj\orchestrator.sysj line: 96, column: 31
-                          System.out.println("Orch received - filler busy");//sysj\orchestrator.sysj line: 97, column: 5
-                          Status.fillerStat = true;//sysj\orchestrator.sysj line: 98, column: 5
-                        }
-                        else {//sysj\orchestrator.sysj line: 100, column: 9
-                          System.out.println("Orch received - filler done");//sysj\orchestrator.sysj line: 101, column: 5
-                          Status.fillerStat = false;//sysj\orchestrator.sysj line: 102, column: 5
-                        }
-                        S136407=1;
-                        active[5]=1;
-                        ends[5]=1;
-                        tdone[5]=1;
-                      }
-                      else {
-                        active[5]=1;
-                        ends[5]=1;
-                        tdone[5]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S136391=1;
-                S136391=0;
-                if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 94, column: 4
-                  fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                  S136391=1;
-                  active[5]=1;
-                  ends[5]=1;
-                  tdone[5]=1;
-                }
-                else {
-                  S136386=0;
-                  if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                    fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 94, column: 4
-                    S136386=1;
-                    if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                      fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                      ends[5]=2;
-                      ;//sysj\orchestrator.sysj line: 94, column: 4
-                      fillerValue_thread_5 = (fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 95, column: 4
-                      if(fillerValue_thread_5 == "busy") {//sysj\orchestrator.sysj line: 96, column: 31
-                        System.out.println("Orch received - filler busy");//sysj\orchestrator.sysj line: 97, column: 5
-                        Status.fillerStat = true;//sysj\orchestrator.sysj line: 98, column: 5
-                      }
-                      else {//sysj\orchestrator.sysj line: 100, column: 9
-                        System.out.println("Orch received - filler done");//sysj\orchestrator.sysj line: 101, column: 5
-                        Status.fillerStat = false;//sysj\orchestrator.sysj line: 102, column: 5
-                      }
-                      S136407=1;
-                      active[5]=1;
-                      ends[5]=1;
-                      tdone[5]=1;
-                    }
-                    else {
-                      active[5]=1;
-                      ends[5]=1;
-                      tdone[5]=1;
-                    }
-                  }
-                  else {
-                    active[5]=1;
-                    ends[5]=1;
-                    tdone[5]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S136407=1;
-            S136407=0;
-            S136391=0;
-            if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 94, column: 4
-              fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-              S136391=1;
+            if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 119, column: 11
+              S43369=1;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
             }
             else {
-              S136386=0;
-              if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 94, column: 4
-                S136386=1;
-                if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-                  fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-                  ends[5]=2;
-                  ;//sysj\orchestrator.sysj line: 94, column: 4
-                  fillerValue_thread_5 = (fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 95, column: 4
-                  if(fillerValue_thread_5 == "busy") {//sysj\orchestrator.sysj line: 96, column: 31
-                    System.out.println("Orch received - filler busy");//sysj\orchestrator.sysj line: 97, column: 5
-                    Status.fillerStat = true;//sysj\orchestrator.sysj line: 98, column: 5
-                  }
-                  else {//sysj\orchestrator.sysj line: 100, column: 9
-                    System.out.println("Orch received - filler done");//sysj\orchestrator.sysj line: 101, column: 5
-                    Status.fillerStat = false;//sysj\orchestrator.sysj line: 102, column: 5
-                  }
-                  S136407=1;
-                  active[5]=1;
-                  ends[5]=1;
-                  tdone[5]=1;
-                }
-                else {
-                  active[5]=1;
-                  ends[5]=1;
-                  tdone[5]=1;
-                }
-              }
-              else {
-                active[5]=1;
-                ends[5]=1;
-                tdone[5]=1;
-              }
+              initABS_1.setPresent();//sysj\orchestrator.sysj line: 120, column: 6
+              currsigs.addElement(initABS_1);
+              active[5]=1;
+              ends[5]=1;
+              tdone[5]=1;
             }
+            break;
+          
+          case 1 : 
+            S43369=1;
+            S43369=0;
+            initABS_1.setPresent();//sysj\orchestrator.sysj line: 120, column: 6
+            currsigs.addElement(initABS_1);
+            active[5]=1;
+            ends[5]=1;
+            tdone[5]=1;
             break;
           
         }
@@ -963,8 +2872,52 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread136820(int [] tdone, int [] ends){
-        switch(S136384){
+  public void thread49808(int [] tdone, int [] ends){
+        S38483=1;
+    recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+    currsigs.addElement(recOrderIsDone_1);
+    active[4]=1;
+    ends[4]=1;
+    tdone[4]=1;
+  }
+
+  public void thread49807(int [] tdone, int [] ends){
+        S38478=1;
+    tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 77, column: 9
+    System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 79, column: 9
+    tempOrder_thread_3.setOrderStatus("Done");//sysj\orchestrator.sysj line: 80, column: 9
+    orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+    currsigs.addElement(orderStatus);
+    orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+    active[3]=1;
+    ends[3]=1;
+    tdone[3]=1;
+  }
+
+  public void thread49805(int [] tdone, int [] ends){
+        S38483=1;
+    recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+    currsigs.addElement(recOrderIsDone_1);
+    active[4]=1;
+    ends[4]=1;
+    tdone[4]=1;
+  }
+
+  public void thread49804(int [] tdone, int [] ends){
+        S38478=1;
+    tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 77, column: 9
+    System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 79, column: 9
+    tempOrder_thread_3.setOrderStatus("Done");//sysj\orchestrator.sysj line: 80, column: 9
+    orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+    currsigs.addElement(orderStatus);
+    orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+    active[3]=1;
+    ends[3]=1;
+    tdone[3]=1;
+  }
+
+  public void thread49802(int [] tdone, int [] ends){
+        switch(S38483){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -972,190 +2925,18 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S136336){
-          case 0 : 
-            switch(S136320){
-              case 0 : 
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 77, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                  S136320=1;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                else {
-                  switch(S136315){
-                    case 0 : 
-                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 77, column: 4
-                        S136315=1;
-                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                          ends[4]=2;
-                          ;//sysj\orchestrator.sysj line: 77, column: 4
-                          conveyValue_thread_4 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 78, column: 4
-                          if(conveyValue_thread_4 == "busy") {//sysj\orchestrator.sysj line: 79, column: 31
-                            System.out.println("Orch received - convey busy");//sysj\orchestrator.sysj line: 80, column: 5
-                            Status.conveyStat = true;//sysj\orchestrator.sysj line: 81, column: 5
-                          }
-                          else {//sysj\orchestrator.sysj line: 83, column: 9
-                            System.out.println("Orch received - convey done");//sysj\orchestrator.sysj line: 84, column: 5
-                            Status.conveyStat = false;//sysj\orchestrator.sysj line: 85, column: 5
-                          }
-                          S136336=1;
-                          active[4]=1;
-                          ends[4]=1;
-                          tdone[4]=1;
-                        }
-                        else {
-                          active[4]=1;
-                          ends[4]=1;
-                          tdone[4]=1;
-                        }
-                      }
-                      else {
-                        active[4]=1;
-                        ends[4]=1;
-                        tdone[4]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                        ends[4]=2;
-                        ;//sysj\orchestrator.sysj line: 77, column: 4
-                        conveyValue_thread_4 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 78, column: 4
-                        if(conveyValue_thread_4 == "busy") {//sysj\orchestrator.sysj line: 79, column: 31
-                          System.out.println("Orch received - convey busy");//sysj\orchestrator.sysj line: 80, column: 5
-                          Status.conveyStat = true;//sysj\orchestrator.sysj line: 81, column: 5
-                        }
-                        else {//sysj\orchestrator.sysj line: 83, column: 9
-                          System.out.println("Orch received - convey done");//sysj\orchestrator.sysj line: 84, column: 5
-                          Status.conveyStat = false;//sysj\orchestrator.sysj line: 85, column: 5
-                        }
-                        S136336=1;
-                        active[4]=1;
-                        ends[4]=1;
-                        tdone[4]=1;
-                      }
-                      else {
-                        active[4]=1;
-                        ends[4]=1;
-                        tdone[4]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S136320=1;
-                S136320=0;
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 77, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                  S136320=1;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                else {
-                  S136315=0;
-                  if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                    conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 77, column: 4
-                    S136315=1;
-                    if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                      ends[4]=2;
-                      ;//sysj\orchestrator.sysj line: 77, column: 4
-                      conveyValue_thread_4 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 78, column: 4
-                      if(conveyValue_thread_4 == "busy") {//sysj\orchestrator.sysj line: 79, column: 31
-                        System.out.println("Orch received - convey busy");//sysj\orchestrator.sysj line: 80, column: 5
-                        Status.conveyStat = true;//sysj\orchestrator.sysj line: 81, column: 5
-                      }
-                      else {//sysj\orchestrator.sysj line: 83, column: 9
-                        System.out.println("Orch received - convey done");//sysj\orchestrator.sysj line: 84, column: 5
-                        Status.conveyStat = false;//sysj\orchestrator.sysj line: 85, column: 5
-                      }
-                      S136336=1;
-                      active[4]=1;
-                      ends[4]=1;
-                      tdone[4]=1;
-                    }
-                    else {
-                      active[4]=1;
-                      ends[4]=1;
-                      tdone[4]=1;
-                    }
-                  }
-                  else {
-                    active[4]=1;
-                    ends[4]=1;
-                    tdone[4]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            S136336=1;
-            S136336=0;
-            S136320=0;
-            if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 77, column: 4
-              conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-              S136320=1;
-              active[4]=1;
-              ends[4]=1;
-              tdone[4]=1;
-            }
-            else {
-              S136315=0;
-              if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 77, column: 4
-                S136315=1;
-                if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-                  ends[4]=2;
-                  ;//sysj\orchestrator.sysj line: 77, column: 4
-                  conveyValue_thread_4 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 78, column: 4
-                  if(conveyValue_thread_4 == "busy") {//sysj\orchestrator.sysj line: 79, column: 31
-                    System.out.println("Orch received - convey busy");//sysj\orchestrator.sysj line: 80, column: 5
-                    Status.conveyStat = true;//sysj\orchestrator.sysj line: 81, column: 5
-                  }
-                  else {//sysj\orchestrator.sysj line: 83, column: 9
-                    System.out.println("Orch received - convey done");//sysj\orchestrator.sysj line: 84, column: 5
-                    Status.conveyStat = false;//sysj\orchestrator.sysj line: 85, column: 5
-                  }
-                  S136336=1;
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-                else {
-                  active[4]=1;
-                  ends[4]=1;
-                  tdone[4]=1;
-                }
-              }
-              else {
-                active[4]=1;
-                ends[4]=1;
-                tdone[4]=1;
-              }
-            }
-            break;
-          
-        }
+        recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+        currsigs.addElement(recOrderIsDone_1);
+        active[4]=1;
+        ends[4]=1;
+        tdone[4]=1;
         break;
       
     }
   }
 
-  public void thread136819(int [] tdone, int [] ends){
-        switch(S136313){
+  public void thread49801(int [] tdone, int [] ends){
+        switch(S38478){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -1163,2658 +2944,41 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S119757){
-          case 0 : 
-            switch(S119741){
-              case 0 : 
-                if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 53, column: 4
-                  rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                  S119741=1;
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-                else {
-                  switch(S119736){
-                    case 0 : 
-                      if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                        rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 53, column: 4
-                        S119736=1;
-                        if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                          rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                          ends[3]=2;
-                          ;//sysj\orchestrator.sysj line: 53, column: 4
-                          rotaryStat_thread_3 = (rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 54, column: 4
-                          S119757=1;
-                          if(rotaryStat_thread_3 == "done"){//sysj\orchestrator.sysj line: 57, column: 7
-                            S120442=0;
-                            System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");//sysj\orchestrator.sysj line: 58, column: 5
-                            S119802=0;
-                            S119764=0;
-                            if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                              S119764=1;
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                            else {
-                              S119759=0;
-                              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                                S119759=1;
-                                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 59, column: 5
-                                  S119802=1;
-                                  S119809=0;
-                                  if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119809=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S119804=0;
-                                    if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                      percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                      S119804=1;
-                                      if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                        percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 60, column: 5
-                                        S119802=2;
-                                        S119897=0;
-                                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119897=1;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          S119892=0;
-                                          if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                            capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                            S119892=1;
-                                            if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                              capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                              ends[3]=2;
-                                              ;//sysj\orchestrator.sysj line: 61, column: 5
-                                              S119802=3;
-                                              S120029=0;
-                                              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                S120029=1;
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                              else {
-                                                S120024=0;
-                                                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                                  S120024=1;
-                                                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                    ends[3]=2;
-                                                    ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                    getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                    currsigs.addElement(getNextBottle_1);
-                                                    S119757=2;
-                                                    active[3]=1;
-                                                    ends[3]=1;
-                                                    tdone[3]=1;
-                                                  }
-                                                  else {
-                                                    active[3]=1;
-                                                    ends[3]=1;
-                                                    tdone[3]=1;
-                                                  }
-                                                }
-                                                else {
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                              }
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                          }
-                          else {
-                            S120442=1;
-                            S120309=0;
-                            S120205=0;
-                            if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                              S120205=1;
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                            else {
-                              S120200=0;
-                              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                S120200=1;
-                                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 66, column: 5
-                                  S120309=1;
-                                  S120227=0;
-                                  if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120227=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S120222=0;
-                                    if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                      capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                      S120222=1;
-                                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 67, column: 5
-                                        S120309=2;
-                                        S120316=0;
-                                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          S120316=1;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          S120311=0;
-                                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                            capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                            S120311=1;
-                                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                              ends[3]=2;
-                                              ;//sysj\orchestrator.sysj line: 68, column: 5
-                                              S119757=2;
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                          }
-                        }
-                        else {
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                      break;
-                    
-                    case 1 : 
-                      if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                        rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                        ends[3]=2;
-                        ;//sysj\orchestrator.sysj line: 53, column: 4
-                        rotaryStat_thread_3 = (rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 54, column: 4
-                        S119757=1;
-                        if(rotaryStat_thread_3 == "done"){//sysj\orchestrator.sysj line: 57, column: 7
-                          S120442=0;
-                          System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");//sysj\orchestrator.sysj line: 58, column: 5
-                          S119802=0;
-                          S119764=0;
-                          if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                            fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                            S119764=1;
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                          else {
-                            S119759=0;
-                            if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                              fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                              S119759=1;
-                              if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 59, column: 5
-                                S119802=1;
-                                S119809=0;
-                                if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                  percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                  S119809=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S119804=0;
-                                  if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119804=1;
-                                    if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                      percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 60, column: 5
-                                      S119802=2;
-                                      S119897=0;
-                                      if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                        S119897=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S119892=0;
-                                        if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119892=1;
-                                          if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                            capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 61, column: 5
-                                            S119802=3;
-                                            S120029=0;
-                                            if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                              S120029=1;
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                            else {
-                                              S120024=0;
-                                              if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                                S120024=1;
-                                                if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                  ends[3]=2;
-                                                  ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                  getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                  currsigs.addElement(getNextBottle_1);
-                                                  S119757=2;
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                                else {
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                              }
-                                              else {
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                        }
-                        else {
-                          S120442=1;
-                          S120309=0;
-                          S120205=0;
-                          if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                            fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                            S120205=1;
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                          else {
-                            S120200=0;
-                            if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                              fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                              S120200=1;
-                              if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 66, column: 5
-                                S120309=1;
-                                S120227=0;
-                                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                  S120227=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S120222=0;
-                                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120222=1;
-                                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 67, column: 5
-                                      S120309=2;
-                                      S120316=0;
-                                      if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                        S120316=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S120311=0;
-                                        if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          S120311=1;
-                                          if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 68, column: 5
-                                            S119757=2;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                      break;
-                    
-                  }
-                }
-                break;
-              
-              case 1 : 
-                S119741=1;
-                S119741=0;
-                if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 53, column: 4
-                  rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                  S119741=1;
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-                else {
-                  S119736=0;
-                  if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                    rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 53, column: 4
-                    S119736=1;
-                    if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                      rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                      ends[3]=2;
-                      ;//sysj\orchestrator.sysj line: 53, column: 4
-                      rotaryStat_thread_3 = (rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 54, column: 4
-                      S119757=1;
-                      if(rotaryStat_thread_3 == "done"){//sysj\orchestrator.sysj line: 57, column: 7
-                        S120442=0;
-                        System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");//sysj\orchestrator.sysj line: 58, column: 5
-                        S119802=0;
-                        S119764=0;
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                          S119764=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S119759=0;
-                          if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                            fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                            S119759=1;
-                            if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 59, column: 5
-                              S119802=1;
-                              S119809=0;
-                              if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                S119809=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S119804=0;
-                                if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                  percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                  S119804=1;
-                                  if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119802=2;
-                                    S119897=0;
-                                    if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                      S119897=1;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      S119892=0;
-                                      if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                        capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                        S119892=1;
-                                        if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                          ends[3]=2;
-                                          ;//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119802=3;
-                                          S120029=0;
-                                          if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                            S120029=1;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            S120024=0;
-                                            if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                              capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                              S120024=1;
-                                              if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                ends[3]=2;
-                                                ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                currsigs.addElement(getNextBottle_1);
-                                                S119757=2;
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                              else {
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                      }
-                      else {
-                        S120442=1;
-                        S120309=0;
-                        S120205=0;
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                          S120205=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120200=0;
-                          if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                            fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                            S120200=1;
-                            if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 66, column: 5
-                              S120309=1;
-                              S120227=0;
-                              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                S120227=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S120222=0;
-                                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                  capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                  S120222=1;
-                                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120309=2;
-                                    S120316=0;
-                                    if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                      S120316=1;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      S120311=0;
-                                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                        capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                        S120311=1;
-                                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          ends[3]=2;
-                                          ;//sysj\orchestrator.sysj line: 68, column: 5
-                                          S119757=2;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                      }
-                    }
-                    else {
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                  }
-                  else {
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                }
-                break;
-              
-            }
-            break;
-          
-          case 1 : 
-            switch(S120442){
-              case 0 : 
-                switch(S119802){
-                  case 0 : 
-                    switch(S119764){
-                      case 0 : 
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                          S119764=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S119759){
-                            case 0 : 
-                              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                                S119759=1;
-                                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 59, column: 5
-                                  S119802=1;
-                                  S119809=0;
-                                  if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119809=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S119804=0;
-                                    if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                      percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                      S119804=1;
-                                      if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                        percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 60, column: 5
-                                        S119802=2;
-                                        S119897=0;
-                                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119897=1;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          S119892=0;
-                                          if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                            capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                            S119892=1;
-                                            if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                              capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                              ends[3]=2;
-                                              ;//sysj\orchestrator.sysj line: 61, column: 5
-                                              S119802=3;
-                                              S120029=0;
-                                              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                S120029=1;
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                              else {
-                                                S120024=0;
-                                                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                                  S120024=1;
-                                                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                    ends[3]=2;
-                                                    ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                    getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                    currsigs.addElement(getNextBottle_1);
-                                                    S119757=2;
-                                                    active[3]=1;
-                                                    ends[3]=1;
-                                                    tdone[3]=1;
-                                                  }
-                                                  else {
-                                                    active[3]=1;
-                                                    ends[3]=1;
-                                                    tdone[3]=1;
-                                                  }
-                                                }
-                                                else {
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                              }
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                                fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 59, column: 5
-                                S119802=1;
-                                S119809=0;
-                                if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                  percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                  S119809=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S119804=0;
-                                  if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119804=1;
-                                    if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                      percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 60, column: 5
-                                      S119802=2;
-                                      S119897=0;
-                                      if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                        S119897=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S119892=0;
-                                        if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119892=1;
-                                          if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                            capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 61, column: 5
-                                            S119802=3;
-                                            S120029=0;
-                                            if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                              S120029=1;
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                            else {
-                                              S120024=0;
-                                              if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                                S120024=1;
-                                                if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                  ends[3]=2;
-                                                  ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                  getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                  currsigs.addElement(getNextBottle_1);
-                                                  S119757=2;
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                                else {
-                                                  active[3]=1;
-                                                  ends[3]=1;
-                                                  tdone[3]=1;
-                                                }
-                                              }
-                                              else {
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S119764=1;
-                        S119764=0;
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                          S119764=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S119759=0;
-                          if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                            fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                            S119759=1;
-                            if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 59, column: 5
-                              S119802=1;
-                              S119809=0;
-                              if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                                percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                S119809=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S119804=0;
-                                if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                  percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                  S119804=1;
-                                  if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                    percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 60, column: 5
-                                    S119802=2;
-                                    S119897=0;
-                                    if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                      S119897=1;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      S119892=0;
-                                      if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                        capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                        S119892=1;
-                                        if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                          ends[3]=2;
-                                          ;//sysj\orchestrator.sysj line: 61, column: 5
-                                          S119802=3;
-                                          S120029=0;
-                                          if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                            S120029=1;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            S120024=0;
-                                            if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                              capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                              S120024=1;
-                                              if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                                ends[3]=2;
-                                                ;//sysj\orchestrator.sysj line: 62, column: 5
-                                                getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                                currsigs.addElement(getNextBottle_1);
-                                                S119757=2;
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                              else {
-                                                active[3]=1;
-                                                ends[3]=1;
-                                                tdone[3]=1;
-                                              }
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                  case 1 : 
-                    switch(S119809){
-                      case 0 : 
-                        if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                          percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                          S119809=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S119804){
-                            case 0 : 
-                              if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                                S119804=1;
-                                if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                  percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 60, column: 5
-                                  S119802=2;
-                                  S119897=0;
-                                  if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                    S119897=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S119892=0;
-                                    if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                      capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                      S119892=1;
-                                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 61, column: 5
-                                        S119802=3;
-                                        S120029=0;
-                                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                          S120029=1;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          S120024=0;
-                                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                            capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                            S120024=1;
-                                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                              ends[3]=2;
-                                              ;//sysj\orchestrator.sysj line: 62, column: 5
-                                              getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                              currsigs.addElement(getNextBottle_1);
-                                              S119757=2;
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 60, column: 5
-                                S119802=2;
-                                S119897=0;
-                                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                  S119897=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S119892=0;
-                                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                    capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                    S119892=1;
-                                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 61, column: 5
-                                      S119802=3;
-                                      S120029=0;
-                                      if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                        S120029=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S120024=0;
-                                        if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                          capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                          S120024=1;
-                                          if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 62, column: 5
-                                            getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                            currsigs.addElement(getNextBottle_1);
-                                            S119757=2;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S119809=1;
-                        S119809=0;
-                        if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                          percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                          S119809=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S119804=0;
-                          if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                            percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                            S119804=1;
-                            if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                              percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 60, column: 5
-                              S119802=2;
-                              S119897=0;
-                              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                S119897=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S119892=0;
-                                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                  capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                  S119892=1;
-                                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 61, column: 5
-                                    S119802=3;
-                                    S120029=0;
-                                    if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                      S120029=1;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      S120024=0;
-                                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                        capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                        S120024=1;
-                                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                          ends[3]=2;
-                                          ;//sysj\orchestrator.sysj line: 62, column: 5
-                                          getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                          currsigs.addElement(getNextBottle_1);
-                                          S119757=2;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                  case 2 : 
-                    switch(S119897){
-                      case 0 : 
-                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                          S119897=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S119892){
-                            case 0 : 
-                              if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                S119892=1;
-                                if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 61, column: 5
-                                  S119802=3;
-                                  S120029=0;
-                                  if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                    S120029=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S120024=0;
-                                    if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                      capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                      S120024=1;
-                                      if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 62, column: 5
-                                        getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                        currsigs.addElement(getNextBottle_1);
-                                        S119757=2;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 61, column: 5
-                                S119802=3;
-                                S120029=0;
-                                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                  S120029=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S120024=0;
-                                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                    capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                    S120024=1;
-                                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 62, column: 5
-                                      getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                      currsigs.addElement(getNextBottle_1);
-                                      S119757=2;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S119897=1;
-                        S119897=0;
-                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                          S119897=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S119892=0;
-                          if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                            capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                            S119892=1;
-                            if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                              capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 61, column: 5
-                              S119802=3;
-                              S120029=0;
-                              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                S120029=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S120024=0;
-                                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                  S120024=1;
-                                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 62, column: 5
-                                    getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                    currsigs.addElement(getNextBottle_1);
-                                    S119757=2;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                  case 3 : 
-                    switch(S120029){
-                      case 0 : 
-                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                          S120029=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S120024){
-                            case 0 : 
-                              if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                S120024=1;
-                                if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 62, column: 5
-                                  getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                  currsigs.addElement(getNextBottle_1);
-                                  S119757=2;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 62, column: 5
-                                getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                currsigs.addElement(getNextBottle_1);
-                                S119757=2;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S120029=1;
-                        S120029=0;
-                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                          S120029=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120024=0;
-                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                            capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                            S120024=1;
-                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 62, column: 5
-                              getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                              currsigs.addElement(getNextBottle_1);
-                              S119757=2;
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                }
-                break;
-              
-              case 1 : 
-                switch(S120309){
-                  case 0 : 
-                    switch(S120205){
-                      case 0 : 
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                          S120205=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S120200){
-                            case 0 : 
-                              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                S120200=1;
-                                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 66, column: 5
-                                  S120309=1;
-                                  S120227=0;
-                                  if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120227=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S120222=0;
-                                    if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                      capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                      S120222=1;
-                                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 67, column: 5
-                                        S120309=2;
-                                        S120316=0;
-                                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          S120316=1;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          S120311=0;
-                                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                            capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                            S120311=1;
-                                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                              ends[3]=2;
-                                              ;//sysj\orchestrator.sysj line: 68, column: 5
-                                              S119757=2;
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                            else {
-                                              active[3]=1;
-                                              ends[3]=1;
-                                              tdone[3]=1;
-                                            }
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                                fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 66, column: 5
-                                S120309=1;
-                                S120227=0;
-                                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                  S120227=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S120222=0;
-                                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120222=1;
-                                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 67, column: 5
-                                      S120309=2;
-                                      S120316=0;
-                                      if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                        S120316=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S120311=0;
-                                        if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          S120311=1;
-                                          if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 68, column: 5
-                                            S119757=2;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S120205=1;
-                        S120205=0;
-                        if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                          S120205=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120200=0;
-                          if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                            fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                            S120200=1;
-                            if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 66, column: 5
-                              S120309=1;
-                              S120227=0;
-                              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                S120227=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S120222=0;
-                                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                  capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                  S120222=1;
-                                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 67, column: 5
-                                    S120309=2;
-                                    S120316=0;
-                                    if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                      S120316=1;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      S120311=0;
-                                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                        capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                        S120311=1;
-                                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                          ends[3]=2;
-                                          ;//sysj\orchestrator.sysj line: 68, column: 5
-                                          S119757=2;
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                  case 1 : 
-                    switch(S120227){
-                      case 0 : 
-                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                          S120227=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S120222){
-                            case 0 : 
-                              if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                S120222=1;
-                                if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 67, column: 5
-                                  S120309=2;
-                                  S120316=0;
-                                  if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                    S120316=1;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    S120311=0;
-                                    if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                      capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                      S120311=1;
-                                      if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                        ends[3]=2;
-                                        ;//sysj\orchestrator.sysj line: 68, column: 5
-                                        S119757=2;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 67, column: 5
-                                S120309=2;
-                                S120316=0;
-                                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                  S120316=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S120311=0;
-                                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                    capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                    S120311=1;
-                                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 68, column: 5
-                                      S119757=2;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S120227=1;
-                        S120227=0;
-                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                          S120227=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120222=0;
-                          if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                            capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                            S120222=1;
-                            if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                              capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 67, column: 5
-                              S120309=2;
-                              S120316=0;
-                              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                S120316=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S120311=0;
-                                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                  capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                  S120311=1;
-                                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 68, column: 5
-                                    S119757=2;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                  case 2 : 
-                    switch(S120316){
-                      case 0 : 
-                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                          S120316=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          switch(S120311){
-                            case 0 : 
-                              if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                S120311=1;
-                                if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                  ends[3]=2;
-                                  ;//sysj\orchestrator.sysj line: 68, column: 5
-                                  S119757=2;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                            case 1 : 
-                              if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 68, column: 5
-                                S119757=2;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              break;
-                            
-                          }
-                        }
-                        break;
-                      
-                      case 1 : 
-                        S120316=1;
-                        S120316=0;
-                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                          S120316=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120311=0;
-                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                            capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                            S120311=1;
-                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 68, column: 5
-                              S119757=2;
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                        break;
-                      
-                    }
-                    break;
-                  
-                }
-                break;
-              
-            }
-            break;
-          
-          case 2 : 
-            S119757=2;
-            S119757=0;
-            S119741=0;
-            if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 53, column: 4
-              rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-              S119741=1;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              S119736=0;
-              if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 53, column: 4
-                S119736=1;
-                if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-                  rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-                  ends[3]=2;
-                  ;//sysj\orchestrator.sysj line: 53, column: 4
-                  rotaryStat_thread_3 = (rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 54, column: 4
-                  S119757=1;
-                  if(rotaryStat_thread_3 == "done"){//sysj\orchestrator.sysj line: 57, column: 7
-                    S120442=0;
-                    System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");//sysj\orchestrator.sysj line: 58, column: 5
-                    S119802=0;
-                    S119764=0;
-                    if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-                      fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                      S119764=1;
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                    else {
-                      S119759=0;
-                      if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                        fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                        S119759=1;
-                        if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                          ends[3]=2;
-                          ;//sysj\orchestrator.sysj line: 59, column: 5
-                          S119802=1;
-                          S119809=0;
-                          if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                            percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                            S119809=1;
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                          else {
-                            S119804=0;
-                            if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                              percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                              S119804=1;
-                              if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                                percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 60, column: 5
-                                S119802=2;
-                                S119897=0;
-                                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                  S119897=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S119892=0;
-                                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                    capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                                    S119892=1;
-                                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 61, column: 5
-                                      S119802=3;
-                                      S120029=0;
-                                      if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                        S120029=1;
-                                        active[3]=1;
-                                        ends[3]=1;
-                                        tdone[3]=1;
-                                      }
-                                      else {
-                                        S120024=0;
-                                        if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                          capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                          S120024=1;
-                                          if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                            capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                            ends[3]=2;
-                                            ;//sysj\orchestrator.sysj line: 62, column: 5
-                                            getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                            currsigs.addElement(getNextBottle_1);
-                                            S119757=2;
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                          else {
-                                            active[3]=1;
-                                            ends[3]=1;
-                                            tdone[3]=1;
-                                          }
-                                        }
-                                        else {
-                                          active[3]=1;
-                                          ends[3]=1;
-                                          tdone[3]=1;
-                                        }
-                                      }
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                        }
-                        else {
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                    }
-                  }
-                  else {
-                    S120442=1;
-                    S120309=0;
-                    S120205=0;
-                    if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-                      fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                      S120205=1;
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                    else {
-                      S120200=0;
-                      if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                        fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                        S120200=1;
-                        if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                          fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                          ends[3]=2;
-                          ;//sysj\orchestrator.sysj line: 66, column: 5
-                          S120309=1;
-                          S120227=0;
-                          if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                            capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                            S120227=1;
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                          else {
-                            S120222=0;
-                            if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                              capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                              S120222=1;
-                              if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                                ends[3]=2;
-                                ;//sysj\orchestrator.sysj line: 67, column: 5
-                                S120309=2;
-                                S120316=0;
-                                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                  S120316=1;
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                                else {
-                                  S120311=0;
-                                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                    capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                    S120311=1;
-                                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                                      ends[3]=2;
-                                      ;//sysj\orchestrator.sysj line: 68, column: 5
-                                      S119757=2;
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                    else {
-                                      active[3]=1;
-                                      ends[3]=1;
-                                      tdone[3]=1;
-                                    }
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                              }
-                              else {
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                        }
-                        else {
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                    }
-                  }
-                }
-                else {
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-              }
-              else {
-                active[3]=1;
-                ends[3]=1;
-                tdone[3]=1;
-              }
-            }
-            break;
-          
-        }
+        orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+        currsigs.addElement(orderStatus);
+        orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+        active[3]=1;
+        ends[3]=1;
+        tdone[3]=1;
         break;
       
     }
   }
 
-  public void thread136818(int [] tdone, int [] ends){
-        switch(S119733){
+  public void thread49799(int [] tdone, int [] ends){
+        S38483=1;
+    recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+    currsigs.addElement(recOrderIsDone_1);
+    active[4]=1;
+    ends[4]=1;
+    tdone[4]=1;
+  }
+
+  public void thread49798(int [] tdone, int [] ends){
+        S38478=1;
+    tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 77, column: 9
+    System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 79, column: 9
+    tempOrder_thread_3.setOrderStatus("Done");//sysj\orchestrator.sysj line: 80, column: 9
+    orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+    currsigs.addElement(orderStatus);
+    orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+    active[3]=1;
+    ends[3]=1;
+    tdone[3]=1;
+  }
+
+  public void thread49797(int [] tdone, int [] ends){
+        switch(S43364){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -3822,177 +2986,142 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S118217){
+        switch(S39247){
           case 0 : 
-            switch(S117959){
-              case 0 : 
-                switch(S117921){
-                  case 0 : 
-                    if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 30, column: 5
-                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                      S117921=1;
-                      active[2]=1;
-                      ends[2]=1;
-                      tdone[2]=1;
-                    }
-                    else {
-                      switch(S117916){
-                        case 0 : 
-                          if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                            conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 30, column: 5
-                            S117916=1;
-                            if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                              conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                              ends[2]=2;
-                              ;//sysj\orchestrator.sysj line: 30, column: 5
-                              bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-                              System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-                              S117959=1;
-                              active[2]=1;
-                              ends[2]=1;
-                              tdone[2]=1;
-                            }
-                            else {
-                              active[2]=1;
-                              ends[2]=1;
-                              tdone[2]=1;
-                            }
-                          }
-                          else {
-                            active[2]=1;
-                            ends[2]=1;
-                            tdone[2]=1;
-                          }
-                          break;
-                        
-                        case 1 : 
-                          if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                            conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                            ends[2]=2;
-                            ;//sysj\orchestrator.sysj line: 30, column: 5
-                            bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-                            System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-                            S117959=1;
-                            active[2]=1;
-                            ends[2]=1;
-                            tdone[2]=1;
-                          }
-                          else {
-                            active[2]=1;
-                            ends[2]=1;
-                            tdone[2]=1;
-                          }
-                          break;
-                        
-                      }
-                    }
-                    break;
-                  
-                  case 1 : 
-                    S117921=1;
-                    S117921=0;
-                    if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 30, column: 5
-                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                      S117921=1;
-                      active[2]=1;
-                      ends[2]=1;
-                      tdone[2]=1;
-                    }
-                    else {
-                      S117916=0;
-                      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 30, column: 5
-                        S117916=1;
-                        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                          ends[2]=2;
-                          ;//sysj\orchestrator.sysj line: 30, column: 5
-                          bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-                          System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-                          S117959=1;
-                          active[2]=1;
-                          ends[2]=1;
-                          tdone[2]=1;
-                        }
-                        else {
-                          active[2]=1;
-                          ends[2]=1;
-                          tdone[2]=1;
-                        }
-                      }
-                      else {
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
-                    }
-                    break;
-                  
-                }
-                break;
-              
-              case 1 : 
-                if(getNextBottle_1.getprestatus()){//sysj\orchestrator.sysj line: 33, column: 11
-                  S117959=2;
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
+            if(recOrderStatus.getprestatus()){//sysj\orchestrator.sysj line: 59, column: 12
+              System.out.println("orch received: recOrderStatus");//sysj\orchestrator.sysj line: 63, column: 6
+              S39247=1;
+              if(orderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 71, column: 13
+                System.out.println("entered order is done");//sysj\orchestrator.sysj line: 72, column: 6
+                if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 73, column: 14
+                  System.out.println("entered current order present");//sysj\orchestrator.sysj line: 74, column: 7
+                  S38499=0;
+                  thread49798(tdone,ends);
+                  thread49799(tdone,ends);
+                  int biggest49800 = 0;
+                  if(ends[3]>=biggest49800){
+                    biggest49800=ends[3];
+                  }
+                  if(ends[4]>=biggest49800){
+                    biggest49800=ends[4];
+                  }
+                  if(biggest49800 == 1){
+                    active[2]=1;
+                    ends[2]=1;
+                    tdone[2]=1;
+                  }
                 }
                 else {
+                  S39247=2;
                   active[2]=1;
                   ends[2]=1;
                   tdone[2]=1;
                 }
-                break;
-              
-              case 2 : 
-                S117959=2;
-                if(bottlePlaced_thread_2 >= 0){//sysj\orchestrator.sysj line: 28, column: 10
-                  System.out.println("sending conveyor req?");//sysj\orchestrator.sysj line: 29, column: 5
-                  S117959=0;
-                  S117921=0;
-                  if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 30, column: 5
-                    conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                    S117921=1;
+              }
+              else {
+                S39247=2;
+                active[2]=1;
+                ends[2]=1;
+                tdone[2]=1;
+              }
+            }
+            else {
+              orderStatus.setPresent();//sysj\orchestrator.sysj line: 60, column: 7
+              currsigs.addElement(orderStatus);
+              orderStatus.setValue(tempOrder_thread_2);//sysj\orchestrator.sysj line: 60, column: 7
+              active[2]=1;
+              ends[2]=1;
+              tdone[2]=1;
+            }
+            break;
+          
+          case 1 : 
+            switch(S38499){
+              case 0 : 
+                if(recOrderStatus.getprestatus()){//sysj\orchestrator.sysj line: 75, column: 13
+                  System.out.println("initialising next order...");//sysj\orchestrator.sysj line: 87, column: 7
+                  S38499=1;
+                  if(!fifoQueue_thread_2.isEmpty()){//sysj\orchestrator.sysj line: 88, column: 10
+                    nextOrder_thread_2 = (Order)fifoQueue_thread_2.get(0);//sysj\orchestrator.sysj line: 89, column: 8
+                    fifoQueue_thread_2.remove(0);//sysj\orchestrator.sysj line: 90, column: 8
+                    currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 94, column: 9
+                    currsigs.addElement(currentOrder_1);
+                    currentOrder_1.setValue(nextOrder_thread_2);//sysj\orchestrator.sysj line: 94, column: 9
+                    startOrder_1.setPresent();//sysj\orchestrator.sysj line: 95, column: 9
+                    currsigs.addElement(startOrder_1);
+                    nextOrder_thread_2.setOrderStatus("Started");//sysj\orchestrator.sysj line: 99, column: 8
+                    System.out.println("emitting next orderstatus: started");//sysj\orchestrator.sysj line: 100, column: 8
+                    orderStatus.setPresent();//sysj\orchestrator.sysj line: 102, column: 9
+                    currsigs.addElement(orderStatus);
+                    orderStatus.setValue(nextOrder_thread_2);//sysj\orchestrator.sysj line: 102, column: 9
                     active[2]=1;
                     ends[2]=1;
                     tdone[2]=1;
                   }
                   else {
-                    S117916=0;
-                    if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                      conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 30, column: 5
-                      S117916=1;
-                      if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                        ends[2]=2;
-                        ;//sysj\orchestrator.sysj line: 30, column: 5
-                        bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-                        System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-                        S117959=1;
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
-                      else {
-                        active[2]=1;
-                        ends[2]=1;
-                        tdone[2]=1;
-                      }
+                    S39247=2;
+                    active[2]=1;
+                    ends[2]=1;
+                    tdone[2]=1;
+                  }
+                }
+                else {
+                  thread49801(tdone,ends);
+                  thread49802(tdone,ends);
+                  int biggest49803 = 0;
+                  if(ends[3]>=biggest49803){
+                    biggest49803=ends[3];
+                  }
+                  if(ends[4]>=biggest49803){
+                    biggest49803=ends[4];
+                  }
+                  if(biggest49803 == 1){
+                    active[2]=1;
+                    ends[2]=1;
+                    tdone[2]=1;
+                  }
+                  //FINXME code
+                  if(biggest49803 == 0){
+                    System.out.println("initialising next order...");//sysj\orchestrator.sysj line: 87, column: 7
+                    S38499=1;
+                    if(!fifoQueue_thread_2.isEmpty()){//sysj\orchestrator.sysj line: 88, column: 10
+                      nextOrder_thread_2 = (Order)fifoQueue_thread_2.get(0);//sysj\orchestrator.sysj line: 89, column: 8
+                      fifoQueue_thread_2.remove(0);//sysj\orchestrator.sysj line: 90, column: 8
+                      currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 94, column: 9
+                      currsigs.addElement(currentOrder_1);
+                      currentOrder_1.setValue(nextOrder_thread_2);//sysj\orchestrator.sysj line: 94, column: 9
+                      startOrder_1.setPresent();//sysj\orchestrator.sysj line: 95, column: 9
+                      currsigs.addElement(startOrder_1);
+                      nextOrder_thread_2.setOrderStatus("Started");//sysj\orchestrator.sysj line: 99, column: 8
+                      System.out.println("emitting next orderstatus: started");//sysj\orchestrator.sysj line: 100, column: 8
+                      orderStatus.setPresent();//sysj\orchestrator.sysj line: 102, column: 9
+                      currsigs.addElement(orderStatus);
+                      orderStatus.setValue(nextOrder_thread_2);//sysj\orchestrator.sysj line: 102, column: 9
+                      active[2]=1;
+                      ends[2]=1;
+                      tdone[2]=1;
                     }
                     else {
+                      S39247=2;
                       active[2]=1;
                       ends[2]=1;
                       tdone[2]=1;
                     }
                   }
                 }
+                break;
+              
+              case 1 : 
+                if(recOrderStatus.getprestatus()){//sysj\orchestrator.sysj line: 101, column: 14
+                  S39247=2;
+                  active[2]=1;
+                  ends[2]=1;
+                  tdone[2]=1;
+                }
                 else {
-                  conveyorReq_o.setPreempted();//sysj\orchestrator.sysj line: 28, column: 4
-                  ends[2]=2;
-                  ;//sysj\orchestrator.sysj line: 28, column: 4
-                  System.out.println("Done order");//sysj\orchestrator.sysj line: 38, column: 4
-                  S118217=1;
+                  orderStatus.setPresent();//sysj\orchestrator.sysj line: 102, column: 9
+                  currsigs.addElement(orderStatus);
+                  orderStatus.setValue(nextOrder_thread_2);//sysj\orchestrator.sysj line: 102, column: 9
                   active[2]=1;
                   ends[2]=1;
                   tdone[2]=1;
@@ -4002,50 +3131,64 @@ public class Orchestrator extends ClockDomain{
             }
             break;
           
-          case 1 : 
-            active[2]=1;
-            ends[2]=1;
-            tdone[2]=1;
-            break;
-          
           case 2 : 
-            S118217=2;
-            bottlePlaced_thread_2 = quantity_thread_2;//sysj\orchestrator.sysj line: 27, column: 4
-            S118217=0;
-            if(bottlePlaced_thread_2 >= 0){//sysj\orchestrator.sysj line: 28, column: 10
-              System.out.println("sending conveyor req?");//sysj\orchestrator.sysj line: 29, column: 5
-              S117959=0;
-              S117921=0;
-              if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 30, column: 5
-                conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                S117921=1;
+            S39247=2;
+            S39247=0;
+            if(order.getprestatus()){//sysj\orchestrator.sysj line: 32, column: 13
+              System.out.println("got order!");//sysj\orchestrator.sysj line: 33, column: 5
+              newOrder_thread_2 = (order.getpreval() == null ? null : ((Order)order.getpreval()));//sysj\orchestrator.sysj line: 34, column: 5
+              System.out.println(newOrder_thread_2.getQuantity());//sysj\orchestrator.sysj line: 35, column: 5
+              fifoQueue_thread_2.add(newOrder_thread_2);//sysj\orchestrator.sysj line: 37, column: 5
+              if(initABS_1.getprestatus()){//sysj\orchestrator.sysj line: 40, column: 13
+                System.out.println("start of ABS get first item");//sysj\orchestrator.sysj line: 41, column: 6
+                tempOrder_thread_2 = (Order)fifoQueue_thread_2.get(0);//sysj\orchestrator.sysj line: 42, column: 6
+                fifoQueue_thread_2.remove(0);//sysj\orchestrator.sysj line: 45, column: 6
+                System.out.println(newOrder_thread_2.getCustomerID());//sysj\orchestrator.sysj line: 46, column: 6
+                currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 50, column: 7
+                currsigs.addElement(currentOrder_1);
+                currentOrder_1.setValue(tempOrder_thread_2);//sysj\orchestrator.sysj line: 50, column: 7
+                startOrder_1.setPresent();//sysj\orchestrator.sysj line: 51, column: 7
+                currsigs.addElement(startOrder_1);
+                tempOrder_thread_2.setOrderStatus("Started");//sysj\orchestrator.sysj line: 56, column: 6
+                System.out.println("emitting orderstatus: started");//sysj\orchestrator.sysj line: 57, column: 6
+                orderStatus.setPresent();//sysj\orchestrator.sysj line: 60, column: 7
+                currsigs.addElement(orderStatus);
+                orderStatus.setValue(tempOrder_thread_2);//sysj\orchestrator.sysj line: 60, column: 7
                 active[2]=1;
                 ends[2]=1;
                 tdone[2]=1;
               }
               else {
-                S117916=0;
-                if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                  conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 30, column: 5
-                  S117916=1;
-                  if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-                    conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-                    ends[2]=2;
-                    ;//sysj\orchestrator.sysj line: 30, column: 5
-                    bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-                    System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-                    S117959=1;
-                    active[2]=1;
-                    ends[2]=1;
-                    tdone[2]=1;
+                S39247=1;
+                if(orderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 71, column: 13
+                  System.out.println("entered order is done");//sysj\orchestrator.sysj line: 72, column: 6
+                  if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 73, column: 14
+                    System.out.println("entered current order present");//sysj\orchestrator.sysj line: 74, column: 7
+                    S38499=0;
+                    thread49804(tdone,ends);
+                    thread49805(tdone,ends);
+                    int biggest49806 = 0;
+                    if(ends[3]>=biggest49806){
+                      biggest49806=ends[3];
+                    }
+                    if(ends[4]>=biggest49806){
+                      biggest49806=ends[4];
+                    }
+                    if(biggest49806 == 1){
+                      active[2]=1;
+                      ends[2]=1;
+                      tdone[2]=1;
+                    }
                   }
                   else {
+                    S39247=2;
                     active[2]=1;
                     ends[2]=1;
                     tdone[2]=1;
                   }
                 }
                 else {
+                  S39247=2;
                   active[2]=1;
                   ends[2]=1;
                   tdone[2]=1;
@@ -4053,14 +3196,40 @@ public class Orchestrator extends ClockDomain{
               }
             }
             else {
-              conveyorReq_o.setPreempted();//sysj\orchestrator.sysj line: 28, column: 4
-              ends[2]=2;
-              ;//sysj\orchestrator.sysj line: 28, column: 4
-              System.out.println("Done order");//sysj\orchestrator.sysj line: 38, column: 4
-              S118217=1;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
+              S39247=1;
+              if(orderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 71, column: 13
+                System.out.println("entered order is done");//sysj\orchestrator.sysj line: 72, column: 6
+                if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 73, column: 14
+                  System.out.println("entered current order present");//sysj\orchestrator.sysj line: 74, column: 7
+                  S38499=0;
+                  thread49807(tdone,ends);
+                  thread49808(tdone,ends);
+                  int biggest49809 = 0;
+                  if(ends[3]>=biggest49809){
+                    biggest49809=ends[3];
+                  }
+                  if(ends[4]>=biggest49809){
+                    biggest49809=ends[4];
+                  }
+                  if(biggest49809 == 1){
+                    active[2]=1;
+                    ends[2]=1;
+                    tdone[2]=1;
+                  }
+                }
+                else {
+                  S39247=2;
+                  active[2]=1;
+                  ends[2]=1;
+                  tdone[2]=1;
+                }
+              }
+              else {
+                S39247=2;
+                active[2]=1;
+                ends[2]=1;
+                tdone[2]=1;
+              }
             }
             break;
           
@@ -4070,595 +3239,225 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread136816(int [] tdone, int [] ends){
-        S136806=1;
-    S136666=0;
-    if((Status.conveyStat == false) && (Status.fillerStat == false) && (Status.capperStat == false) && (Status.capLoaderStat == false)){//sysj\orchestrator.sysj line: 145, column: 7
-      S136665=0;
-      System.out.println("Orch sending rotary req");//sysj\orchestrator.sysj line: 149, column: 5
-      Status.conveyStat = true;//sysj\orchestrator.sysj line: 150, column: 5
-      S136605=0;
-      if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 151, column: 5
-        allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-        S136605=1;
-        active[8]=1;
-        ends[8]=1;
-        tdone[8]=1;
-      }
-      else {
-        S136600=0;
-        if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-          allOperationsFinished_o.setVal(true);//sysj\orchestrator.sysj line: 151, column: 5
-          S136600=1;
-          if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 151, column: 5
-            allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 151, column: 5
-            ends[8]=2;
-            ;//sysj\orchestrator.sysj line: 151, column: 5
-            S136666=1;
-            active[8]=1;
-            ends[8]=1;
-            tdone[8]=1;
-          }
-          else {
-            active[8]=1;
-            ends[8]=1;
-            tdone[8]=1;
-          }
-        }
-        else {
-          active[8]=1;
-          ends[8]=1;
-          tdone[8]=1;
-        }
-      }
-    }
-    else {
-      S136665=1;
-      S136649=0;
-      if(!allOperationsFinished_o.isPartnerPresent() || allOperationsFinished_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 154, column: 5
-        allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-        S136649=1;
-        active[8]=1;
-        ends[8]=1;
-        tdone[8]=1;
-      }
-      else {
-        S136644=0;
-        if(allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-          allOperationsFinished_o.setVal(false);//sysj\orchestrator.sysj line: 154, column: 5
-          S136644=1;
-          if(!allOperationsFinished_o.isACK()){//sysj\orchestrator.sysj line: 154, column: 5
-            allOperationsFinished_o.setREQ(false);//sysj\orchestrator.sysj line: 154, column: 5
-            ends[8]=2;
-            ;//sysj\orchestrator.sysj line: 154, column: 5
-            S136666=1;
-            active[8]=1;
-            ends[8]=1;
-            tdone[8]=1;
-          }
-          else {
-            active[8]=1;
-            ends[8]=1;
-            tdone[8]=1;
-          }
-        }
-        else {
-          active[8]=1;
-          ends[8]=1;
-          tdone[8]=1;
-        }
-      }
-    }
+  public void thread49795(int [] tdone, int [] ends){
+        S49774=1;
+    quantity_thread_14 = 0;//sysj\orchestrator.sysj line: 209, column: 3
+    count_thread_14 = 0;//sysj\orchestrator.sysj line: 210, column: 3
+    eject_thread_14 = 0;//sysj\orchestrator.sysj line: 211, column: 3
+        S48137=0;
+    active[14]=1;
+    ends[14]=1;
+    tdone[14]=1;
   }
 
-  public void thread136815(int [] tdone, int [] ends){
-        S136597=1;
-    S136549=0;
-    S136533=0;
-    if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 126, column: 4
-      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-      S136533=1;
-      active[7]=1;
-      ends[7]=1;
-      tdone[7]=1;
-    }
-    else {
-      S136528=0;
-      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 126, column: 4
-        S136528=1;
-        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 126, column: 4
-          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 126, column: 4
-          ends[7]=2;
-          ;//sysj\orchestrator.sysj line: 126, column: 4
-          capLoaderValue_thread_7 = (capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 127, column: 4
-          if(capLoaderValue_thread_7 == "busy") {//sysj\orchestrator.sysj line: 128, column: 34
-            System.out.println("Orch received - loader busy");//sysj\orchestrator.sysj line: 129, column: 5
-            Status.capLoaderStat = true;//sysj\orchestrator.sysj line: 130, column: 5
-          }
-          else {//sysj\orchestrator.sysj line: 132, column: 9
-            System.out.println("Orch received - loader done");//sysj\orchestrator.sysj line: 133, column: 5
-            Status.capLoaderStat = false;//sysj\orchestrator.sysj line: 134, column: 5
-          }
-          S136549=1;
-          active[7]=1;
-          ends[7]=1;
-          tdone[7]=1;
-        }
-        else {
-          active[7]=1;
-          ends[7]=1;
-          tdone[7]=1;
-        }
-      }
-      else {
-        active[7]=1;
-        ends[7]=1;
-        tdone[7]=1;
-      }
-    }
+  public void thread49794(int [] tdone, int [] ends){
+        S48134=1;
+    S47196=0;
+    active[13]=1;
+    ends[13]=1;
+    tdone[13]=1;
   }
 
-  public void thread136814(int [] tdone, int [] ends){
-        S136526=1;
-    S136478=0;
-    S136462=0;
-    if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 110, column: 4
-      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-      S136462=1;
-      active[6]=1;
-      ends[6]=1;
-      tdone[6]=1;
-    }
-    else {
-      S136457=0;
-      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 110, column: 4
-        S136457=1;
-        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 110, column: 4
-          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 110, column: 4
-          ends[6]=2;
-          ;//sysj\orchestrator.sysj line: 110, column: 4
-          capperValue_thread_6 = (capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 111, column: 4
-          if(capperValue_thread_6 == "busy") {//sysj\orchestrator.sysj line: 112, column: 31
-            System.out.println("Orch received - capper busy");//sysj\orchestrator.sysj line: 113, column: 5
-            Status.capperStat = true;//sysj\orchestrator.sysj line: 114, column: 5
-          }
-          else {//sysj\orchestrator.sysj line: 116, column: 9
-            System.out.println("Orch received - capper done");//sysj\orchestrator.sysj line: 117, column: 5
-            Status.capperStat = false;//sysj\orchestrator.sysj line: 118, column: 5
-          }
-          S136478=1;
-          active[6]=1;
-          ends[6]=1;
-          tdone[6]=1;
+  public void thread49793(int [] tdone, int [] ends){
+        S47194=1;
+    S46256=0;
+    active[12]=1;
+    ends[12]=1;
+    tdone[12]=1;
+  }
+
+  public void thread49792(int [] tdone, int [] ends){
+        S46254=1;
+    S45316=0;
+    active[11]=1;
+    ends[11]=1;
+    tdone[11]=1;
+  }
+
+  public void thread49791(int [] tdone, int [] ends){
+        S45314=1;
+    S44376=0;
+    active[10]=1;
+    ends[10]=1;
+    tdone[10]=1;
+  }
+
+  public void thread49790(int [] tdone, int [] ends){
+        S44374=1;
+    S43480=0;
+    active[9]=1;
+    ends[9]=1;
+    tdone[9]=1;
+  }
+
+  public void thread49788(int [] tdone, int [] ends){
+        S43394=1;
+    foundCurrentOrder_1.setPresent();//sysj\orchestrator.sysj line: 137, column: 9
+    currsigs.addElement(foundCurrentOrder_1);
+    active[8]=1;
+    ends[8]=1;
+    tdone[8]=1;
+  }
+
+  public void thread49787(int [] tdone, int [] ends){
+        S43389=1;
+    myOrder_thread_7 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 134, column: 9
+    currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 135, column: 8
+    currsigs.addElement(currentOrder_1);
+    currentOrder_1.setValue(myOrder_thread_7);//sysj\orchestrator.sysj line: 135, column: 8
+    active[7]=1;
+    ends[7]=1;
+    tdone[7]=1;
+  }
+
+  public void thread49786(int [] tdone, int [] ends){
+        S43434=1;
+    S43398=0;
+    if(startOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 130, column: 13
+      if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 131, column: 14
+        thread49787(tdone,ends);
+        thread49788(tdone,ends);
+        int biggest49789 = 0;
+        if(ends[7]>=biggest49789){
+          biggest49789=ends[7];
         }
-        else {
+        if(ends[8]>=biggest49789){
+          biggest49789=ends[8];
+        }
+        if(biggest49789 == 1){
           active[6]=1;
           ends[6]=1;
           tdone[6]=1;
         }
       }
       else {
+        S43398=1;
         active[6]=1;
         ends[6]=1;
         tdone[6]=1;
       }
     }
-  }
-
-  public void thread136813(int [] tdone, int [] ends){
-        S136455=1;
-    S136407=0;
-    S136391=0;
-    if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 94, column: 4
-      fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-      S136391=1;
-      active[5]=1;
-      ends[5]=1;
-      tdone[5]=1;
-    }
     else {
-      S136386=0;
-      if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-        fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 94, column: 4
-        S136386=1;
-        if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 94, column: 4
-          fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 94, column: 4
-          ends[5]=2;
-          ;//sysj\orchestrator.sysj line: 94, column: 4
-          fillerValue_thread_5 = (fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 95, column: 4
-          if(fillerValue_thread_5 == "busy") {//sysj\orchestrator.sysj line: 96, column: 31
-            System.out.println("Orch received - filler busy");//sysj\orchestrator.sysj line: 97, column: 5
-            Status.fillerStat = true;//sysj\orchestrator.sysj line: 98, column: 5
-          }
-          else {//sysj\orchestrator.sysj line: 100, column: 9
-            System.out.println("Orch received - filler done");//sysj\orchestrator.sysj line: 101, column: 5
-            Status.fillerStat = false;//sysj\orchestrator.sysj line: 102, column: 5
-          }
-          S136407=1;
-          active[5]=1;
-          ends[5]=1;
-          tdone[5]=1;
-        }
-        else {
-          active[5]=1;
-          ends[5]=1;
-          tdone[5]=1;
-        }
-      }
-      else {
-        active[5]=1;
-        ends[5]=1;
-        tdone[5]=1;
-      }
+      S43398=1;
+      active[6]=1;
+      ends[6]=1;
+      tdone[6]=1;
     }
   }
 
-  public void thread136812(int [] tdone, int [] ends){
-        S136384=1;
-    S136336=0;
-    S136320=0;
-    if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 77, column: 4
-      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-      S136320=1;
-      active[4]=1;
-      ends[4]=1;
-      tdone[4]=1;
-    }
-    else {
-      S136315=0;
-      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 77, column: 4
-        S136315=1;
-        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 77, column: 4
-          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 77, column: 4
-          ends[4]=2;
-          ;//sysj\orchestrator.sysj line: 77, column: 4
-          conveyValue_thread_4 = (conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 78, column: 4
-          if(conveyValue_thread_4 == "busy") {//sysj\orchestrator.sysj line: 79, column: 31
-            System.out.println("Orch received - convey busy");//sysj\orchestrator.sysj line: 80, column: 5
-            Status.conveyStat = true;//sysj\orchestrator.sysj line: 81, column: 5
-          }
-          else {//sysj\orchestrator.sysj line: 83, column: 9
-            System.out.println("Orch received - convey done");//sysj\orchestrator.sysj line: 84, column: 5
-            Status.conveyStat = false;//sysj\orchestrator.sysj line: 85, column: 5
-          }
-          S136336=1;
-          active[4]=1;
-          ends[4]=1;
-          tdone[4]=1;
-        }
-        else {
-          active[4]=1;
-          ends[4]=1;
-          tdone[4]=1;
-        }
-      }
-      else {
-        active[4]=1;
-        ends[4]=1;
-        tdone[4]=1;
-      }
-    }
+  public void thread49785(int [] tdone, int [] ends){
+        S43381=1;
+    S43369=0;
+    initABS_1.setPresent();//sysj\orchestrator.sysj line: 120, column: 6
+    currsigs.addElement(initABS_1);
+    active[5]=1;
+    ends[5]=1;
+    tdone[5]=1;
   }
 
-  public void thread136811(int [] tdone, int [] ends){
-        S136313=1;
-    liquidPercent_thread_3 = new ArrayList();//sysj\orchestrator.sysj line: 47, column: 3
-    liquidPercent_thread_3.add(10);//sysj\orchestrator.sysj line: 48, column: 3
-    liquidPercent_thread_3.add(10);//sysj\orchestrator.sysj line: 49, column: 3
-    liquidPercent_thread_3.add(20);//sysj\orchestrator.sysj line: 50, column: 3
-    liquidPercent_thread_3.add(60);//sysj\orchestrator.sysj line: 51, column: 3
-    S119757=0;
-    S119741=0;
-    if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 53, column: 4
-      rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-      S119741=1;
-      active[3]=1;
-      ends[3]=1;
-      tdone[3]=1;
-    }
-    else {
-      S119736=0;
-      if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-        rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 53, column: 4
-        S119736=1;
-        if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 53, column: 4
-          rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 53, column: 4
-          ends[3]=2;
-          ;//sysj\orchestrator.sysj line: 53, column: 4
-          rotaryStat_thread_3 = (rotaryStatus_in.getVal() == null ? null : ((String)rotaryStatus_in.getVal()));//sysj\orchestrator.sysj line: 54, column: 4
-          S119757=1;
-          if(rotaryStat_thread_3 == "done"){//sysj\orchestrator.sysj line: 57, column: 7
-            S120442=0;
-            System.out.println("rotary done, sending filler,loader,screwer, conveyor reqs");//sysj\orchestrator.sysj line: 58, column: 5
-            S119802=0;
-            S119764=0;
-            if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 59, column: 5
-              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-              S119764=1;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              S119759=0;
-              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                fillerReq_o.setVal(true);//sysj\orchestrator.sysj line: 59, column: 5
-                S119759=1;
-                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 59, column: 5
-                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 59, column: 5
-                  ends[3]=2;
-                  ;//sysj\orchestrator.sysj line: 59, column: 5
-                  S119802=1;
-                  S119809=0;
-                  if(!percentLiquid_o.isPartnerPresent() || percentLiquid_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 60, column: 5
-                    percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                    S119809=1;
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                  else {
-                    S119804=0;
-                    if(percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                      percentLiquid_o.setVal(liquidPercent_thread_3);//sysj\orchestrator.sysj line: 60, column: 5
-                      S119804=1;
-                      if(!percentLiquid_o.isACK()){//sysj\orchestrator.sysj line: 60, column: 5
-                        percentLiquid_o.setREQ(false);//sysj\orchestrator.sysj line: 60, column: 5
-                        ends[3]=2;
-                        ;//sysj\orchestrator.sysj line: 60, column: 5
-                        S119802=2;
-                        S119897=0;
-                        if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 61, column: 5
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                          S119897=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S119892=0;
-                          if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                            capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 61, column: 5
-                            S119892=1;
-                            if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 61, column: 5
-                              capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 61, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 61, column: 5
-                              S119802=3;
-                              S120029=0;
-                              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 62, column: 5
-                                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                S120029=1;
-                                active[3]=1;
-                                ends[3]=1;
-                                tdone[3]=1;
-                              }
-                              else {
-                                S120024=0;
-                                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 62, column: 5
-                                  S120024=1;
-                                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 62, column: 5
-                                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 62, column: 5
-                                    ends[3]=2;
-                                    ;//sysj\orchestrator.sysj line: 62, column: 5
-                                    getNextBottle_1.setPresent();//sysj\orchestrator.sysj line: 63, column: 5
-                                    currsigs.addElement(getNextBottle_1);
-                                    S119757=2;
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                  else {
-                                    active[3]=1;
-                                    ends[3]=1;
-                                    tdone[3]=1;
-                                  }
-                                }
-                                else {
-                                  active[3]=1;
-                                  ends[3]=1;
-                                  tdone[3]=1;
-                                }
-                              }
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                    }
-                    else {
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                  }
-                }
-                else {
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-              }
-              else {
-                active[3]=1;
-                ends[3]=1;
-                tdone[3]=1;
-              }
-            }
-          }
-          else {
-            S120442=1;
-            S120309=0;
-            S120205=0;
-            if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 66, column: 5
-              fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-              S120205=1;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              S120200=0;
-              if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                fillerReq_o.setVal(false);//sysj\orchestrator.sysj line: 66, column: 5
-                S120200=1;
-                if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 66, column: 5
-                  fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 66, column: 5
-                  ends[3]=2;
-                  ;//sysj\orchestrator.sysj line: 66, column: 5
-                  S120309=1;
-                  S120227=0;
-                  if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 67, column: 5
-                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                    S120227=1;
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                  else {
-                    S120222=0;
-                    if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                      capLoaderReq_o.setVal(false);//sysj\orchestrator.sysj line: 67, column: 5
-                      S120222=1;
-                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 67, column: 5
-                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 67, column: 5
-                        ends[3]=2;
-                        ;//sysj\orchestrator.sysj line: 67, column: 5
-                        S120309=2;
-                        S120316=0;
-                        if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 68, column: 5
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                          S120316=1;
-                          active[3]=1;
-                          ends[3]=1;
-                          tdone[3]=1;
-                        }
-                        else {
-                          S120311=0;
-                          if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                            capperReq_o.setVal(false);//sysj\orchestrator.sysj line: 68, column: 5
-                            S120311=1;
-                            if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 68, column: 5
-                              capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 68, column: 5
-                              ends[3]=2;
-                              ;//sysj\orchestrator.sysj line: 68, column: 5
-                              S119757=2;
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                            else {
-                              active[3]=1;
-                              ends[3]=1;
-                              tdone[3]=1;
-                            }
-                          }
-                          else {
-                            active[3]=1;
-                            ends[3]=1;
-                            tdone[3]=1;
-                          }
-                        }
-                      }
-                      else {
-                        active[3]=1;
-                        ends[3]=1;
-                        tdone[3]=1;
-                      }
-                    }
-                    else {
-                      active[3]=1;
-                      ends[3]=1;
-                      tdone[3]=1;
-                    }
-                  }
-                }
-                else {
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                }
-              }
-              else {
-                active[3]=1;
-                ends[3]=1;
-                tdone[3]=1;
-              }
-            }
-          }
-        }
-        else {
-          active[3]=1;
-          ends[3]=1;
-          tdone[3]=1;
-        }
-      }
-      else {
-        active[3]=1;
-        ends[3]=1;
-        tdone[3]=1;
-      }
-    }
+  public void thread49783(int [] tdone, int [] ends){
+        S38483=1;
+    recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+    currsigs.addElement(recOrderIsDone_1);
+    active[4]=1;
+    ends[4]=1;
+    tdone[4]=1;
   }
 
-  public void thread136810(int [] tdone, int [] ends){
-        S119733=1;
-    quantity_thread_2 = 5;//sysj\orchestrator.sysj line: 20, column: 3
-    bottlePlaced_thread_2 = 0;//sysj\orchestrator.sysj line: 21, column: 3
-    bottlePlaced_thread_2 = quantity_thread_2;//sysj\orchestrator.sysj line: 27, column: 4
-    S118217=0;
-    if(bottlePlaced_thread_2 >= 0){//sysj\orchestrator.sysj line: 28, column: 10
-      System.out.println("sending conveyor req?");//sysj\orchestrator.sysj line: 29, column: 5
-      S117959=0;
-      S117921=0;
-      if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 30, column: 5
-        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-        S117921=1;
+  public void thread49782(int [] tdone, int [] ends){
+        S38478=1;
+    tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 77, column: 9
+    System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 79, column: 9
+    tempOrder_thread_3.setOrderStatus("Done");//sysj\orchestrator.sysj line: 80, column: 9
+    orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+    currsigs.addElement(orderStatus);
+    orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+    active[3]=1;
+    ends[3]=1;
+    tdone[3]=1;
+  }
+
+  public void thread49780(int [] tdone, int [] ends){
+        S38483=1;
+    recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 83, column: 12
+    currsigs.addElement(recOrderIsDone_1);
+    active[4]=1;
+    ends[4]=1;
+    tdone[4]=1;
+  }
+
+  public void thread49779(int [] tdone, int [] ends){
+        S38478=1;
+    tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 77, column: 9
+    System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 79, column: 9
+    tempOrder_thread_3.setOrderStatus("Done");//sysj\orchestrator.sysj line: 80, column: 9
+    orderStatus.setPresent();//sysj\orchestrator.sysj line: 81, column: 9
+    currsigs.addElement(orderStatus);
+    orderStatus.setValue(tempOrder_thread_3);//sysj\orchestrator.sysj line: 81, column: 9
+    active[3]=1;
+    ends[3]=1;
+    tdone[3]=1;
+  }
+
+  public void thread49778(int [] tdone, int [] ends){
+        S43364=1;
+    fifoQueue_thread_2 = new ArrayList();//sysj\orchestrator.sysj line: 26, column: 3
+    S39247=0;
+    if(order.getprestatus()){//sysj\orchestrator.sysj line: 32, column: 13
+      System.out.println("got order!");//sysj\orchestrator.sysj line: 33, column: 5
+      newOrder_thread_2 = (order.getpreval() == null ? null : ((Order)order.getpreval()));//sysj\orchestrator.sysj line: 34, column: 5
+      System.out.println(newOrder_thread_2.getQuantity());//sysj\orchestrator.sysj line: 35, column: 5
+      fifoQueue_thread_2.add(newOrder_thread_2);//sysj\orchestrator.sysj line: 37, column: 5
+      if(initABS_1.getprestatus()){//sysj\orchestrator.sysj line: 40, column: 13
+        System.out.println("start of ABS get first item");//sysj\orchestrator.sysj line: 41, column: 6
+        tempOrder_thread_2 = (Order)fifoQueue_thread_2.get(0);//sysj\orchestrator.sysj line: 42, column: 6
+        fifoQueue_thread_2.remove(0);//sysj\orchestrator.sysj line: 45, column: 6
+        System.out.println(newOrder_thread_2.getCustomerID());//sysj\orchestrator.sysj line: 46, column: 6
+        currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 50, column: 7
+        currsigs.addElement(currentOrder_1);
+        currentOrder_1.setValue(tempOrder_thread_2);//sysj\orchestrator.sysj line: 50, column: 7
+        startOrder_1.setPresent();//sysj\orchestrator.sysj line: 51, column: 7
+        currsigs.addElement(startOrder_1);
+        tempOrder_thread_2.setOrderStatus("Started");//sysj\orchestrator.sysj line: 56, column: 6
+        System.out.println("emitting orderstatus: started");//sysj\orchestrator.sysj line: 57, column: 6
+        orderStatus.setPresent();//sysj\orchestrator.sysj line: 60, column: 7
+        currsigs.addElement(orderStatus);
+        orderStatus.setValue(tempOrder_thread_2);//sysj\orchestrator.sysj line: 60, column: 7
         active[2]=1;
         ends[2]=1;
         tdone[2]=1;
       }
       else {
-        S117916=0;
-        if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-          conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 30, column: 5
-          S117916=1;
-          if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 30, column: 5
-            conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 30, column: 5
-            ends[2]=2;
-            ;//sysj\orchestrator.sysj line: 30, column: 5
-            bottlePlaced_thread_2 = bottlePlaced_thread_2 - 1;//sysj\orchestrator.sysj line: 31, column: 5
-            System.out.println("Number of bottles left to do: " + bottlePlaced_thread_2);//sysj\orchestrator.sysj line: 32, column: 5
-            S117959=1;
-            active[2]=1;
-            ends[2]=1;
-            tdone[2]=1;
+        S39247=1;
+        if(orderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 71, column: 13
+          System.out.println("entered order is done");//sysj\orchestrator.sysj line: 72, column: 6
+          if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 73, column: 14
+            System.out.println("entered current order present");//sysj\orchestrator.sysj line: 74, column: 7
+            S38499=0;
+            thread49779(tdone,ends);
+            thread49780(tdone,ends);
+            int biggest49781 = 0;
+            if(ends[3]>=biggest49781){
+              biggest49781=ends[3];
+            }
+            if(ends[4]>=biggest49781){
+              biggest49781=ends[4];
+            }
+            if(biggest49781 == 1){
+              active[2]=1;
+              ends[2]=1;
+              tdone[2]=1;
+            }
           }
           else {
+            S39247=2;
             active[2]=1;
             ends[2]=1;
             tdone[2]=1;
           }
         }
         else {
+          S39247=2;
           active[2]=1;
           ends[2]=1;
           tdone[2]=1;
@@ -4666,14 +3465,40 @@ public class Orchestrator extends ClockDomain{
       }
     }
     else {
-      conveyorReq_o.setPreempted();//sysj\orchestrator.sysj line: 28, column: 4
-      ends[2]=2;
-      ;//sysj\orchestrator.sysj line: 28, column: 4
-      System.out.println("Done order");//sysj\orchestrator.sysj line: 38, column: 4
-      S118217=1;
-      active[2]=1;
-      ends[2]=1;
-      tdone[2]=1;
+      S39247=1;
+      if(orderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 71, column: 13
+        System.out.println("entered order is done");//sysj\orchestrator.sysj line: 72, column: 6
+        if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 73, column: 14
+          System.out.println("entered current order present");//sysj\orchestrator.sysj line: 74, column: 7
+          S38499=0;
+          thread49782(tdone,ends);
+          thread49783(tdone,ends);
+          int biggest49784 = 0;
+          if(ends[3]>=biggest49784){
+            biggest49784=ends[3];
+          }
+          if(ends[4]>=biggest49784){
+            biggest49784=ends[4];
+          }
+          if(biggest49784 == 1){
+            active[2]=1;
+            ends[2]=1;
+            tdone[2]=1;
+          }
+        }
+        else {
+          S39247=2;
+          active[2]=1;
+          ends[2]=1;
+          tdone[2]=1;
+        }
+      }
+      else {
+        S39247=2;
+        active[2]=1;
+        ends[2]=1;
+        tdone[2]=1;
+      }
     }
   }
 
@@ -4684,92 +3509,140 @@ public class Orchestrator extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S136808){
+      switch(S49776){
         case 0 : 
-          S136808=0;
+          S49776=0;
           break RUN;
         
         case 1 : 
-          S136808=2;
-          S136808=2;
-          getNextBottle_1.setClear();//sysj\orchestrator.sysj line: 16, column: 2
-          thread136810(tdone,ends);
-          thread136811(tdone,ends);
-          thread136812(tdone,ends);
-          thread136813(tdone,ends);
-          thread136814(tdone,ends);
-          thread136815(tdone,ends);
-          thread136816(tdone,ends);
-          int biggest136817 = 0;
-          if(ends[2]>=biggest136817){
-            biggest136817=ends[2];
+          S49776=2;
+          S49776=2;
+          sigConveyorReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigCapperReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigCapLoaderReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigRotaryReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigFillerReq_1.setClear();//sysj\orchestrator.sysj line: 13, column: 2
+          recConveyorStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recCapperStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recCapLoaderStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recFillerStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recRotaryStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          getNextBottle_1.setClear();//sysj\orchestrator.sysj line: 15, column: 2
+          startOrder_1.setClear();//sysj\orchestrator.sysj line: 18, column: 2
+          orderIsDone_1.setClear();//sysj\orchestrator.sysj line: 19, column: 2
+          initABS_1.setClear();//sysj\orchestrator.sysj line: 20, column: 2
+          foundCurrentOrder_1.setClear();//sysj\orchestrator.sysj line: 21, column: 2
+          currentOrder_1.setClear();//sysj\orchestrator.sysj line: 22, column: 2
+          recOrderIsDone_1.setClear();//sysj\orchestrator.sysj line: 23, column: 2
+          thread49778(tdone,ends);
+          thread49785(tdone,ends);
+          thread49786(tdone,ends);
+          thread49790(tdone,ends);
+          thread49791(tdone,ends);
+          thread49792(tdone,ends);
+          thread49793(tdone,ends);
+          thread49794(tdone,ends);
+          thread49795(tdone,ends);
+          int biggest49796 = 0;
+          if(ends[2]>=biggest49796){
+            biggest49796=ends[2];
           }
-          if(ends[3]>=biggest136817){
-            biggest136817=ends[3];
+          if(ends[5]>=biggest49796){
+            biggest49796=ends[5];
           }
-          if(ends[4]>=biggest136817){
-            biggest136817=ends[4];
+          if(ends[6]>=biggest49796){
+            biggest49796=ends[6];
           }
-          if(ends[5]>=biggest136817){
-            biggest136817=ends[5];
+          if(ends[9]>=biggest49796){
+            biggest49796=ends[9];
           }
-          if(ends[6]>=biggest136817){
-            biggest136817=ends[6];
+          if(ends[10]>=biggest49796){
+            biggest49796=ends[10];
           }
-          if(ends[7]>=biggest136817){
-            biggest136817=ends[7];
+          if(ends[11]>=biggest49796){
+            biggest49796=ends[11];
           }
-          if(ends[8]>=biggest136817){
-            biggest136817=ends[8];
+          if(ends[12]>=biggest49796){
+            biggest49796=ends[12];
           }
-          if(biggest136817 == 1){
+          if(ends[13]>=biggest49796){
+            biggest49796=ends[13];
+          }
+          if(ends[14]>=biggest49796){
+            biggest49796=ends[14];
+          }
+          if(biggest49796 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          getNextBottle_1.setClear();//sysj\orchestrator.sysj line: 16, column: 2
-          thread136818(tdone,ends);
-          thread136819(tdone,ends);
-          thread136820(tdone,ends);
-          thread136821(tdone,ends);
-          thread136822(tdone,ends);
-          thread136823(tdone,ends);
-          thread136824(tdone,ends);
-          int biggest136825 = 0;
-          if(ends[2]>=biggest136825){
-            biggest136825=ends[2];
+          sigConveyorReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigCapperReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigCapLoaderReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigRotaryReq_1.setClear();//sysj\orchestrator.sysj line: 12, column: 2
+          sigFillerReq_1.setClear();//sysj\orchestrator.sysj line: 13, column: 2
+          recConveyorStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recCapperStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recCapLoaderStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recFillerStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          recRotaryStatus_1.setClear();//sysj\orchestrator.sysj line: 14, column: 2
+          getNextBottle_1.setClear();//sysj\orchestrator.sysj line: 15, column: 2
+          startOrder_1.setClear();//sysj\orchestrator.sysj line: 18, column: 2
+          orderIsDone_1.setClear();//sysj\orchestrator.sysj line: 19, column: 2
+          initABS_1.setClear();//sysj\orchestrator.sysj line: 20, column: 2
+          foundCurrentOrder_1.setClear();//sysj\orchestrator.sysj line: 21, column: 2
+          currentOrder_1.setClear();//sysj\orchestrator.sysj line: 22, column: 2
+          recOrderIsDone_1.setClear();//sysj\orchestrator.sysj line: 23, column: 2
+          thread49797(tdone,ends);
+          thread49810(tdone,ends);
+          thread49811(tdone,ends);
+          thread49818(tdone,ends);
+          thread49819(tdone,ends);
+          thread49820(tdone,ends);
+          thread49821(tdone,ends);
+          thread49822(tdone,ends);
+          thread49823(tdone,ends);
+          int biggest49836 = 0;
+          if(ends[2]>=biggest49836){
+            biggest49836=ends[2];
           }
-          if(ends[3]>=biggest136825){
-            biggest136825=ends[3];
+          if(ends[5]>=biggest49836){
+            biggest49836=ends[5];
           }
-          if(ends[4]>=biggest136825){
-            biggest136825=ends[4];
+          if(ends[6]>=biggest49836){
+            biggest49836=ends[6];
           }
-          if(ends[5]>=biggest136825){
-            biggest136825=ends[5];
+          if(ends[9]>=biggest49836){
+            biggest49836=ends[9];
           }
-          if(ends[6]>=biggest136825){
-            biggest136825=ends[6];
+          if(ends[10]>=biggest49836){
+            biggest49836=ends[10];
           }
-          if(ends[7]>=biggest136825){
-            biggest136825=ends[7];
+          if(ends[11]>=biggest49836){
+            biggest49836=ends[11];
           }
-          if(ends[8]>=biggest136825){
-            biggest136825=ends[8];
+          if(ends[12]>=biggest49836){
+            biggest49836=ends[12];
           }
-          if(biggest136825 == 1){
+          if(ends[13]>=biggest49836){
+            biggest49836=ends[13];
+          }
+          if(ends[14]>=biggest49836){
+            biggest49836=ends[14];
+          }
+          if(biggest49836 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest136825 == 0){
-            S136808=0;
+          if(biggest49836 == 0){
+            S49776=0;
             active[1]=0;
             ends[1]=0;
-            S136808=0;
+            S49776=0;
             break RUN;
           }
         
@@ -4778,14 +3651,30 @@ public class Orchestrator extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
     // Now instantiate all the local signals ONLY
+    sigConveyorReq_1 = new Signal();
+    sigCapperReq_1 = new Signal();
+    sigCapLoaderReq_1 = new Signal();
+    sigRotaryReq_1 = new Signal();
+    sigFillerReq_1 = new Signal();
+    recConveyorStatus_1 = new Signal();
+    recCapperStatus_1 = new Signal();
+    recCapLoaderStatus_1 = new Signal();
+    recFillerStatus_1 = new Signal();
+    recRotaryStatus_1 = new Signal();
     getNextBottle_1 = new Signal();
+    startOrder_1 = new Signal();
+    orderIsDone_1 = new Signal();
+    initABS_1 = new Signal();
+    foundCurrentOrder_1 = new Signal();
+    currentOrder_1 = new Signal();
+    recOrderIsDone_1 = new Signal();
     // --------------------------------------------------
   }
   
@@ -4805,39 +3694,78 @@ public class Orchestrator extends ClockDomain{
           capLoaderStatus_in.gethook();
           fillerStatus_in.gethook();
           rotaryStatus_in.gethook();
-          order_in.gethook();
           conveyorReq_o.gethook();
-          allOperationsFinished_o.gethook();
+          rotaryReq_o.gethook();
           fillerReq_o.gethook();
           capperReq_o.gethook();
           capLoaderReq_o.gethook();
-          doneOrder_o.gethook();
-          percentLiquid_o.gethook();
+          recOrderStatus.gethook();
+          order.gethook();
           df = true;
         }
         runClockDomain();
       }
+      recOrderStatus.setpreclear();
+      order.setpreclear();
+      orderStatus.setpreclear();
+      sigConveyorReq_1.setpreclear();
+      sigCapperReq_1.setpreclear();
+      sigCapLoaderReq_1.setpreclear();
+      sigRotaryReq_1.setpreclear();
+      sigFillerReq_1.setpreclear();
+      recConveyorStatus_1.setpreclear();
+      recCapperStatus_1.setpreclear();
+      recCapLoaderStatus_1.setpreclear();
+      recFillerStatus_1.setpreclear();
+      recRotaryStatus_1.setpreclear();
       getNextBottle_1.setpreclear();
+      startOrder_1.setpreclear();
+      orderIsDone_1.setpreclear();
+      initABS_1.setpreclear();
+      foundCurrentOrder_1.setpreclear();
+      currentOrder_1.setpreclear();
+      recOrderIsDone_1.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
         dummyint = ((Signal)currsigs.elementAt(qw)).getStatus() ? ((Signal)currsigs.elementAt(qw)).setprepresent() : ((Signal)currsigs.elementAt(qw)).setpreclear();
         ((Signal)currsigs.elementAt(qw)).setpreval(((Signal)currsigs.elementAt(qw)).getValue());
       }
       currsigs.removeAllElements();
+      dummyint = recOrderStatus.getStatus() ? recOrderStatus.setprepresent() : recOrderStatus.setpreclear();
+      recOrderStatus.setpreval(recOrderStatus.getValue());
+      recOrderStatus.setClear();
+      dummyint = order.getStatus() ? order.setprepresent() : order.setpreclear();
+      order.setpreval(order.getValue());
+      order.setClear();
+      orderStatus.sethook();
+      orderStatus.setClear();
+      sigConveyorReq_1.setClear();
+      sigCapperReq_1.setClear();
+      sigCapLoaderReq_1.setClear();
+      sigRotaryReq_1.setClear();
+      sigFillerReq_1.setClear();
+      recConveyorStatus_1.setClear();
+      recCapperStatus_1.setClear();
+      recCapLoaderStatus_1.setClear();
+      recFillerStatus_1.setClear();
+      recRotaryStatus_1.setClear();
       getNextBottle_1.setClear();
+      startOrder_1.setClear();
+      orderIsDone_1.setClear();
+      initABS_1.setClear();
+      foundCurrentOrder_1.setClear();
+      currentOrder_1.setClear();
+      recOrderIsDone_1.setClear();
       conveyorStatus_in.sethook();
       capperStatus_in.sethook();
       capLoaderStatus_in.sethook();
       fillerStatus_in.sethook();
       rotaryStatus_in.sethook();
-      order_in.sethook();
       conveyorReq_o.sethook();
-      allOperationsFinished_o.sethook();
+      rotaryReq_o.sethook();
       fillerReq_o.sethook();
       capperReq_o.sethook();
       capLoaderReq_o.sethook();
-      doneOrder_o.sethook();
-      percentLiquid_o.sethook();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         conveyorStatus_in.gethook();
@@ -4845,14 +3773,13 @@ public class Orchestrator extends ClockDomain{
         capLoaderStatus_in.gethook();
         fillerStatus_in.gethook();
         rotaryStatus_in.gethook();
-        order_in.gethook();
         conveyorReq_o.gethook();
-        allOperationsFinished_o.gethook();
+        rotaryReq_o.gethook();
         fillerReq_o.gethook();
         capperReq_o.gethook();
         capLoaderReq_o.gethook();
-        doneOrder_o.gethook();
-        percentLiquid_o.gethook();
+        recOrderStatus.gethook();
+        order.gethook();
       }
       runFinisher();
       if(active[1] == 0){
