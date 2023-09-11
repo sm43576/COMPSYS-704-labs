@@ -40,10 +40,10 @@
 		
 		
 		<ClockDomain Name="HumiditySensorCD" Class="HumiditySensor">
-			<iSignal Name="getHumidity1R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="getHumidity1" To="HumidityPlantCD.getTemp1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="window1" To="HumidityPlantCD.window1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="zone1Temp" To="ecsUI.zone1Humid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
+			<iSignal Name="getHumid4R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="getHumid4" To="HumidityPlantCD.getHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="airconHumid4" To="HumidityPlantCD.airconHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="zone4Humid" To="ecsUI.zone4Humid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
 		</ClockDomain>
 		</SubSystem>
 </System>

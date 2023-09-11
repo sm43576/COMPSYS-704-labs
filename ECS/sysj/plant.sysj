@@ -33,3 +33,48 @@ TemperaturePlant(
 	}
 
 }
+
+
+HumidityPlant(
+		output Integer signal getHumid4R;
+		input signal getHumid4,airconHumid4;
+		
+	)
+->
+{
+;
+	{
+		int zone4Humid = 28;
+		while(true) {
+			present(getHumid4){
+				sustain getHumid4R(zone4Humid);
+				System.out.println("Sent Humidity of Zone4");
+			}
+			pause;
+			
+
+//			System.out.println("trigger");
+			pause;
+		}
+	} ||
+	
+	{
+		while(true) {
+			present(airconHumid4){
+				System.out.println("aircon On");
+				pause;
+			}
+			pause;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+

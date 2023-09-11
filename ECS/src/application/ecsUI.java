@@ -69,8 +69,8 @@ public class ecsUI extends Main {
 	        if (humidLabel.getId().equals(zone)) {
 	            // Update the circle properties as needed
 	        	double value = (double)val/100 ;
-	        	
 	            humidLabel.setProgress(value);
+	            humidLabel.setStyle("-fx-background-color: yellow; -fx-border-color: black; -fx-border-width: 2px;");;
 	            break; // Break out of the loop once the circle is found and updated
 	        }
 		}

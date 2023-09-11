@@ -12,7 +12,6 @@ public class TemperatureSensor extends ClockDomain{
   private char [] paused;
   private char [] suspended;
   public Signal getTemp1R = new Signal("getTemp1R", Signal.INPUT);
-  public Signal openedWindow1 = new Signal("openedWindow1", Signal.INPUT);
   public Signal getTemp1 = new Signal("getTemp1", Signal.OUTPUT);
   public Signal window1 = new Signal("window1", Signal.OUTPUT);
   public Signal zone1Temp = new Signal("zone1Temp", Signal.OUTPUT);
@@ -22,16 +21,16 @@ public class TemperatureSensor extends ClockDomain{
   public Signal zone5Temp = new Signal("zone5Temp", Signal.OUTPUT);
   public Signal zone6Temp = new Signal("zone6Temp", Signal.OUTPUT);
   public Signal zone7Temp = new Signal("zone7Temp", Signal.OUTPUT);
-  private long __start_thread_13;//sysj\controller.sysj line: 178, column: 3
+  private long __start_thread_13;//sysj\controller.sysj line: 177, column: 3
   private int S2533 = 1;
   private int S2529 = 1;
   private int S2347 = 1;
   private int S2531 = 1;
   
-  private int[] ends = new int[15];
-  private int[] tdone = new int[15];
+  private int[] ends = new int[18];
+  private int[] tdone = new int[18];
   
-  public void thread2561(int [] tdone, int [] ends){
+  public void thread2772(int [] tdone, int [] ends){
         switch(S2531){
       case 0 : 
         active[14]=0;
@@ -48,7 +47,7 @@ public class TemperatureSensor extends ClockDomain{
     }
   }
 
-  public void thread2560(int [] tdone, int [] ends){
+  public void thread2771(int [] tdone, int [] ends){
         switch(S2529){
       case 0 : 
         active[13]=0;
@@ -59,14 +58,14 @@ public class TemperatureSensor extends ClockDomain{
       case 1 : 
         switch(S2347){
           case 0 : 
-            if(getTemp1R.getprestatus()){//sysj\controller.sysj line: 179, column: 10
+            if(getTemp1R.getprestatus()){//sysj\controller.sysj line: 178, column: 10
               S2347=1;
               active[13]=1;
               ends[13]=1;
               tdone[13]=1;
             }
             else {
-              getTemp1.setPresent();//sysj\controller.sysj line: 180, column: 5
+              getTemp1.setPresent();//sysj\controller.sysj line: 179, column: 5
               currsigs.addElement(getTemp1);
               active[13]=1;
               ends[13]=1;
@@ -76,36 +75,33 @@ public class TemperatureSensor extends ClockDomain{
           
           case 1 : 
             S2347=1;
-            if((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())) > 28){//sysj\controller.sysj line: 184, column: 7
-              window1.setPresent();//sysj\controller.sysj line: 185, column: 5
+            if((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())) > 28){//sysj\controller.sysj line: 183, column: 7
+              window1.setPresent();//sysj\controller.sysj line: 184, column: 5
               currsigs.addElement(window1);
-              System.out.println((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
-              zone1Temp.setPresent();//sysj\controller.sysj line: 191, column: 3
+              zone1Temp.setPresent();//sysj\controller.sysj line: 190, column: 3
               currsigs.addElement(zone1Temp);
-              zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 191, column: 3
+              zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
               S2347=2;
               active[13]=1;
               ends[13]=1;
               tdone[13]=1;
             }
             else {
-              if((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())) < 20){//sysj\controller.sysj line: 187, column: 15
-                window1.setPresent();//sysj\controller.sysj line: 188, column: 5
+              if((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())) < 20){//sysj\controller.sysj line: 186, column: 15
+                window1.setPresent();//sysj\controller.sysj line: 187, column: 5
                 currsigs.addElement(window1);
-                System.out.println((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
-                zone1Temp.setPresent();//sysj\controller.sysj line: 191, column: 3
+                zone1Temp.setPresent();//sysj\controller.sysj line: 190, column: 3
                 currsigs.addElement(zone1Temp);
-                zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 191, column: 3
+                zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
                 S2347=2;
                 active[13]=1;
                 ends[13]=1;
                 tdone[13]=1;
               }
               else {
-                System.out.println((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
-                zone1Temp.setPresent();//sysj\controller.sysj line: 191, column: 3
+                zone1Temp.setPresent();//sysj\controller.sysj line: 190, column: 3
                 currsigs.addElement(zone1Temp);
-                zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 191, column: 3
+                zone1Temp.setValue((getTemp1R.getpreval() == null ? null : ((Integer)getTemp1R.getpreval())));//sysj\controller.sysj line: 190, column: 3
                 S2347=2;
                 active[13]=1;
                 ends[13]=1;
@@ -117,12 +113,12 @@ public class TemperatureSensor extends ClockDomain{
           case 2 : 
             S2347=2;
             S2347=3;
-            __start_thread_13 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 178, column: 3
-            if(com.systemj.Timer.getMs() - __start_thread_13 >= (5) * 1000){//sysj\controller.sysj line: 178, column: 3
+            __start_thread_13 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 177, column: 3
+            if(com.systemj.Timer.getMs() - __start_thread_13 >= (5) * 1000){//sysj\controller.sysj line: 177, column: 3
               ends[13]=2;
-              ;//sysj\controller.sysj line: 178, column: 3
+              ;//sysj\controller.sysj line: 177, column: 3
               S2347=0;
-              getTemp1.setPresent();//sysj\controller.sysj line: 180, column: 5
+              getTemp1.setPresent();//sysj\controller.sysj line: 179, column: 5
               currsigs.addElement(getTemp1);
               active[13]=1;
               ends[13]=1;
@@ -136,11 +132,11 @@ public class TemperatureSensor extends ClockDomain{
             break;
           
           case 3 : 
-            if(com.systemj.Timer.getMs() - __start_thread_13 >= (5) * 1000){//sysj\controller.sysj line: 178, column: 3
+            if(com.systemj.Timer.getMs() - __start_thread_13 >= (5) * 1000){//sysj\controller.sysj line: 177, column: 3
               ends[13]=2;
-              ;//sysj\controller.sysj line: 178, column: 3
+              ;//sysj\controller.sysj line: 177, column: 3
               S2347=0;
-              getTemp1.setPresent();//sysj\controller.sysj line: 180, column: 5
+              getTemp1.setPresent();//sysj\controller.sysj line: 179, column: 5
               currsigs.addElement(getTemp1);
               active[13]=1;
               ends[13]=1;
@@ -159,17 +155,17 @@ public class TemperatureSensor extends ClockDomain{
     }
   }
 
-  public void thread2558(int [] tdone, int [] ends){
+  public void thread2769(int [] tdone, int [] ends){
         S2531=1;
     active[14]=1;
     ends[14]=1;
     tdone[14]=1;
   }
 
-  public void thread2557(int [] tdone, int [] ends){
+  public void thread2768(int [] tdone, int [] ends){
         S2529=1;
     S2347=0;
-    getTemp1.setPresent();//sysj\controller.sysj line: 180, column: 5
+    getTemp1.setPresent();//sysj\controller.sysj line: 179, column: 5
     currsigs.addElement(getTemp1);
     active[13]=1;
     ends[13]=1;
@@ -191,38 +187,38 @@ public class TemperatureSensor extends ClockDomain{
         case 1 : 
           S2533=2;
           S2533=2;
-          thread2557(tdone,ends);
-          thread2558(tdone,ends);
-          int biggest2559 = 0;
-          if(ends[13]>=biggest2559){
-            biggest2559=ends[13];
+          thread2768(tdone,ends);
+          thread2769(tdone,ends);
+          int biggest2770 = 0;
+          if(ends[13]>=biggest2770){
+            biggest2770=ends[13];
           }
-          if(ends[14]>=biggest2559){
-            biggest2559=ends[14];
+          if(ends[14]>=biggest2770){
+            biggest2770=ends[14];
           }
-          if(biggest2559 == 1){
+          if(biggest2770 == 1){
             active[12]=1;
             ends[12]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2560(tdone,ends);
-          thread2561(tdone,ends);
-          int biggest2562 = 0;
-          if(ends[13]>=biggest2562){
-            biggest2562=ends[13];
+          thread2771(tdone,ends);
+          thread2772(tdone,ends);
+          int biggest2773 = 0;
+          if(ends[13]>=biggest2773){
+            biggest2773=ends[13];
           }
-          if(ends[14]>=biggest2562){
-            biggest2562=ends[14];
+          if(ends[14]>=biggest2773){
+            biggest2773=ends[14];
           }
-          if(biggest2562 == 1){
+          if(biggest2773 == 1){
             active[12]=1;
             ends[12]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2562 == 0){
+          if(biggest2773 == 0){
             S2533=0;
             active[12]=0;
             ends[12]=0;
@@ -235,9 +231,9 @@ public class TemperatureSensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
@@ -257,13 +253,11 @@ public class TemperatureSensor extends ClockDomain{
       else{
         if(!df){
           getTemp1R.gethook();
-          openedWindow1.gethook();
           df = true;
         }
         runClockDomain();
       }
       getTemp1R.setpreclear();
-      openedWindow1.setpreclear();
       getTemp1.setpreclear();
       window1.setpreclear();
       zone1Temp.setpreclear();
@@ -282,9 +276,6 @@ public class TemperatureSensor extends ClockDomain{
       dummyint = getTemp1R.getStatus() ? getTemp1R.setprepresent() : getTemp1R.setpreclear();
       getTemp1R.setpreval(getTemp1R.getValue());
       getTemp1R.setClear();
-      dummyint = openedWindow1.getStatus() ? openedWindow1.setprepresent() : openedWindow1.setpreclear();
-      openedWindow1.setpreval(openedWindow1.getValue());
-      openedWindow1.setClear();
       getTemp1.sethook();
       getTemp1.setClear();
       window1.sethook();
@@ -306,7 +297,6 @@ public class TemperatureSensor extends ClockDomain{
       if(paused[12]!=0 || suspended[12]!=0 || active[12]!=1);
       else{
         getTemp1R.gethook();
-        openedWindow1.gethook();
       }
       runFinisher();
       if(active[12] == 0){

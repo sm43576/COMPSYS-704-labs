@@ -45,7 +45,7 @@ public class Main extends Application{
         humanIndicator.addConsumer("ecsUI", "zone3Light", (status,value) -> updateLight(status,value,"zone3circle",controller));
 //        
         tempIndicator.addConsumer("ecsUI", "zone1Temp", (status, value) -> updateTemp(status,value,"temp1",controller));
-//        humidIndicator.addConsumer("ecsUI", "zone3Light", (status, value) -> updateLight(zone3circle.EMERGENCYOFFUI, status));
+        humidIndicator.addConsumer("ecsUI", "zone4Humid", (status, value) -> updateHumid(status,value,"humid4",controller));
 
 //        //Tests
         //controller.setZoneCircle("zone1circle",1);
@@ -82,8 +82,13 @@ public class Main extends Application{
     		controller.setTemp(zone,text);
     	}
     }
-//    public static void updateHumid(String zone,ecsUI controller,Boolean status) {   	
-//    }
+    public static void updateHumid(Boolean Status,Object value,String zone,ecsUI controller) {   	
+    	if(value!= null) {
+    		System.out.println("Set");
+    		int text = (int) value;
+    		controller.setTemp(zone,text);
+    	}
+    }
     
 
     
