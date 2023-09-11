@@ -24,6 +24,7 @@ public class Main extends Application {
     	Parent root = loader.load();
     	
         myController = (HomeController) loader.getController();
+        primaryStage.setResizable(false);
         primaryStage.setTitle("POS");
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();

@@ -164,6 +164,7 @@ public class HomeController {
         
     	Stage secondaryStage = new Stage();
     	secondaryStage.setTitle("New Order");
+    	secondaryStage.setResizable(false);
     	secondaryStage.setScene(new Scene(root, 640, 600));
     	secondaryStage.show();
     	

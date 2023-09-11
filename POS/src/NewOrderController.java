@@ -145,6 +145,7 @@ public class NewOrderController {
         textField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 this.quantity = Integer.parseInt(quantity_input.getText());
+                updateSubmitButton();
             }
         });
     }
