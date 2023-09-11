@@ -20,6 +20,7 @@ Orchestrator(
 	signal initABS;
 	signal foundCurrentOrder;
 	Order signal currentOrder;
+	signal recOrderIsDone;
 	{ 	
 		// TODO changed to internal valued signal
 		ArrayList fifoQueue = new ArrayList();
@@ -29,50 +30,57 @@ Orchestrator(
 			{ // --- POS checking for new orders and adding it to queue --- 
 //						System.out.println("awaiting order");
 				present(order){ // TODO: bruh moment
-					System.out.println("got order!");
-					Order newOrder = #order;
-					System.out.println(newOrder.getQuantity());
-					// Add order to the queue (FIFO)
-					fifoQueue.add(newOrder);
+				System.out.println("got order!");
+				Order newOrder = #order;
+				System.out.println(newOrder.getQuantity());
+				// Add order to the queue (FIFO)
+				fifoQueue.add(newOrder);
+				
+				// set current order to the first item in queue at start
+				present(initABS){
+					System.out.println("start of ABS get first item");
+					Order tempOrder = (Order)fifoQueue.get(0);
 					
-					// set current order to the first item in queue at start
-					present(initABS){
-						System.out.println("start of ABS get first item");
-						Order tempOrder = (Order)fifoQueue.get(0);
-						
-						
-						fifoQueue.remove(0);
-						System.out.println(newOrder.getCustomerID());
-						
-						// set flag to start orders
-						abort(foundCurrentOrder){
-							emit currentOrder(tempOrder);
-							emit startOrder;
-						}
-						
-						
-						// Change order status to "Started" and send it back to POS
-						tempOrder.setOrderStatus("Started");
-						System.out.println("emitting orderstatus: started");
-						
-						abort(recOrderStatus){
-							sustain orderStatus(tempOrder);
-						}
-						
-						System.out.println("orch received: recOrderStatus");
-						
+					
+					fifoQueue.remove(0);
+					System.out.println(newOrder.getCustomerID());
+					
+					// set flag to start orders
+					abort(foundCurrentOrder){
+						emit currentOrder(tempOrder);
+						emit startOrder;
 					}
+					
+					
+					// Change order status to "Started" and send it back to POS
+					tempOrder.setOrderStatus("Started");
+					System.out.println("emitting orderstatus: started");
+					
+					abort(recOrderStatus){
+						sustain orderStatus(tempOrder);
+					}
+					
+					System.out.println("orch received: recOrderStatus");
+					
 				}
+				}
+				
 				
 				// Get next order in queue when order is finished
 				
-				present(currentOrder){
-					Order tempOrder = #currentOrder;
-					present(orderIsDone){
-						// change order status to done and send it back to POS
-						tempOrder.setOrderStatus("Done");
+				present(orderIsDone){
+					System.out.println("entered order is done");
+					present(currentOrder){
+						System.out.println("entered current order present");
 						abort(recOrderStatus){
-							sustain orderStatus(tempOrder);
+							{
+								Order tempOrder = #currentOrder;
+								// change order status to done and send it back to POS
+								System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");
+								tempOrder.setOrderStatus("Done");
+								sustain orderStatus(tempOrder);
+							} 
+							|| {sustain recOrderIsDone;}
 						}
 						
 						// Get next order
@@ -121,11 +129,12 @@ Orchestrator(
 			while(true) {
 				present(startOrder){
 					present(currentOrder){
-						Order myOrder = #currentOrder;
 						// Sustain  current order until the order is done
-						abort(orderIsDone){
-							emit currentOrder(myOrder);
-							emit foundCurrentOrder;
+						abort(recOrderIsDone){
+							{Order myOrder = #currentOrder;
+							sustain currentOrder(myOrder);}
+							||
+							{sustain foundCurrentOrder;}
 						}
 					}
 					
@@ -263,9 +272,11 @@ Orchestrator(
 				await(recConveyorStatus);
 				eject--;
 			}
-			
-			emit orderIsDone;
 			System.out.println("Orch: Order complete.");
+			abort(recOrderIsDone){
+				sustain orderIsDone;
+			}
+			System.out.println("end finally");
 			pause;
 		}
 			
