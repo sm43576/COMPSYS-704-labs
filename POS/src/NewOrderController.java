@@ -78,7 +78,7 @@ public class NewOrderController {
     }
     
     public void updateSubmitButton() {
-    	submit_btn.setDisable(!this.boxHasBeenChecked || !this.totalIsCorrect || this.quantity_input.getText().isEmpty());
+    	submit_btn.setDisable(!this.boxHasBeenChecked || !this.totalIsCorrect || this.quantity_input.getText().isEmpty() || this.quantity ==0);
     }
     
     // to get instance of HomeController
