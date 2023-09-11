@@ -1,28 +1,17 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS2" Local="true">
-		<ClockDomain Name="PlantCD" Class="Plant">
-			<iSignal Name="checkZone4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="checkHumanPresence" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-
-			<oSignal Name="zone1P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone1PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone2P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone2PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-
-			<oSignal Name="zone3P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone3PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-
-			<oSignal Name="zone4P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone4PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-
-			<oSignal Name="zone5P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone5PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone6P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone6PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone6P" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="zone6PE" To="UI.pusherRetractedE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-
-
+		<ClockDomain Name="TemperaturePlantCD" Class="TemperaturePlant">
+			<iSignal Name="getTemp1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="window1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getTemp1R" To="TemperatureSensorCD.getTemp1R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="openedWindow1" To="TemperatureSensorCD.openedWindow1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+		</ClockDomain>
+		
+		<ClockDomain Name="HumidityPlantCD" Class="HumidityPlant">
+			<iSignal Name="getHumid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="getHumid4R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="airconHumid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getHumid4R" To="HumiditySensorCD.getTemp1R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 		</ClockDomain>
 	</SubSystem>
 </System>

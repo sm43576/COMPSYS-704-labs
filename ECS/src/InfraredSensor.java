@@ -18,15 +18,992 @@ public class InfraredSensor extends ClockDomain{
   public output_Channel zone5P_o = new output_Channel();
   public output_Channel zone6P_o = new output_Channel();
   public output_Channel zone7P_o = new output_Channel();
-  private long __start_thread_9;//sysj/controller.sysj line: 32, column: 3
-  private int S744 = 1;
-  private int S584 = 1;
-  private int S512 = 1;
-  private int S507 = 1;
+  private long __start_thread_10;//sysj\controller.sysj line: 140, column: 5
+  private long __start_thread_11;//sysj\controller.sysj line: 152, column: 5
+  private int S2342 = 1;
+  private int S1503 = 1;
+  private int S689 = 1;
+  private int S673 = 1;
+  private int S668 = 1;
+  private int S691 = 1;
+  private int S724 = 1;
+  private int S719 = 1;
+  private int S2340 = 1;
+  private int S1526 = 1;
+  private int S1510 = 1;
+  private int S1505 = 1;
+  private int S1561 = 1;
+  private int S1556 = 1;
   
-  private int[] ends = new int[10];
-  private int[] tdone = new int[10];
+  private int[] ends = new int[18];
+  private int[] tdone = new int[18];
   
+  public void thread2766(int [] tdone, int [] ends){
+        switch(S2340){
+      case 0 : 
+        active[11]=0;
+        ends[11]=0;
+        tdone[11]=1;
+        break;
+      
+      case 1 : 
+        switch(S1526){
+          case 0 : 
+            switch(S1510){
+              case 0 : 
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                  S1510=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  switch(S1505){
+                    case 0 : 
+                      if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                        zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                        S1505=1;
+                        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                          zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                          ends[11]=2;
+                          ;//sysj\controller.sysj line: 153, column: 5
+                          S1526=1;
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                        zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                        ends[11]=2;
+                        ;//sysj\controller.sysj line: 153, column: 5
+                        S1526=1;
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S1510=1;
+                S1510=0;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                  S1510=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  S1505=0;
+                  if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                    S1505=1;
+                    if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                      zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                      ends[11]=2;
+                      ;//sysj\controller.sysj line: 153, column: 5
+                      S1526=1;
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                    else {
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 1 : 
+            S1526=1;
+            S1526=2;
+            __start_thread_11 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 152, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
+              ends[11]=2;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 156, column: 5
+              S1526=3;
+              S1561=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                S1561=1;
+                active[11]=1;
+                ends[11]=1;
+                tdone[11]=1;
+              }
+              else {
+                S1556=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                  S1556=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                    ends[11]=2;
+                    ;//sysj\controller.sysj line: 158, column: 5
+                    S1526=4;
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                else {
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+              }
+            }
+            else {
+              active[11]=1;
+              ends[11]=1;
+              tdone[11]=1;
+            }
+            break;
+          
+          case 2 : 
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
+              ends[11]=2;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 156, column: 5
+              S1526=3;
+              S1561=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                S1561=1;
+                active[11]=1;
+                ends[11]=1;
+                tdone[11]=1;
+              }
+              else {
+                S1556=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                  S1556=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                    ends[11]=2;
+                    ;//sysj\controller.sysj line: 158, column: 5
+                    S1526=4;
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                else {
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+              }
+            }
+            else {
+              active[11]=1;
+              ends[11]=1;
+              tdone[11]=1;
+            }
+            break;
+          
+          case 3 : 
+            switch(S1561){
+              case 0 : 
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                  S1561=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  switch(S1556){
+                    case 0 : 
+                      if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                        zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                        S1556=1;
+                        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                          zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                          ends[11]=2;
+                          ;//sysj\controller.sysj line: 158, column: 5
+                          S1526=4;
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                        else {
+                          active[11]=1;
+                          ends[11]=1;
+                          tdone[11]=1;
+                        }
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                        zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                        ends[11]=2;
+                        ;//sysj\controller.sysj line: 158, column: 5
+                        S1526=4;
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      else {
+                        active[11]=1;
+                        ends[11]=1;
+                        tdone[11]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S1561=1;
+                S1561=0;
+                if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 158, column: 5
+                  zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                  S1561=1;
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+                else {
+                  S1556=0;
+                  if(zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                    zone3P_o.setVal(false);//sysj\controller.sysj line: 158, column: 5
+                    S1556=1;
+                    if(!zone3P_o.isACK()){//sysj\controller.sysj line: 158, column: 5
+                      zone3P_o.setREQ(false);//sysj\controller.sysj line: 158, column: 5
+                      ends[11]=2;
+                      ;//sysj\controller.sysj line: 158, column: 5
+                      S1526=4;
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                    else {
+                      active[11]=1;
+                      ends[11]=1;
+                      tdone[11]=1;
+                    }
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 4 : 
+            S1526=4;
+            S1526=5;
+            __start_thread_11 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 152, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
+              ends[11]=2;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 161, column: 5
+              S1526=0;
+              S1510=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                S1510=1;
+                active[11]=1;
+                ends[11]=1;
+                tdone[11]=1;
+              }
+              else {
+                S1505=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                  S1505=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                    ends[11]=2;
+                    ;//sysj\controller.sysj line: 153, column: 5
+                    S1526=1;
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                else {
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+              }
+            }
+            else {
+              active[11]=1;
+              ends[11]=1;
+              tdone[11]=1;
+            }
+            break;
+          
+          case 5 : 
+            if(com.systemj.Timer.getMs() - __start_thread_11 >= (5) * 1000){//sysj\controller.sysj line: 152, column: 5
+              ends[11]=2;
+              ;//sysj\controller.sysj line: 152, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 161, column: 5
+              S1526=0;
+              S1510=0;
+              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+                zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                S1510=1;
+                active[11]=1;
+                ends[11]=1;
+                tdone[11]=1;
+              }
+              else {
+                S1505=0;
+                if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                  zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+                  S1505=1;
+                  if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+                    zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+                    ends[11]=2;
+                    ;//sysj\controller.sysj line: 153, column: 5
+                    S1526=1;
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                  else {
+                    active[11]=1;
+                    ends[11]=1;
+                    tdone[11]=1;
+                  }
+                }
+                else {
+                  active[11]=1;
+                  ends[11]=1;
+                  tdone[11]=1;
+                }
+              }
+            }
+            else {
+              active[11]=1;
+              ends[11]=1;
+              tdone[11]=1;
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread2765(int [] tdone, int [] ends){
+        switch(S1503){
+      case 0 : 
+        active[10]=0;
+        ends[10]=0;
+        tdone[10]=1;
+        break;
+      
+      case 1 : 
+        switch(S689){
+          case 0 : 
+            switch(S673){
+              case 0 : 
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                  S673=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  switch(S668){
+                    case 0 : 
+                      if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                        zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                        S668=1;
+                        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                          zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                          ends[10]=2;
+                          ;//sysj\controller.sysj line: 141, column: 5
+                          S689=1;
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                        ends[10]=2;
+                        ;//sysj\controller.sysj line: 141, column: 5
+                        S689=1;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S673=1;
+                S673=0;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                  S673=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  S668=0;
+                  if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                    S668=1;
+                    if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                      zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                      ends[10]=2;
+                      ;//sysj\controller.sysj line: 141, column: 5
+                      S689=1;
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 1 : 
+            S689=1;
+            S689=2;
+            __start_thread_10 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 140, column: 5
+            S691=0;
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
+              ends[10]=2;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+              S689=3;
+              S724=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                S724=1;
+                active[10]=1;
+                ends[10]=1;
+                tdone[10]=1;
+              }
+              else {
+                S719=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                  S719=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                    ends[10]=2;
+                    ;//sysj\controller.sysj line: 146, column: 5
+                    S689=4;
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                else {
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+              }
+            }
+            else {
+              S691=1;
+              active[10]=1;
+              ends[10]=1;
+              tdone[10]=1;
+            }
+            break;
+          
+          case 2 : 
+            switch(S691){
+              case 0 : 
+                S691=0;
+                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
+                  ends[10]=2;
+                  ;//sysj\controller.sysj line: 140, column: 5
+                  System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+                  S689=3;
+                  S724=0;
+                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                    S724=1;
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                  else {
+                    S719=0;
+                    if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                      S719=1;
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                        ends[10]=2;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                }
+                else {
+                  S691=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                break;
+              
+              case 1 : 
+                S691=1;
+                S691=0;
+                if(com.systemj.Timer.getMs() - __start_thread_10 >= (2) * 1000){//sysj\controller.sysj line: 140, column: 5
+                  ends[10]=2;
+                  ;//sysj\controller.sysj line: 140, column: 5
+                  System.out.println("sent");//sysj\controller.sysj line: 144, column: 5
+                  S689=3;
+                  S724=0;
+                  if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                    S724=1;
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                  else {
+                    S719=0;
+                    if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                      S719=1;
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                        ends[10]=2;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                }
+                else {
+                  S691=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                break;
+              
+            }
+            break;
+          
+          case 3 : 
+            switch(S724){
+              case 0 : 
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                  S724=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  switch(S719){
+                    case 0 : 
+                      if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                        S719=1;
+                        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                          zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                          ends[10]=2;
+                          ;//sysj\controller.sysj line: 146, column: 5
+                          S689=4;
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                        else {
+                          active[10]=1;
+                          ends[10]=1;
+                          tdone[10]=1;
+                        }
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                    case 1 : 
+                      if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                        zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                        ends[10]=2;
+                        ;//sysj\controller.sysj line: 146, column: 5
+                        S689=4;
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      else {
+                        active[10]=1;
+                        ends[10]=1;
+                        tdone[10]=1;
+                      }
+                      break;
+                    
+                  }
+                }
+                break;
+              
+              case 1 : 
+                S724=1;
+                S724=0;
+                if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 146, column: 5
+                  zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                  S724=1;
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+                else {
+                  S719=0;
+                  if(zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                    zone1P_o.setVal(false);//sysj\controller.sysj line: 146, column: 5
+                    S719=1;
+                    if(!zone1P_o.isACK()){//sysj\controller.sysj line: 146, column: 5
+                      zone1P_o.setREQ(false);//sysj\controller.sysj line: 146, column: 5
+                      ends[10]=2;
+                      ;//sysj\controller.sysj line: 146, column: 5
+                      S689=4;
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                    else {
+                      active[10]=1;
+                      ends[10]=1;
+                      tdone[10]=1;
+                    }
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                break;
+              
+            }
+            break;
+          
+          case 4 : 
+            S689=4;
+            S689=5;
+            __start_thread_10 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 140, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj\controller.sysj line: 140, column: 5
+              ends[10]=2;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 149, column: 5
+              S689=0;
+              S673=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                S673=1;
+                active[10]=1;
+                ends[10]=1;
+                tdone[10]=1;
+              }
+              else {
+                S668=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                  S668=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                    ends[10]=2;
+                    ;//sysj\controller.sysj line: 141, column: 5
+                    S689=1;
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                else {
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+              }
+            }
+            else {
+              active[10]=1;
+              ends[10]=1;
+              tdone[10]=1;
+            }
+            break;
+          
+          case 5 : 
+            if(com.systemj.Timer.getMs() - __start_thread_10 >= (4) * 1000){//sysj\controller.sysj line: 140, column: 5
+              ends[10]=2;
+              ;//sysj\controller.sysj line: 140, column: 5
+              System.out.println("unsent");//sysj\controller.sysj line: 149, column: 5
+              S689=0;
+              S673=0;
+              if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+                zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                S673=1;
+                active[10]=1;
+                ends[10]=1;
+                tdone[10]=1;
+              }
+              else {
+                S668=0;
+                if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                  zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+                  S668=1;
+                  if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+                    zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+                    ends[10]=2;
+                    ;//sysj\controller.sysj line: 141, column: 5
+                    S689=1;
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                  else {
+                    active[10]=1;
+                    ends[10]=1;
+                    tdone[10]=1;
+                  }
+                }
+                else {
+                  active[10]=1;
+                  ends[10]=1;
+                  tdone[10]=1;
+                }
+              }
+            }
+            else {
+              active[10]=1;
+              ends[10]=1;
+              tdone[10]=1;
+            }
+            break;
+          
+        }
+        break;
+      
+    }
+  }
+
+  public void thread2763(int [] tdone, int [] ends){
+        S2340=1;
+    S1526=0;
+    S1510=0;
+    if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj\controller.sysj line: 153, column: 5
+      zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+      S1510=1;
+      active[11]=1;
+      ends[11]=1;
+      tdone[11]=1;
+    }
+    else {
+      S1505=0;
+      if(zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+        zone3P_o.setVal(true);//sysj\controller.sysj line: 153, column: 5
+        S1505=1;
+        if(!zone3P_o.isACK()){//sysj\controller.sysj line: 153, column: 5
+          zone3P_o.setREQ(false);//sysj\controller.sysj line: 153, column: 5
+          ends[11]=2;
+          ;//sysj\controller.sysj line: 153, column: 5
+          S1526=1;
+          active[11]=1;
+          ends[11]=1;
+          tdone[11]=1;
+        }
+        else {
+          active[11]=1;
+          ends[11]=1;
+          tdone[11]=1;
+        }
+      }
+      else {
+        active[11]=1;
+        ends[11]=1;
+        tdone[11]=1;
+      }
+    }
+  }
+
+  public void thread2762(int [] tdone, int [] ends){
+        S1503=1;
+    S689=0;
+    S673=0;
+    if(!zone1P_o.isPartnerPresent() || zone1P_o.isPartnerPreempted()){//sysj\controller.sysj line: 141, column: 5
+      zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+      S673=1;
+      active[10]=1;
+      ends[10]=1;
+      tdone[10]=1;
+    }
+    else {
+      S668=0;
+      if(zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+        zone1P_o.setVal(true);//sysj\controller.sysj line: 141, column: 5
+        S668=1;
+        if(!zone1P_o.isACK()){//sysj\controller.sysj line: 141, column: 5
+          zone1P_o.setREQ(false);//sysj\controller.sysj line: 141, column: 5
+          ends[10]=2;
+          ;//sysj\controller.sysj line: 141, column: 5
+          S689=1;
+          active[10]=1;
+          ends[10]=1;
+          tdone[10]=1;
+        }
+        else {
+          active[10]=1;
+          ends[10]=1;
+          tdone[10]=1;
+        }
+      }
+      else {
+        active[10]=1;
+        ends[10]=1;
+        tdone[10]=1;
+      }
+    }
+  }
+
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -34,257 +1011,51 @@ public class InfraredSensor extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S744){
+      switch(S2342){
         case 0 : 
-          S744=0;
+          S2342=0;
           break RUN;
         
         case 1 : 
-          S744=2;
-          S744=2;
-          S584=0;
-          S512=0;
-          if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 34, column: 5
-            zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-            S512=1;
+          S2342=2;
+          S2342=2;
+          thread2762(tdone,ends);
+          thread2763(tdone,ends);
+          int biggest2764 = 0;
+          if(ends[10]>=biggest2764){
+            biggest2764=ends[10];
+          }
+          if(ends[11]>=biggest2764){
+            biggest2764=ends[11];
+          }
+          if(biggest2764 == 1){
             active[9]=1;
             ends[9]=1;
             break RUN;
           }
-          else {
-            S507=0;
-            if(zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-              zone3P_o.setVal(true);//sysj/controller.sysj line: 34, column: 5
-              S507=1;
-              if(!zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                ends[9]=2;
-                ;//sysj/controller.sysj line: 34, column: 5
-                S584=1;
-                __start_thread_9 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 32, column: 3
-                if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                  ends[9]=2;
-                  ;//sysj/controller.sysj line: 32, column: 3
-                  S584=2;
-                  active[9]=1;
-                  ends[9]=1;
-                  break RUN;
-                }
-                else {
-                  active[9]=1;
-                  ends[9]=1;
-                  break RUN;
-                }
-              }
-              else {
-                active[9]=1;
-                ends[9]=1;
-                break RUN;
-              }
-            }
-            else {
-              active[9]=1;
-              ends[9]=1;
-              break RUN;
-            }
-          }
         
         case 2 : 
-          switch(S584){
-            case 0 : 
-              switch(S512){
-                case 0 : 
-                  if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 34, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                    S512=1;
-                    active[9]=1;
-                    ends[9]=1;
-                    break RUN;
-                  }
-                  else {
-                    switch(S507){
-                      case 0 : 
-                        if(zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                          zone3P_o.setVal(true);//sysj/controller.sysj line: 34, column: 5
-                          S507=1;
-                          if(!zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                            zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                            ends[9]=2;
-                            ;//sysj/controller.sysj line: 34, column: 5
-                            S584=1;
-                            __start_thread_9 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 32, column: 3
-                            if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                              ends[9]=2;
-                              ;//sysj/controller.sysj line: 32, column: 3
-                              S584=2;
-                              active[9]=1;
-                              ends[9]=1;
-                              break RUN;
-                            }
-                            else {
-                              active[9]=1;
-                              ends[9]=1;
-                              break RUN;
-                            }
-                          }
-                          else {
-                            active[9]=1;
-                            ends[9]=1;
-                            break RUN;
-                          }
-                        }
-                        else {
-                          active[9]=1;
-                          ends[9]=1;
-                          break RUN;
-                        }
-                      
-                      case 1 : 
-                        if(!zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                          zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                          ends[9]=2;
-                          ;//sysj/controller.sysj line: 34, column: 5
-                          S584=1;
-                          __start_thread_9 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 32, column: 3
-                          if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                            ends[9]=2;
-                            ;//sysj/controller.sysj line: 32, column: 3
-                            S584=2;
-                            active[9]=1;
-                            ends[9]=1;
-                            break RUN;
-                          }
-                          else {
-                            active[9]=1;
-                            ends[9]=1;
-                            break RUN;
-                          }
-                        }
-                        else {
-                          active[9]=1;
-                          ends[9]=1;
-                          break RUN;
-                        }
-                      
-                    }
-                  }
-                  break;
-                
-                case 1 : 
-                  S512=1;
-                  S512=0;
-                  if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 34, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                    S512=1;
-                    active[9]=1;
-                    ends[9]=1;
-                    break RUN;
-                  }
-                  else {
-                    S507=0;
-                    if(zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                      zone3P_o.setVal(true);//sysj/controller.sysj line: 34, column: 5
-                      S507=1;
-                      if(!zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                        zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                        ends[9]=2;
-                        ;//sysj/controller.sysj line: 34, column: 5
-                        S584=1;
-                        __start_thread_9 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 32, column: 3
-                        if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                          ends[9]=2;
-                          ;//sysj/controller.sysj line: 32, column: 3
-                          S584=2;
-                          active[9]=1;
-                          ends[9]=1;
-                          break RUN;
-                        }
-                        else {
-                          active[9]=1;
-                          ends[9]=1;
-                          break RUN;
-                        }
-                      }
-                      else {
-                        active[9]=1;
-                        ends[9]=1;
-                        break RUN;
-                      }
-                    }
-                    else {
-                      active[9]=1;
-                      ends[9]=1;
-                      break RUN;
-                    }
-                  }
-                
-              }
-              break;
-            
-            case 1 : 
-              if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                ends[9]=2;
-                ;//sysj/controller.sysj line: 32, column: 3
-                S584=2;
-                active[9]=1;
-                ends[9]=1;
-                break RUN;
-              }
-              else {
-                active[9]=1;
-                ends[9]=1;
-                break RUN;
-              }
-            
-            case 2 : 
-              S584=2;
-              S584=0;
-              S512=0;
-              if(!zone3P_o.isPartnerPresent() || zone3P_o.isPartnerPreempted()){//sysj/controller.sysj line: 34, column: 5
-                zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                S512=1;
-                active[9]=1;
-                ends[9]=1;
-                break RUN;
-              }
-              else {
-                S507=0;
-                if(zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                  zone3P_o.setVal(true);//sysj/controller.sysj line: 34, column: 5
-                  S507=1;
-                  if(!zone3P_o.isACK()){//sysj/controller.sysj line: 34, column: 5
-                    zone3P_o.setREQ(false);//sysj/controller.sysj line: 34, column: 5
-                    ends[9]=2;
-                    ;//sysj/controller.sysj line: 34, column: 5
-                    S584=1;
-                    __start_thread_9 = com.systemj.Timer.getMs();//sysj/controller.sysj line: 32, column: 3
-                    if(com.systemj.Timer.getMs() - __start_thread_9 >= (120) * 1000){//sysj/controller.sysj line: 32, column: 3
-                      ends[9]=2;
-                      ;//sysj/controller.sysj line: 32, column: 3
-                      S584=2;
-                      active[9]=1;
-                      ends[9]=1;
-                      break RUN;
-                    }
-                    else {
-                      active[9]=1;
-                      ends[9]=1;
-                      break RUN;
-                    }
-                  }
-                  else {
-                    active[9]=1;
-                    ends[9]=1;
-                    break RUN;
-                  }
-                }
-                else {
-                  active[9]=1;
-                  ends[9]=1;
-                  break RUN;
-                }
-              }
-            
+          thread2765(tdone,ends);
+          thread2766(tdone,ends);
+          int biggest2767 = 0;
+          if(ends[10]>=biggest2767){
+            biggest2767=ends[10];
+          }
+          if(ends[11]>=biggest2767){
+            biggest2767=ends[11];
+          }
+          if(biggest2767 == 1){
+            active[9]=1;
+            ends[9]=1;
+            break RUN;
+          }
+          //FINXME code
+          if(biggest2767 == 0){
+            S2342=0;
+            active[9]=0;
+            ends[9]=0;
+            S2342=0;
+            break RUN;
           }
         
       }
@@ -292,9 +1063,9 @@ public class InfraredSensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

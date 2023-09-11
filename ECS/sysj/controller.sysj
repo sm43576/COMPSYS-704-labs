@@ -1,51 +1,244 @@
+
+//////Human Presence//////////////////////////////////////
 HumanPresence(
 		input boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P; //Infrared Sensor
-
-		output signal zone1light,zone2light,zone3light,zone4light,zone5light,zone6light,zone7light;
-
+		output String signal zone1Light,zone2Light,zone3Light,zone4Light,zone5Light,zone6Light,zone7Light;
 		)
 ->{
-
-	while(true) {
-			//Human presense  light intensity
-			//Ping Location.
-			{receive zone1P; pause;} ||
-			{receive zone2P; pause;} ||
-			{receive zone3P;
-				System.out.println("lights on");
+		{//zone 1
+			while(true){
+				receive zone1P;
 				pause;
-				//sustain(zone3light);}
-			} ||
-			{receive zone4P;{pause;}} ||
-			{receive zone5P;{pause;}} ||
-			{receive zone6P;{pause;}} ||
-			{receive zone7P;{pause;}}
-	}
+				if (#zone1P==true) {
+					System.out.println("detected");
+					emit zone1Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone1P==false) {
+						System.out.println("notdetected");
+						emit zone1Light("notdetected"); // detected
+					pause;
+				}
+			pause;
+		}}||
+		
+		{ //zone 2
+			while(true){ 
+				receive zone2P;
+				pause;
+				if (#zone2P==true) {
+					System.out.println("detected");
+					emit zone2Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone2P==false) {
+						System.out.println("notdetected");
+						emit zone2Light("notdetected"); // detected
+					pause;
+			}
+			pause;
+		}} ||
+		
+		{ //zone 3
+			while(true){ 
+			receive zone3P;
+			pause;
+			if (#zone3P==true) {
+//				System.out.println("detected");
+				emit zone3Light("detected"); // detected
+				pause;
+				
+			}
+			else if(#zone3P==false) {
+			//	abort(receiveSignal){
+//					System.out.println("notdetected");
+					emit zone3Light("notdetected"); // detected
+			//	}
+				pause;
+			}
+			pause;
+			
+		}} ||
+		{ //zone 4
+			while(true){ 
+				receive zone4P;
+				pause;
+				if (#zone4P==true) {
+					System.out.println("detected");
+					emit zone4Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone4P==false) {
+						System.out.println("notdetected");
+						emit zone4Light("notdetected"); // detected
+					pause;
+				}
+				pause;
+		}} ||
+		{ //zone 5
+			while(true){ 
+				receive zone5P;
+				pause;
+				if (#zone5P==true) {
+					System.out.println("detected");
+					emit zone5Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone5P==false) {
+						System.out.println("notdetected");
+						emit zone5Light("notdetected"); // detected
+					pause;
+				}
+				pause;
+		}} ||
+		{ //zone 6
+			while(true){ 
+				receive zone6P;
+				pause;
+				if (#zone6P==true) {
+					System.out.println("detected");
+					emit zone6Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone6P==false) {
+						System.out.println("notdetected");
+						emit zone6Light("notdetected"); // detected
+					pause;
+				}
+				pause;
+		}} ||
+		{ //zone 7
+			while(true){ 
+				receive zone7P;
+				pause;
+				if (#zone4P==true) {
+					System.out.println("detected");
+					emit zone4Light("detected"); // detected
+					pause;
+					
+				}
+				else if(#zone4P==false) {
+						System.out.println("notdetected");
+						emit zone4Light("notdetected"); // detected
+					pause;
+				}
+				pause;
+		}}
 						
 }
-
-
+//Simulate
 InfraredSensor(
 		 output boolean channel zone1P,zone2P,zone3P,zone4P,zone5P,zone6P,zone7P;	 
 	)
 	->{	
-		while(true) {
+		 { 
+			 while(true) {
+				send zone1P(true);
+				pause; //need pause here for tick
+				waitl(2 s);
+				System.out.println("sent");
 				
-				send zone3P(true);
-				waitl(120 s);
+				send zone1P(false);
 				pause;
+				waitl(4 s);
+				System.out.println("unsent");
+			 }
+		}||
+		{	while(true) {
+				send zone3P(true);
+				pause; //need pause here for tick
+				waitl(5 s);
+				System.out.println("sent");
+				
+				send zone3P(false);
+				pause;
+				waitl(5 s);
+				System.out.println("unsent");	
+			}	
+		} 
+}
+
+/////////////Temperature sensor
+TemperatureSensor(
+
+		input Integer signal getTemp1R;
+		output signal getTemp1,window1;
+		
+		output Integer signal zone1Temp,zone2Temp,zone3Temp,zone4Temp,zone5Temp,zone6Temp,zone7Temp;
+		)
+->{
+	//Zone1
+	{
+		while(true){
+			abort(getTemp1R){
+				sustain getTemp1;
 			}
+			pause;
+
+			if(#getTemp1R>28) {
+				emit window1;
+				
+			} else if (#getTemp1R<20) {
+				emit window1;
+			}
+		//System.out.println(#getTemp1R);
+		emit zone1Temp(#getTemp1R);
+		pause;
+		waitl(5 s);
+	}} ||
+	{
+		while(true) {
+			pause;
+		}
+	}
+
+}
 	
+
+HumiditySensor(
+
+		input Integer signal getHumid4R;
+		output signal getHumid4,airconHumid4;
+		
+		output Integer signal zone4Humid;
+		
+		)
+->{
+	//Zone1
+	{
+		while(true){
+			abort(getHumid4R){
+				System.out.println("get humid");
+				sustain getHumid4;
+			}
+			pause;
+		System.out.println(#getHumid4R);
+			if(#getHumid4R>60) {
+				emit airconHumid4;
+				
+			} else if (#getHumid4R<40) {
+				emit airconHumid4;
+			}
+		
+		emit zone4Humid(#getHumid4R);
+		pause;
+		waitl(5 s);
+	}} ||
+	{
+		while(true) {
+			pause;
+		}
+	}
+
 }
 
 
-//TemperatureSensor(
-//		input signal bottleAtPos1, bottleAtPos5;
-//		output signal motConveyorOnOff;
-//		)
-//->{
-//
-//	while(true) {
-//		}
-//}
-	
+
+
+
+

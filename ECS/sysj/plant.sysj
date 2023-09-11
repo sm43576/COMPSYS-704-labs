@@ -1,25 +1,80 @@
-import run.GUI;
 
-Plant(
-		input signal zone1light,zone2light,zone3light,zone4light,zone5light,zone6light,zone7light;
-		output signal zone1On,zone2On,zone3On,zone4On,zone5On,zone6On,zone7On;
-
-		)
+TemperaturePlant(
+		input signal getTemp1,window1;
+		output signal openedWindow1;
+		output Integer signal getTemp1R;
+	)
 ->
 {
-	new Thread(new GUI()).start();
+;
+	{
+		int zone1Temp = 32;
+		while(true) {
+			present(getTemp1){
+				sustain getTemp1R(zone1Temp);
+				System.out.println("Sent Temp");
+			}
+			pause;
+			
 
-
-	{// Human Presense
-		{	
-			present(zone1light){sustain zone1On;}} ||
-			present(zone2light){sustain zone2On;}} ||
-			present(zone3light){sustain zone3On;}} ||
-			present(zone4light){sustain zone4On;}} ||
-			present(zone5light){sustain zone5On;}} ||
-			present(zone6light){sustain zone6On;}} ||
-			present(zone7light){sustain zone7On;}} 
-		
+//			System.out.println("trigger");
+			pause;
+		}
+	} ||
+	
+	{
+		while(true) {
+			present(window1){
+				System.out.println("windowOpen");
+				pause;
+			}
+			pause;
+		}
 	}
 
 }
+
+
+HumidityPlant(
+		output Integer signal getHumid4R;
+		input signal getHumid4,airconHumid4;
+		
+	)
+->
+{
+;
+	{
+		int zone4Humid = 28;
+		while(true) {
+			present(getHumid4){
+				sustain getHumid4R(zone4Humid);
+				System.out.println("Sent Humidity of Zone4");
+			}
+			pause;
+			
+
+//			System.out.println("trigger");
+			pause;
+		}
+	} ||
+	
+	{
+		while(true) {
+			present(airconHumid4){
+				System.out.println("aircon On");
+				pause;
+			}
+			pause;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
