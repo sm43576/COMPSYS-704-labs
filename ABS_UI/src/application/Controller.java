@@ -24,7 +24,7 @@ public class Controller {
     @FXML
 	private ImageView carousel;
     @FXML
-    private Circle fillerStatus, capLStatus, conveyorStatus, carouselStatus;
+    private Circle fillerStatus, capLStatus, capperStatus, conveyorStatus, carouselStatus;
     @FXML
     private Circle bot1, bot2, bot3, bot4, bot5;
     @FXML
@@ -49,6 +49,64 @@ public class Controller {
 	   	alert.showAndWait();
     }
     
+    public void setFillerStatus(Indicator c) {
+    	fillerStatus.setFill(javafx.scene.paint.Color.web(c.getColourCode()));
+    }
+    public void setCapLoaderStatus(Indicator c) {
+    	capLStatus.setFill(javafx.scene.paint.Color.web(c.getColourCode()));
+    }
+    public void setCapperStatus(Indicator c) {
+    	capperStatus.setFill(javafx.scene.paint.Color.web(c.getColourCode()));
+    }
+    
+    public void setLArrowStatus(Indicator c) {
+    	Image newImg;
+    	switch(c) {
+	  	  case GREEN:
+	  		  	newImg = new Image("file:../../img/ARROW_GREEN_NO_BG.png");
+	  		  	lArrow.setImage(newImg);
+	  	    break;
+	  	  case ORANGE:
+	    		newImg = new Image("file:../../img/ARROW_ORANGE_NO_BG.png");
+	        	lArrow.setImage(newImg);
+	    	    break;
+	  	  case RED:
+	    		newImg = new Image("file:../../img/ARROW_RED_NO_BG.png");
+	    		lArrow.setImage(newImg);
+	  	    break;
+	  	  case WHITE:
+	      		newImg = new Image("file:../../img/ARROW_WHITE_NO_BG.png");
+	          	lArrow.setImage(newImg);
+	      	    break;
+	  	  default:
+	  	    // code block
+	  	}
+    }
+    
+    public void setRArrowStatus(Indicator c) {
+    	Image newImg;
+    	switch(c) {
+    	  case GREEN:
+    		newImg = new Image("file:../../img/ARROW_GREEN_NO_BG.png");
+        	rArrow.setImage(newImg);
+    	    break;
+    	  case ORANGE:
+      		newImg = new Image("file:../../img/ARROW_ORANGE_NO_BG.png");
+          	rArrow.setImage(newImg);
+      	    break;
+    	  case RED:
+      		newImg = new Image("file:../../img/ARROW_RED_NO_BG.png");
+        	rArrow.setImage(newImg);
+    	    break;
+    	  case WHITE:
+    		newImg = new Image("file:../../img/ARROW_WHITE_NO_BG.png");
+        	rArrow.setImage(newImg);
+    	    break;
+    	  default:
+    	    // code block
+    	}
+    }
+    
     public void setBottle1Visibility(boolean status) {
     	bot1.setVisible(status);
     }
@@ -64,6 +122,7 @@ public class Controller {
 	public void setBottle5Visibility(boolean status) {
     	bot5.setVisible(status);
 	}
+	
 	
     
     public void carouselAnimation() {
