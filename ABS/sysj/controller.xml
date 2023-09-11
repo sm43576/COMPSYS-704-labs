@@ -4,7 +4,12 @@
 			<!-- Conveyor Channels -->
 			<iChannel Name="conveyorStatus" From="ConveyorCD.conveyorStatus" />
 			<oChannel Name="conveyorReq" To="ConveyorCD.conveyorReq" />
+			<oSignal Name="conveyorStatusUIE" To="ABS-UI.conveyorStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>
 			
+<!-- 			
+			<iSignal Name="conveyStatusS" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10010"/>
+			<oSignal Name="conveyStatusS" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10010"/>
+			 -->
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
 			<oChannel Name="rotaryReq" To="RotaryTableCD.rotaryReq" />
@@ -24,6 +29,11 @@
 			<iSignal Name="order" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
 			<iSignal Name="recOrderStatus" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
 			<oSignal Name="orderStatus" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="40001"/>
+			
+<!-- 			TO UI 
+			<iSignal Name="order" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="15000"/>
+			<oSignal Name="orderStatus" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15001"/>
+			 -->
 						
 		</ClockDomain>
 		
@@ -116,6 +126,9 @@
 			<oChannel Name="capperStatus" To="OrchestratorCD.capperStatus" />
 			
 		</ClockDomain>
+		
+		
+		
 
 	</SubSystem>
 </System>

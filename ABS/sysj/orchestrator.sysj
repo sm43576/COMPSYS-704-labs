@@ -7,6 +7,9 @@ Orchestrator(
 		input signal recOrderStatus;
 		input Order signal order;
 		output Order signal orderStatus;
+		
+		// --- TO the UI---
+		output Boolean signal conveyorStatusUIE;
 		)
 ->{
 	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
@@ -147,8 +150,10 @@ Orchestrator(
 	{
 		while(true) {
 			await(sigConveyorReq); //Internal signal to send conveyor request
+			emit conveyorStatusUIE(true);// assumption
 			send conveyorReq(true); //Send actual request
 			receive conveyorStatus; //Receive actual response.
+			emit conveyorStatusUIE(false);
 			String res = (String) #conveyorStatus; //Retrieve string from actual response.
 			emit recConveyorStatus(res); //Emit internal signal that request has been received.
 		}
@@ -233,6 +238,7 @@ Orchestrator(
 				} else {
 					System.out.println("Orch: Bottle count " + count + ". Preparing to send requests..");
 				}
+	
 				emit sigFillerReq(liquidPercent);
 				emit sigCapLoaderReq;
 				emit sigCapperReq;

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="backgroundColor" stylesheets="@style.css">
+         <center>
+            <StackPane BorderPane.alignment="CENTER">
+               <children>
+                  <Circle fx:id="bot2" fill="DODGERBLUE" layoutX="407.0" layoutY="35.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="220.0" top="-120.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fx:id="bot4" fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="-220.0" top="-120.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fx:id="bot5" fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="-220.0" top="130.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fx:id="bot1" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="220.0" top="130.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <Circle fx:id="bot3" fill="DODGERBLUE" layoutX="300.0" layoutY="225.0" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <StackPane.margin>
+                        <Insets right="5.0" top="-250.0" />
+                     </StackPane.margin>
+                  </Circle>
+                  <ImageView fx:id="lArrow" fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets right="500.0" top="130.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="rArrow" fitHeight="65.0" fitWidth="150.0" layoutX="85.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/ARROW_GREEN_NO_BG.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets right="-500.0" top="130.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane layoutX="10.0" layoutY="-170.0">
+                     <children>
+                        <Circle fx:id="capLStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cap Loader" textAlignment="CENTER" wrappingWidth="60.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets left="-5.0" top="-370.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Circle fx:id="capperStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Capper">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets right="-325.0" top="-175.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="-170.0">
+                     <children>
+                        <Circle fx:id="fillerStatus" fill="#ed4c4f" radius="40.0" stroke="BLACK" strokeType="INSIDE">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Circle>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filler">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets right="325.0" top="-175.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+                     <StackPane.margin>
+                        <Insets top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+                     <StackPane.margin>
+                        <Insets top="220.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <ImageView fx:id="carousel" fitHeight="300.0" fitWidth="600.0" onMouseClicked="#carouselAnimation" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/ABS_WHEEL_NO_ARROW_NO_CONVEYOR_NOBG_FIXED2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="80.0" />
+               </BorderPane.margin>
+            </StackPane>
+         </center>
+         <bottom>
+            <HBox prefHeight="214.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Region layoutX="600.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" fillWidth="false" minWidth="-Infinity" prefHeight="214.0" prefWidth="523.0" HBox.hgrow="NEVER">
+                     <children>
+                        <GridPane alignment="TOP_CENTER" prefHeight="76.0" prefWidth="533.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="46.4" minHeight="10.0" prefHeight="46.4" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="46.4" minHeight="10.0" prefHeight="46.4" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Filler Status" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="46.0" layoutY="16.0" prefHeight="47.0" prefWidth="103.0" text="CapL. Status" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="146.0" layoutY="16.0" text="Capper Status" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="160.0" layoutY="16.0" text="Conveyor Status" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" text="Carousel Status" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblFillerStatus" text="Idle" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCapLStatus" text="Idle" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCapStatus" text="Idle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblConveyorStatus" text="Idle" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblCarouselStatus" text="Idle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Button fx:id="btnEnable" mnemonicParsing="false" text="Enable">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <MenuBar stylesheets="@style.css" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem id="menuItemAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</VBox>

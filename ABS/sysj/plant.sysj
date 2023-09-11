@@ -76,6 +76,7 @@ Plant(
 		// LOGIC HERE
 		while(true){
 			present(motConveyorOnOff){
+				waitl(3 s);
 				{
 					present(motorPos1On){ // motor is on and move bottle at pos 1
 						System.out.println("Conveyor plant - moving bottle to 1");
@@ -93,6 +94,7 @@ Plant(
 						}
 					}
 				}
+				
 			}
 //			System.out.println("motor is off");
 			pause;
