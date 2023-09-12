@@ -33,7 +33,7 @@ Plant(
 		// Capper
 		
 		//Input signals from capper controller
-		input signal cylPos5ZAxisExtend;
+		input signal cylPos5ZAxisExtend; 
 		input signal gripperTurnRetract, gripperTurnExtend;
 		input signal capGripperPos5Extend;
 		input signal cylClampBottleExtend;
@@ -124,6 +124,7 @@ Plant(
 			while(true) {
 				//Select canister
 				await(selectCanister); 
+				waitl(1 s);
 				emit canister(#selectCanister); //Record selected canister
 				emit selectedCanister(#selectCanister); //Send back ok.
 				pause;
@@ -197,7 +198,8 @@ Plant(
 			abort(pusherExtend){
 				sustain pusherRetracted;
 			}
-			System.out.println("Aborted");
+			waitl(3 s); 
+			//System.out.println("Aborted");
 			abort(!pusherExtend){
 				sustain pusherExtended;
 			}
@@ -253,7 +255,7 @@ Plant(
 		{
 			while(true) {
 				await(moveToPos4);//bottle is in position 4. Need to inform controller. 
-				abort (moveToPos5) {
+				abort(moveToPos5) {
 					sustain bottleAtPos4; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
 				}
 				pause;
@@ -264,9 +266,12 @@ Plant(
 		{
 			while(true) {
 				abort(cylPos5ZAxisExtend) {
+					System.out.println("Gripper Extended");
 					sustain gripperZAxisLifted; //If cylPos5ZaxisExtend is absent, sustain lifted signal.
 				}
-				abort (!cylPos5ZAxisExtend) {
+				System.out.println("Gipper Tranistion");
+				abort(!cylPos5ZAxisExtend) {
+					System.out.println("gripper lowered");
 					sustain gripperZAxisLowered; //If cylPos5ZaxisExtend is present, sustain lowered signal.
 				}
 				pause;
@@ -277,7 +282,8 @@ Plant(
 		{
 			while(true) {
 				await(capGripperPos5Extend);
-				abort (!capGripperPos5Extend) {
+				waitl(3 s);
+				abort(!capGripperPos5Extend) {
 					sustain gripperGrippedCap; 
 				}
 				pause;
@@ -288,12 +294,12 @@ Plant(
 		{
 			while(true) {
 				present(gripperTurnExtend && !gripperTurnRetract){
-					abort (gripperTurnRetract){
+					abort(gripperTurnRetract){
 						sustain gripperTurnFinalPos; 
 					}
 				}
 				present(gripperTurnRetract && !gripperTurnExtend) {
-					abort (gripperTurnExtend) {
+					abort(gripperTurnExtend) {
 						sustain gripperTurnHomePos; 
 					}
 				}
@@ -305,7 +311,9 @@ Plant(
 		{
 			while(true) {
 				await(cylClampBottleExtend);
+				
 				abort (!cylClampBottleExtend) {
+					System.out.println("ClampBottle");
 					sustain cylClampedBottle; //Maintain bottleAtPos4 signal until a signal is received to turn the table.
 				}
 				pause;

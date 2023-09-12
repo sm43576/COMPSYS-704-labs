@@ -46,7 +46,7 @@ public class LiquidFiller extends ClockDomain{
   private int[] ends = new int[22];
   private int[] tdone = new int[22];
   
-  public void thread38288(int [] tdone, int [] ends){
+  public void thread40520(int [] tdone, int [] ends){
         switch(S5408){
       case 0 : 
         active[11]=0;
@@ -65,7 +65,7 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread38287(int [] tdone, int [] ends){
+  public void thread40519(int [] tdone, int [] ends){
         switch(S5403){
       case 0 : 
         active[10]=0;
@@ -84,7 +84,7 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread38285(int [] tdone, int [] ends){
+  public void thread40517(int [] tdone, int [] ends){
         S5408=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 120, column: 36
     currsigs.addElement(dosUnitValveExtend);
@@ -93,7 +93,7 @@ public class LiquidFiller extends ClockDomain{
     tdone[11]=1;
   }
 
-  public void thread38284(int [] tdone, int [] ends){
+  public void thread40516(int [] tdone, int [] ends){
         S5403=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 120, column: 8
     currsigs.addElement(valveInletOnOff);
@@ -102,7 +102,7 @@ public class LiquidFiller extends ClockDomain{
     tdone[10]=1;
   }
 
-  public void thread38282(int [] tdone, int [] ends){
+  public void thread40514(int [] tdone, int [] ends){
         switch(S5386){
       case 0 : 
         active[9]=0;
@@ -121,7 +121,7 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread38281(int [] tdone, int [] ends){
+  public void thread40513(int [] tdone, int [] ends){
         switch(S5381){
       case 0 : 
         active[8]=0;
@@ -140,7 +140,7 @@ public class LiquidFiller extends ClockDomain{
     }
   }
 
-  public void thread38279(int [] tdone, int [] ends){
+  public void thread40511(int [] tdone, int [] ends){
         S5408=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 120, column: 36
     currsigs.addElement(dosUnitValveExtend);
@@ -149,7 +149,7 @@ public class LiquidFiller extends ClockDomain{
     tdone[11]=1;
   }
 
-  public void thread38278(int [] tdone, int [] ends){
+  public void thread40510(int [] tdone, int [] ends){
         S5403=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 120, column: 8
     currsigs.addElement(valveInletOnOff);
@@ -158,7 +158,7 @@ public class LiquidFiller extends ClockDomain{
     tdone[10]=1;
   }
 
-  public void thread38276(int [] tdone, int [] ends){
+  public void thread40508(int [] tdone, int [] ends){
         S5386=1;
     valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 114, column: 42
     currsigs.addElement(valveInjectorOnOff);
@@ -167,7 +167,7 @@ public class LiquidFiller extends ClockDomain{
     tdone[9]=1;
   }
 
-  public void thread38275(int [] tdone, int [] ends){
+  public void thread40507(int [] tdone, int [] ends){
         S5381=1;
     dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 114, column: 8
     currsigs.addElement(dosUnitValveRetract);
@@ -1276,16 +1276,16 @@ public class LiquidFiller extends ClockDomain{
                     case 0 : 
                       if(selectedCanister.getprestatus()){//sysj\controller.sysj line: 104, column: 11
                         S5376=1;
-                        thread38275(tdone,ends);
-                        thread38276(tdone,ends);
-                        int biggest38277 = 0;
-                        if(ends[8]>=biggest38277){
-                          biggest38277=ends[8];
+                        thread40507(tdone,ends);
+                        thread40508(tdone,ends);
+                        int biggest40509 = 0;
+                        if(ends[8]>=biggest40509){
+                          biggest40509=ends[8];
                         }
-                        if(ends[9]>=biggest38277){
-                          biggest38277=ends[9];
+                        if(ends[9]>=biggest40509){
+                          biggest40509=ends[9];
                         }
-                        if(biggest38277 == 1){
+                        if(biggest40509 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
@@ -1303,49 +1303,49 @@ public class LiquidFiller extends ClockDomain{
                     case 1 : 
                       if(dosUnitFilled.getprestatus() && valveInjectorActive.getprestatus()){//sysj\controller.sysj line: 113, column: 12
                         S5376=2;
-                        thread38278(tdone,ends);
-                        thread38279(tdone,ends);
-                        int biggest38280 = 0;
-                        if(ends[10]>=biggest38280){
-                          biggest38280=ends[10];
+                        thread40510(tdone,ends);
+                        thread40511(tdone,ends);
+                        int biggest40512 = 0;
+                        if(ends[10]>=biggest40512){
+                          biggest40512=ends[10];
                         }
-                        if(ends[11]>=biggest38280){
-                          biggest38280=ends[11];
+                        if(ends[11]>=biggest40512){
+                          biggest40512=ends[11];
                         }
-                        if(biggest38280 == 1){
+                        if(biggest40512 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                       }
                       else {
-                        thread38281(tdone,ends);
-                        thread38282(tdone,ends);
-                        int biggest38283 = 0;
-                        if(ends[8]>=biggest38283){
-                          biggest38283=ends[8];
+                        thread40513(tdone,ends);
+                        thread40514(tdone,ends);
+                        int biggest40515 = 0;
+                        if(ends[8]>=biggest40515){
+                          biggest40515=ends[8];
                         }
-                        if(ends[9]>=biggest38283){
-                          biggest38283=ends[9];
+                        if(ends[9]>=biggest40515){
+                          biggest40515=ends[9];
                         }
-                        if(biggest38283 == 1){
+                        if(biggest40515 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                         //FINXME code
-                        if(biggest38283 == 0){
+                        if(biggest40515 == 0){
                           S5376=2;
-                          thread38284(tdone,ends);
-                          thread38285(tdone,ends);
-                          int biggest38286 = 0;
-                          if(ends[10]>=biggest38286){
-                            biggest38286=ends[10];
+                          thread40516(tdone,ends);
+                          thread40517(tdone,ends);
+                          int biggest40518 = 0;
+                          if(ends[10]>=biggest40518){
+                            biggest40518=ends[10];
                           }
-                          if(ends[11]>=biggest38286){
-                            biggest38286=ends[11];
+                          if(ends[11]>=biggest40518){
+                            biggest40518=ends[11];
                           }
-                          if(biggest38286 == 1){
+                          if(biggest40518 == 1){
                             active[7]=1;
                             ends[7]=1;
                             break RUN;
@@ -1362,22 +1362,22 @@ public class LiquidFiller extends ClockDomain{
                         break RUN;
                       }
                       else {
-                        thread38287(tdone,ends);
-                        thread38288(tdone,ends);
-                        int biggest38289 = 0;
-                        if(ends[10]>=biggest38289){
-                          biggest38289=ends[10];
+                        thread40519(tdone,ends);
+                        thread40520(tdone,ends);
+                        int biggest40521 = 0;
+                        if(ends[10]>=biggest40521){
+                          biggest40521=ends[10];
                         }
-                        if(ends[11]>=biggest38289){
-                          biggest38289=ends[11];
+                        if(ends[11]>=biggest40521){
+                          biggest40521=ends[11];
                         }
-                        if(biggest38289 == 1){
+                        if(biggest40521 == 1){
                           active[7]=1;
                           ends[7]=1;
                           break RUN;
                         }
                         //FINXME code
-                        if(biggest38289 == 0){
+                        if(biggest40521 == 0){
                           canisterNum_thread_7 += 1;//sysj\controller.sysj line: 123, column: 6
                           S5376=3;
                           active[7]=1;

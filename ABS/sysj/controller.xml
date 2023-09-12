@@ -6,24 +6,27 @@
 			<oChannel Name="conveyorReq" To="ConveyorCD.conveyorReq" />
 			<oSignal Name="conveyorStatusUIE" To="ABS-UI.conveyorStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>
 			
-<!-- 			
-			<iSignal Name="conveyStatusS" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10010"/>
-			<oSignal Name="conveyStatusS" To="UI.orderStatus" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10010"/>
-			 -->
+			
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
 			<oChannel Name="rotaryReq" To="RotaryTableCD.rotaryReq" />
-			
+<!-- 			<oSignal Name="rotaryStatusUIE" To="ABS-UI.rotaryStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>
+			 -->
 			<!-- Filler Channels-->
 			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
-			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />			
+			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />
+			<oSignal Name="fillerStatusUIE" To="ABS-UI.fillerStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>			
+			
+			
 			<!-- Capper Channels-->
 			<iChannel Name="capperStatus" From="CapperCD.capperStatus" />
 			<oChannel Name="capperReq" To="CapperCD.capperReq" />
+			<oSignal Name="capperStatusUIE" To="ABS-UI.capperStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>		
 			
 			<!-- Cap Loader Channels-->
 			<iChannel Name="capLoaderStatus" From="CaploaderCD.capLoaderStatus" />
 			<oChannel Name="capLoaderReq" To="CaploaderCD.capLoaderReq" />
+			<oSignal Name="capLoaderStatusUIE" To="ABS-UI.capLoaderStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>		
 			
 			<!-- POS Signals-->
 			<iSignal Name="order" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="40000"/>
@@ -116,7 +119,7 @@
 			<iSignal Name="cylClampedBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="gripperGrippedCap" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 
-			<oSignal Name="cylPos5ZAxisExtend" To="PlantCD.cycPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="cylPos5ZAxisExtend" To="PlantCD.cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="gripperTurnRetract"  To="PlantCD.gripperTurnRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="gripperTurnExtend" To="PlantCD.gripperTurnExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="capGripperPos5Extend"  To="PlantCD.capGripperPos5Extend"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />

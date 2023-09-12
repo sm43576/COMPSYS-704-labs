@@ -9,7 +9,8 @@ Orchestrator(
 		output Order signal orderStatus;
 		
 		// --- TO the UI---
-		output Boolean signal conveyorStatusUIE;
+		output Boolean signal conveyorStatusUIE,fillerStatusUIE,capperStatusUIE,capLoaderStatusUIE;
+		
 		)
 ->{
 	signal sigConveyorReq, sigCapperReq, sigCapLoaderReq, sigRotaryReq;
@@ -162,9 +163,11 @@ Orchestrator(
 	{
 		while(true) {
 			await(sigCapperReq);  
+			emit capperStatusUIE(true); 
 			System.out.println("Orch: Sending capper request");
 			send capperReq(true); 
 			receive capperStatus; 
+			emit capperStatusUIE(false);
 			System.out.println("Orch: Received capper status");
 			String res = (String) #capperStatus; 
 			emit recCapperStatus(res); 
@@ -174,9 +177,11 @@ Orchestrator(
 	{
 		while(true) {
 			await(sigCapLoaderReq);
+			emit capLoaderStatusUIE(true);
 			System.out.println("Orch: Sending cap loader request");
 			send capLoaderReq(true); 
 			receive capLoaderStatus; 
+			emit capLoaderStatusUIE(false);
 			System.out.println("Orch: Received cap loader status");
 
 			String res = (String) #capLoaderStatus; 
@@ -187,10 +192,12 @@ Orchestrator(
 	{
 		while(true) {
 			await(sigFillerReq);
+			emit fillerStatusUIE(true);
 			System.out.println("Orch: Sending filler request");
 			ArrayList req = (ArrayList) #sigFillerReq;
 			send fillerReq(req); 
 			receive fillerStatus;
+			emit fillerStatusUIE(false);
 			System.out.println("Orch: Received filler status");
 			String res = (String) #fillerStatus; 
 			emit recFillerStatus(res); 

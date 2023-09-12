@@ -30,8 +30,11 @@ public class Main extends Application {
      
         //UI functions are in controller
         s1.addConsumer("ABS-UI", "conveyorStatusUIE", (status, value) -> updateStatus(status,value,"conveyor",myController));
-        myController.setBottle1Visibility(false);
-        
+        s1.addConsumer("ABS-UI", "fillerStatusUIE", (status, value) -> updateStatus(status,value,"filler",myController));
+        s1.addConsumer("ABS-UI", "capperStatusUIE", (status, value) -> updateStatus(status,value,"capper",myController));
+        s1.addConsumer("ABS-UI", "capLoaderStatusUIE", (status, value) -> updateStatus(status,value,"caploader",myController));
+        myController.setBottle1Visibility(false);    
+;
     }
     
     public static void updateStatus(Boolean status, Object value, String caseX,Controller controller) {
@@ -47,6 +50,32 @@ public class Main extends Application {
 		    			controller.setRArrowStatus(Indicator.RED);
 	    			}
 	    			break;
+	    		case "filler":
+	    			if((Boolean)value) {
+	    				controller.setFillerStatus(Indicator.GREEN);
+	    			}else {
+	    				controller.setFillerStatus(Indicator.RED);
+	    			}
+	    			break;
+	    			
+	    		case "capper":
+	    			if((Boolean)value) {
+	    				controller.setCapperStatus(Indicator.GREEN);
+	    				System.out.println("Capper on");
+	    			}else {
+	    				controller.setCapperStatus(Indicator.RED);
+	    				System.out.println("Capper Off");
+	    			}
+	    			break;
+	    			
+	    		case "caploader":
+	    			if((Boolean)value) {
+	    				controller.setCapLoaderStatus(Indicator.GREEN);
+	    			}else {
+	    				controller.setCapLoaderStatus(Indicator.RED);
+	    			}
+	    			break;
+	    		
 	    			
 	    			
 	    		default:
