@@ -40,6 +40,88 @@ Door1(
 		}
 	}
 }
+Door2(
+	 input boolean channel door2Grant;
+	 input boolean channel door2Deny;
+	 output String channel door2CardReader;
+)
+->{
+	{
+		String goodCardID = "11111"; 
+		String badCardID = "12110";
+		while(true){
+			send door2CardReader(goodCardID);
+			pause;
+			waitl(20 s);
+			send door2CardReader(badCardID); 
+			pause;
+			waitl(20 s);
+			
+		}
+		
+	}
+	||
+	{
+		while (true) {
+			receive door2Grant;
+			boolean result = #door2Grant;
+			if (result == true) {
+				System.out.println("Door2: Opening Door");
+			}
+			pause;
+		}
+	}
+	||{
+		while (true) {
+			receive door2Deny;
+			boolean result = #door2Deny;
+			if (result == true) {
+				System.out.println("Door2: Access Denied");
+			}
+			pause;
+		}
+	}
+}
+
+Door3(
+	 input boolean channel door3Grant;
+	 input boolean channel door3Deny;
+	 output String channel door3CardReader;
+)
+->{
+	{
+		String badCardID = "12110";
+		while(true){
+			waitl(30 s);
+			send door3CardReader(badCardID); 
+			pause;
+		}
+		
+	}
+	||
+	{
+		while (true) {
+			receive door3Grant;
+			boolean result = #door3Grant;
+			if (result == true) {
+				System.out.println("Door3: Opening Door");
+			}
+			pause;
+		}
+	}
+	||{
+		while (true) {
+			receive door3Deny;
+			boolean result = #door3Deny;
+			if (result == true) {
+				System.out.println("Door3: Access Denied");
+			}
+			pause;
+		}
+	}
+}
+
+	
 
 LocationSystem(
 		input String channel reqIDLoc;
@@ -96,7 +178,7 @@ InfraredSensor(
 	->{
 		{
 			while(true) {
-				waitl(120 s);
+				waitl(30 s);
 				send humanPresence(true);
 				pause;
 			}
@@ -110,6 +192,12 @@ ACS_J(
 		 input String channel door1CardReader; //Door 1
 		 output boolean channel door1Grant;
 		 output boolean channel door1Deny;
+		 input String channel door2CardReader; //Door 2
+		 output boolean channel door2Grant;
+		 output boolean channel door2Deny;
+		 input String channel door3CardReader; //Door 3
+		 output boolean channel door3Grant;
+		 output boolean channel door3Deny;
 		 output boolean channel emergencyOff; //Emergency off signal
 		 output String channel reqAuthCheck;
 		 input boolean channel idAuthResponse;
@@ -124,6 +212,10 @@ ACS_J(
 		 output signal emergencyOffUI;
 		 output signal door1GrantUI;
 		 output signal door1DenyUI;
+		 output signal door2GrantUI;
+		 output signal door2DenyUI;
+		 output signal door3GrantUI;
+		 output signal door3DenyUI;
 	)
 	->{
 		{
@@ -145,14 +237,52 @@ ACS_J(
 		}
 		||
 		{
+			while(true) { // Door 2
+				
+				receive door2CardReader;
+				String id = (String) #door2CardReader;
+				boolean result = DoorIDDB.authDoorAccess(id, "2"); //Check if id has access to door 1.
+				if (result == true) {
+					send door2Grant(true);
+					emit door2GrantUI;
+				} else {
+					//Could have an additional signal here for 
+					send door2Deny(true);
+					emit door2DenyUI;
+				}
+				pause;
+			}
+		}
+		||
+		{
+			while(true) { // Door 3
+				
+				receive door3CardReader;
+				String id = (String) #door3CardReader;
+				boolean result = DoorIDDB.authDoorAccess(id, "3"); //Check if id has access to door 1.
+				if (result == true) {
+					send door3Grant(true);
+					emit door3GrantUI;
+				} else {
+					//Could have an additional signal here for 
+					send door3Deny(true);
+					emit door3DenyUI;
+				}
+				pause;
+			}
+		}
+		||
+		{
 			while(true) {
 				
 				receive humanPresence; //Await fromInfrared Sensor
 				boolean result = (boolean) #humanPresence;
 				
 				System.out.println("Infrared sensor trip - emergency off enacted.");
-				//send emergencyOff(true);
-				emit emergencyOffUI;
+				//Send emergency stop signal to ABS
+				
+				//Send emergency stop UI signal.
+				sustain emergencyOffUI;
 				
 				pause;
 			}

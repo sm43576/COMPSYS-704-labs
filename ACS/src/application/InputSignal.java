@@ -12,10 +12,14 @@ public enum InputSignal {
 	ZONE7UNAUTH(false),
 	EMERGENCYOFFUI(false),
 	DOOR1GRANTUI(false),
-	DOOR1DENYUI(false);
+	DOOR1DENYUI(false),
+	DOOR2GRANTUI(false),
+	DOOR2DENYUI(false),
+	DOOR3GRANTUI(false),
+	DOOR3DENYUI(false);
 	
     private boolean status;
-    private Object value;
+    private Object value = 0;
     
     InputSignal(boolean status, Object value) {
     	this.status = status;
@@ -35,6 +39,8 @@ public enum InputSignal {
     	this.status = newStatus;
     }
     public void setValue(Object newValue) {
-    	this.value = newValue;
+    	if (newValue != null) {
+        	this.value = newValue;
+    	}
     }
 }

@@ -36,10 +36,10 @@ public class Door1 extends ClockDomain{
   private int S1749 = 1;
   private int S1744 = 1;
   
-  private int[] ends = new int[14];
-  private int[] tdone = new int[14];
+  private int[] ends = new int[24];
+  private int[] tdone = new int[24];
   
-  public void thread6341(int [] tdone, int [] ends){
+  public void thread10227(int [] tdone, int [] ends){
         switch(S1813){
       case 0 : 
         active[4]=0;
@@ -210,7 +210,7 @@ public class Door1 extends ClockDomain{
     }
   }
 
-  public void thread6340(int [] tdone, int [] ends){
+  public void thread10226(int [] tdone, int [] ends){
         switch(S1742){
       case 0 : 
         active[3]=0;
@@ -381,7 +381,7 @@ public class Door1 extends ClockDomain{
     }
   }
 
-  public void thread6339(int [] tdone, int [] ends){
+  public void thread10225(int [] tdone, int [] ends){
         switch(S1671){
       case 0 : 
         active[2]=0;
@@ -850,7 +850,7 @@ public class Door1 extends ClockDomain{
     }
   }
 
-  public void thread6337(int [] tdone, int [] ends){
+  public void thread10223(int [] tdone, int [] ends){
         S1813=1;
     S1765=0;
     S1749=0;
@@ -893,7 +893,7 @@ public class Door1 extends ClockDomain{
     }
   }
 
-  public void thread6336(int [] tdone, int [] ends){
+  public void thread10222(int [] tdone, int [] ends){
         S1742=1;
     S1694=0;
     S1678=0;
@@ -936,7 +936,7 @@ public class Door1 extends ClockDomain{
     }
   }
 
-  public void thread6335(int [] tdone, int [] ends){
+  public void thread10221(int [] tdone, int [] ends){
         S1671=1;
     goodCardID_thread_2 = "11111";//sysj/Exercise6.sysj line: 8, column: 3
     badCardID_thread_2 = "12110";//sysj/Exercise6.sysj line: 9, column: 3
@@ -992,46 +992,46 @@ public class Door1 extends ClockDomain{
         case 1 : 
           S1815=2;
           S1815=2;
-          thread6335(tdone,ends);
-          thread6336(tdone,ends);
-          thread6337(tdone,ends);
-          int biggest6338 = 0;
-          if(ends[2]>=biggest6338){
-            biggest6338=ends[2];
+          thread10221(tdone,ends);
+          thread10222(tdone,ends);
+          thread10223(tdone,ends);
+          int biggest10224 = 0;
+          if(ends[2]>=biggest10224){
+            biggest10224=ends[2];
           }
-          if(ends[3]>=biggest6338){
-            biggest6338=ends[3];
+          if(ends[3]>=biggest10224){
+            biggest10224=ends[3];
           }
-          if(ends[4]>=biggest6338){
-            biggest6338=ends[4];
+          if(ends[4]>=biggest10224){
+            biggest10224=ends[4];
           }
-          if(biggest6338 == 1){
+          if(biggest10224 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread6339(tdone,ends);
-          thread6340(tdone,ends);
-          thread6341(tdone,ends);
-          int biggest6342 = 0;
-          if(ends[2]>=biggest6342){
-            biggest6342=ends[2];
+          thread10225(tdone,ends);
+          thread10226(tdone,ends);
+          thread10227(tdone,ends);
+          int biggest10228 = 0;
+          if(ends[2]>=biggest10228){
+            biggest10228=ends[2];
           }
-          if(ends[3]>=biggest6342){
-            biggest6342=ends[3];
+          if(ends[3]>=biggest10228){
+            biggest10228=ends[3];
           }
-          if(ends[4]>=biggest6342){
-            biggest6342=ends[4];
+          if(ends[4]>=biggest10228){
+            biggest10228=ends[4];
           }
-          if(biggest6342 == 1){
+          if(biggest10228 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest6342 == 0){
+          if(biggest10228 == 0){
             S1815=0;
             active[1]=0;
             ends[1]=0;
@@ -1044,9 +1044,9 @@ public class Door1 extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

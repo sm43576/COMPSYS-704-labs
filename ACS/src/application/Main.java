@@ -56,6 +56,10 @@ public class Main extends Application {
         s3.addConsumer("UI", "emergencyOffUI", (status, value) -> updateSignalStatus(InputSignal.EMERGENCYOFFUI, status));
         s3.addConsumer("UI", "door1GrantUI", (status, value) -> updateSignalStatus(InputSignal.DOOR1GRANTUI, status));
         s3.addConsumer("UI", "door1DenyUI", (status, value) -> updateSignalStatus(InputSignal.DOOR1DENYUI, status));
+        s3.addConsumer("UI", "door2GrantUI", (status, value) -> updateSignalStatus(InputSignal.DOOR2GRANTUI, status));
+        s3.addConsumer("UI", "door2DenyUI", (status, value) -> updateSignalStatus(InputSignal.DOOR2DENYUI, status));
+        s3.addConsumer("UI", "door3GrantUI", (status, value) -> updateSignalStatus(InputSignal.DOOR3GRANTUI, status));
+        s3.addConsumer("UI", "door3DenyUI", (status, value) -> updateSignalStatus(InputSignal.DOOR3DENYUI, status));
         
     }
     
@@ -151,8 +155,13 @@ public class Main extends Application {
 		             });
 					break;
 				case EMERGENCYOFFUI:
-					myController.setABSStatus(Indicator.RED); //Emergency mode on.
-					myController.setOverallStatus(false);
+					Platform.runLater(new Runnable() {
+		                 @Override public void run() {
+		                	myController.setABSStatus(Indicator.RED); //Emergency mode on.
+		 					myController.setOverallStatus(false);
+		                 }
+		             });
+					
 					break;
 				case DOOR1GRANTUI:
 					myController.setDoor1Status(Indicator.GREEN);
@@ -169,6 +178,38 @@ public class Main extends Application {
 					//Declare & schedule new timer task to set indicator white after 5 seconds.
 					TimerTask door1Task2 = new TimerTask(){ public void run(){ myController.setDoor1Status(Indicator.RED);} };
 					door1Timer.schedule(door1Task2,5000l);
+					break;
+				case DOOR2GRANTUI:
+					myController.setDoor2Status(Indicator.GREEN);
+			    	//clear all other timer tasks.
+					door2Timer.purge();
+					//Declare & schedule new timer task to set indicator white after 5 seconds.
+					TimerTask door2Task1 = new TimerTask(){ public void run(){ myController.setDoor2Status(Indicator.RED);} };
+					door2Timer.schedule(door2Task1,5000l);
+					break;
+				case DOOR2DENYUI:
+					myController.setDoor2Status(Indicator.ORANGE);
+			    	//clear all other timer tasks.
+					door2Timer.purge();
+					//Declare & schedule new timer task to set indicator white after 5 seconds.
+					TimerTask door2Task2 = new TimerTask(){ public void run(){ myController.setDoor2Status(Indicator.RED);} };
+					door2Timer.schedule(door2Task2,5000l);
+					break;
+				case DOOR3GRANTUI:
+					myController.setDoor3Status(Indicator.GREEN);
+			    	//clear all other timer tasks.
+					door3Timer.purge();
+					//Declare & schedule new timer task to set indicator white after 5 seconds.
+					TimerTask door3Task1 = new TimerTask(){ public void run(){ myController.setDoor3Status(Indicator.RED);} };
+					door3Timer.schedule(door3Task1,5000l);
+					break;
+				case DOOR3DENYUI:
+					myController.setDoor3Status(Indicator.ORANGE);
+			    	//clear all other timer tasks.
+					door3Timer.purge();
+					//Declare & schedule new timer task to set indicator white after 5 seconds.
+					TimerTask door3Task2 = new TimerTask(){ public void run(){ myController.setDoor3Status(Indicator.RED);} };
+					door3Timer.schedule(door3Task2,5000l);
 					break;
 				default:
 	    	    //Invalid state

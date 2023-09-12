@@ -5,6 +5,16 @@
 			<iChannel Name="door1Deny" From="ACSCD.door1Deny" />
 			<oChannel Name="door1CardReader" To="ACSCD.door1CardReader" />
 		</ClockDomain>
+		<ClockDomain Name="Door2CD" Class="Door2">
+			<iChannel Name="door2Grant" From="ACSCD.door2Grant" />
+			<iChannel Name="door2Deny" From="ACSCD.door2Deny" />
+			<oChannel Name="door2CardReader" To="ACSCD.door2CardReader" />
+		</ClockDomain>
+		<ClockDomain Name="Door3CD" Class="Door3">
+			<iChannel Name="door3Grant" From="ACSCD.door3Grant" />
+			<iChannel Name="door3Deny" From="ACSCD.door3Deny" />
+			<oChannel Name="door3CardReader" To="ACSCD.door3CardReader" />
+		</ClockDomain>
 		<ClockDomain Name="LocationSystemCD" Class="LocationSystem">
 			<iChannel Name="reqIDLoc" From="ACSCD.reqIDLoc" />
 			<oChannel Name="idLocation" To="ACSCD.idLocation" />
@@ -22,6 +32,12 @@
 			<iChannel Name="door1CardReader" From="Door1CD.door1CardReader" />
 			<oChannel Name="door1Grant" To="Door1CD.door1Grant" />
 			<oChannel Name="door1Deny" To="Door1CD.door1Deny" />
+			<iChannel Name="door2CardReader" From="Door2CD.door2CardReader" />
+			<oChannel Name="door2Grant" To="Door2CD.door2Grant" />
+			<oChannel Name="door2Deny" To="Door2CD.door2Deny" />
+			<iChannel Name="door3CardReader" From="Door3CD.door3CardReader" />
+			<oChannel Name="door3Grant" To="Door3CD.door3Grant" />
+			<oChannel Name="door3Deny" To="Door3CD.door3Deny" />
 			<iChannel Name="humanPresence" From="InfraredSensorCD.idAuthResponse" />
 			<oSignal Name="zone1Num" To="UI.zone1Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="zone2Num" To="UI.zone2Num" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
@@ -34,6 +50,10 @@
 			<oSignal Name="emergencyOffUI" To="UI.emergencyOffUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
 			<oSignal Name="door1GrantUI" To="UI.door1GrantUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
 			<oSignal Name="door1DenyUI" To="UI.door1DenyUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door2GrantUI" To="UI.door2GrantUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door2DenyUI" To="UI.door2DenyUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door3GrantUI" To="UI.door3GrantUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
+			<oSignal Name="door3DenyUI" To="UI.door3DenyUI" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20002" />
 			
 		</ClockDomain>
 	</SubSystem>
