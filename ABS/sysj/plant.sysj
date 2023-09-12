@@ -70,6 +70,7 @@ Plant(
 	int signal capPos;
 	emit capPos(0);
 	signal disablePos5;
+	signal removePos4,removePos2,removePos3;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Conveyor
 	{
@@ -333,23 +334,30 @@ Plant(
 				present(bottleAtPos4) {
 					System.out.println("moving bottle at pos 4 to pos 5");
 					emit moveToPos5;
+					pause;
+					emit removePos4;
 				}
 				
 				// if there is a bottle at pos 3 move to pos 4
 				present(bottleAtPos3){
 					System.out.println("moving bottle at pos 3 to pos 4");
 					emit moveToPos4;
+					pause;
+					emit removePos3;
 				}
 				// if there is a obttle at pos 2 move to pos 3
 				
 				present(bottleAtPos2){
 					System.out.println("moving bottle at pos 2 to pos 3");
 					emit moveToPos3;
+					pause;
+					emit removePos2;
 				}
 				// if there is a bottle at pos 1 move to pos 2.
 				present(bottleAtPos1){
 					System.out.println("moving bottle at pos 1 to pos 2");
 					emit moveToPos2;
+					pause;
 				}
 				// emit table aligned with sensor
 				System.out.println("Table has been aligned");
@@ -369,17 +377,45 @@ Plant(
 			abort(bottleLeftPos5){ // stop emitting bottleAtPos5 when bottle has left pos 5
 				present(moveToPos5){
 					System.out.println("bottle is now at pos 5"); 
-					sustain bottleAtPos5;
+					abort(tableAlignedWithSensor){
+						emit removePos4;
+						pause;
+						sustain bottleAtPos5;
+					}
 				} 
 			}
 			pause;
 		}
 	}
 	||
-	{while(true) {present(moveToPos4){System.out.println("bottle is now at pos 4");{sustain bottleAtPos4;}}pause;}}
+	{while(true){
+		present(moveToPos4){
+			System.out.println("bottle is now at pos 4");
+			abort(removePos4 && !moveToPos4){
+				sustain bottleAtPos4;
+			}
+		}
+		pause;
+		}
+	}
 	||
-	{while(true) {present(moveToPos3){System.out.println("bottle is now at pos 3");{ sustain bottleAtPos3;}}pause;}}
+	{while(true){
+		present(moveToPos3){
+			System.out.println("bottle is now at pos 3");
+			abort(removePos3 && !moveToPos3){
+				sustain bottleAtPos3;
+			}
+		}
+			pause;
+	}}
 	||
-	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2");{ sustain bottleAtPos2;}}pause;}}
+	{while(true){
+		present(moveToPos2){
+			System.out.println("bottle is now at pos 2");
+			abort(removePos2 && !moveToPos2){
+				sustain bottleAtPos2;
+			}
+		}
+		pause;}}
 
 }
