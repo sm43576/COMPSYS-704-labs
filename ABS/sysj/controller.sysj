@@ -157,7 +157,7 @@ Capper(
 		
 
 ->{
-	signal releaseCap, untwistGripper, raiseGripper, unclampBottle; 
+	signal releaseCap, raiseGripper, unclampBottle; 
 	while(true) {
 		
 		receive capperReq; //Receive capper request. // BLOCKED - Hangs here coz there is no capper request at the beginning
@@ -205,7 +205,7 @@ Capper(
 					emit releaseCap; //Release the cap
 					
 					abort(gripperTurnHomePos) {
-						sustain untwistGripper; //Untwist gripper
+						sustain gripperTurnRetract; //Untwist gripper
 					}
 					
 					emit raiseGripper; //Raise gripper
