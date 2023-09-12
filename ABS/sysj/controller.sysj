@@ -199,12 +199,12 @@ Capper(
 				{
 					await(gripperGrippedCap); //Wait until cap is gripped
 					System.out.println("Capper4");
-					abort (gripperTurnFinalPos) {
+					abort(gripperTurnFinalPos) {
 						sustain gripperTurnExtend; // Twist the gripper
 					}
 					emit releaseCap; //Release the cap
 					
-					abort (gripperTurnHomePos) {
+					abort(gripperTurnHomePos) {
 						sustain untwistGripper; //Untwist gripper
 					}
 					
