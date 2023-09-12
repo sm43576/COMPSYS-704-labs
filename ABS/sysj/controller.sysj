@@ -175,14 +175,14 @@ Capper(
 				System.out.println("CapperController: Capper doing work...");
 				{ 
 					abort(unclampBottle) {
-						System.out.println("Capper1");
+						//System.out.println("Capper1");
 						sustain cylClampBottleExtend; //Keep gripping the bottle until steps 1-7 have completed (in-doc).
 					}
 				}
 				||
 				{
 					abort(raiseGripper) {
-						System.out.println("Capper2");
+						//System.out.println("Capper2");
 						sustain cylPos5ZAxisExtend; //Keep the gripper lowered until steps 1-7 have completed.
 					}
 				}
@@ -190,7 +190,7 @@ Capper(
 				{
 					//Wait until gripper is lowered and bottle is clamped.
 					{await(gripperZAxisLowered);} || {await(cylClampedBottle);}
-					System.out.println("Capper3");
+					//System.out.println("Capper3");
 					abort(releaseCap) {
 						sustain capGripperPos5Extend; //Grip the cap
 					}
@@ -198,7 +198,7 @@ Capper(
 				||
 				{
 					await(gripperGrippedCap); //Wait until cap is gripped
-					System.out.println("Capper4");
+					//System.out.println("Capper4");
 					abort(gripperTurnFinalPos) {
 						sustain gripperTurnExtend; // Twist the gripper
 					}
