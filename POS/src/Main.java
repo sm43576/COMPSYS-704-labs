@@ -49,7 +49,8 @@ public class Main extends Application {
     public static void sendReceivedStatusSignal() {
     	try {
 			SimpleClient s2 = new SimpleClient("127.0.0.1", 40000, "OrchestratorCD", "recOrderStatus");
-    		s2.sustain(); // Emitting an order for 1 seconds
+//    		s2.sustain(); // Emitting an order for 1 seconds
+			s2.emit(true, 10);
     		System.out.println("emitted received order status to orch");
 //    		s2.close(); // close when necessary
     		
