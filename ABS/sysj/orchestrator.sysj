@@ -9,7 +9,7 @@ Orchestrator(
 		output Order signal orderStatus;
 		
 		// --- TO the UI---
-		output Boolean signal conveyorStatusUIE,fillerStatusUIE,capperStatusUIE,capLoaderStatusUIE;
+		output Boolean signal conveyorStatusUIE,fillerStatusUIE,capperStatusUIE,capLoaderStatusUIE,rotaryStatusUIE;
 		
 		)
 ->{
@@ -150,11 +150,11 @@ Orchestrator(
 	||
 	{
 		while(true) {
+			emit conveyorStatusUIE(false);
 			await(sigConveyorReq); //Internal signal to send conveyor request
 			emit conveyorStatusUIE(true);// assumption
 			send conveyorReq(true); //Send actual request
 			receive conveyorStatus; //Receive actual response.
-			emit conveyorStatusUIE(false);
 			String res = (String) #conveyorStatus; //Retrieve string from actual response.
 			emit recConveyorStatus(res); //Emit internal signal that request has been received.
 		}
@@ -162,12 +162,12 @@ Orchestrator(
 	||
 	{
 		while(true) {
+			emit capperStatusUIE(false);
 			await(sigCapperReq);  
 			emit capperStatusUIE(true); 
 			System.out.println("Orch: Sending capper request");
 			send capperReq(true); 
 			receive capperStatus; 
-			emit capperStatusUIE(false);
 			System.out.println("Orch: Received capper status");
 			String res = (String) #capperStatus; 
 			emit recCapperStatus(res); 
@@ -176,14 +176,13 @@ Orchestrator(
 	||
 	{
 		while(true) {
+			emit capLoaderStatusUIE(false);
 			await(sigCapLoaderReq);
 			emit capLoaderStatusUIE(true);
 			System.out.println("Orch: Sending cap loader request");
 			send capLoaderReq(true); 
 			receive capLoaderStatus; 
-			emit capLoaderStatusUIE(false);
 			System.out.println("Orch: Received cap loader status");
-
 			String res = (String) #capLoaderStatus; 
 			emit recCapLoaderStatus(res); 
 		}
@@ -191,6 +190,7 @@ Orchestrator(
 	||
 	{
 		while(true) {
+			
 			await(sigFillerReq);
 			emit fillerStatusUIE(true);
 			System.out.println("Orch: Sending filler request");
@@ -207,6 +207,7 @@ Orchestrator(
 	{
 		while(true) {
 			await(sigRotaryReq);
+			emit rotaryStatusUIE(true);
 			System.out.println("Orch: Sending rotary request");
 			send rotaryReq(true);
 			receive rotaryStatus; 

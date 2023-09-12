@@ -10,8 +10,8 @@
 			<!-- Rotary Channels-->
 			<iChannel Name="rotaryStatus" From="RotaryTableCD.rotaryStatus" />
 			<oChannel Name="rotaryReq" To="RotaryTableCD.rotaryReq" />
-<!-- 			<oSignal Name="rotaryStatusUIE" To="ABS-UI.rotaryStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>
-			 -->
+			<oSignal Name="rotaryStatusUIE" To="ABS-UI.rotaryStatusUIE" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="15565"/>
+
 			<!-- Filler Channels-->
 			<iChannel Name="fillerStatus" From="LiquidFillerCD.fillerStatus" />
 			<oChannel Name="fillerReq" To="LiquidFillerCD.fillerReq" />

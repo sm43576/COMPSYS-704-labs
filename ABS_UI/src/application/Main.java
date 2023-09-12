@@ -33,6 +33,8 @@ public class Main extends Application {
         s1.addConsumer("ABS-UI", "fillerStatusUIE", (status, value) -> updateStatus(status,value,"filler",myController));
         s1.addConsumer("ABS-UI", "capperStatusUIE", (status, value) -> updateStatus(status,value,"capper",myController));
         s1.addConsumer("ABS-UI", "capLoaderStatusUIE", (status, value) -> updateStatus(status,value,"caploader",myController));
+        s1.addConsumer("ABS-UI", "rotaryStatusUIE", (status, value) -> updateStatus(status,value,"rotary",myController));
+        
         myController.setBottle1Visibility(false);    
 ;
     }
@@ -75,9 +77,13 @@ public class Main extends Application {
 	    				controller.setCapLoaderStatus(Indicator.RED);
 	    			}
 	    			break;
-	    		
 	    			
-	    			
+	    		case "rotary":
+	    			if((Boolean)value) {
+	    				controller.carouselAnimation();
+	    			}
+	    			break;
+	    				
 	    		default:
 	    			System.out.println("");
     		}

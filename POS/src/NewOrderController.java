@@ -215,7 +215,7 @@ public class NewOrderController {
 		try {
 			SimpleClient s = new SimpleClient("127.0.0.1", 40000, "OrchestratorCD", "order");
 			System.out.println("init simple client");
-    		s.emit(order, 10); // Emitting an order for 10 ms
+    		s.emit(order, 5); // Emitting an order for 10 ms
     		System.out.println("emitted order to orch");
 //    		s.close(); // close when necessary
     		

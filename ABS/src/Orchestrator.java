@@ -19,6 +19,7 @@ public class Orchestrator extends ClockDomain{
   public Signal fillerStatusUIE = new Signal("fillerStatusUIE", Signal.OUTPUT);
   public Signal capperStatusUIE = new Signal("capperStatusUIE", Signal.OUTPUT);
   public Signal capLoaderStatusUIE = new Signal("capLoaderStatusUIE", Signal.OUTPUT);
+  public Signal rotaryStatusUIE = new Signal("rotaryStatusUIE", Signal.OUTPUT);
   public input_Channel conveyorStatus_in = new input_Channel();
   public input_Channel capperStatus_in = new input_Channel();
   public input_Channel capLoaderStatus_in = new input_Channel();
@@ -58,12 +59,12 @@ public class Orchestrator extends ClockDomain{
   private Order myOrder_thread_7;//sysj\orchestrator.sysj line: 138, column: 9
   private String res_thread_9;//sysj\orchestrator.sysj line: 158, column: 4
   private String res_thread_10;//sysj\orchestrator.sysj line: 172, column: 4
-  private String res_thread_11;//sysj\orchestrator.sysj line: 187, column: 4
+  private String res_thread_11;//sysj\orchestrator.sysj line: 186, column: 4
   private ArrayList req_thread_12;//sysj\orchestrator.sysj line: 197, column: 4
-  private String res_thread_12;//sysj\orchestrator.sysj line: 202, column: 4
+  private String res_thread_12;//sysj\orchestrator.sysj line: 201, column: 4
   private String res_thread_13;//sysj\orchestrator.sysj line: 214, column: 4
   private Order order_thread_14;//sysj\orchestrator.sysj line: 229, column: 4
-  private int S51047 = 1;
+  private int S51075 = 1;
   private int S44635 = 1;
   private int S40518 = 1;
   private int S39770 = 1;
@@ -75,71 +76,71 @@ public class Orchestrator extends ClockDomain{
   private int S44669 = 1;
   private int S44660 = 1;
   private int S44665 = 1;
-  private int S45645 = 1;
-  private int S44707 = 1;
-  private int S44714 = 1;
-  private int S44709 = 1;
-  private int S44758 = 1;
-  private int S44753 = 1;
-  private int S46585 = 1;
-  private int S45647 = 1;
-  private int S45654 = 1;
-  private int S45649 = 1;
-  private int S45698 = 1;
-  private int S45693 = 1;
-  private int S47525 = 1;
-  private int S46587 = 1;
-  private int S46594 = 1;
-  private int S46589 = 1;
-  private int S46638 = 1;
-  private int S46633 = 1;
-  private int S48465 = 1;
-  private int S47527 = 1;
-  private int S47534 = 1;
-  private int S47529 = 1;
-  private int S47578 = 1;
-  private int S47573 = 1;
-  private int S49405 = 1;
-  private int S48467 = 1;
-  private int S48474 = 1;
-  private int S48469 = 1;
-  private int S48518 = 1;
-  private int S48513 = 1;
-  private int S51045 = 1;
-  private int S49408 = 1;
-  private int S49413 = 1;
-  private int S49416 = 1;
-  private int S49419 = 1;
-  private int S49422 = 1;
-  private int S49432 = 1;
-  private int S49609 = 1;
+  private int S45652 = 1;
+  private int S44708 = 1;
+  private int S44715 = 1;
+  private int S44710 = 1;
+  private int S44759 = 1;
+  private int S44754 = 1;
+  private int S46599 = 1;
+  private int S45655 = 1;
+  private int S45662 = 1;
+  private int S45657 = 1;
+  private int S45706 = 1;
+  private int S45701 = 1;
+  private int S47546 = 1;
+  private int S46602 = 1;
+  private int S46609 = 1;
+  private int S46604 = 1;
+  private int S46653 = 1;
+  private int S46648 = 1;
+  private int S48493 = 1;
+  private int S47549 = 1;
+  private int S47556 = 1;
+  private int S47551 = 1;
+  private int S47600 = 1;
+  private int S47595 = 1;
+  private int S49433 = 1;
+  private int S48495 = 1;
+  private int S48502 = 1;
+  private int S48497 = 1;
+  private int S48546 = 1;
+  private int S48541 = 1;
+  private int S51073 = 1;
+  private int S49436 = 1;
+  private int S49441 = 1;
+  private int S49444 = 1;
+  private int S49447 = 1;
+  private int S49450 = 1;
+  private int S49460 = 1;
+  private int S49637 = 1;
   
   private int[] ends = new int[18];
   private int[] tdone = new int[18];
   
-  public void thread51105(int [] tdone, int [] ends){
-        S49422=1;
+  public void thread51133(int [] tdone, int [] ends){
+        S49450=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread51104(int [] tdone, int [] ends){
-        S49419=1;
+  public void thread51132(int [] tdone, int [] ends){
+        S49447=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-  public void thread51103(int [] tdone, int [] ends){
-        S49416=1;
+  public void thread51131(int [] tdone, int [] ends){
+        S49444=1;
     active[15]=1;
     ends[15]=1;
     tdone[15]=1;
   }
 
-  public void thread51101(int [] tdone, int [] ends){
-        switch(S49422){
+  public void thread51129(int [] tdone, int [] ends){
+        switch(S49450){
       case 0 : 
         active[17]=0;
         ends[17]=0;
@@ -148,7 +149,7 @@ public class Orchestrator extends ClockDomain{
       
       case 1 : 
         if(recCapperStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 252, column: 73
-          S49422=0;
+          S49450=0;
           active[17]=0;
           ends[17]=0;
           tdone[17]=1;
@@ -163,8 +164,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51100(int [] tdone, int [] ends){
-        switch(S49419){
+  public void thread51128(int [] tdone, int [] ends){
+        switch(S49447){
       case 0 : 
         active[16]=0;
         ends[16]=0;
@@ -173,7 +174,7 @@ public class Orchestrator extends ClockDomain{
       
       case 1 : 
         if(recCapLoaderStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 252, column: 41
-          S49419=0;
+          S49447=0;
           active[16]=0;
           ends[16]=0;
           tdone[16]=1;
@@ -188,8 +189,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51099(int [] tdone, int [] ends){
-        switch(S49416){
+  public void thread51127(int [] tdone, int [] ends){
+        switch(S49444){
       case 0 : 
         active[15]=0;
         ends[15]=0;
@@ -198,7 +199,7 @@ public class Orchestrator extends ClockDomain{
       
       case 1 : 
         if(recFillerStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 252, column: 12
-          S49416=0;
+          S49444=0;
           active[15]=0;
           ends[15]=0;
           tdone[15]=1;
@@ -213,29 +214,29 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51097(int [] tdone, int [] ends){
-        S49422=1;
+  public void thread51125(int [] tdone, int [] ends){
+        S49450=1;
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread51096(int [] tdone, int [] ends){
-        S49419=1;
+  public void thread51124(int [] tdone, int [] ends){
+        S49447=1;
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
   }
 
-  public void thread51095(int [] tdone, int [] ends){
-        S49416=1;
+  public void thread51123(int [] tdone, int [] ends){
+        S49444=1;
     active[15]=1;
     ends[15]=1;
     tdone[15]=1;
   }
 
-  public void thread51094(int [] tdone, int [] ends){
-        switch(S51045){
+  public void thread51122(int [] tdone, int [] ends){
+        switch(S51073){
       case 0 : 
         active[14]=0;
         ends[14]=0;
@@ -243,7 +244,7 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S49408){
+        switch(S49436){
           case 0 : 
             if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 228, column: 10
               order_thread_14 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 229, column: 4
@@ -254,7 +255,7 @@ public class Orchestrator extends ClockDomain{
               sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 235, column: 4
               currsigs.addElement(sigConveyorReq_1);
               sigConveyorReq_1.setValue(true);//sysj\orchestrator.sysj line: 235, column: 4
-              S49408=1;
+              S49436=1;
               active[14]=1;
               ends[14]=1;
               tdone[14]=1;
@@ -271,7 +272,7 @@ public class Orchestrator extends ClockDomain{
               System.out.println("Orch: First bottle loaded.");//sysj\orchestrator.sysj line: 237, column: 4
               sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 238, column: 4
               currsigs.addElement(sigRotaryReq_1);
-              S49408=2;
+              S49436=2;
               active[14]=1;
               ends[14]=1;
               tdone[14]=1;
@@ -285,7 +286,7 @@ public class Orchestrator extends ClockDomain{
           
           case 2 : 
             if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 239, column: 10
-              S49408=3;
+              S49436=3;
               if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 241, column: 10
                 if(count_thread_14 == 0) {//sysj\orchestrator.sysj line: 243, column: 21
                   System.out.println("Orch: Last bottle. Preparing to send requests..");//sysj\orchestrator.sysj line: 244, column: 6
@@ -300,21 +301,21 @@ public class Orchestrator extends ClockDomain{
                 currsigs.addElement(sigCapLoaderReq_1);
                 sigCapperReq_1.setPresent();//sysj\orchestrator.sysj line: 251, column: 5
                 currsigs.addElement(sigCapperReq_1);
-                S49413=0;
-                thread51095(tdone,ends);
-                thread51096(tdone,ends);
-                thread51097(tdone,ends);
-                int biggest51098 = 0;
-                if(ends[15]>=biggest51098){
-                  biggest51098=ends[15];
+                S49441=0;
+                thread51123(tdone,ends);
+                thread51124(tdone,ends);
+                thread51125(tdone,ends);
+                int biggest51126 = 0;
+                if(ends[15]>=biggest51126){
+                  biggest51126=ends[15];
                 }
-                if(ends[16]>=biggest51098){
-                  biggest51098=ends[16];
+                if(ends[16]>=biggest51126){
+                  biggest51126=ends[16];
                 }
-                if(ends[17]>=biggest51098){
-                  biggest51098=ends[17];
+                if(ends[17]>=biggest51126){
+                  biggest51126=ends[17];
                 }
-                if(biggest51098 == 1){
+                if(biggest51126 == 1){
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
@@ -330,11 +331,11 @@ public class Orchestrator extends ClockDomain{
                 else {//sysj\orchestrator.sysj line: 276, column: 11
                   eject_thread_14 = quantity_thread_14;//sysj\orchestrator.sysj line: 277, column: 5
                 }
-                S49408=4;
+                S49436=4;
                 if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 281, column: 11
                   sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 282, column: 5
                   currsigs.addElement(sigRotaryReq_1);
-                  S49609=0;
+                  S49637=0;
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
@@ -343,7 +344,7 @@ public class Orchestrator extends ClockDomain{
                   ends[14]=2;
                   ;//sysj\orchestrator.sysj line: 281, column: 4
                   System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 288, column: 4
-                  S49408=5;
+                  S49436=5;
                   orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 290, column: 5
                   currsigs.addElement(orderIsDone_1);
                   active[14]=1;
@@ -360,43 +361,43 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 3 : 
-            switch(S49413){
+            switch(S49441){
               case 0 : 
-                thread51099(tdone,ends);
-                thread51100(tdone,ends);
-                thread51101(tdone,ends);
-                int biggest51102 = 0;
-                if(ends[15]>=biggest51102){
-                  biggest51102=ends[15];
+                thread51127(tdone,ends);
+                thread51128(tdone,ends);
+                thread51129(tdone,ends);
+                int biggest51130 = 0;
+                if(ends[15]>=biggest51130){
+                  biggest51130=ends[15];
                 }
-                if(ends[16]>=biggest51102){
-                  biggest51102=ends[16];
+                if(ends[16]>=biggest51130){
+                  biggest51130=ends[16];
                 }
-                if(ends[17]>=biggest51102){
-                  biggest51102=ends[17];
+                if(ends[17]>=biggest51130){
+                  biggest51130=ends[17];
                 }
-                if(biggest51102 == 1){
+                if(biggest51130 == 1){
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 //FINXME code
-                if(biggest51102 == 0){
+                if(biggest51130 == 0){
                   System.out.println("Orch: All done!");//sysj\orchestrator.sysj line: 253, column: 5
                   count_thread_14 = count_thread_14 - 1;//sysj\orchestrator.sysj line: 255, column: 5
-                  S49413=1;
+                  S49441=1;
                   if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 257, column: 9
                     System.out.println("Orch: Loading next bottle...");//sysj\orchestrator.sysj line: 259, column: 6
                     sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 260, column: 6
                     currsigs.addElement(sigConveyorReq_1);
                     sigConveyorReq_1.setValue(true);//sysj\orchestrator.sysj line: 260, column: 6
-                    S49432=0;
+                    S49460=0;
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
                   }
                   else {
-                    S49413=2;
+                    S49441=2;
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
@@ -405,13 +406,13 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                switch(S49432){
+                switch(S49460){
                   case 0 : 
                     if(recConveyorStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 261, column: 12
                       System.out.println("Orch: Loaded new bottle.");//sysj\orchestrator.sysj line: 262, column: 6
                       sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 265, column: 6
                       currsigs.addElement(sigRotaryReq_1);
-                      S49432=1;
+                      S49460=1;
                       active[14]=1;
                       ends[14]=1;
                       tdone[14]=1;
@@ -425,7 +426,7 @@ public class Orchestrator extends ClockDomain{
                   
                   case 1 : 
                     if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 266, column: 12
-                      S49413=2;
+                      S49441=2;
                       active[14]=1;
                       ends[14]=1;
                       tdone[14]=1;
@@ -441,7 +442,7 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 2 : 
-                S49413=2;
+                S49441=2;
                 if(count_thread_14 >= 0){//sysj\orchestrator.sysj line: 241, column: 10
                   if(count_thread_14 == 0) {//sysj\orchestrator.sysj line: 243, column: 21
                     System.out.println("Orch: Last bottle. Preparing to send requests..");//sysj\orchestrator.sysj line: 244, column: 6
@@ -456,21 +457,21 @@ public class Orchestrator extends ClockDomain{
                   currsigs.addElement(sigCapLoaderReq_1);
                   sigCapperReq_1.setPresent();//sysj\orchestrator.sysj line: 251, column: 5
                   currsigs.addElement(sigCapperReq_1);
-                  S49413=0;
-                  thread51103(tdone,ends);
-                  thread51104(tdone,ends);
-                  thread51105(tdone,ends);
-                  int biggest51106 = 0;
-                  if(ends[15]>=biggest51106){
-                    biggest51106=ends[15];
+                  S49441=0;
+                  thread51131(tdone,ends);
+                  thread51132(tdone,ends);
+                  thread51133(tdone,ends);
+                  int biggest51134 = 0;
+                  if(ends[15]>=biggest51134){
+                    biggest51134=ends[15];
                   }
-                  if(ends[16]>=biggest51106){
-                    biggest51106=ends[16];
+                  if(ends[16]>=biggest51134){
+                    biggest51134=ends[16];
                   }
-                  if(ends[17]>=biggest51106){
-                    biggest51106=ends[17];
+                  if(ends[17]>=biggest51134){
+                    biggest51134=ends[17];
                   }
-                  if(biggest51106 == 1){
+                  if(biggest51134 == 1){
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
@@ -486,11 +487,11 @@ public class Orchestrator extends ClockDomain{
                   else {//sysj\orchestrator.sysj line: 276, column: 11
                     eject_thread_14 = quantity_thread_14;//sysj\orchestrator.sysj line: 277, column: 5
                   }
-                  S49408=4;
+                  S49436=4;
                   if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 281, column: 11
                     sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 282, column: 5
                     currsigs.addElement(sigRotaryReq_1);
-                    S49609=0;
+                    S49637=0;
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
@@ -499,7 +500,7 @@ public class Orchestrator extends ClockDomain{
                     ends[14]=2;
                     ;//sysj\orchestrator.sysj line: 281, column: 4
                     System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 288, column: 4
-                    S49408=5;
+                    S49436=5;
                     orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 290, column: 5
                     currsigs.addElement(orderIsDone_1);
                     active[14]=1;
@@ -513,12 +514,12 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 4 : 
-            switch(S49609){
+            switch(S49637){
               case 0 : 
                 if(recRotaryStatus_1.getprestatus()){//sysj\orchestrator.sysj line: 283, column: 11
                   sigConveyorReq_1.setPresent();//sysj\orchestrator.sysj line: 284, column: 5
                   currsigs.addElement(sigConveyorReq_1);
-                  S49609=1;
+                  S49637=1;
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
@@ -536,7 +537,7 @@ public class Orchestrator extends ClockDomain{
                   if(eject_thread_14 >= 0){//sysj\orchestrator.sysj line: 281, column: 11
                     sigRotaryReq_1.setPresent();//sysj\orchestrator.sysj line: 282, column: 5
                     currsigs.addElement(sigRotaryReq_1);
-                    S49609=0;
+                    S49637=0;
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
@@ -545,7 +546,7 @@ public class Orchestrator extends ClockDomain{
                     ends[14]=2;
                     ;//sysj\orchestrator.sysj line: 281, column: 4
                     System.out.println("Orch: Order complete.");//sysj\orchestrator.sysj line: 288, column: 4
-                    S49408=5;
+                    S49436=5;
                     orderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 290, column: 5
                     currsigs.addElement(orderIsDone_1);
                     active[14]=1;
@@ -566,7 +567,7 @@ public class Orchestrator extends ClockDomain{
           case 5 : 
             if(recOrderIsDone_1.getprestatus()){//sysj\orchestrator.sysj line: 289, column: 10
               System.out.println("end finally");//sysj\orchestrator.sysj line: 292, column: 4
-              S49408=6;
+              S49436=6;
               active[14]=1;
               ends[14]=1;
               tdone[14]=1;
@@ -581,8 +582,8 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 6 : 
-            S49408=6;
-            S49408=0;
+            S49436=6;
+            S49436=0;
             active[14]=1;
             ends[14]=1;
             tdone[14]=1;
@@ -594,8 +595,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51093(int [] tdone, int [] ends){
-        switch(S49405){
+  public void thread51121(int [] tdone, int [] ends){
+        switch(S49433){
       case 0 : 
         active[13]=0;
         ends[13]=0;
@@ -603,42 +604,45 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S48467){
+        switch(S48495){
           case 0 : 
-            if(sigRotaryReq_1.getprestatus()){//sysj\orchestrator.sysj line: 209, column: 10
+            if(sigRotaryReq_1.getprestatus()){//sysj\orchestrator.sysj line: 208, column: 10
+              rotaryStatusUIE.setPresent();//sysj\orchestrator.sysj line: 209, column: 4
+              currsigs.addElement(rotaryStatusUIE);
+              rotaryStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 209, column: 4
               System.out.println("Orch: Sending rotary request");//sysj\orchestrator.sysj line: 210, column: 4
-              S48467=1;
-              S48474=0;
+              S48495=1;
+              S48502=0;
               if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 211, column: 4
                 rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
-                S48474=1;
+                S48502=1;
                 active[13]=1;
                 ends[13]=1;
                 tdone[13]=1;
               }
               else {
-                S48469=0;
+                S48497=0;
                 if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                   rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 211, column: 4
-                  S48469=1;
+                  S48497=1;
                   if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                     rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
                     ends[13]=2;
                     ;//sysj\orchestrator.sysj line: 211, column: 4
-                    S48467=2;
-                    S48518=0;
+                    S48495=2;
+                    S48546=0;
                     if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                       rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                      S48518=1;
+                      S48546=1;
                       active[13]=1;
                       ends[13]=1;
                       tdone[13]=1;
                     }
                     else {
-                      S48513=0;
+                      S48541=0;
                       if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                         rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                        S48513=1;
+                        S48541=1;
                         if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                           rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                           ends[13]=2;
@@ -648,7 +652,7 @@ public class Orchestrator extends ClockDomain{
                           recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                           currsigs.addElement(recRotaryStatus_1);
                           recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                          S48467=0;
+                          S48495=0;
                           active[13]=1;
                           ends[13]=1;
                           tdone[13]=1;
@@ -687,39 +691,39 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S48474){
+            switch(S48502){
               case 0 : 
                 if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 211, column: 4
                   rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
-                  S48474=1;
+                  S48502=1;
                   active[13]=1;
                   ends[13]=1;
                   tdone[13]=1;
                 }
                 else {
-                  switch(S48469){
+                  switch(S48497){
                     case 0 : 
                       if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                         rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 211, column: 4
-                        S48469=1;
+                        S48497=1;
                         if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                           rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
                           ends[13]=2;
                           ;//sysj\orchestrator.sysj line: 211, column: 4
-                          S48467=2;
-                          S48518=0;
+                          S48495=2;
+                          S48546=0;
                           if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                             rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                            S48518=1;
+                            S48546=1;
                             active[13]=1;
                             ends[13]=1;
                             tdone[13]=1;
                           }
                           else {
-                            S48513=0;
+                            S48541=0;
                             if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                               rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                              S48513=1;
+                              S48541=1;
                               if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                                 rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                                 ends[13]=2;
@@ -729,7 +733,7 @@ public class Orchestrator extends ClockDomain{
                                 recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                                 currsigs.addElement(recRotaryStatus_1);
                                 recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                                S48467=0;
+                                S48495=0;
                                 active[13]=1;
                                 ends[13]=1;
                                 tdone[13]=1;
@@ -765,20 +769,20 @@ public class Orchestrator extends ClockDomain{
                         rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
                         ends[13]=2;
                         ;//sysj\orchestrator.sysj line: 211, column: 4
-                        S48467=2;
-                        S48518=0;
+                        S48495=2;
+                        S48546=0;
                         if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                           rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                          S48518=1;
+                          S48546=1;
                           active[13]=1;
                           ends[13]=1;
                           tdone[13]=1;
                         }
                         else {
-                          S48513=0;
+                          S48541=0;
                           if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                             rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                            S48513=1;
+                            S48541=1;
                             if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                               rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                               ends[13]=2;
@@ -788,7 +792,7 @@ public class Orchestrator extends ClockDomain{
                               recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                               currsigs.addElement(recRotaryStatus_1);
                               recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                              S48467=0;
+                              S48495=0;
                               active[13]=1;
                               ends[13]=1;
                               tdone[13]=1;
@@ -818,38 +822,38 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S48474=1;
-                S48474=0;
+                S48502=1;
+                S48502=0;
                 if(!rotaryReq_o.isPartnerPresent() || rotaryReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 211, column: 4
                   rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
-                  S48474=1;
+                  S48502=1;
                   active[13]=1;
                   ends[13]=1;
                   tdone[13]=1;
                 }
                 else {
-                  S48469=0;
+                  S48497=0;
                   if(rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                     rotaryReq_o.setVal(true);//sysj\orchestrator.sysj line: 211, column: 4
-                    S48469=1;
+                    S48497=1;
                     if(!rotaryReq_o.isACK()){//sysj\orchestrator.sysj line: 211, column: 4
                       rotaryReq_o.setREQ(false);//sysj\orchestrator.sysj line: 211, column: 4
                       ends[13]=2;
                       ;//sysj\orchestrator.sysj line: 211, column: 4
-                      S48467=2;
-                      S48518=0;
+                      S48495=2;
+                      S48546=0;
                       if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                         rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                        S48518=1;
+                        S48546=1;
                         active[13]=1;
                         ends[13]=1;
                         tdone[13]=1;
                       }
                       else {
-                        S48513=0;
+                        S48541=0;
                         if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                           rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                          S48513=1;
+                          S48541=1;
                           if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                             rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                             ends[13]=2;
@@ -859,7 +863,7 @@ public class Orchestrator extends ClockDomain{
                             recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                             currsigs.addElement(recRotaryStatus_1);
                             recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                            S48467=0;
+                            S48495=0;
                             active[13]=1;
                             ends[13]=1;
                             tdone[13]=1;
@@ -895,21 +899,21 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S48518){
+            switch(S48546){
               case 0 : 
                 if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                   rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                  S48518=1;
+                  S48546=1;
                   active[13]=1;
                   ends[13]=1;
                   tdone[13]=1;
                 }
                 else {
-                  switch(S48513){
+                  switch(S48541){
                     case 0 : 
                       if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                         rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                        S48513=1;
+                        S48541=1;
                         if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                           rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                           ends[13]=2;
@@ -919,7 +923,7 @@ public class Orchestrator extends ClockDomain{
                           recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                           currsigs.addElement(recRotaryStatus_1);
                           recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                          S48467=0;
+                          S48495=0;
                           active[13]=1;
                           ends[13]=1;
                           tdone[13]=1;
@@ -947,7 +951,7 @@ public class Orchestrator extends ClockDomain{
                         recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                         currsigs.addElement(recRotaryStatus_1);
                         recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                        S48467=0;
+                        S48495=0;
                         active[13]=1;
                         ends[13]=1;
                         tdone[13]=1;
@@ -964,20 +968,20 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S48518=1;
-                S48518=0;
+                S48546=1;
+                S48546=0;
                 if(!rotaryStatus_in.isPartnerPresent() || rotaryStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 212, column: 4
                   rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
-                  S48518=1;
+                  S48546=1;
                   active[13]=1;
                   ends[13]=1;
                   tdone[13]=1;
                 }
                 else {
-                  S48513=0;
+                  S48541=0;
                   if(!rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                     rotaryStatus_in.setACK(true);//sysj\orchestrator.sysj line: 212, column: 4
-                    S48513=1;
+                    S48541=1;
                     if(rotaryStatus_in.isREQ()){//sysj\orchestrator.sysj line: 212, column: 4
                       rotaryStatus_in.setACK(false);//sysj\orchestrator.sysj line: 212, column: 4
                       ends[13]=2;
@@ -987,7 +991,7 @@ public class Orchestrator extends ClockDomain{
                       recRotaryStatus_1.setPresent();//sysj\orchestrator.sysj line: 215, column: 4
                       currsigs.addElement(recRotaryStatus_1);
                       recRotaryStatus_1.setValue(res_thread_13);//sysj\orchestrator.sysj line: 215, column: 4
-                      S48467=0;
+                      S48495=0;
                       active[13]=1;
                       ends[13]=1;
                       tdone[13]=1;
@@ -1015,8 +1019,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51092(int [] tdone, int [] ends){
-        switch(S48465){
+  public void thread51120(int [] tdone, int [] ends){
+        switch(S48493){
       case 0 : 
         active[12]=0;
         ends[12]=0;
@@ -1024,7 +1028,7 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S47527){
+        switch(S47549){
           case 0 : 
             if(sigFillerReq_1.getprestatus()){//sysj\orchestrator.sysj line: 194, column: 10
               fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 195, column: 4
@@ -1032,51 +1036,51 @@ public class Orchestrator extends ClockDomain{
               fillerStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 195, column: 4
               System.out.println("Orch: Sending filler request");//sysj\orchestrator.sysj line: 196, column: 4
               req_thread_12 = (ArrayList)(sigFillerReq_1.getpreval() == null ? null : ((ArrayList)sigFillerReq_1.getpreval()));//sysj\orchestrator.sysj line: 197, column: 4
-              S47527=1;
-              S47534=0;
+              S47549=1;
+              S47556=0;
               if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 198, column: 4
                 fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
-                S47534=1;
+                S47556=1;
                 active[12]=1;
                 ends[12]=1;
                 tdone[12]=1;
               }
               else {
-                S47529=0;
+                S47551=0;
                 if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                   fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 198, column: 4
-                  S47529=1;
+                  S47551=1;
                   if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                     fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
                     ends[12]=2;
                     ;//sysj\orchestrator.sysj line: 198, column: 4
-                    S47527=2;
-                    S47578=0;
+                    S47549=2;
+                    S47600=0;
                     if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                       fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                      S47578=1;
+                      S47600=1;
                       active[12]=1;
                       ends[12]=1;
                       tdone[12]=1;
                     }
                     else {
-                      S47573=0;
+                      S47595=0;
                       if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                         fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                        S47573=1;
+                        S47595=1;
                         if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                           fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                           ends[12]=2;
                           ;//sysj\orchestrator.sysj line: 199, column: 4
-                          fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                          currsigs.addElement(fillerStatusUIE);
-                          fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                           currsigs.addElement(recFillerStatus_1);
-                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                          S47527=0;
+                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                          fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                          currsigs.addElement(fillerStatusUIE);
+                          fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                          S47549=0;
                           active[12]=1;
                           ends[12]=1;
                           tdone[12]=1;
@@ -1115,52 +1119,52 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S47534){
+            switch(S47556){
               case 0 : 
                 if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 198, column: 4
                   fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
-                  S47534=1;
+                  S47556=1;
                   active[12]=1;
                   ends[12]=1;
                   tdone[12]=1;
                 }
                 else {
-                  switch(S47529){
+                  switch(S47551){
                     case 0 : 
                       if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                         fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 198, column: 4
-                        S47529=1;
+                        S47551=1;
                         if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                           fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
                           ends[12]=2;
                           ;//sysj\orchestrator.sysj line: 198, column: 4
-                          S47527=2;
-                          S47578=0;
+                          S47549=2;
+                          S47600=0;
                           if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                             fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                            S47578=1;
+                            S47600=1;
                             active[12]=1;
                             ends[12]=1;
                             tdone[12]=1;
                           }
                           else {
-                            S47573=0;
+                            S47595=0;
                             if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                               fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                              S47573=1;
+                              S47595=1;
                               if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                                 fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                                 ends[12]=2;
                                 ;//sysj\orchestrator.sysj line: 199, column: 4
-                                fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                                currsigs.addElement(fillerStatusUIE);
-                                fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                                System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                                res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                                recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                                System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                                res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                                recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                                 currsigs.addElement(recFillerStatus_1);
-                                recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                                S47527=0;
+                                recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                                fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                                currsigs.addElement(fillerStatusUIE);
+                                fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                                S47549=0;
                                 active[12]=1;
                                 ends[12]=1;
                                 tdone[12]=1;
@@ -1196,33 +1200,33 @@ public class Orchestrator extends ClockDomain{
                         fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
                         ends[12]=2;
                         ;//sysj\orchestrator.sysj line: 198, column: 4
-                        S47527=2;
-                        S47578=0;
+                        S47549=2;
+                        S47600=0;
                         if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                           fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                          S47578=1;
+                          S47600=1;
                           active[12]=1;
                           ends[12]=1;
                           tdone[12]=1;
                         }
                         else {
-                          S47573=0;
+                          S47595=0;
                           if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                             fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                            S47573=1;
+                            S47595=1;
                             if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                               fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                               ends[12]=2;
                               ;//sysj\orchestrator.sysj line: 199, column: 4
-                              fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                              currsigs.addElement(fillerStatusUIE);
-                              fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                              System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                              res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                              recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                              System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                              res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                              recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                               currsigs.addElement(recFillerStatus_1);
-                              recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                              S47527=0;
+                              recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                              fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                              currsigs.addElement(fillerStatusUIE);
+                              fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                              S47549=0;
                               active[12]=1;
                               ends[12]=1;
                               tdone[12]=1;
@@ -1252,51 +1256,51 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S47534=1;
-                S47534=0;
+                S47556=1;
+                S47556=0;
                 if(!fillerReq_o.isPartnerPresent() || fillerReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 198, column: 4
                   fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
-                  S47534=1;
+                  S47556=1;
                   active[12]=1;
                   ends[12]=1;
                   tdone[12]=1;
                 }
                 else {
-                  S47529=0;
+                  S47551=0;
                   if(fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                     fillerReq_o.setVal(req_thread_12);//sysj\orchestrator.sysj line: 198, column: 4
-                    S47529=1;
+                    S47551=1;
                     if(!fillerReq_o.isACK()){//sysj\orchestrator.sysj line: 198, column: 4
                       fillerReq_o.setREQ(false);//sysj\orchestrator.sysj line: 198, column: 4
                       ends[12]=2;
                       ;//sysj\orchestrator.sysj line: 198, column: 4
-                      S47527=2;
-                      S47578=0;
+                      S47549=2;
+                      S47600=0;
                       if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                         fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                        S47578=1;
+                        S47600=1;
                         active[12]=1;
                         ends[12]=1;
                         tdone[12]=1;
                       }
                       else {
-                        S47573=0;
+                        S47595=0;
                         if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                           fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                          S47573=1;
+                          S47595=1;
                           if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                             fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                             ends[12]=2;
                             ;//sysj\orchestrator.sysj line: 199, column: 4
-                            fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                            currsigs.addElement(fillerStatusUIE);
-                            fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                            System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                            res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                            recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                            System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                            res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                            recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                             currsigs.addElement(recFillerStatus_1);
-                            recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                            S47527=0;
+                            recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                            fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                            currsigs.addElement(fillerStatusUIE);
+                            fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                            S47549=0;
                             active[12]=1;
                             ends[12]=1;
                             tdone[12]=1;
@@ -1332,34 +1336,34 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S47578){
+            switch(S47600){
               case 0 : 
                 if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                   fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                  S47578=1;
+                  S47600=1;
                   active[12]=1;
                   ends[12]=1;
                   tdone[12]=1;
                 }
                 else {
-                  switch(S47573){
+                  switch(S47595){
                     case 0 : 
                       if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                         fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                        S47573=1;
+                        S47595=1;
                         if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                           fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                           ends[12]=2;
                           ;//sysj\orchestrator.sysj line: 199, column: 4
-                          fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                          currsigs.addElement(fillerStatusUIE);
-                          fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                          System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                          res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                          recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                           currsigs.addElement(recFillerStatus_1);
-                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                          S47527=0;
+                          recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                          fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                          currsigs.addElement(fillerStatusUIE);
+                          fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                          S47549=0;
                           active[12]=1;
                           ends[12]=1;
                           tdone[12]=1;
@@ -1382,15 +1386,15 @@ public class Orchestrator extends ClockDomain{
                         fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                         ends[12]=2;
                         ;//sysj\orchestrator.sysj line: 199, column: 4
-                        fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                        currsigs.addElement(fillerStatusUIE);
-                        fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                        System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                        res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                        recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                        System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                        res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                        recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                         currsigs.addElement(recFillerStatus_1);
-                        recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                        S47527=0;
+                        recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                        fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                        currsigs.addElement(fillerStatusUIE);
+                        fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                        S47549=0;
                         active[12]=1;
                         ends[12]=1;
                         tdone[12]=1;
@@ -1407,33 +1411,33 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S47578=1;
-                S47578=0;
+                S47600=1;
+                S47600=0;
                 if(!fillerStatus_in.isPartnerPresent() || fillerStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 199, column: 4
                   fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
-                  S47578=1;
+                  S47600=1;
                   active[12]=1;
                   ends[12]=1;
                   tdone[12]=1;
                 }
                 else {
-                  S47573=0;
+                  S47595=0;
                   if(!fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                     fillerStatus_in.setACK(true);//sysj\orchestrator.sysj line: 199, column: 4
-                    S47573=1;
+                    S47595=1;
                     if(fillerStatus_in.isREQ()){//sysj\orchestrator.sysj line: 199, column: 4
                       fillerStatus_in.setACK(false);//sysj\orchestrator.sysj line: 199, column: 4
                       ends[12]=2;
                       ;//sysj\orchestrator.sysj line: 199, column: 4
-                      fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 200, column: 4
-                      currsigs.addElement(fillerStatusUIE);
-                      fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 200, column: 4
-                      System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 201, column: 4
-                      res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 202, column: 4
-                      recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 203, column: 4
+                      System.out.println("Orch: Received filler status");//sysj\orchestrator.sysj line: 200, column: 4
+                      res_thread_12 = (String)(fillerStatus_in.getVal() == null ? null : ((String)fillerStatus_in.getVal()));//sysj\orchestrator.sysj line: 201, column: 4
+                      recFillerStatus_1.setPresent();//sysj\orchestrator.sysj line: 202, column: 4
                       currsigs.addElement(recFillerStatus_1);
-                      recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 203, column: 4
-                      S47527=0;
+                      recFillerStatus_1.setValue(res_thread_12);//sysj\orchestrator.sysj line: 202, column: 4
+                      fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+                      currsigs.addElement(fillerStatusUIE);
+                      fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+                      S47549=0;
                       active[12]=1;
                       ends[12]=1;
                       tdone[12]=1;
@@ -1461,8 +1465,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51091(int [] tdone, int [] ends){
-        switch(S47525){
+  public void thread51119(int [] tdone, int [] ends){
+        switch(S47546){
       case 0 : 
         active[11]=0;
         ends[11]=0;
@@ -1470,58 +1474,58 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S46587){
+        switch(S46602){
           case 0 : 
-            if(sigCapLoaderReq_1.getprestatus()){//sysj\orchestrator.sysj line: 179, column: 10
-              capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 180, column: 4
+            if(sigCapLoaderReq_1.getprestatus()){//sysj\orchestrator.sysj line: 180, column: 10
+              capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 181, column: 4
               currsigs.addElement(capLoaderStatusUIE);
-              capLoaderStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 180, column: 4
-              System.out.println("Orch: Sending cap loader request");//sysj\orchestrator.sysj line: 181, column: 4
-              S46587=1;
-              S46594=0;
-              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 182, column: 4
-                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
-                S46594=1;
+              capLoaderStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 181, column: 4
+              System.out.println("Orch: Sending cap loader request");//sysj\orchestrator.sysj line: 182, column: 4
+              S46602=1;
+              S46609=0;
+              if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
+                capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
+                S46609=1;
                 active[11]=1;
                 ends[11]=1;
                 tdone[11]=1;
               }
               else {
-                S46589=0;
-                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                  capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 182, column: 4
-                  S46589=1;
-                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
+                S46604=0;
+                if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                  capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 183, column: 4
+                  S46604=1;
+                  if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                    capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
                     ends[11]=2;
-                    ;//sysj\orchestrator.sysj line: 182, column: 4
-                    S46587=2;
-                    S46638=0;
-                    if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                      S46638=1;
+                    ;//sysj\orchestrator.sysj line: 183, column: 4
+                    S46602=2;
+                    S46653=0;
+                    if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                      S46653=1;
                       active[11]=1;
                       ends[11]=1;
                       tdone[11]=1;
                     }
                     else {
-                      S46633=0;
-                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                        S46633=1;
-                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                      S46648=0;
+                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                        S46648=1;
+                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                           ends[11]=2;
-                          ;//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                          currsigs.addElement(capLoaderStatusUIE);
-                          capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                          ;//sysj\orchestrator.sysj line: 184, column: 4
                           System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                           currsigs.addElement(recCapLoaderStatus_1);
-                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                          S46587=0;
+                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                          capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                          currsigs.addElement(capLoaderStatusUIE);
+                          capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                          S46602=0;
                           active[11]=1;
                           ends[11]=1;
                           tdone[11]=1;
@@ -1560,52 +1564,52 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S46594){
+            switch(S46609){
               case 0 : 
-                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 182, column: 4
-                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
-                  S46594=1;
+                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
+                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
+                  S46609=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  switch(S46589){
+                  switch(S46604){
                     case 0 : 
-                      if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                        capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 182, column: 4
-                        S46589=1;
-                        if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
+                      if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                        capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 183, column: 4
+                        S46604=1;
+                        if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                          capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
                           ends[11]=2;
-                          ;//sysj\orchestrator.sysj line: 182, column: 4
-                          S46587=2;
-                          S46638=0;
-                          if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                            S46638=1;
+                          ;//sysj\orchestrator.sysj line: 183, column: 4
+                          S46602=2;
+                          S46653=0;
+                          if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                            S46653=1;
                             active[11]=1;
                             ends[11]=1;
                             tdone[11]=1;
                           }
                           else {
-                            S46633=0;
-                            if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                              capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                              S46633=1;
-                              if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                                capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                            S46648=0;
+                            if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                              capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                              S46648=1;
+                              if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                                capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                                 ends[11]=2;
-                                ;//sysj\orchestrator.sysj line: 183, column: 4
-                                capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                                currsigs.addElement(capLoaderStatusUIE);
-                                capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                                ;//sysj\orchestrator.sysj line: 184, column: 4
                                 System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                                res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                                recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                                res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                                recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                                 currsigs.addElement(recCapLoaderStatus_1);
-                                recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                                S46587=0;
+                                recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                                capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                                currsigs.addElement(capLoaderStatusUIE);
+                                capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                                S46602=0;
                                 active[11]=1;
                                 ends[11]=1;
                                 tdone[11]=1;
@@ -1637,37 +1641,37 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
+                      if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                        capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
                         ends[11]=2;
-                        ;//sysj\orchestrator.sysj line: 182, column: 4
-                        S46587=2;
-                        S46638=0;
-                        if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                          S46638=1;
+                        ;//sysj\orchestrator.sysj line: 183, column: 4
+                        S46602=2;
+                        S46653=0;
+                        if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                          S46653=1;
                           active[11]=1;
                           ends[11]=1;
                           tdone[11]=1;
                         }
                         else {
-                          S46633=0;
-                          if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                            capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                            S46633=1;
-                            if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                              capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                          S46648=0;
+                          if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                            capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                            S46648=1;
+                            if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                              capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                               ends[11]=2;
-                              ;//sysj\orchestrator.sysj line: 183, column: 4
-                              capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                              currsigs.addElement(capLoaderStatusUIE);
-                              capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                              ;//sysj\orchestrator.sysj line: 184, column: 4
                               System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                              res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                              recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                              res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                              recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                               currsigs.addElement(recCapLoaderStatus_1);
-                              recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                              S46587=0;
+                              recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                              capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                              currsigs.addElement(capLoaderStatusUIE);
+                              capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                              S46602=0;
                               active[11]=1;
                               ends[11]=1;
                               tdone[11]=1;
@@ -1697,51 +1701,51 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S46594=1;
-                S46594=0;
-                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 182, column: 4
-                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
-                  S46594=1;
+                S46609=1;
+                S46609=0;
+                if(!capLoaderReq_o.isPartnerPresent() || capLoaderReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
+                  capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
+                  S46609=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  S46589=0;
-                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                    capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 182, column: 4
-                    S46589=1;
-                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 182, column: 4
-                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 182, column: 4
+                  S46604=0;
+                  if(capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                    capLoaderReq_o.setVal(true);//sysj\orchestrator.sysj line: 183, column: 4
+                    S46604=1;
+                    if(!capLoaderReq_o.isACK()){//sysj\orchestrator.sysj line: 183, column: 4
+                      capLoaderReq_o.setREQ(false);//sysj\orchestrator.sysj line: 183, column: 4
                       ends[11]=2;
-                      ;//sysj\orchestrator.sysj line: 182, column: 4
-                      S46587=2;
-                      S46638=0;
-                      if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                        S46638=1;
+                      ;//sysj\orchestrator.sysj line: 183, column: 4
+                      S46602=2;
+                      S46653=0;
+                      if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                        S46653=1;
                         active[11]=1;
                         ends[11]=1;
                         tdone[11]=1;
                       }
                       else {
-                        S46633=0;
-                        if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                          S46633=1;
-                          if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                        S46648=0;
+                        if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                          capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                          S46648=1;
+                          if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                            capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                             ends[11]=2;
-                            ;//sysj\orchestrator.sysj line: 183, column: 4
-                            capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                            currsigs.addElement(capLoaderStatusUIE);
-                            capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                            ;//sysj\orchestrator.sysj line: 184, column: 4
                             System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                            res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                            recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                            res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                            recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                             currsigs.addElement(recCapLoaderStatus_1);
-                            recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                            S46587=0;
+                            recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                            capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                            currsigs.addElement(capLoaderStatusUIE);
+                            capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                            S46602=0;
                             active[11]=1;
                             ends[11]=1;
                             tdone[11]=1;
@@ -1777,34 +1781,34 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S46638){
+            switch(S46653){
               case 0 : 
-                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                  S46638=1;
+                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                  S46653=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  switch(S46633){
+                  switch(S46648){
                     case 0 : 
-                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                        S46633=1;
-                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                      if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                        capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                        S46648=1;
+                        if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                          capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                           ends[11]=2;
-                          ;//sysj\orchestrator.sysj line: 183, column: 4
-                          capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                          currsigs.addElement(capLoaderStatusUIE);
-                          capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                          ;//sysj\orchestrator.sysj line: 184, column: 4
                           System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                          res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                          recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                           currsigs.addElement(recCapLoaderStatus_1);
-                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                          S46587=0;
+                          recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                          capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                          currsigs.addElement(capLoaderStatusUIE);
+                          capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                          S46602=0;
                           active[11]=1;
                           ends[11]=1;
                           tdone[11]=1;
@@ -1823,19 +1827,19 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                      if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                        capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                         ends[11]=2;
-                        ;//sysj\orchestrator.sysj line: 183, column: 4
-                        capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                        currsigs.addElement(capLoaderStatusUIE);
-                        capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                        ;//sysj\orchestrator.sysj line: 184, column: 4
                         System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                        res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                        recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                        res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                        recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                         currsigs.addElement(recCapLoaderStatus_1);
-                        recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                        S46587=0;
+                        recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                        capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                        currsigs.addElement(capLoaderStatusUIE);
+                        capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                        S46602=0;
                         active[11]=1;
                         ends[11]=1;
                         tdone[11]=1;
@@ -1852,33 +1856,33 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S46638=1;
-                S46638=0;
-                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 183, column: 4
-                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
-                  S46638=1;
+                S46653=1;
+                S46653=0;
+                if(!capLoaderStatus_in.isPartnerPresent() || capLoaderStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 184, column: 4
+                  capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
+                  S46653=1;
                   active[11]=1;
                   ends[11]=1;
                   tdone[11]=1;
                 }
                 else {
-                  S46633=0;
-                  if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                    capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 183, column: 4
-                    S46633=1;
-                    if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 183, column: 4
-                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 183, column: 4
+                  S46648=0;
+                  if(!capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                    capLoaderStatus_in.setACK(true);//sysj\orchestrator.sysj line: 184, column: 4
+                    S46648=1;
+                    if(capLoaderStatus_in.isREQ()){//sysj\orchestrator.sysj line: 184, column: 4
+                      capLoaderStatus_in.setACK(false);//sysj\orchestrator.sysj line: 184, column: 4
                       ends[11]=2;
-                      ;//sysj\orchestrator.sysj line: 183, column: 4
-                      capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 184, column: 4
-                      currsigs.addElement(capLoaderStatusUIE);
-                      capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 184, column: 4
+                      ;//sysj\orchestrator.sysj line: 184, column: 4
                       System.out.println("Orch: Received cap loader status");//sysj\orchestrator.sysj line: 185, column: 4
-                      res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 187, column: 4
-                      recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 188, column: 4
+                      res_thread_11 = (String)(capLoaderStatus_in.getVal() == null ? null : ((String)capLoaderStatus_in.getVal()));//sysj\orchestrator.sysj line: 186, column: 4
+                      recCapLoaderStatus_1.setPresent();//sysj\orchestrator.sysj line: 187, column: 4
                       currsigs.addElement(recCapLoaderStatus_1);
-                      recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 188, column: 4
-                      S46587=0;
+                      recCapLoaderStatus_1.setValue(res_thread_11);//sysj\orchestrator.sysj line: 187, column: 4
+                      capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+                      currsigs.addElement(capLoaderStatusUIE);
+                      capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+                      S46602=0;
                       active[11]=1;
                       ends[11]=1;
                       tdone[11]=1;
@@ -1906,8 +1910,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51090(int [] tdone, int [] ends){
-        switch(S46585){
+  public void thread51118(int [] tdone, int [] ends){
+        switch(S46599){
       case 0 : 
         active[10]=0;
         ends[10]=0;
@@ -1915,58 +1919,58 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S45647){
+        switch(S45655){
           case 0 : 
-            if(sigCapperReq_1.getprestatus()){//sysj\orchestrator.sysj line: 165, column: 10
-              capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 166, column: 4
+            if(sigCapperReq_1.getprestatus()){//sysj\orchestrator.sysj line: 166, column: 10
+              capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 167, column: 4
               currsigs.addElement(capperStatusUIE);
-              capperStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 166, column: 4
-              System.out.println("Orch: Sending capper request");//sysj\orchestrator.sysj line: 167, column: 4
-              S45647=1;
-              S45654=0;
-              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 168, column: 4
-                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
-                S45654=1;
+              capperStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 167, column: 4
+              System.out.println("Orch: Sending capper request");//sysj\orchestrator.sysj line: 168, column: 4
+              S45655=1;
+              S45662=0;
+              if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
+                capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
+                S45662=1;
                 active[10]=1;
                 ends[10]=1;
                 tdone[10]=1;
               }
               else {
-                S45649=0;
-                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 168, column: 4
-                  S45649=1;
-                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
+                S45657=0;
+                if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                  capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 169, column: 4
+                  S45657=1;
+                  if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                    capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
                     ends[10]=2;
-                    ;//sysj\orchestrator.sysj line: 168, column: 4
-                    S45647=2;
-                    S45698=0;
-                    if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                      S45698=1;
+                    ;//sysj\orchestrator.sysj line: 169, column: 4
+                    S45655=2;
+                    S45706=0;
+                    if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                      S45706=1;
                       active[10]=1;
                       ends[10]=1;
                       tdone[10]=1;
                     }
                     else {
-                      S45693=0;
-                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                        S45693=1;
-                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                      S45701=0;
+                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                        S45701=1;
+                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                           ends[10]=2;
-                          ;//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                          currsigs.addElement(capperStatusUIE);
-                          capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                          ;//sysj\orchestrator.sysj line: 170, column: 4
                           System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                           res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                           recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                           currsigs.addElement(recCapperStatus_1);
                           recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                          S45647=0;
+                          capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                          currsigs.addElement(capperStatusUIE);
+                          capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                          S45655=0;
                           active[10]=1;
                           ends[10]=1;
                           tdone[10]=1;
@@ -2005,52 +2009,52 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S45654){
+            switch(S45662){
               case 0 : 
-                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 168, column: 4
-                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
-                  S45654=1;
+                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
+                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
+                  S45662=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  switch(S45649){
+                  switch(S45657){
                     case 0 : 
-                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                        capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 168, column: 4
-                        S45649=1;
-                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
+                      if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                        capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 169, column: 4
+                        S45657=1;
+                        if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                          capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
                           ends[10]=2;
-                          ;//sysj\orchestrator.sysj line: 168, column: 4
-                          S45647=2;
-                          S45698=0;
-                          if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                            S45698=1;
+                          ;//sysj\orchestrator.sysj line: 169, column: 4
+                          S45655=2;
+                          S45706=0;
+                          if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                            S45706=1;
                             active[10]=1;
                             ends[10]=1;
                             tdone[10]=1;
                           }
                           else {
-                            S45693=0;
-                            if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                              capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                              S45693=1;
-                              if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                                capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                            S45701=0;
+                            if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                              capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                              S45701=1;
+                              if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                                capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                                 ends[10]=2;
-                                ;//sysj\orchestrator.sysj line: 169, column: 4
-                                capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                                currsigs.addElement(capperStatusUIE);
-                                capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                                ;//sysj\orchestrator.sysj line: 170, column: 4
                                 System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                                 res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                                 recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                                 currsigs.addElement(recCapperStatus_1);
                                 recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                                S45647=0;
+                                capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                                currsigs.addElement(capperStatusUIE);
+                                capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                                S45655=0;
                                 active[10]=1;
                                 ends[10]=1;
                                 tdone[10]=1;
@@ -2082,37 +2086,37 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
+                      if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                        capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
                         ends[10]=2;
-                        ;//sysj\orchestrator.sysj line: 168, column: 4
-                        S45647=2;
-                        S45698=0;
-                        if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                          S45698=1;
+                        ;//sysj\orchestrator.sysj line: 169, column: 4
+                        S45655=2;
+                        S45706=0;
+                        if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                          S45706=1;
                           active[10]=1;
                           ends[10]=1;
                           tdone[10]=1;
                         }
                         else {
-                          S45693=0;
-                          if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                            capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                            S45693=1;
-                            if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                              capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                          S45701=0;
+                          if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                            capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                            S45701=1;
+                            if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                              capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                               ends[10]=2;
-                              ;//sysj\orchestrator.sysj line: 169, column: 4
-                              capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                              currsigs.addElement(capperStatusUIE);
-                              capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                              ;//sysj\orchestrator.sysj line: 170, column: 4
                               System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                               res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                               recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                               currsigs.addElement(recCapperStatus_1);
                               recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                              S45647=0;
+                              capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                              currsigs.addElement(capperStatusUIE);
+                              capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                              S45655=0;
                               active[10]=1;
                               ends[10]=1;
                               tdone[10]=1;
@@ -2142,51 +2146,51 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S45654=1;
-                S45654=0;
-                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 168, column: 4
-                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
-                  S45654=1;
+                S45662=1;
+                S45662=0;
+                if(!capperReq_o.isPartnerPresent() || capperReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
+                  capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
+                  S45662=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  S45649=0;
-                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                    capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 168, column: 4
-                    S45649=1;
-                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 168, column: 4
-                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 168, column: 4
+                  S45657=0;
+                  if(capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                    capperReq_o.setVal(true);//sysj\orchestrator.sysj line: 169, column: 4
+                    S45657=1;
+                    if(!capperReq_o.isACK()){//sysj\orchestrator.sysj line: 169, column: 4
+                      capperReq_o.setREQ(false);//sysj\orchestrator.sysj line: 169, column: 4
                       ends[10]=2;
-                      ;//sysj\orchestrator.sysj line: 168, column: 4
-                      S45647=2;
-                      S45698=0;
-                      if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                        S45698=1;
+                      ;//sysj\orchestrator.sysj line: 169, column: 4
+                      S45655=2;
+                      S45706=0;
+                      if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                        S45706=1;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
                       }
                       else {
-                        S45693=0;
-                        if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                          S45693=1;
-                          if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                        S45701=0;
+                        if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                          capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                          S45701=1;
+                          if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                            capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                             ends[10]=2;
-                            ;//sysj\orchestrator.sysj line: 169, column: 4
-                            capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                            currsigs.addElement(capperStatusUIE);
-                            capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                            ;//sysj\orchestrator.sysj line: 170, column: 4
                             System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                             res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                             recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                             currsigs.addElement(recCapperStatus_1);
                             recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                            S45647=0;
+                            capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                            currsigs.addElement(capperStatusUIE);
+                            capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                            S45655=0;
                             active[10]=1;
                             ends[10]=1;
                             tdone[10]=1;
@@ -2222,34 +2226,34 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S45698){
+            switch(S45706){
               case 0 : 
-                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                  S45698=1;
+                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                  S45706=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  switch(S45693){
+                  switch(S45701){
                     case 0 : 
-                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                        S45693=1;
-                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                      if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                        capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                        S45701=1;
+                        if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                          capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                           ends[10]=2;
-                          ;//sysj\orchestrator.sysj line: 169, column: 4
-                          capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                          currsigs.addElement(capperStatusUIE);
-                          capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                          ;//sysj\orchestrator.sysj line: 170, column: 4
                           System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                           res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                           recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                           currsigs.addElement(recCapperStatus_1);
                           recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                          S45647=0;
+                          capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                          currsigs.addElement(capperStatusUIE);
+                          capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                          S45655=0;
                           active[10]=1;
                           ends[10]=1;
                           tdone[10]=1;
@@ -2268,19 +2272,19 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                      if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                        capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                         ends[10]=2;
-                        ;//sysj\orchestrator.sysj line: 169, column: 4
-                        capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                        currsigs.addElement(capperStatusUIE);
-                        capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                        ;//sysj\orchestrator.sysj line: 170, column: 4
                         System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                         res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                         recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                         currsigs.addElement(recCapperStatus_1);
                         recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                        S45647=0;
+                        capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                        currsigs.addElement(capperStatusUIE);
+                        capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                        S45655=0;
                         active[10]=1;
                         ends[10]=1;
                         tdone[10]=1;
@@ -2297,33 +2301,33 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S45698=1;
-                S45698=0;
-                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 169, column: 4
-                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
-                  S45698=1;
+                S45706=1;
+                S45706=0;
+                if(!capperStatus_in.isPartnerPresent() || capperStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 170, column: 4
+                  capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
+                  S45706=1;
                   active[10]=1;
                   ends[10]=1;
                   tdone[10]=1;
                 }
                 else {
-                  S45693=0;
-                  if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                    capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 169, column: 4
-                    S45693=1;
-                    if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 169, column: 4
-                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 169, column: 4
+                  S45701=0;
+                  if(!capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                    capperStatus_in.setACK(true);//sysj\orchestrator.sysj line: 170, column: 4
+                    S45701=1;
+                    if(capperStatus_in.isREQ()){//sysj\orchestrator.sysj line: 170, column: 4
+                      capperStatus_in.setACK(false);//sysj\orchestrator.sysj line: 170, column: 4
                       ends[10]=2;
-                      ;//sysj\orchestrator.sysj line: 169, column: 4
-                      capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 170, column: 4
-                      currsigs.addElement(capperStatusUIE);
-                      capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 170, column: 4
+                      ;//sysj\orchestrator.sysj line: 170, column: 4
                       System.out.println("Orch: Received capper status");//sysj\orchestrator.sysj line: 171, column: 4
                       res_thread_10 = (String)(capperStatus_in.getVal() == null ? null : ((String)capperStatus_in.getVal()));//sysj\orchestrator.sysj line: 172, column: 4
                       recCapperStatus_1.setPresent();//sysj\orchestrator.sysj line: 173, column: 4
                       currsigs.addElement(recCapperStatus_1);
                       recCapperStatus_1.setValue(res_thread_10);//sysj\orchestrator.sysj line: 173, column: 4
-                      S45647=0;
+                      capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+                      currsigs.addElement(capperStatusUIE);
+                      capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+                      S45655=0;
                       active[10]=1;
                       ends[10]=1;
                       tdone[10]=1;
@@ -2351,8 +2355,8 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51089(int [] tdone, int [] ends){
-        switch(S45645){
+  public void thread51117(int [] tdone, int [] ends){
+        switch(S45652){
       case 0 : 
         active[9]=0;
         ends[9]=0;
@@ -2360,56 +2364,56 @@ public class Orchestrator extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S44707){
+        switch(S44708){
           case 0 : 
-            if(sigConveyorReq_1.getprestatus()){//sysj\orchestrator.sysj line: 153, column: 10
-              conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 154, column: 4
+            if(sigConveyorReq_1.getprestatus()){//sysj\orchestrator.sysj line: 154, column: 10
+              conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 155, column: 4
               currsigs.addElement(conveyorStatusUIE);
-              conveyorStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 154, column: 4
-              S44707=1;
-              S44714=0;
-              if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 155, column: 4
-                conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
-                S44714=1;
+              conveyorStatusUIE.setValue(true);//sysj\orchestrator.sysj line: 155, column: 4
+              S44708=1;
+              S44715=0;
+              if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
+                conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
+                S44715=1;
                 active[9]=1;
                 ends[9]=1;
                 tdone[9]=1;
               }
               else {
-                S44709=0;
-                if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                  conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 155, column: 4
-                  S44709=1;
-                  if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                    conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
+                S44710=0;
+                if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                  conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 156, column: 4
+                  S44710=1;
+                  if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                    conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
                     ends[9]=2;
-                    ;//sysj\orchestrator.sysj line: 155, column: 4
-                    S44707=2;
-                    S44758=0;
-                    if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                      S44758=1;
+                    ;//sysj\orchestrator.sysj line: 156, column: 4
+                    S44708=2;
+                    S44759=0;
+                    if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                      S44759=1;
                       active[9]=1;
                       ends[9]=1;
                       tdone[9]=1;
                     }
                     else {
-                      S44753=0;
-                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                        S44753=1;
-                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                      S44754=0;
+                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                        S44754=1;
+                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                           ends[9]=2;
-                          ;//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                          currsigs.addElement(conveyorStatusUIE);
-                          conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                          ;//sysj\orchestrator.sysj line: 157, column: 4
                           res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                           recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                           currsigs.addElement(recConveyorStatus_1);
                           recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                          S44707=0;
+                          conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                          currsigs.addElement(conveyorStatusUIE);
+                          conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                          S44708=0;
                           active[9]=1;
                           ends[9]=1;
                           tdone[9]=1;
@@ -2448,51 +2452,51 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S44714){
+            switch(S44715){
               case 0 : 
-                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 155, column: 4
-                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
-                  S44714=1;
+                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
+                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
+                  S44715=1;
                   active[9]=1;
                   ends[9]=1;
                   tdone[9]=1;
                 }
                 else {
-                  switch(S44709){
+                  switch(S44710){
                     case 0 : 
-                      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 155, column: 4
-                        S44709=1;
-                        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
+                      if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                        conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 156, column: 4
+                        S44710=1;
+                        if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                          conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
                           ends[9]=2;
-                          ;//sysj\orchestrator.sysj line: 155, column: 4
-                          S44707=2;
-                          S44758=0;
-                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                            S44758=1;
+                          ;//sysj\orchestrator.sysj line: 156, column: 4
+                          S44708=2;
+                          S44759=0;
+                          if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                            S44759=1;
                             active[9]=1;
                             ends[9]=1;
                             tdone[9]=1;
                           }
                           else {
-                            S44753=0;
-                            if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                              conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                              S44753=1;
-                              if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                                conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                            S44754=0;
+                            if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                              conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                              S44754=1;
+                              if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                                conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                                 ends[9]=2;
-                                ;//sysj\orchestrator.sysj line: 156, column: 4
-                                conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                                currsigs.addElement(conveyorStatusUIE);
-                                conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                                ;//sysj\orchestrator.sysj line: 157, column: 4
                                 res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                                 recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                                 currsigs.addElement(recConveyorStatus_1);
                                 recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                                S44707=0;
+                                conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                                currsigs.addElement(conveyorStatusUIE);
+                                conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                                S44708=0;
                                 active[9]=1;
                                 ends[9]=1;
                                 tdone[9]=1;
@@ -2524,36 +2528,36 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
+                      if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                        conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
                         ends[9]=2;
-                        ;//sysj\orchestrator.sysj line: 155, column: 4
-                        S44707=2;
-                        S44758=0;
-                        if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                          S44758=1;
+                        ;//sysj\orchestrator.sysj line: 156, column: 4
+                        S44708=2;
+                        S44759=0;
+                        if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                          S44759=1;
                           active[9]=1;
                           ends[9]=1;
                           tdone[9]=1;
                         }
                         else {
-                          S44753=0;
-                          if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                            conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                            S44753=1;
-                            if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                              conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                          S44754=0;
+                          if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                            conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                            S44754=1;
+                            if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                              conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                               ends[9]=2;
-                              ;//sysj\orchestrator.sysj line: 156, column: 4
-                              conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                              currsigs.addElement(conveyorStatusUIE);
-                              conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                              ;//sysj\orchestrator.sysj line: 157, column: 4
                               res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                               recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                               currsigs.addElement(recConveyorStatus_1);
                               recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                              S44707=0;
+                              conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                              currsigs.addElement(conveyorStatusUIE);
+                              conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                              S44708=0;
                               active[9]=1;
                               ends[9]=1;
                               tdone[9]=1;
@@ -2583,50 +2587,50 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S44714=1;
-                S44714=0;
-                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 155, column: 4
-                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
-                  S44714=1;
+                S44715=1;
+                S44715=0;
+                if(!conveyorReq_o.isPartnerPresent() || conveyorReq_o.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
+                  conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
+                  S44715=1;
                   active[9]=1;
                   ends[9]=1;
                   tdone[9]=1;
                 }
                 else {
-                  S44709=0;
-                  if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                    conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 155, column: 4
-                    S44709=1;
-                    if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 155, column: 4
-                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 155, column: 4
+                  S44710=0;
+                  if(conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                    conveyorReq_o.setVal(true);//sysj\orchestrator.sysj line: 156, column: 4
+                    S44710=1;
+                    if(!conveyorReq_o.isACK()){//sysj\orchestrator.sysj line: 156, column: 4
+                      conveyorReq_o.setREQ(false);//sysj\orchestrator.sysj line: 156, column: 4
                       ends[9]=2;
-                      ;//sysj\orchestrator.sysj line: 155, column: 4
-                      S44707=2;
-                      S44758=0;
-                      if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                        S44758=1;
+                      ;//sysj\orchestrator.sysj line: 156, column: 4
+                      S44708=2;
+                      S44759=0;
+                      if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                        S44759=1;
                         active[9]=1;
                         ends[9]=1;
                         tdone[9]=1;
                       }
                       else {
-                        S44753=0;
-                        if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                          S44753=1;
-                          if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                        S44754=0;
+                        if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                          conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                          S44754=1;
+                          if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                            conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                             ends[9]=2;
-                            ;//sysj\orchestrator.sysj line: 156, column: 4
-                            conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                            currsigs.addElement(conveyorStatusUIE);
-                            conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                            ;//sysj\orchestrator.sysj line: 157, column: 4
                             res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                             recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                             currsigs.addElement(recConveyorStatus_1);
                             recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                            S44707=0;
+                            conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                            currsigs.addElement(conveyorStatusUIE);
+                            conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                            S44708=0;
                             active[9]=1;
                             ends[9]=1;
                             tdone[9]=1;
@@ -2662,33 +2666,33 @@ public class Orchestrator extends ClockDomain{
             break;
           
           case 2 : 
-            switch(S44758){
+            switch(S44759){
               case 0 : 
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                  S44758=1;
+                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                  S44759=1;
                   active[9]=1;
                   ends[9]=1;
                   tdone[9]=1;
                 }
                 else {
-                  switch(S44753){
+                  switch(S44754){
                     case 0 : 
-                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                        S44753=1;
-                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                      if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                        conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                        S44754=1;
+                        if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                          conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                           ends[9]=2;
-                          ;//sysj\orchestrator.sysj line: 156, column: 4
-                          conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                          currsigs.addElement(conveyorStatusUIE);
-                          conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                          ;//sysj\orchestrator.sysj line: 157, column: 4
                           res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                           recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                           currsigs.addElement(recConveyorStatus_1);
                           recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                          S44707=0;
+                          conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                          currsigs.addElement(conveyorStatusUIE);
+                          conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                          S44708=0;
                           active[9]=1;
                           ends[9]=1;
                           tdone[9]=1;
@@ -2707,18 +2711,18 @@ public class Orchestrator extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                      if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                        conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                         ends[9]=2;
-                        ;//sysj\orchestrator.sysj line: 156, column: 4
-                        conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                        currsigs.addElement(conveyorStatusUIE);
-                        conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                        ;//sysj\orchestrator.sysj line: 157, column: 4
                         res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                         recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                         currsigs.addElement(recConveyorStatus_1);
                         recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                        S44707=0;
+                        conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                        currsigs.addElement(conveyorStatusUIE);
+                        conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                        S44708=0;
                         active[9]=1;
                         ends[9]=1;
                         tdone[9]=1;
@@ -2735,32 +2739,32 @@ public class Orchestrator extends ClockDomain{
                 break;
               
               case 1 : 
-                S44758=1;
-                S44758=0;
-                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 156, column: 4
-                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
-                  S44758=1;
+                S44759=1;
+                S44759=0;
+                if(!conveyorStatus_in.isPartnerPresent() || conveyorStatus_in.isPartnerPreempted()){//sysj\orchestrator.sysj line: 157, column: 4
+                  conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
+                  S44759=1;
                   active[9]=1;
                   ends[9]=1;
                   tdone[9]=1;
                 }
                 else {
-                  S44753=0;
-                  if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                    conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 156, column: 4
-                    S44753=1;
-                    if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 156, column: 4
-                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 156, column: 4
+                  S44754=0;
+                  if(!conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                    conveyorStatus_in.setACK(true);//sysj\orchestrator.sysj line: 157, column: 4
+                    S44754=1;
+                    if(conveyorStatus_in.isREQ()){//sysj\orchestrator.sysj line: 157, column: 4
+                      conveyorStatus_in.setACK(false);//sysj\orchestrator.sysj line: 157, column: 4
                       ends[9]=2;
-                      ;//sysj\orchestrator.sysj line: 156, column: 4
-                      conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 157, column: 4
-                      currsigs.addElement(conveyorStatusUIE);
-                      conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 157, column: 4
+                      ;//sysj\orchestrator.sysj line: 157, column: 4
                       res_thread_9 = (String)(conveyorStatus_in.getVal() == null ? null : ((String)conveyorStatus_in.getVal()));//sysj\orchestrator.sysj line: 158, column: 4
                       recConveyorStatus_1.setPresent();//sysj\orchestrator.sysj line: 159, column: 4
                       currsigs.addElement(recConveyorStatus_1);
                       recConveyorStatus_1.setValue(res_thread_9);//sysj\orchestrator.sysj line: 159, column: 4
-                      S44707=0;
+                      conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+                      currsigs.addElement(conveyorStatusUIE);
+                      conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+                      S44708=0;
                       active[9]=1;
                       ends[9]=1;
                       tdone[9]=1;
@@ -2788,7 +2792,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51087(int [] tdone, int [] ends){
+  public void thread51115(int [] tdone, int [] ends){
         S44665=1;
     foundCurrentOrder_1.setPresent();//sysj\orchestrator.sysj line: 141, column: 9
     currsigs.addElement(foundCurrentOrder_1);
@@ -2797,7 +2801,7 @@ public class Orchestrator extends ClockDomain{
     tdone[8]=1;
   }
 
-  public void thread51086(int [] tdone, int [] ends){
+  public void thread51114(int [] tdone, int [] ends){
         S44660=1;
     myOrder_thread_7 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 138, column: 9
     currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 139, column: 8
@@ -2808,7 +2812,7 @@ public class Orchestrator extends ClockDomain{
     tdone[7]=1;
   }
 
-  public void thread51084(int [] tdone, int [] ends){
+  public void thread51112(int [] tdone, int [] ends){
         switch(S44665){
       case 0 : 
         active[8]=0;
@@ -2827,7 +2831,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51083(int [] tdone, int [] ends){
+  public void thread51111(int [] tdone, int [] ends){
         switch(S44660){
       case 0 : 
         active[7]=0;
@@ -2847,7 +2851,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51082(int [] tdone, int [] ends){
+  public void thread51110(int [] tdone, int [] ends){
         switch(S44705){
       case 0 : 
         active[6]=0;
@@ -2865,22 +2869,22 @@ public class Orchestrator extends ClockDomain{
               tdone[6]=1;
             }
             else {
-              thread51083(tdone,ends);
-              thread51084(tdone,ends);
-              int biggest51085 = 0;
-              if(ends[7]>=biggest51085){
-                biggest51085=ends[7];
+              thread51111(tdone,ends);
+              thread51112(tdone,ends);
+              int biggest51113 = 0;
+              if(ends[7]>=biggest51113){
+                biggest51113=ends[7];
               }
-              if(ends[8]>=biggest51085){
-                biggest51085=ends[8];
+              if(ends[8]>=biggest51113){
+                biggest51113=ends[8];
               }
-              if(biggest51085 == 1){
+              if(biggest51113 == 1){
                 active[6]=1;
                 ends[6]=1;
                 tdone[6]=1;
               }
               //FINXME code
-              if(biggest51085 == 0){
+              if(biggest51113 == 0){
                 S44669=1;
                 active[6]=1;
                 ends[6]=1;
@@ -2894,16 +2898,16 @@ public class Orchestrator extends ClockDomain{
             S44669=0;
             if(startOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 134, column: 13
               if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 135, column: 14
-                thread51086(tdone,ends);
-                thread51087(tdone,ends);
-                int biggest51088 = 0;
-                if(ends[7]>=biggest51088){
-                  biggest51088=ends[7];
+                thread51114(tdone,ends);
+                thread51115(tdone,ends);
+                int biggest51116 = 0;
+                if(ends[7]>=biggest51116){
+                  biggest51116=ends[7];
                 }
-                if(ends[8]>=biggest51088){
-                  biggest51088=ends[8];
+                if(ends[8]>=biggest51116){
+                  biggest51116=ends[8];
                 }
-                if(biggest51088 == 1){
+                if(biggest51116 == 1){
                   active[6]=1;
                   ends[6]=1;
                   tdone[6]=1;
@@ -2930,7 +2934,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51081(int [] tdone, int [] ends){
+  public void thread51109(int [] tdone, int [] ends){
         switch(S44652){
       case 0 : 
         active[5]=0;
@@ -2972,7 +2976,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51079(int [] tdone, int [] ends){
+  public void thread51107(int [] tdone, int [] ends){
         S39754=1;
     recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 87, column: 12
     currsigs.addElement(recOrderIsDone_1);
@@ -2981,7 +2985,7 @@ public class Orchestrator extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread51078(int [] tdone, int [] ends){
+  public void thread51106(int [] tdone, int [] ends){
         S39749=1;
     tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 81, column: 9
     System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 83, column: 9
@@ -2994,7 +2998,7 @@ public class Orchestrator extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread51076(int [] tdone, int [] ends){
+  public void thread51104(int [] tdone, int [] ends){
         S39754=1;
     recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 87, column: 12
     currsigs.addElement(recOrderIsDone_1);
@@ -3003,7 +3007,7 @@ public class Orchestrator extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread51075(int [] tdone, int [] ends){
+  public void thread51103(int [] tdone, int [] ends){
         S39749=1;
     tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 81, column: 9
     System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 83, column: 9
@@ -3016,7 +3020,7 @@ public class Orchestrator extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread51073(int [] tdone, int [] ends){
+  public void thread51101(int [] tdone, int [] ends){
         switch(S39754){
       case 0 : 
         active[4]=0;
@@ -3035,7 +3039,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51072(int [] tdone, int [] ends){
+  public void thread51100(int [] tdone, int [] ends){
         switch(S39749){
       case 0 : 
         active[3]=0;
@@ -3055,7 +3059,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51070(int [] tdone, int [] ends){
+  public void thread51098(int [] tdone, int [] ends){
         S39754=1;
     recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 87, column: 12
     currsigs.addElement(recOrderIsDone_1);
@@ -3064,7 +3068,7 @@ public class Orchestrator extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread51069(int [] tdone, int [] ends){
+  public void thread51097(int [] tdone, int [] ends){
         S39749=1;
     tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 81, column: 9
     System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 83, column: 9
@@ -3077,7 +3081,7 @@ public class Orchestrator extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread51068(int [] tdone, int [] ends){
+  public void thread51096(int [] tdone, int [] ends){
         switch(S44635){
       case 0 : 
         active[2]=0;
@@ -3096,16 +3100,16 @@ public class Orchestrator extends ClockDomain{
                 if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 77, column: 14
                   System.out.println("entered current order present");//sysj\orchestrator.sysj line: 78, column: 7
                   S39770=0;
-                  thread51069(tdone,ends);
-                  thread51070(tdone,ends);
-                  int biggest51071 = 0;
-                  if(ends[3]>=biggest51071){
-                    biggest51071=ends[3];
+                  thread51097(tdone,ends);
+                  thread51098(tdone,ends);
+                  int biggest51099 = 0;
+                  if(ends[3]>=biggest51099){
+                    biggest51099=ends[3];
                   }
-                  if(ends[4]>=biggest51071){
-                    biggest51071=ends[4];
+                  if(ends[4]>=biggest51099){
+                    biggest51099=ends[4];
                   }
-                  if(biggest51071 == 1){
+                  if(biggest51099 == 1){
                     active[2]=1;
                     ends[2]=1;
                     tdone[2]=1;
@@ -3166,22 +3170,22 @@ public class Orchestrator extends ClockDomain{
                   }
                 }
                 else {
-                  thread51072(tdone,ends);
-                  thread51073(tdone,ends);
-                  int biggest51074 = 0;
-                  if(ends[3]>=biggest51074){
-                    biggest51074=ends[3];
+                  thread51100(tdone,ends);
+                  thread51101(tdone,ends);
+                  int biggest51102 = 0;
+                  if(ends[3]>=biggest51102){
+                    biggest51102=ends[3];
                   }
-                  if(ends[4]>=biggest51074){
-                    biggest51074=ends[4];
+                  if(ends[4]>=biggest51102){
+                    biggest51102=ends[4];
                   }
-                  if(biggest51074 == 1){
+                  if(biggest51102 == 1){
                     active[2]=1;
                     ends[2]=1;
                     tdone[2]=1;
                   }
                   //FINXME code
-                  if(biggest51074 == 0){
+                  if(biggest51102 == 0){
                     System.out.println("initialising next order...");//sysj\orchestrator.sysj line: 91, column: 7
                     S39770=1;
                     if(!fifoQueue_thread_2.isEmpty()){//sysj\orchestrator.sysj line: 92, column: 10
@@ -3265,16 +3269,16 @@ public class Orchestrator extends ClockDomain{
                   if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 77, column: 14
                     System.out.println("entered current order present");//sysj\orchestrator.sysj line: 78, column: 7
                     S39770=0;
-                    thread51075(tdone,ends);
-                    thread51076(tdone,ends);
-                    int biggest51077 = 0;
-                    if(ends[3]>=biggest51077){
-                      biggest51077=ends[3];
+                    thread51103(tdone,ends);
+                    thread51104(tdone,ends);
+                    int biggest51105 = 0;
+                    if(ends[3]>=biggest51105){
+                      biggest51105=ends[3];
                     }
-                    if(ends[4]>=biggest51077){
-                      biggest51077=ends[4];
+                    if(ends[4]>=biggest51105){
+                      biggest51105=ends[4];
                     }
-                    if(biggest51077 == 1){
+                    if(biggest51105 == 1){
                       active[2]=1;
                       ends[2]=1;
                       tdone[2]=1;
@@ -3302,16 +3306,16 @@ public class Orchestrator extends ClockDomain{
                 if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 77, column: 14
                   System.out.println("entered current order present");//sysj\orchestrator.sysj line: 78, column: 7
                   S39770=0;
-                  thread51078(tdone,ends);
-                  thread51079(tdone,ends);
-                  int biggest51080 = 0;
-                  if(ends[3]>=biggest51080){
-                    biggest51080=ends[3];
+                  thread51106(tdone,ends);
+                  thread51107(tdone,ends);
+                  int biggest51108 = 0;
+                  if(ends[3]>=biggest51108){
+                    biggest51108=ends[3];
                   }
-                  if(ends[4]>=biggest51080){
-                    biggest51080=ends[4];
+                  if(ends[4]>=biggest51108){
+                    biggest51108=ends[4];
                   }
-                  if(biggest51080 == 1){
+                  if(biggest51108 == 1){
                     active[2]=1;
                     ends[2]=1;
                     tdone[2]=1;
@@ -3339,58 +3343,70 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51066(int [] tdone, int [] ends){
-        S51045=1;
+  public void thread51094(int [] tdone, int [] ends){
+        S51073=1;
     quantity_thread_14 = 0;//sysj\orchestrator.sysj line: 221, column: 3
     count_thread_14 = 0;//sysj\orchestrator.sysj line: 222, column: 3
     eject_thread_14 = 0;//sysj\orchestrator.sysj line: 223, column: 3
-        S49408=0;
+        S49436=0;
     active[14]=1;
     ends[14]=1;
     tdone[14]=1;
   }
 
-  public void thread51065(int [] tdone, int [] ends){
-        S49405=1;
-    S48467=0;
+  public void thread51093(int [] tdone, int [] ends){
+        S49433=1;
+    S48495=0;
     active[13]=1;
     ends[13]=1;
     tdone[13]=1;
   }
 
-  public void thread51064(int [] tdone, int [] ends){
-        S48465=1;
-    S47527=0;
+  public void thread51092(int [] tdone, int [] ends){
+        S48493=1;
+    fillerStatusUIE.setPresent();//sysj\orchestrator.sysj line: 193, column: 4
+    currsigs.addElement(fillerStatusUIE);
+    fillerStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 193, column: 4
+    S47549=0;
     active[12]=1;
     ends[12]=1;
     tdone[12]=1;
   }
 
-  public void thread51063(int [] tdone, int [] ends){
-        S47525=1;
-    S46587=0;
+  public void thread51091(int [] tdone, int [] ends){
+        S47546=1;
+    capLoaderStatusUIE.setPresent();//sysj\orchestrator.sysj line: 179, column: 4
+    currsigs.addElement(capLoaderStatusUIE);
+    capLoaderStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 179, column: 4
+    S46602=0;
     active[11]=1;
     ends[11]=1;
     tdone[11]=1;
   }
 
-  public void thread51062(int [] tdone, int [] ends){
-        S46585=1;
-    S45647=0;
+  public void thread51090(int [] tdone, int [] ends){
+        S46599=1;
+    capperStatusUIE.setPresent();//sysj\orchestrator.sysj line: 165, column: 4
+    currsigs.addElement(capperStatusUIE);
+    capperStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 165, column: 4
+    S45655=0;
     active[10]=1;
     ends[10]=1;
     tdone[10]=1;
   }
 
-  public void thread51061(int [] tdone, int [] ends){
-        S45645=1;
-    S44707=0;
+  public void thread51089(int [] tdone, int [] ends){
+        S45652=1;
+    conveyorStatusUIE.setPresent();//sysj\orchestrator.sysj line: 153, column: 4
+    currsigs.addElement(conveyorStatusUIE);
+    conveyorStatusUIE.setValue(false);//sysj\orchestrator.sysj line: 153, column: 4
+    S44708=0;
     active[9]=1;
     ends[9]=1;
     tdone[9]=1;
   }
 
-  public void thread51059(int [] tdone, int [] ends){
+  public void thread51087(int [] tdone, int [] ends){
         S44665=1;
     foundCurrentOrder_1.setPresent();//sysj\orchestrator.sysj line: 141, column: 9
     currsigs.addElement(foundCurrentOrder_1);
@@ -3399,7 +3415,7 @@ public class Orchestrator extends ClockDomain{
     tdone[8]=1;
   }
 
-  public void thread51058(int [] tdone, int [] ends){
+  public void thread51086(int [] tdone, int [] ends){
         S44660=1;
     myOrder_thread_7 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 138, column: 9
     currentOrder_1.setPresent();//sysj\orchestrator.sysj line: 139, column: 8
@@ -3410,21 +3426,21 @@ public class Orchestrator extends ClockDomain{
     tdone[7]=1;
   }
 
-  public void thread51057(int [] tdone, int [] ends){
+  public void thread51085(int [] tdone, int [] ends){
         S44705=1;
     S44669=0;
     if(startOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 134, column: 13
       if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 135, column: 14
-        thread51058(tdone,ends);
-        thread51059(tdone,ends);
-        int biggest51060 = 0;
-        if(ends[7]>=biggest51060){
-          biggest51060=ends[7];
+        thread51086(tdone,ends);
+        thread51087(tdone,ends);
+        int biggest51088 = 0;
+        if(ends[7]>=biggest51088){
+          biggest51088=ends[7];
         }
-        if(ends[8]>=biggest51060){
-          biggest51060=ends[8];
+        if(ends[8]>=biggest51088){
+          biggest51088=ends[8];
         }
-        if(biggest51060 == 1){
+        if(biggest51088 == 1){
           active[6]=1;
           ends[6]=1;
           tdone[6]=1;
@@ -3445,7 +3461,7 @@ public class Orchestrator extends ClockDomain{
     }
   }
 
-  public void thread51056(int [] tdone, int [] ends){
+  public void thread51084(int [] tdone, int [] ends){
         S44652=1;
     S44640=0;
     initABS_1.setPresent();//sysj\orchestrator.sysj line: 124, column: 6
@@ -3455,7 +3471,7 @@ public class Orchestrator extends ClockDomain{
     tdone[5]=1;
   }
 
-  public void thread51054(int [] tdone, int [] ends){
+  public void thread51082(int [] tdone, int [] ends){
         S39754=1;
     recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 87, column: 12
     currsigs.addElement(recOrderIsDone_1);
@@ -3464,7 +3480,7 @@ public class Orchestrator extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread51053(int [] tdone, int [] ends){
+  public void thread51081(int [] tdone, int [] ends){
         S39749=1;
     tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 81, column: 9
     System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 83, column: 9
@@ -3477,7 +3493,7 @@ public class Orchestrator extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread51051(int [] tdone, int [] ends){
+  public void thread51079(int [] tdone, int [] ends){
         S39754=1;
     recOrderIsDone_1.setPresent();//sysj\orchestrator.sysj line: 87, column: 12
     currsigs.addElement(recOrderIsDone_1);
@@ -3486,7 +3502,7 @@ public class Orchestrator extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread51050(int [] tdone, int [] ends){
+  public void thread51078(int [] tdone, int [] ends){
         S39749=1;
     tempOrder_thread_3 = (currentOrder_1.getpreval() == null ? null : ((Order)currentOrder_1.getpreval()));//sysj\orchestrator.sysj line: 81, column: 9
     System.out.println("POS- ORDER IS DONE GONNA SEND DONE STATUS XD");//sysj\orchestrator.sysj line: 83, column: 9
@@ -3499,7 +3515,7 @@ public class Orchestrator extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread51049(int [] tdone, int [] ends){
+  public void thread51077(int [] tdone, int [] ends){
         S44635=1;
     fifoQueue_thread_2 = new ArrayList();//sysj\orchestrator.sysj line: 30, column: 3
     S40518=0;
@@ -3534,16 +3550,16 @@ public class Orchestrator extends ClockDomain{
           if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 77, column: 14
             System.out.println("entered current order present");//sysj\orchestrator.sysj line: 78, column: 7
             S39770=0;
-            thread51050(tdone,ends);
-            thread51051(tdone,ends);
-            int biggest51052 = 0;
-            if(ends[3]>=biggest51052){
-              biggest51052=ends[3];
+            thread51078(tdone,ends);
+            thread51079(tdone,ends);
+            int biggest51080 = 0;
+            if(ends[3]>=biggest51080){
+              biggest51080=ends[3];
             }
-            if(ends[4]>=biggest51052){
-              biggest51052=ends[4];
+            if(ends[4]>=biggest51080){
+              biggest51080=ends[4];
             }
-            if(biggest51052 == 1){
+            if(biggest51080 == 1){
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -3571,16 +3587,16 @@ public class Orchestrator extends ClockDomain{
         if(currentOrder_1.getprestatus()){//sysj\orchestrator.sysj line: 77, column: 14
           System.out.println("entered current order present");//sysj\orchestrator.sysj line: 78, column: 7
           S39770=0;
-          thread51053(tdone,ends);
-          thread51054(tdone,ends);
-          int biggest51055 = 0;
-          if(ends[3]>=biggest51055){
-            biggest51055=ends[3];
+          thread51081(tdone,ends);
+          thread51082(tdone,ends);
+          int biggest51083 = 0;
+          if(ends[3]>=biggest51083){
+            biggest51083=ends[3];
           }
-          if(ends[4]>=biggest51055){
-            biggest51055=ends[4];
+          if(ends[4]>=biggest51083){
+            biggest51083=ends[4];
           }
-          if(biggest51055 == 1){
+          if(biggest51083 == 1){
             active[2]=1;
             ends[2]=1;
             tdone[2]=1;
@@ -3609,14 +3625,14 @@ public class Orchestrator extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S51047){
+      switch(S51075){
         case 0 : 
-          S51047=0;
+          S51075=0;
           break RUN;
         
         case 1 : 
-          S51047=2;
-          S51047=2;
+          S51075=2;
+          S51075=2;
           sigConveyorReq_1.setClear();//sysj\orchestrator.sysj line: 16, column: 2
           sigCapperReq_1.setClear();//sysj\orchestrator.sysj line: 16, column: 2
           sigCapLoaderReq_1.setClear();//sysj\orchestrator.sysj line: 16, column: 2
@@ -3634,44 +3650,44 @@ public class Orchestrator extends ClockDomain{
           foundCurrentOrder_1.setClear();//sysj\orchestrator.sysj line: 25, column: 2
           currentOrder_1.setClear();//sysj\orchestrator.sysj line: 26, column: 2
           recOrderIsDone_1.setClear();//sysj\orchestrator.sysj line: 27, column: 2
-          thread51049(tdone,ends);
-          thread51056(tdone,ends);
-          thread51057(tdone,ends);
-          thread51061(tdone,ends);
-          thread51062(tdone,ends);
-          thread51063(tdone,ends);
-          thread51064(tdone,ends);
-          thread51065(tdone,ends);
-          thread51066(tdone,ends);
-          int biggest51067 = 0;
-          if(ends[2]>=biggest51067){
-            biggest51067=ends[2];
+          thread51077(tdone,ends);
+          thread51084(tdone,ends);
+          thread51085(tdone,ends);
+          thread51089(tdone,ends);
+          thread51090(tdone,ends);
+          thread51091(tdone,ends);
+          thread51092(tdone,ends);
+          thread51093(tdone,ends);
+          thread51094(tdone,ends);
+          int biggest51095 = 0;
+          if(ends[2]>=biggest51095){
+            biggest51095=ends[2];
           }
-          if(ends[5]>=biggest51067){
-            biggest51067=ends[5];
+          if(ends[5]>=biggest51095){
+            biggest51095=ends[5];
           }
-          if(ends[6]>=biggest51067){
-            biggest51067=ends[6];
+          if(ends[6]>=biggest51095){
+            biggest51095=ends[6];
           }
-          if(ends[9]>=biggest51067){
-            biggest51067=ends[9];
+          if(ends[9]>=biggest51095){
+            biggest51095=ends[9];
           }
-          if(ends[10]>=biggest51067){
-            biggest51067=ends[10];
+          if(ends[10]>=biggest51095){
+            biggest51095=ends[10];
           }
-          if(ends[11]>=biggest51067){
-            biggest51067=ends[11];
+          if(ends[11]>=biggest51095){
+            biggest51095=ends[11];
           }
-          if(ends[12]>=biggest51067){
-            biggest51067=ends[12];
+          if(ends[12]>=biggest51095){
+            biggest51095=ends[12];
           }
-          if(ends[13]>=biggest51067){
-            biggest51067=ends[13];
+          if(ends[13]>=biggest51095){
+            biggest51095=ends[13];
           }
-          if(ends[14]>=biggest51067){
-            biggest51067=ends[14];
+          if(ends[14]>=biggest51095){
+            biggest51095=ends[14];
           }
-          if(biggest51067 == 1){
+          if(biggest51095 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
@@ -3695,54 +3711,54 @@ public class Orchestrator extends ClockDomain{
           foundCurrentOrder_1.setClear();//sysj\orchestrator.sysj line: 25, column: 2
           currentOrder_1.setClear();//sysj\orchestrator.sysj line: 26, column: 2
           recOrderIsDone_1.setClear();//sysj\orchestrator.sysj line: 27, column: 2
-          thread51068(tdone,ends);
-          thread51081(tdone,ends);
-          thread51082(tdone,ends);
-          thread51089(tdone,ends);
-          thread51090(tdone,ends);
-          thread51091(tdone,ends);
-          thread51092(tdone,ends);
-          thread51093(tdone,ends);
-          thread51094(tdone,ends);
-          int biggest51107 = 0;
-          if(ends[2]>=biggest51107){
-            biggest51107=ends[2];
+          thread51096(tdone,ends);
+          thread51109(tdone,ends);
+          thread51110(tdone,ends);
+          thread51117(tdone,ends);
+          thread51118(tdone,ends);
+          thread51119(tdone,ends);
+          thread51120(tdone,ends);
+          thread51121(tdone,ends);
+          thread51122(tdone,ends);
+          int biggest51135 = 0;
+          if(ends[2]>=biggest51135){
+            biggest51135=ends[2];
           }
-          if(ends[5]>=biggest51107){
-            biggest51107=ends[5];
+          if(ends[5]>=biggest51135){
+            biggest51135=ends[5];
           }
-          if(ends[6]>=biggest51107){
-            biggest51107=ends[6];
+          if(ends[6]>=biggest51135){
+            biggest51135=ends[6];
           }
-          if(ends[9]>=biggest51107){
-            biggest51107=ends[9];
+          if(ends[9]>=biggest51135){
+            biggest51135=ends[9];
           }
-          if(ends[10]>=biggest51107){
-            biggest51107=ends[10];
+          if(ends[10]>=biggest51135){
+            biggest51135=ends[10];
           }
-          if(ends[11]>=biggest51107){
-            biggest51107=ends[11];
+          if(ends[11]>=biggest51135){
+            biggest51135=ends[11];
           }
-          if(ends[12]>=biggest51107){
-            biggest51107=ends[12];
+          if(ends[12]>=biggest51135){
+            biggest51135=ends[12];
           }
-          if(ends[13]>=biggest51107){
-            biggest51107=ends[13];
+          if(ends[13]>=biggest51135){
+            biggest51135=ends[13];
           }
-          if(ends[14]>=biggest51107){
-            biggest51107=ends[14];
+          if(ends[14]>=biggest51135){
+            biggest51135=ends[14];
           }
-          if(biggest51107 == 1){
+          if(biggest51135 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest51107 == 0){
-            S51047=0;
+          if(biggest51135 == 0){
+            S51075=0;
             active[1]=0;
             ends[1]=0;
-            S51047=0;
+            S51075=0;
             break RUN;
           }
         
@@ -3812,6 +3828,7 @@ public class Orchestrator extends ClockDomain{
       fillerStatusUIE.setpreclear();
       capperStatusUIE.setpreclear();
       capLoaderStatusUIE.setpreclear();
+      rotaryStatusUIE.setpreclear();
       sigConveyorReq_1.setpreclear();
       sigCapperReq_1.setpreclear();
       sigCapLoaderReq_1.setpreclear();
@@ -3851,6 +3868,8 @@ public class Orchestrator extends ClockDomain{
       capperStatusUIE.setClear();
       capLoaderStatusUIE.sethook();
       capLoaderStatusUIE.setClear();
+      rotaryStatusUIE.sethook();
+      rotaryStatusUIE.setClear();
       sigConveyorReq_1.setClear();
       sigCapperReq_1.setClear();
       sigCapLoaderReq_1.setClear();

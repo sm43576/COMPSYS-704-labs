@@ -324,7 +324,7 @@ Plant(
 	{
 		while(true) {
 			present(rotaryTableTrigger){
-				
+				waitl(100 ms);
 				// Turn the table 60 degrees and move the bottles along by one somehow
 				//Ensure the table positions are aligned with the sensors via tableAlignedWithSensor.
 				System.out.println("table triggered now moving");
@@ -376,10 +376,10 @@ Plant(
 		}
 	}
 	||
-	{while(true) {present(moveToPos4){System.out.println("bottle is now at pos 4"); sustain bottleAtPos4;}pause;}}
+	{while(true) {present(moveToPos4){System.out.println("bottle is now at pos 4");{sustain bottleAtPos4;}}pause;}}
 	||
-	{while(true) {present(moveToPos3){System.out.println("bottle is now at pos 3"); sustain bottleAtPos3;}pause;}}
+	{while(true) {present(moveToPos3){System.out.println("bottle is now at pos 3");{ sustain bottleAtPos3;}}pause;}}
 	||
-	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2"); sustain bottleAtPos2;}pause;}}
+	{while(true) {present(moveToPos2){System.out.println("bottle is now at pos 2");{ sustain bottleAtPos2;}}pause;}}
 
 }
