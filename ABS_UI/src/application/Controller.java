@@ -34,11 +34,10 @@ public class Controller {
     @FXML
     private ImageView lArrow, rArrow;
     
-//    @FXML
-//	public void initialize() {
-//    	
-//    	rotate();
-//    }
+    @FXML
+	public void initialize() {
+    	btnEnable.setDisable(true);
+    }
     
     public void showAbout() {
     	
