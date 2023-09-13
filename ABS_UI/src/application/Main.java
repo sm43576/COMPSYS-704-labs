@@ -35,7 +35,7 @@ public class Main extends Application {
         s1.addConsumer("ABS-UI", "capLoaderStatusUIE", (status, value) -> updateStatus(status,value,"caploader",myController));
         s1.addConsumer("ABS-UI", "rotaryStatusUIE", (status, value) -> updateStatus(status,value,"rotary",myController));
         
-        myController.setBottle1Visibility(false);    
+//        myController.setBottle1Visibility(false);    
 ;
     }
     
