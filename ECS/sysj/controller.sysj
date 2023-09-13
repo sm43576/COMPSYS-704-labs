@@ -166,13 +166,23 @@ InfraredSensor(
 /////////////Temperature sensor
 TemperatureSensor(
 
+		//zones 1-3
 		input Integer signal getTemp1R;
 		output signal getTemp1,window1;
+		
+		//zones 4-6
+		input Integer signal getTemp4R;
+		output signal getTemp4,airconTemp4;
+		
+		//zones 7
+		input Integer signal getTemp7R;
+		output signal getTemp7,heater7;
+		
 		
 		output Integer signal zone1Temp,zone2Temp,zone3Temp,zone4Temp,zone5Temp,zone6Temp,zone7Temp;
 		)
 ->{
-	//Zone1
+	//Zone1 WIndows
 	{
 		while(true){
 			abort(getTemp1R){
@@ -189,12 +199,46 @@ TemperatureSensor(
 		//System.out.println(#getTemp1R);
 		emit zone1Temp(#getTemp1R);
 		pause;
-		waitl(5 s);
-	}} ||
-	{
-		while(true) {
+		waitl(5 s);}
+	} ||
+	
+	{// Zone 4-6 Aircon
+		while(true){
+			abort(getTemp4R){
+				System.out.println("sustain getTEmp4");
+				sustain getTemp4;
+			}
 			pause;
+		System.out.println("gottemp4");
+			if(#getTemp4R>28) {
+				emit airconTemp4;
+				
+			} else if (#getTemp4R<20) {
+				emit airconTemp4;
+			}
+		System.out.println(#getTemp4R);
+		emit zone4Temp(#getTemp4R);
+		pause;
+		waitl(5 s);
 		}
+	}||
+	{// Zone 7 - Heater
+		while(true){
+			abort(getTemp7R){
+				sustain getTemp7;
+			}
+			pause;
+			System.out.println("gottemp7");
+
+			if(#getTemp7R<20) {
+				emit heater7;	
+			} 
+		System.out.println(#getTemp7R);
+		emit zone7Temp(#getTemp7R);
+		pause;
+		waitl(5 s);
+		}
+		
 	}
 
 }
@@ -209,14 +253,13 @@ HumiditySensor(
 		
 		)
 ->{
-	//Zone1
+	//Zone4-6 have the exact same functionality as only humidity can be controlled by the aircons.
 	{
 		while(true){
 			abort(getHumid4R){
 			//	System.out.println("get humid");
 				sustain getHumid4;
 			}
-			
 			
 			if(#getHumid4R>60) {
 				emit airconHumid4;
@@ -230,7 +273,7 @@ HumiditySensor(
 		waitl(5 s);
 	}} ||
 	{
-		while(true) {
+		while(true) {//future implementations
 			pause;
 		}
 	}

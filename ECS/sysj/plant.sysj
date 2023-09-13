@@ -1,20 +1,24 @@
 
 Plant(
 		input signal getTemp1,window1;
-		output signal openedWindow1;
 		output Integer signal getTemp1R;
+		
+		input signal getTemp4,airconTemp4;
+		output Integer signal getTemp4R;
+		
+		input signal getTemp7,heater7;
+		output Integer signal getTemp7R;
 		
 		input signal getHumid4,airconHumid4;
 		output Integer signal getHumid4R;
 
 	)
-->
-{
+->{
 	{ //Temperature///////
 		int zone1Temp = 32;
 		while(true) {
 			present(getTemp1){
-				System.out.println("Sent Temp");
+//				System.out.println("Sent Temp");
 				sustain getTemp1R(zone1Temp);
 			}
 			pause;
@@ -28,15 +32,61 @@ Plant(
 	{
 		while(true) {
 			present(window1){
-				//System.out.println("windowOpen");
+				System.out.println("windowOpen");
+				waitl(4 s);
 				pause;
 			}
 			pause;
 		}
-	}
+	} ||
+	
+	
+	{//zone 4-6temp
+		int zone4Temp = 45;
+		while(true) {
+			present(getTemp4){
+				System.out.println("Sent Temp4");
+				sustain getTemp4R(zone4Temp);
+			}
+			pause;
+		}
+		
+		
+	} ||
+	
+	{
+		while(true) {
+			present(airconTemp4){
+				System.out.println("airconT in zone 4 Activated");
+				pause;
+			}
+			pause;
+		}
+	} ||
+	
+	{// Zone7temp
+		int zone7Temp = 16;
+		while(true) {
+			present(getTemp7){
+//				System.out.println("Sent Temp");
+				sustain getTemp7R(zone7Temp);
+			}
+			pause;
+		}
+	}||
+	
+	{
+		while(true) {
+			present(heater7){
+				System.out.println("heater in zone7 on");
+				pause;
+			}
+			pause;
+		}
+	} ||
 
-	||
-	{	//Humidity/////////
+	//Humidity/////////
+	{	
 		int zone4Humid = 28;
 		while(true) {
 			present(getHumid4){

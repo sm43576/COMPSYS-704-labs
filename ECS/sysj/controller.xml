@@ -36,6 +36,16 @@
 			<oSignal Name="getTemp1" To="PlantCD.getTemp1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="window1" To="PlantCD.window1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="zone1Temp" To="ecsUI.zone1Temp" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
+			
+			<iSignal Name="getTemp4R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="getTemp4" To="PlantCD.getTemp4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="airconTemp4" To="PlantCD.airconTemp4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="zone4Temp" To="ecsUI.zone4Temp" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
+			
+			<iSignal Name="getTemp7R" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="getTemp7" To="PlantCD.getTemp7" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="heater7" To="PlantCD.heater7" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="zone7Temp" To="ecsUI.zone7Temp" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20011" />
 		</ClockDomain>
 		
 		

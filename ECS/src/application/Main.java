@@ -45,6 +45,8 @@ public class Main extends Application{
         humanIndicator.addConsumer("ecsUI", "zone3Light", (status,value) -> updateLight(status,value,"zone3circle",controller));
 //        
         tempIndicator.addConsumer("ecsUI", "zone1Temp", (status, value) -> updateTemp(status,value,"temp1",controller));
+        tempIndicator.addConsumer("ecsUI", "zone4Temp", (status, value) -> updateTemp(status,value,"temp4",controller));
+        tempIndicator.addConsumer("ecsUI", "zone7Temp", (status, value) -> updateTemp(status,value,"temp7",controller));
         humidIndicator.addConsumer("ecsUI", "zone4Humid", (status, value) -> updateHumid(status,value,"humid4",controller));
 
 //        //Tests

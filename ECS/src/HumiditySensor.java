@@ -15,17 +15,34 @@ public class HumiditySensor extends ClockDomain{
   public Signal getHumid4 = new Signal("getHumid4", Signal.OUTPUT);
   public Signal airconHumid4 = new Signal("airconHumid4", Signal.OUTPUT);
   public Signal zone4Humid = new Signal("zone4Humid", Signal.OUTPUT);
-  private long __start_thread_16;//sysj\controller.sysj line: 214, column: 3
-  private int S2724 = 1;
-  private int S2720 = 1;
-  private int S2542 = 1;
-  private int S2722 = 1;
+  private long __start_thread_17;//sysj\controller.sysj line: 258, column: 3
+  private int S3106 = 1;
+  private int S3102 = 1;
+  private int S2924 = 1;
+  private int S3104 = 1;
   
-  private int[] ends = new int[18];
-  private int[] tdone = new int[18];
+  private int[] ends = new int[19];
+  private int[] tdone = new int[19];
   
-  public void thread2758(int [] tdone, int [] ends){
-        switch(S2722){
+  public void thread3142(int [] tdone, int [] ends){
+        switch(S3104){
+      case 0 : 
+        active[18]=0;
+        ends[18]=0;
+        tdone[18]=1;
+        break;
+      
+      case 1 : 
+        active[18]=1;
+        ends[18]=1;
+        tdone[18]=1;
+        break;
+      
+    }
+  }
+
+  public void thread3141(int [] tdone, int [] ends){
+        switch(S3102){
       case 0 : 
         active[17]=0;
         ends[17]=0;
@@ -33,108 +50,91 @@ public class HumiditySensor extends ClockDomain{
         break;
       
       case 1 : 
-        active[17]=1;
-        ends[17]=1;
-        tdone[17]=1;
-        break;
-      
-    }
-  }
-
-  public void thread2757(int [] tdone, int [] ends){
-        switch(S2720){
-      case 0 : 
-        active[16]=0;
-        ends[16]=0;
-        tdone[16]=1;
-        break;
-      
-      case 1 : 
-        switch(S2542){
+        switch(S2924){
           case 0 : 
-            if(getHumid4R.getprestatus()){//sysj\controller.sysj line: 215, column: 10
-              if((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())) > 60){//sysj\controller.sysj line: 221, column: 7
-                airconHumid4.setPresent();//sysj\controller.sysj line: 222, column: 5
+            if(getHumid4R.getprestatus()){//sysj\controller.sysj line: 259, column: 10
+              if((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())) > 60){//sysj\controller.sysj line: 264, column: 7
+                airconHumid4.setPresent();//sysj\controller.sysj line: 265, column: 5
                 currsigs.addElement(airconHumid4);
-                System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 227, column: 3
-                zone4Humid.setPresent();//sysj\controller.sysj line: 228, column: 3
+                System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 270, column: 3
+                zone4Humid.setPresent();//sysj\controller.sysj line: 271, column: 3
                 currsigs.addElement(zone4Humid);
-                zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 228, column: 3
-                S2542=1;
-                active[16]=1;
-                ends[16]=1;
-                tdone[16]=1;
+                zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 271, column: 3
+                S2924=1;
+                active[17]=1;
+                ends[17]=1;
+                tdone[17]=1;
               }
               else {
-                if((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())) < 40){//sysj\controller.sysj line: 224, column: 15
-                  airconHumid4.setPresent();//sysj\controller.sysj line: 225, column: 5
+                if((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())) < 40){//sysj\controller.sysj line: 267, column: 15
+                  airconHumid4.setPresent();//sysj\controller.sysj line: 268, column: 5
                   currsigs.addElement(airconHumid4);
-                  System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 227, column: 3
-                  zone4Humid.setPresent();//sysj\controller.sysj line: 228, column: 3
+                  System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 270, column: 3
+                  zone4Humid.setPresent();//sysj\controller.sysj line: 271, column: 3
                   currsigs.addElement(zone4Humid);
-                  zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 228, column: 3
-                  S2542=1;
-                  active[16]=1;
-                  ends[16]=1;
-                  tdone[16]=1;
+                  zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 271, column: 3
+                  S2924=1;
+                  active[17]=1;
+                  ends[17]=1;
+                  tdone[17]=1;
                 }
                 else {
-                  System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 227, column: 3
-                  zone4Humid.setPresent();//sysj\controller.sysj line: 228, column: 3
+                  System.out.println((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 270, column: 3
+                  zone4Humid.setPresent();//sysj\controller.sysj line: 271, column: 3
                   currsigs.addElement(zone4Humid);
-                  zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 228, column: 3
-                  S2542=1;
-                  active[16]=1;
-                  ends[16]=1;
-                  tdone[16]=1;
+                  zone4Humid.setValue((getHumid4R.getpreval() == null ? null : ((Integer)getHumid4R.getpreval())));//sysj\controller.sysj line: 271, column: 3
+                  S2924=1;
+                  active[17]=1;
+                  ends[17]=1;
+                  tdone[17]=1;
                 }
               }
             }
             else {
-              getHumid4.setPresent();//sysj\controller.sysj line: 217, column: 5
+              getHumid4.setPresent();//sysj\controller.sysj line: 261, column: 5
               currsigs.addElement(getHumid4);
-              active[16]=1;
-              ends[16]=1;
-              tdone[16]=1;
+              active[17]=1;
+              ends[17]=1;
+              tdone[17]=1;
             }
             break;
           
           case 1 : 
-            S2542=1;
-            S2542=2;
-            __start_thread_16 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 214, column: 3
-            if(com.systemj.Timer.getMs() - __start_thread_16 >= (5) * 1000){//sysj\controller.sysj line: 214, column: 3
-              ends[16]=2;
-              ;//sysj\controller.sysj line: 214, column: 3
-              S2542=0;
-              getHumid4.setPresent();//sysj\controller.sysj line: 217, column: 5
+            S2924=1;
+            S2924=2;
+            __start_thread_17 = com.systemj.Timer.getMs();//sysj\controller.sysj line: 258, column: 3
+            if(com.systemj.Timer.getMs() - __start_thread_17 >= (5) * 1000){//sysj\controller.sysj line: 258, column: 3
+              ends[17]=2;
+              ;//sysj\controller.sysj line: 258, column: 3
+              S2924=0;
+              getHumid4.setPresent();//sysj\controller.sysj line: 261, column: 5
               currsigs.addElement(getHumid4);
-              active[16]=1;
-              ends[16]=1;
-              tdone[16]=1;
+              active[17]=1;
+              ends[17]=1;
+              tdone[17]=1;
             }
             else {
-              active[16]=1;
-              ends[16]=1;
-              tdone[16]=1;
+              active[17]=1;
+              ends[17]=1;
+              tdone[17]=1;
             }
             break;
           
           case 2 : 
-            if(com.systemj.Timer.getMs() - __start_thread_16 >= (5) * 1000){//sysj\controller.sysj line: 214, column: 3
-              ends[16]=2;
-              ;//sysj\controller.sysj line: 214, column: 3
-              S2542=0;
-              getHumid4.setPresent();//sysj\controller.sysj line: 217, column: 5
+            if(com.systemj.Timer.getMs() - __start_thread_17 >= (5) * 1000){//sysj\controller.sysj line: 258, column: 3
+              ends[17]=2;
+              ;//sysj\controller.sysj line: 258, column: 3
+              S2924=0;
+              getHumid4.setPresent();//sysj\controller.sysj line: 261, column: 5
               currsigs.addElement(getHumid4);
-              active[16]=1;
-              ends[16]=1;
-              tdone[16]=1;
+              active[17]=1;
+              ends[17]=1;
+              tdone[17]=1;
             }
             else {
-              active[16]=1;
-              ends[16]=1;
-              tdone[16]=1;
+              active[17]=1;
+              ends[17]=1;
+              tdone[17]=1;
             }
             break;
           
@@ -144,21 +144,21 @@ public class HumiditySensor extends ClockDomain{
     }
   }
 
-  public void thread2755(int [] tdone, int [] ends){
-        S2722=1;
+  public void thread3139(int [] tdone, int [] ends){
+        S3104=1;
+    active[18]=1;
+    ends[18]=1;
+    tdone[18]=1;
+  }
+
+  public void thread3138(int [] tdone, int [] ends){
+        S3102=1;
+    S2924=0;
+    getHumid4.setPresent();//sysj\controller.sysj line: 261, column: 5
+    currsigs.addElement(getHumid4);
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
-  }
-
-  public void thread2754(int [] tdone, int [] ends){
-        S2720=1;
-    S2542=0;
-    getHumid4.setPresent();//sysj\controller.sysj line: 217, column: 5
-    currsigs.addElement(getHumid4);
-    active[16]=1;
-    ends[16]=1;
-    tdone[16]=1;
   }
 
   public void runClockDomain(){
@@ -168,50 +168,50 @@ public class HumiditySensor extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2724){
+      switch(S3106){
         case 0 : 
-          S2724=0;
+          S3106=0;
           break RUN;
         
         case 1 : 
-          S2724=2;
-          S2724=2;
-          thread2754(tdone,ends);
-          thread2755(tdone,ends);
-          int biggest2756 = 0;
-          if(ends[16]>=biggest2756){
-            biggest2756=ends[16];
+          S3106=2;
+          S3106=2;
+          thread3138(tdone,ends);
+          thread3139(tdone,ends);
+          int biggest3140 = 0;
+          if(ends[17]>=biggest3140){
+            biggest3140=ends[17];
           }
-          if(ends[17]>=biggest2756){
-            biggest2756=ends[17];
+          if(ends[18]>=biggest3140){
+            biggest3140=ends[18];
           }
-          if(biggest2756 == 1){
-            active[15]=1;
-            ends[15]=1;
+          if(biggest3140 == 1){
+            active[16]=1;
+            ends[16]=1;
             break RUN;
           }
         
         case 2 : 
-          thread2757(tdone,ends);
-          thread2758(tdone,ends);
-          int biggest2759 = 0;
-          if(ends[16]>=biggest2759){
-            biggest2759=ends[16];
+          thread3141(tdone,ends);
+          thread3142(tdone,ends);
+          int biggest3143 = 0;
+          if(ends[17]>=biggest3143){
+            biggest3143=ends[17];
           }
-          if(ends[17]>=biggest2759){
-            biggest2759=ends[17];
+          if(ends[18]>=biggest3143){
+            biggest3143=ends[18];
           }
-          if(biggest2759 == 1){
-            active[15]=1;
-            ends[15]=1;
+          if(biggest3143 == 1){
+            active[16]=1;
+            ends[16]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest2759 == 0){
-            S2724=0;
-            active[15]=0;
-            ends[15]=0;
-            S2724=0;
+          if(biggest3143 == 0){
+            S3106=0;
+            active[16]=0;
+            ends[16]=0;
+            S3106=0;
             break RUN;
           }
         
@@ -220,9 +220,9 @@ public class HumiditySensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
@@ -231,14 +231,14 @@ public class HumiditySensor extends ClockDomain{
   }
   
   public void run(){
-    while(active[15] != 0){
-      int index = 15;
+    while(active[16] != 0){
+      int index = 16;
       if(paused[index]==1 || suspended[index]==1 || active[index] == 0){
         for(int h=1;h<paused.length;++h){
           paused[h]=0;
         }
       }
-      if(paused[15]!=0 || suspended[15]!=0 || active[15]!=1);
+      if(paused[16]!=0 || suspended[16]!=0 || active[16]!=1);
       else{
         if(!df){
           getHumid4R.gethook();
@@ -265,12 +265,12 @@ public class HumiditySensor extends ClockDomain{
       airconHumid4.setClear();
       zone4Humid.sethook();
       zone4Humid.setClear();
-      if(paused[15]!=0 || suspended[15]!=0 || active[15]!=1);
+      if(paused[16]!=0 || suspended[16]!=0 || active[16]!=1);
       else{
         getHumid4R.gethook();
       }
       runFinisher();
-      if(active[15] == 0){
+      if(active[16] == 0){
       	this.terminated = true;
       }
       if(!threaded) break;

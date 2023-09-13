@@ -4,8 +4,15 @@
 			<iSignal Name="getTemp1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="window1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="getTemp1R" To="TemperatureSensorCD.getTemp1R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="openedWindow1" To="TemperatureSensorCD.openedWindow1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-		
+
+			<iSignal Name="getTemp4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="airconTemp4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getTemp4R" To="TemperatureSensorCD.getTemp4R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+
+			<iSignal Name="getTemp7" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="heater7" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getTemp7R" To="TemperatureSensorCD.getTemp7R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+
 			<iSignal Name="getHumid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="airconHumid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="getHumid4R" To="HumiditySensorCD.getHumid4R" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
