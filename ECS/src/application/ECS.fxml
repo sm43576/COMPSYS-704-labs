@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="520.0" fitWidth="850.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../Downloads/guitemplate.png" />
+            <Image url="@guitemplate.png" />
          </image>
       </ImageView>
       <ProgressIndicator id="humid3" fx:id="humid3" layoutX="552.0" layoutY="171.0" prefHeight="76.0" prefWidth="59.0" progress="0.5" style="-fx-border-color: black;" />
@@ -43,7 +43,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label id="temp1" fx:id="temp1" alignment="CENTER" layoutX="129.0" layoutY="101.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black;" text="32C">
+      <Label id="temp1" fx:id="temp1" alignment="CENTER" layoutX="129.0" layoutY="101.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black;" text="27C">
          <font>
             <Font size="32.0" />
          </font>
