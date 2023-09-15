@@ -62,10 +62,10 @@ public class HumanPresence extends ClockDomain{
   private int S571 = 1;
   private int S596 = 1;
   
-  private int[] ends = new int[19];
-  private int[] tdone = new int[19];
+  private int[] ends = new int[20];
+  private int[] tdone = new int[20];
   
-  public void thread3122(int [] tdone, int [] ends){
+  public void thread3223(int [] tdone, int [] ends){
         switch(S664){
       case 0 : 
         active[8]=0;
@@ -272,7 +272,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3121(int [] tdone, int [] ends){
+  public void thread3222(int [] tdone, int [] ends){
         switch(S569){
       case 0 : 
         active[7]=0;
@@ -479,7 +479,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3120(int [] tdone, int [] ends){
+  public void thread3221(int [] tdone, int [] ends){
         switch(S474){
       case 0 : 
         active[6]=0;
@@ -686,7 +686,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3119(int [] tdone, int [] ends){
+  public void thread3220(int [] tdone, int [] ends){
         switch(S379){
       case 0 : 
         active[5]=0;
@@ -893,7 +893,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3118(int [] tdone, int [] ends){
+  public void thread3219(int [] tdone, int [] ends){
         switch(S284){
       case 0 : 
         active[4]=0;
@@ -1098,7 +1098,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3117(int [] tdone, int [] ends){
+  public void thread3218(int [] tdone, int [] ends){
         switch(S189){
       case 0 : 
         active[3]=0;
@@ -1305,7 +1305,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3116(int [] tdone, int [] ends){
+  public void thread3217(int [] tdone, int [] ends){
         switch(S94){
       case 0 : 
         active[2]=0;
@@ -1512,7 +1512,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3114(int [] tdone, int [] ends){
+  public void thread3215(int [] tdone, int [] ends){
         S664=1;
     S592=0;
     S576=0;
@@ -1551,7 +1551,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3113(int [] tdone, int [] ends){
+  public void thread3214(int [] tdone, int [] ends){
         S569=1;
     S497=0;
     S481=0;
@@ -1590,7 +1590,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3112(int [] tdone, int [] ends){
+  public void thread3213(int [] tdone, int [] ends){
         S474=1;
     S402=0;
     S386=0;
@@ -1629,7 +1629,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3111(int [] tdone, int [] ends){
+  public void thread3212(int [] tdone, int [] ends){
         S379=1;
     S307=0;
     S291=0;
@@ -1668,7 +1668,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3110(int [] tdone, int [] ends){
+  public void thread3211(int [] tdone, int [] ends){
         S284=1;
     S212=0;
     S196=0;
@@ -1707,7 +1707,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3109(int [] tdone, int [] ends){
+  public void thread3210(int [] tdone, int [] ends){
         S189=1;
     S117=0;
     S101=0;
@@ -1746,7 +1746,7 @@ public class HumanPresence extends ClockDomain{
     }
   }
 
-  public void thread3108(int [] tdone, int [] ends){
+  public void thread3209(int [] tdone, int [] ends){
         S94=1;
     S22=0;
     S6=0;
@@ -1800,78 +1800,78 @@ public class HumanPresence extends ClockDomain{
         case 1 : 
           S666=2;
           S666=2;
-          thread3108(tdone,ends);
-          thread3109(tdone,ends);
-          thread3110(tdone,ends);
-          thread3111(tdone,ends);
-          thread3112(tdone,ends);
-          thread3113(tdone,ends);
-          thread3114(tdone,ends);
-          int biggest3115 = 0;
-          if(ends[2]>=biggest3115){
-            biggest3115=ends[2];
+          thread3209(tdone,ends);
+          thread3210(tdone,ends);
+          thread3211(tdone,ends);
+          thread3212(tdone,ends);
+          thread3213(tdone,ends);
+          thread3214(tdone,ends);
+          thread3215(tdone,ends);
+          int biggest3216 = 0;
+          if(ends[2]>=biggest3216){
+            biggest3216=ends[2];
           }
-          if(ends[3]>=biggest3115){
-            biggest3115=ends[3];
+          if(ends[3]>=biggest3216){
+            biggest3216=ends[3];
           }
-          if(ends[4]>=biggest3115){
-            biggest3115=ends[4];
+          if(ends[4]>=biggest3216){
+            biggest3216=ends[4];
           }
-          if(ends[5]>=biggest3115){
-            biggest3115=ends[5];
+          if(ends[5]>=biggest3216){
+            biggest3216=ends[5];
           }
-          if(ends[6]>=biggest3115){
-            biggest3115=ends[6];
+          if(ends[6]>=biggest3216){
+            biggest3216=ends[6];
           }
-          if(ends[7]>=biggest3115){
-            biggest3115=ends[7];
+          if(ends[7]>=biggest3216){
+            biggest3216=ends[7];
           }
-          if(ends[8]>=biggest3115){
-            biggest3115=ends[8];
+          if(ends[8]>=biggest3216){
+            biggest3216=ends[8];
           }
-          if(biggest3115 == 1){
+          if(biggest3216 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread3116(tdone,ends);
-          thread3117(tdone,ends);
-          thread3118(tdone,ends);
-          thread3119(tdone,ends);
-          thread3120(tdone,ends);
-          thread3121(tdone,ends);
-          thread3122(tdone,ends);
-          int biggest3123 = 0;
-          if(ends[2]>=biggest3123){
-            biggest3123=ends[2];
+          thread3217(tdone,ends);
+          thread3218(tdone,ends);
+          thread3219(tdone,ends);
+          thread3220(tdone,ends);
+          thread3221(tdone,ends);
+          thread3222(tdone,ends);
+          thread3223(tdone,ends);
+          int biggest3224 = 0;
+          if(ends[2]>=biggest3224){
+            biggest3224=ends[2];
           }
-          if(ends[3]>=biggest3123){
-            biggest3123=ends[3];
+          if(ends[3]>=biggest3224){
+            biggest3224=ends[3];
           }
-          if(ends[4]>=biggest3123){
-            biggest3123=ends[4];
+          if(ends[4]>=biggest3224){
+            biggest3224=ends[4];
           }
-          if(ends[5]>=biggest3123){
-            biggest3123=ends[5];
+          if(ends[5]>=biggest3224){
+            biggest3224=ends[5];
           }
-          if(ends[6]>=biggest3123){
-            biggest3123=ends[6];
+          if(ends[6]>=biggest3224){
+            biggest3224=ends[6];
           }
-          if(ends[7]>=biggest3123){
-            biggest3123=ends[7];
+          if(ends[7]>=biggest3224){
+            biggest3224=ends[7];
           }
-          if(ends[8]>=biggest3123){
-            biggest3123=ends[8];
+          if(ends[8]>=biggest3224){
+            biggest3224=ends[8];
           }
-          if(biggest3123 == 1){
+          if(biggest3224 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest3123 == 0){
+          if(biggest3224 == 0){
             S666=0;
             active[1]=0;
             ends[1]=0;
@@ -1884,9 +1884,9 @@ public class HumanPresence extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

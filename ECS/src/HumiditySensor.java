@@ -21,10 +21,10 @@ public class HumiditySensor extends ClockDomain{
   private int S2924 = 1;
   private int S3104 = 1;
   
-  private int[] ends = new int[19];
-  private int[] tdone = new int[19];
+  private int[] ends = new int[20];
+  private int[] tdone = new int[20];
   
-  public void thread3142(int [] tdone, int [] ends){
+  public void thread3243(int [] tdone, int [] ends){
         switch(S3104){
       case 0 : 
         active[18]=0;
@@ -41,7 +41,7 @@ public class HumiditySensor extends ClockDomain{
     }
   }
 
-  public void thread3141(int [] tdone, int [] ends){
+  public void thread3242(int [] tdone, int [] ends){
         switch(S3102){
       case 0 : 
         active[17]=0;
@@ -144,14 +144,14 @@ public class HumiditySensor extends ClockDomain{
     }
   }
 
-  public void thread3139(int [] tdone, int [] ends){
+  public void thread3240(int [] tdone, int [] ends){
         S3104=1;
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread3138(int [] tdone, int [] ends){
+  public void thread3239(int [] tdone, int [] ends){
         S3102=1;
     S2924=0;
     getHumid4.setPresent();//sysj\controller.sysj line: 261, column: 5
@@ -176,38 +176,38 @@ public class HumiditySensor extends ClockDomain{
         case 1 : 
           S3106=2;
           S3106=2;
-          thread3138(tdone,ends);
-          thread3139(tdone,ends);
-          int biggest3140 = 0;
-          if(ends[17]>=biggest3140){
-            biggest3140=ends[17];
+          thread3239(tdone,ends);
+          thread3240(tdone,ends);
+          int biggest3241 = 0;
+          if(ends[17]>=biggest3241){
+            biggest3241=ends[17];
           }
-          if(ends[18]>=biggest3140){
-            biggest3140=ends[18];
+          if(ends[18]>=biggest3241){
+            biggest3241=ends[18];
           }
-          if(biggest3140 == 1){
+          if(biggest3241 == 1){
             active[16]=1;
             ends[16]=1;
             break RUN;
           }
         
         case 2 : 
-          thread3141(tdone,ends);
-          thread3142(tdone,ends);
-          int biggest3143 = 0;
-          if(ends[17]>=biggest3143){
-            biggest3143=ends[17];
+          thread3242(tdone,ends);
+          thread3243(tdone,ends);
+          int biggest3244 = 0;
+          if(ends[17]>=biggest3244){
+            biggest3244=ends[17];
           }
-          if(ends[18]>=biggest3143){
-            biggest3143=ends[18];
+          if(ends[18]>=biggest3244){
+            biggest3244=ends[18];
           }
-          if(biggest3143 == 1){
+          if(biggest3244 == 1){
             active[16]=1;
             ends[16]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest3143 == 0){
+          if(biggest3244 == 0){
             S3106=0;
             active[16]=0;
             ends[16]=0;
@@ -220,9 +220,9 @@ public class HumiditySensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

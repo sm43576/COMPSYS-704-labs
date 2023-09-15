@@ -11,6 +11,10 @@ Plant(
 		
 		input signal getHumid4,airconHumid4;
 		output Integer signal getHumid4R;
+		
+		input signal getSmokeDetection,fireAlarm;
+		output signal smokeOnOff;
+		
 
 	)
 ->{
@@ -104,6 +108,26 @@ Plant(
 			}
 			pause;
 		}
+	}||
+	
+	{//smoke
+		while(true) {
+			present(getSmokeDetection){// check for smoke
+				//if smoke is present
+				emit smokeOnOff;
+			}
+			pause;
+		}
+		
+	}||
+	{
+		while(true) {
+			present(fireAlarm){
+				System.out.println("Fire alarms on");
+			}
+			pause;
+		}
+		
 	}
 }
 

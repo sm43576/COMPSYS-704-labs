@@ -55,5 +55,11 @@
 			<oSignal Name="airconHumid4" To="PlantCD.airconHumid4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="zone4Humid" To="ecsUI.zone4Humid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20012" />
 		</ClockDomain>
+		
+		<ClockDomain Name="SmokeSensorCD" Class="SmokeSensor">
+			<iSignal Name="smokeOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="fireAlarm" To="PlantCD.fireAlarm" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="getSmokeDetection" To="PlantCD.getSmokeDetection" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
 		</SubSystem>
 </System>

@@ -16,7 +16,7 @@
 	<classpathentry kind="lib" path="lib/sjc-2.2-13-g8ab684c-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-base.jar"/>
 	<classpathentry kind="lib" path="lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-desktop.jar"/>
-	<classpathentry kind="lib" path="lib/sysjnetapi-SNAPSHOT-e1801c7.jar"/>
+	<classpathentry kind="lib" path="/Labs/COMPSYS704_Lab_3/lib/sysjnetapi-SNAPSHOT-e1801c7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

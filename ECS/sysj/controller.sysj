@@ -138,12 +138,12 @@ InfraredSensor(
 	->{	
 		 { 
 			 while(true) {
-				send zone1P(true);
+				send zone1P(true); // Someone has entered the room
 				pause; //need pause here for tick
 				waitl(2 s);
 				System.out.println("sent");
 				
-				send zone1P(false);
+				send zone1P(false);  // SOmeone has exited the room
 				pause;
 				waitl(4 s);
 				System.out.println("unsent");
@@ -278,6 +278,24 @@ HumiditySensor(
 		}
 	}
 
+}
+
+SmokeSensor(
+		input signal smokeOnOff;
+		output signal getSmokeDetection,fireAlarm;
+		
+		)->{
+			while(true) {
+				abort(smokeOnOff){
+					sustain getSmokeDetection;
+				}
+				
+				emit fireAlarm;
+				System.out.println("SMOKE IN THE BUILDING");
+				waitl(5 s);
+				pause;
+			}
+	
 }
 
 

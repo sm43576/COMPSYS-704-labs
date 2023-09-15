@@ -38,10 +38,10 @@ public class TemperatureSensor extends ClockDomain{
   private int S2913 = 1;
   private int S2741 = 1;
   
-  private int[] ends = new int[19];
-  private int[] tdone = new int[19];
+  private int[] ends = new int[20];
+  private int[] tdone = new int[20];
   
-  public void thread3136(int [] tdone, int [] ends){
+  public void thread3237(int [] tdone, int [] ends){
         switch(S2913){
       case 0 : 
         active[15]=0;
@@ -139,7 +139,7 @@ public class TemperatureSensor extends ClockDomain{
     }
   }
 
-  public void thread3135(int [] tdone, int [] ends){
+  public void thread3236(int [] tdone, int [] ends){
         switch(S2736){
       case 0 : 
         active[14]=0;
@@ -253,7 +253,7 @@ public class TemperatureSensor extends ClockDomain{
     }
   }
 
-  public void thread3134(int [] tdone, int [] ends){
+  public void thread3235(int [] tdone, int [] ends){
         switch(S2529){
       case 0 : 
         active[13]=0;
@@ -361,7 +361,7 @@ public class TemperatureSensor extends ClockDomain{
     }
   }
 
-  public void thread3132(int [] tdone, int [] ends){
+  public void thread3233(int [] tdone, int [] ends){
         S2913=1;
     S2741=0;
     getTemp7.setPresent();//sysj\controller.sysj line: 228, column: 5
@@ -371,7 +371,7 @@ public class TemperatureSensor extends ClockDomain{
     tdone[15]=1;
   }
 
-  public void thread3131(int [] tdone, int [] ends){
+  public void thread3232(int [] tdone, int [] ends){
         S2736=1;
     S2538=0;
     System.out.println("sustain getTEmp4");//sysj\controller.sysj line: 208, column: 5
@@ -382,7 +382,7 @@ public class TemperatureSensor extends ClockDomain{
     tdone[14]=1;
   }
 
-  public void thread3130(int [] tdone, int [] ends){
+  public void thread3231(int [] tdone, int [] ends){
         S2529=1;
     S2347=0;
     getTemp1.setPresent();//sysj\controller.sysj line: 189, column: 5
@@ -407,46 +407,46 @@ public class TemperatureSensor extends ClockDomain{
         case 1 : 
           S2915=2;
           S2915=2;
-          thread3130(tdone,ends);
-          thread3131(tdone,ends);
-          thread3132(tdone,ends);
-          int biggest3133 = 0;
-          if(ends[13]>=biggest3133){
-            biggest3133=ends[13];
+          thread3231(tdone,ends);
+          thread3232(tdone,ends);
+          thread3233(tdone,ends);
+          int biggest3234 = 0;
+          if(ends[13]>=biggest3234){
+            biggest3234=ends[13];
           }
-          if(ends[14]>=biggest3133){
-            biggest3133=ends[14];
+          if(ends[14]>=biggest3234){
+            biggest3234=ends[14];
           }
-          if(ends[15]>=biggest3133){
-            biggest3133=ends[15];
+          if(ends[15]>=biggest3234){
+            biggest3234=ends[15];
           }
-          if(biggest3133 == 1){
+          if(biggest3234 == 1){
             active[12]=1;
             ends[12]=1;
             break RUN;
           }
         
         case 2 : 
-          thread3134(tdone,ends);
-          thread3135(tdone,ends);
-          thread3136(tdone,ends);
-          int biggest3137 = 0;
-          if(ends[13]>=biggest3137){
-            biggest3137=ends[13];
+          thread3235(tdone,ends);
+          thread3236(tdone,ends);
+          thread3237(tdone,ends);
+          int biggest3238 = 0;
+          if(ends[13]>=biggest3238){
+            biggest3238=ends[13];
           }
-          if(ends[14]>=biggest3137){
-            biggest3137=ends[14];
+          if(ends[14]>=biggest3238){
+            biggest3238=ends[14];
           }
-          if(ends[15]>=biggest3137){
-            biggest3137=ends[15];
+          if(ends[15]>=biggest3238){
+            biggest3238=ends[15];
           }
-          if(biggest3137 == 1){
+          if(biggest3238 == 1){
             active[12]=1;
             ends[12]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest3137 == 0){
+          if(biggest3238 == 0){
             S2915=0;
             active[12]=0;
             ends[12]=0;
@@ -459,9 +459,9 @@ public class TemperatureSensor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
